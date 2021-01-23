@@ -1,0 +1,169 @@
+<?php
+defined('BASEPATH') or exit('No direct script access allowed');
+
+
+/**
+ *
+ * Controller Librarian
+ *
+ * This controller for ...
+ *
+ * @package   CodeIgniter
+ * @category  Controller CI
+ * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
+ * @author    Raul Guerrero <r.g.c@me.com>
+ * @link      https://github.com/setdjod/myci-extension/
+ * @param     ...
+ * @return    ...
+ *
+ */
+
+class Librarian extends CI_Controller
+{
+    
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model('Fullcalendar_model');
+    $this->load->model('Create_user_model');
+    $this->load->model('Librarian_model');
+  }
+
+  public function index()
+  {
+    $this->load->view("header.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("librarian/index.php");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php"); 
+  }
+  public function add_books()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("librarian/add_books.php");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php"); 
+  }
+  public function all_books()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("librarian/all_books.php");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php"); 
+  }
+  public function insert_book()
+  {
+    $book_name=$this->input->post('book_name');
+    $writer_name=$this->input->post('writer_name');
+    $copies=$this->input->post('copies');
+    $about=$this->input->post('about');
+    $book_data=array('book_name'=>$book_name,'author'=>$writer_name,'copies'=>$copies,'about'=>$about);
+    $this->Librarian_model->add_book($book_data);
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Librarian/add_books','refresh');
+  }
+  public function delete_book($book_id)
+  {
+   $this->Librarian_model->delete_book($book_id);
+   $this->session->set_flashdata('delete_success',"Sucessfully deleted");
+   redirect('Librarian/all_books','refresh');
+  }
+  public function update_book()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("Librarian/update_book");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function update_book_process()
+  {
+    $book_name=$this->input->post('book_name');
+    $writer_name=$this->input->post('writer_name');
+    $copies=$this->input->post('copies');
+    $about=$this->input->post('about');
+    $book_id=$this->input->post('book_id');
+    $book_data=array('book_name'=>$book_name,'author'=>$writer_name,'copies'=>$copies,'about'=>$about);
+    $this->Librarian_model->update_book($book_data,$book_id);
+    $this->session->set_flashdata('update_success',"Sucessfully inserted");
+    redirect('Librarian/all_books','refresh');
+  }
+  public function issue_book()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("Librarian/issue_book");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function issue_book_page()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("Librarian/issue_book_page");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function issue_book_process()
+  {
+    $book_id=$this->input->post('book_id');
+    $return_date=$this->input->post('return_date');
+    $borrower_id=$this->input->post('borrower_id');
+    $status="issued";
+    $sql=$this->db->select('b_times,copies')->from('books')->where('book_id',$book_id)->get();
+    foreach($sql->result() as $b)
+    {
+      $b_times=$b->b_times;
+      $copies=$b->copies;
+    }
+    $b_times=$b_times+1;
+    $copies=$copies-1;
+    $book_up=array('b_times'=>$b_times,'copies'=>$copies);
+    $this->Librarian_model->update_book($book_up,$book_id);
+    $issue_data=array('book_id'=>$book_id,'return_date'=>$return_date,'borrower_id'=>$borrower_id,'status'=>$status);
+    $this->Librarian_model->issue_book($issue_data);
+    $this->session->set_flashdata('book_issued',"Sucessfully inserted");
+    redirect('Librarian/issue_book','refresh');
+  }
+  public function issued_books()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("Librarian/issued_books");
+    $this->load->view("librarian/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function mark_as_returned($issue)
+  {
+    $sql=$this->db->select('book_id')->from('book_issues')->where('id',$issue)->get();
+    foreach($sql->result() as $b)
+    {
+      $book_id=$b->book_id;
+    }
+    $return_data=$issue;
+    $sql=$this->db->select('copies')->from('books')->where('book_id',$book_id)->get();
+    foreach($sql->result() as $b)
+    {
+      $copies=$b->copies;
+    }
+    $copies=$copies+1;
+    $book_up=array('copies'=>$copies);
+    $this->Librarian_model->update_book($book_up,$book_id);
+    
+    $this->Librarian_model->mark_as_returned($return_data);
+    $this->session->set_flashdata('book_returned',"Sucessfully inserted");
+    redirect('Librarian/issued_books','refresh');
+  }
+}
+
+
+/* End of file Librarian.php */
+/* Location: ./application/controllers/Librarian.php */

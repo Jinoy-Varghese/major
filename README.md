@@ -1,0 +1,2 @@
+# major
+ college_management
