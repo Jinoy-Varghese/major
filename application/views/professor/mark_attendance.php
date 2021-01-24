@@ -110,7 +110,6 @@ if($this->session->flashdata('update_success')){
 
 
 
-<br>
 
 
 
