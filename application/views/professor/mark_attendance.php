@@ -74,8 +74,17 @@ if($this->session->flashdata('update_success')){
   </thead>
 	<tbody>
   
-	<?php 
-	$sql=$this->db->select('*')->from('student_data')->where('s_status',2)->join('users','users.email=student_data.email')->get();
+  <?php  
+  $id=$_SESSION['u_id'];
+  $sql2=$this->db->select('*')->from('incharge_list')->where('user_incharge',$id)->limit(1)->order_by('timestamp','desc')->get();
+	foreach($sql2->result() as $incharge)
+	{
+    $sem_charge=$incharge->semester;
+  }
+
+
+
+	$sql=$this->db->select('*')->from('student_data')->where('s_status',2)->where('s_sem',$sem_charge)->join('users','users.email=student_data.email')->get();
     $i=1;
 	foreach($sql->result() as $student)
 	{
