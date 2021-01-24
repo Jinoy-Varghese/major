@@ -81,10 +81,18 @@ if($this->session->flashdata('update_success')){
 	{
     $sem_charge=$incharge->semester;
   }
+  $this->db->select('*');
+  $this->db->from('incharge_list');
+  $this->db->where('user_incharge',$id);
+  $sql3=$this->db->get();
+  foreach($sql3->result() as $user_data)
+  {
+    $sem=$user_data->semester;
+    $u_dept=$user_data->incharge_dept;
+  }
 
 
-
-	$sql=$this->db->select('*')->from('student_data')->where('s_status',2)->where('s_sem',$sem_charge)->join('users','users.email=student_data.email')->get();
+	$sql=$this->db->select('*')->from('student_data')->where('s_status',2)->where('s_sem',$sem_charge)->where('dept',$u_dept)->join('users','users.email=student_data.email')->get();
     $i=1;
 	foreach($sql->result() as $student)
 	{
