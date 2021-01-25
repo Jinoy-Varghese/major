@@ -72,12 +72,13 @@ class Professor extends CI_Controller
       $u_dept=$user_data->incharge_dept;
     }
     $limit=$this->input->post('limit');
+    $date=$this->input->post('date');
     for($i=1;$i<=$limit;$i++)
     {
        $attendance=$this->input->post($i);
        $student_id='sid'.$i;
        $sid=$this->input->post($student_id);
-       $attendance_data=array('s_id'=>$sid,'s_attendance'=>$attendance,'s_sem'=>$s_sem);
+       $attendance_data=array('s_id'=>$sid,'s_attendance'=>$attendance,'s_sem'=>$s_sem,'timestamp'=>$date);
        $this->db->insert('attendance',$attendance_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");

@@ -103,12 +103,12 @@ if($this->session->flashdata('insert_failed')){
         <label for="validationCustom04">Department</label>
         <select class="custom-select" id="validationCustom04" name="u_dept" required>
             <option selected disabled value="">Choose...</option>
-            <option value="B.Sc Computer Science">B.Sc Computer Science</option>
-            <option value="B.Sc Polymer Chemistry">B.Sc Polymer Chemistry</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Polymer Chemistry">Polymer Chemistry</option>
             <option value="B.Com">B.Com</option>
             <option value="BBA">BBA</option>
-            <option value="B.Sc Botany">B.Sc Botany</option>
-            <option value="B.Sc Electronics">B.Sc Electronics</option>
+            <option value="Botany">Botany</option>
+            <option value="Electronics">Electronics</option>
             <option value="BA English">BA English</option>
         </select>
         <div class="invalid-feedback">

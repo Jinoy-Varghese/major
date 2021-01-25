@@ -51,7 +51,7 @@ if($this->session->flashdata('update_success')){
 			</select>
 		</div>
         <form method="post" action="<?php echo base_url();?>Professor/mark_attendance_process" class="needs-validation">
-
+        
 <table id="table"
   data-show-export="true"
   data-toolbar="#toolbar"
@@ -64,6 +64,7 @@ if($this->session->flashdata('update_success')){
   data-visible-search="true"
   >
   <thead class="table-primary">
+  
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
             <th data-field="no." data-sortable="true">no.</th>
@@ -71,6 +72,7 @@ if($this->session->flashdata('update_success')){
 
       <th data-field="edit">Action</th>
 		</tr>
+    
   </thead>
 	<tbody>
   
@@ -116,10 +118,18 @@ if($this->session->flashdata('update_success')){
 
 	</tbody>
 </table>
+
 <div class="container">
 <div class="row">
+
+<div class="col-md-8 p-0">
 <input type="reset" name="reset" value="Reset" class="btn btn-danger mr-2">
 <input type="submit" class="btn btn-primary ">
+</div>
+
+<div class="col-md-4 p-0 mt-md-0 mt-3">
+<input type="date" class="form-control col-md-7 float-right" name="date">
+</div>
 </div>
 </div>
 </form>
