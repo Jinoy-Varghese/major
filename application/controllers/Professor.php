@@ -89,6 +89,5 @@ class Professor extends CI_Controller
 }
  
 
-
 /* End of file Super_admin.php */
 /* Location: ./application/controllers/Super_admin.php */
