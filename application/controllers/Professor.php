@@ -59,6 +59,15 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function live_meeting()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/live_meeting.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function mark_attendance_process()
   {
     $id=$_SESSION['u_id'];
