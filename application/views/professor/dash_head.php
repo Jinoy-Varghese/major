@@ -38,8 +38,9 @@ if(!isset($_SESSION['u_id']))
     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
+        
         <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
+        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i></a></li>
         <li class="nav-item dropdown mr-4">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <?php echo $user_name->name; ?>
@@ -79,6 +80,7 @@ if(!isset($_SESSION['u_id']))
 
           </ul>
         <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="list-group-item list-group-item-action bg-light">Attendance</a>
+        <a href="#" class="list-group-item list-group-item-action bg-light">Live Meating <i class="fas fa-video float-right"></i></a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Notes</a>
         
         
