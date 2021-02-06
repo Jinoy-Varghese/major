@@ -1,4 +1,22 @@
-<video autoplay="true" id="videoElement"></video>
+<div class="row mt-5">
+  <div class="vid-out mt-md-5 col-md-5">
+    <video autoplay="true" id="videoElement" class=" col-md-12 mt-md-4" ></video>
+  </div>
+  <div class="col-md-6 mt-md-5 pt-5">
+  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ratione libero obcaecati nulla fugiat, hic officia, ab enim molestias quod possimus voluptatem distinctio, earum iusto sed quis exercitationem iure ipsam?
+    <div class="mt-4">
+    <a class="btn btn-primary text-light ">Start Meeting</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 <script>
 var video = document.querySelector("#videoElement");
 
@@ -13,12 +31,16 @@ if (navigator.mediaDevices.getUserMedia) {
 }
 </script>
 <style>
-#videoElement 
+#videoElement
 {
-	width: 426px;
-	height: 320px;
-	background: url("https://image.freepik.com/free-vector/modern-video-player_186930-245.jpg");
-    background-size:cover;
+
+
+    height: 250px;
+    width:auto;
+    padding:0;
+  	background: url("<?php echo base_url("assets/image/video-thumb1.jpg");?>");
+    background-size:contain;
     background-repeat:no-repeat;
 }
+
 </style>
