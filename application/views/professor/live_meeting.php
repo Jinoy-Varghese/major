@@ -5,7 +5,7 @@
   <div class="col-md-6 mt-md-5 pt-5">
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ratione libero obcaecati nulla fugiat, hic officia, ab enim molestias quod possimus voluptatem distinctio, earum iusto sed quis exercitationem iure ipsam?
     <div class="mt-4">
-    <a class="btn btn-primary text-light ">Start Meeting</a>
+    <a href="live_stream" class="btn btn-primary text-light ">Start Meeting</a>
     </div>
   </div>
 </div>
