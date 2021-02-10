@@ -16,7 +16,6 @@
 
 
 
-
 <script>
 var video = document.querySelector("#videoElement");
 
