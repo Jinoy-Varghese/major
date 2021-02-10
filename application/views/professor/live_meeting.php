@@ -11,7 +11,7 @@
 </div>
 
 
-<!-- added live preview-->
+<!-- added live preview with details-->
 
 
 
