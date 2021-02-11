@@ -1,6 +1,10 @@
+<link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/image/marthoma.png'); ?>"/>
+
+
 <div style="display:flex;justify-content:center;align-items:center;height:98vh;">
     <a href="<?php echo base_url(); ?>Home/login">Login</a>
 </div>
+
 <style>
 a:hover
 {
