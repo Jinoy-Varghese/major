@@ -5,7 +5,7 @@
   <div class="col-md-6 mt-md-5 pt-5">
   Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ratione libero obcaecati nulla fugiat, hic officia, ab enim molestias quod possimus voluptatem distinctio, earum iusto sed quis exercitationem iure ipsam?
     <div class="mt-4">
-    <a href="https://desolate-dusk-05767.herokuapp.com/<?php echo $_SESSION["u_id"] ?>" class="btn btn-primary text-light shadow">Start Meeting</a>
+    <a href="start_meeting" class="btn btn-primary text-light shadow">Start Meeting</a>
     </div>
   </div>
 </div>

@@ -68,6 +68,21 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function start_meeting()
+  {
+    $value=array('meet_status'=>1);
+    $this->db->where('email',$_SESSION["u_id"]);
+    $this->db->update('professor_data',$value);
+    $link="https://desolate-dusk-05767.herokuapp.com/".$_SESSION["u_id"]; 
+    redirect($link,'refresh');
+  }
+  public function leave_meeting()
+  {
+    $value=array('meet_status'=>0);
+    $this->db->where('email',$_SESSION["u_id"]);
+    $this->db->update('professor_data',$value);
+    redirect('Professor/live_meeting','refresh');
+  }
   public function mark_attendance_process()
   {
     $id=$_SESSION['u_id'];
