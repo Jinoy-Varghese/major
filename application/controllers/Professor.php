@@ -81,6 +81,7 @@ class Professor extends CI_Controller
     $value=array('meet_status'=>0);
     $this->db->where('email',$_SESSION["u_id"]);
     $this->db->update('professor_data',$value);
+    $this->session->set_flashdata('meeting_over',"Theernnu");
     redirect('Professor/live_meeting','refresh');
   }
   public function mark_attendance_process()
