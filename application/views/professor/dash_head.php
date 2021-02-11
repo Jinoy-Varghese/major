@@ -49,6 +49,35 @@ if(!isset($_SESSION['u_id']))
   animation: bell-shake 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
   animation-delay: 4s;
 }
+.dropdown-menu-arrow {
+  top: -26px;
+  left: 7%;
+  width: 0;
+  height: 0;
+  position: relative;
+}
+.dropdown-menu-arrow:before,
+.dropdown-menu-arrow:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 7px 8px;
+  border-style: solid;
+  border-color: transparent;
+  z-index: 1001;
+}
+.dropdown-menu-arrow:after {
+  bottom: -18px;
+  right: -8px;
+  border-bottom-color: #fff;
+}
+.dropdown-menu-arrow:before {
+  bottom: -17px;
+  right: -8px;
+  border-bottom-color: coral;
+}
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -75,16 +104,15 @@ if(!isset($_SESSION['u_id']))
     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
-        
-        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-
-
-        <li class="nav-item dropdown">
+       
+       
+        <li class="nav-item dropdown ">
             <a class="nav-link " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              <i class="fas fa-bell text-warning alert-bell"></i>
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="<?php echo site_url(); ?>Super_admin/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-top-color: coral;">
+            <span class="dropdown-menu-arrow "></span>
+              <a class="dropdown-item" href="#">The meeting is running<br> on background</a>
             </div>
           </li>
 
@@ -95,7 +123,8 @@ if(!isset($_SESSION['u_id']))
             <?php echo $user_name->name; ?>
             
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-top-color: coral;">
+            <span class="dropdown-menu-arrow" ></span>
               <a class="dropdown-item" href="<?php echo site_url(); ?>Super_admin/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
               <a href="<?php echo base_url(); ?>home/logout" class="dropdown-item" id="logoutbtn_id"><i class="fa fa-power-off mr-1"></i>Logout</a>
             </div>
