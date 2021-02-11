@@ -7,11 +7,48 @@ if(!isset($_SESSION['u_id']))
 
 ?>
 <style>
-#navbarDropdownMenuLink::after
-{
-
+@keyframes bell-shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(10deg);
+    }
+    10% {
+        transform: rotate(-10deg);
+    }
+    15% {
+        transform: rotate(10deg);
+    }
+    20% {
+        transform: rotate(-10deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(10deg);
+    }
+    85% {
+        transform: rotate(-10deg);
+    }
+    90% {
+        transform: rotate(10deg);
+    }
+    95% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
 }
-
+.alert-bell {
+  animation: bell-shake 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
+  animation-delay: 4s;
+}
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -40,7 +77,19 @@ if(!isset($_SESSION['u_id']))
         <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
         
         <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-bell"></i></a></li>
+
+
+        <li class="nav-item dropdown">
+            <a class="nav-link " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <i class="fas fa-bell text-warning alert-bell"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="<?php echo site_url(); ?>Super_admin/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
+            </div>
+          </li>
+
+
+
         <li class="nav-item dropdown mr-4">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <?php echo $user_name->name; ?>
