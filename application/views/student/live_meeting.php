@@ -56,7 +56,7 @@ if($this->session->flashdata('meeting_over')){
    ?>
 
     <div class="mt-4">
-      <a href="https://mtcst.herokuapp.com/<?php echo $incharge_id; ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
+      <a href="https://mtcst.herokuapp.com/<?php echo md5($incharge_id); ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
     </div>
   <?php 
   }

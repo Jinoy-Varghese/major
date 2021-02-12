@@ -82,7 +82,7 @@ class Professor extends CI_Controller
     $value=array('meet_status'=>1);
     $this->db->where('email',$_SESSION["u_id"]);
     $this->db->update('professor_data',$value);
-    $link="https://mtcst.herokuapp.com/".$_SESSION["u_id"]; 
+    $link="https://mtcst.herokuapp.com/".md5($_SESSION["u_id"]); 
     redirect($link,'refresh');
   }
   public function leave_meeting()
