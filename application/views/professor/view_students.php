@@ -97,7 +97,7 @@ data-detail-view="true"
 $id=$_SESSION['u_id'];
 $this->db->select('*');
 $this->db->from('users');
-$this->db->join('hod_data','hod_data.email=users.email');
+$this->db->join('professor_data','professor_data.email=users.email');
 $this->db->where('users.email',$id);
 $sql=$this->db->get();
 foreach($sql->result() as $user_data)
@@ -106,11 +106,22 @@ foreach($sql->result() as $user_data)
 }
 
 
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
 
 $this->db->select('*');
 $this->db->from('users');
-$this->db->join('professor_data','professor_data.email=users.email');
-$this->db->where('professor_data.dept',$dept);
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
 $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
