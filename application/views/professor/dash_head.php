@@ -108,11 +108,40 @@ if(!isset($_SESSION['u_id']))
        
         <li class="nav-item dropdown ">
             <a class="nav-link " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-             <i class="fas fa-bell text-warning alert-bell"></i>
+             <i class="fas fa-bell 
+             
+             <?php
+                $sql=$this->db->select('meet_status')->from('professor_data')->where('email',$_SESSION['u_id'])->get();
+                foreach($sql->result() as $value)
+                {
+                  $status=$value->meet_status;
+                }
+                if($status==1)
+                {
+             ?>
+             text-warning alert-bell
+             <?php 
+                }
+              ?>
+             
+             "></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-top-color: coral;">
             <span class="dropdown-menu-arrow "></span>
+            <?php
+              if($status==1)
+              {
+            ?>
               <a class="dropdown-item" href="#">The meeting is running<br> on background</a>
+              <?php 
+              }
+              else
+              {
+              ?>
+               <a class="dropdown-item" href="#">No Notifications</a>
+              <?php
+              }
+               ?>
             </div>
           </li>
 
