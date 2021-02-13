@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Super_admin
+ * Controller Student
  *
  * This controller for ...
  *
