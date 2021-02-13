@@ -44,8 +44,6 @@ if($this->session->flashdata('meeting_over')){
       $incharge_id=$user_data->user_incharge;
     }
 
-
-
    $sql=$this->db->select('meet_status')->from('professor_data')->where('email',$incharge_id)->get();
    foreach($sql->result() as $value)
     {
