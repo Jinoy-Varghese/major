@@ -45,5 +45,5 @@ class Student extends CI_Controller
 }
  
 
-/* End of file Super_admin.php */
-/* Location: ./application/controllers/Super_admin.php */
+/* End of file Student.php */
+/* Location: ./application/controllers/Student.php */
