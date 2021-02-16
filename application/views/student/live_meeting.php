@@ -75,10 +75,8 @@ if($this->session->flashdata('meeting_over')){
 </div>
 
 
-<!-- added live preview with details
+<!--  added live preview with details
       meeting progress added
-
-
 -->
 
 
