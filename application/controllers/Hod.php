@@ -129,6 +129,29 @@ class Hod extends CI_Controller
 
   
   }
+  public function add_subject_process()
+  {
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('hod_data','hod_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+
+    $sub_name=$this->input->post('sub_name');
+    $gradguation=$this->input->post('gradguation');
+    $sem_num=$this->input->post('sub_sem');
+    $sub_data=array('sub_name'=>$sub_name,'sub_gradguation'=>$gradguation,'sub_dept'=>$dept,'sub_sem'=>$sem_num);
+    $this->db->insert('subjects',$sub_data);
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('hod/add_subject','refresh');
+
+  
+  }
  
 
 

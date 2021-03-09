@@ -5,7 +5,7 @@
 if($this->session->flashdata('insert_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> New record created.
+  <strong>Success!</strong> New subject created.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -56,7 +56,7 @@ if($this->session->flashdata('insert_failed')){
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom04">Semester</label>
-                <input type="number" class="form-control" id="validationCustom03" value="" name="sem" required>
+                <input type="number" class="form-control" id="validationCustom03" value="" name="sub_sem" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
