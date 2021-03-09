@@ -69,15 +69,7 @@ if(!isset($_SESSION['u_id']))
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Student/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="<?php echo site_url(); ?>Student/calendar" class="list-group-item list-group-item-action bg-light">Calendar</a>
-        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
-          <ul class="drop-down-ul">
-            <a href='<?php echo site_url(); ?>Student/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
-            <a href='<?php echo site_url(); ?>Student/add_hod' class="drop-down-a"><li class="drop-down-li">HOD</li></a>
-            <a href='<?php echo site_url(); ?>Student/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
-            <a href='<?php echo site_url(); ?>Student/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
-            <a href='<?php echo site_url(); ?>Student/add_librarian' class="drop-down-a"><li class="drop-down-li">Librarian</li></a>
-
-          </ul>
+ 
  
         <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
         <a href="<?php echo site_url(); ?>Student/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meating <i class="fas fa-video float-right mt-1"></i></a>
