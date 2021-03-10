@@ -152,7 +152,33 @@ class Hod extends CI_Controller
 
   
   }
- 
+  
+  public function assign_teacher_process()
+  {
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('hod_data','hod_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+
+    $course=$this->input->post('course');
+    $semester=$this->input->post('semester');
+    $teacher=$this->input->post('teacher');
+    $subject=$this->input->post('subject');
+
+
+    $sub_data=array('sub_course'=>$course,'teacher_id'=>$teacher,'sub_dept'=>$dept,'sem'=>$semester,'subject'=>$subject);
+    $this->db->insert('subject_assigned',$sub_data);
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('hod/assign_teachers','refresh');
+
+  
+  }
 
 
 
