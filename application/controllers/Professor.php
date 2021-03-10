@@ -22,6 +22,7 @@ class Professor extends CI_Controller
     parent::__construct();
     $this->load->model('Fullcalendar_model');
     $this->load->model('Create_user_model');
+    $this->load->model('Professor_model');
   }
 
   public function index()
@@ -123,9 +124,9 @@ class Professor extends CI_Controller
   public function professor_profile()
   {
     $this->load->view("header.php");
-    $this->load->view("student/dash_head.php");
-    $this->load->view("student/my_profile1.php");
-    $this->load->view("student/dash_footer.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/my_profile2.php");
+    $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
   
@@ -140,14 +141,14 @@ class Professor extends CI_Controller
      $gender=$this->input->post('gender');
      $phone=$this->input->post('phone');
      $update_data=array('name'=>$name,'email'=>$email,'address'=>$address,'gender'=>$gender,'phone'=>$phone);
-     $this->Super_admin_model->update_profile1($update_data,$id);
+     $this->Professor_model->update_profile($update_data,$id);
      $this->session->set_flashdata('update_success',"Successfully Updated");
-     redirect('Student/my_profile1','refresh');
+     redirect('professor/professor_profile','refresh');
     }
     else
     {
       $this->session->set_flashdata('update_failed',"Updation Failed");
-      redirect('Student/my_profile1','refresh');
+      redirect('professor/professor_profile','refresh');
     }
    }
   
@@ -172,24 +173,24 @@ class Professor extends CI_Controller
             $update_password=array('password'=>md5($confirm));
             $this->Create_user_model->password_change($update_password,$id);
             $this->session->set_flashdata('changepass_success',"Password Changed Successfully");
-            redirect('Student/my_profile1','refresh');
+            redirect('professor/professor_profile','refresh');
           }
           else
           {
             $this->session->set_flashdata('changepass_failed',"New Password & Confirm Password Mismatch...!");
-            redirect('Student/my_profile1','refresh');
+            redirect('professor/professor_profile','refresh');
           }
         }
         else
         {
           $this->session->set_flashdata('changepass_old_failed',"Current Password Mismatch...!");
-          redirect('Student/my_profile1','refresh');
+          redirect('professor/professor_profile','refresh');
         }
    }
    else
    {
      $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
-     redirect('Student/my_profile1','refresh');
+     redirect('professor/professor_profile','refresh');
    }
   }
   

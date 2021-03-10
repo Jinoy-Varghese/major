@@ -258,7 +258,7 @@ $(document).ready(function(){
 <div id="changepass" style="display:none;" class="mb-5">
 <div class="col-md-12 col-12 text-center mt-3"><h4><b><u>CHANGE PASSWORD</u></b></h4></div>
 <div class="col-md-12">
-<form class="needs-validation mt-5" novalidate action="<?php echo base_url("Student/change_password");?>" method="post">
+<form class="needs-validation mt-5" novalidate action="<?php echo base_url("Professor/change_password");?>" method="post">
   <div class="form-row">
   <div class="col-md-4 mb-3">
     <label for="inputPassword5">Current Password</label>
