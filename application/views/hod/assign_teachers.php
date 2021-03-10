@@ -23,7 +23,7 @@ if($this->session->flashdata('insert_failed')){
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Assign Teacher</a></li>
+        <li class="breadcrumb-item">Assign Teacher</li>
     </ol>
     </nav>
 
@@ -96,9 +96,9 @@ if($this->session->flashdata('insert_failed')){
                 </div>
             </div>
             <div class="col-md-4 mb-3">
-                <label for="validationCustom06">incharge_list</label>
+             <label for="validationCustom06">Teacher</label>
 
-            <select class="custom-select" id="validationCustom06" required name="incharge_list">
+            <select class="custom-select" id="validationCustom06" required name="Teacher">
             <option selected disabled value="">Choose...</option>
             <?php 
 
@@ -133,6 +133,46 @@ if($this->session->flashdata('insert_failed')){
                     Please enter a Semester.
                 </div>
             </div>
+
+            <div class="col-md-4 mb-3">
+             <label for="validationCustom06">Subject</label>
+
+            <select class="custom-select" id="validationCustom06" required name="Subject">
+            <option selected disabled value="">Choose...</option>
+            <?php 
+
+            $id=$_SESSION['u_id'];
+            $this->db->select('*');
+            $this->db->from('users');
+            $this->db->join('hod_data','hod_data.email=users.email');
+            $this->db->where('users.email',$id);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            $dept=$user_data->dept;
+            }
+
+
+
+            $this->db->select('*');
+            $this->db->from('subjects');
+            $this->db->where('sub_dept',$dept);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            echo "<option value='$user_data->email'>$user_data->sub_name</option>";
+            }
+            ?>
+            </select>
+            <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a Subject.
+                </div>
+            </div>
+
+            
             </div>
             <div class="form-row">
             <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit form">
