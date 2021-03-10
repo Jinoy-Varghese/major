@@ -97,30 +97,42 @@ public function update_profile()
           $update_password=array('password'=>md5($confirm));
           $this->Create_user_model->password_change($update_password,$id);
           $this->session->set_flashdata('changepass_success',"Password Changed Successfully");
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           redirect('Student/sudent_profile','refresh');
 =======
           redirect('Student/student_profile1','refresh');
 >>>>>>> Stashed changes
+=======
+          redirect('Student/student_profile','refresh');
+>>>>>>> 8363c236001251a991e83dcdc4128361298fdc69
         }
         else
         {
           $this->session->set_flashdata('changepass_failed',"New Password & Confirm Password Mismatch...!");
+<<<<<<< HEAD
 <<<<<<< Updated upstream
           redirect('Student/sudent_profile','refresh');
 =======
           redirect('Student/student_profile1','refresh');
 >>>>>>> Stashed changes
+=======
+          redirect('Student/student_profile','refresh');
+>>>>>>> 8363c236001251a991e83dcdc4128361298fdc69
         }
       }
       else
       {
         $this->session->set_flashdata('changepass_old_failed',"Current Password Mismatch...!");
+<<<<<<< HEAD
 <<<<<<< Updated upstream
         redirect('Student/sudent_profile','refresh');
 =======
         redirect('Student/student_profile1','refresh');
 >>>>>>> Stashed changes
+=======
+        redirect('Student/student_profile','refresh');
+>>>>>>> 8363c236001251a991e83dcdc4128361298fdc69
       }
  }
  else
