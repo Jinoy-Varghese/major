@@ -61,7 +61,7 @@ public function update_profile()
    $gender=$this->input->post('gender');
    $phone=$this->input->post('phone');
    $update_data=array('name'=>$name,'email'=>$email,'address'=>$address,'gender'=>$gender,'phone'=>$phone);
-   $this->Super_admin_model->update_profile1($update_data,$id);
+   $this->Student_model->update_profile1($update_data,$id);
    $this->session->set_flashdata('update_success',"Successfully Updated");
    redirect('Student/student_profile','refresh');
   }
