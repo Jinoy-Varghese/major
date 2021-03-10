@@ -110,7 +110,7 @@ public function update_profile()
  else
  {
    $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
-   redirect('Student/my_profile1','refresh');
+   redirect('Student/student_profile','refresh');
  }
 }
 
