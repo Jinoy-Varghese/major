@@ -154,7 +154,7 @@ if(!isset($_SESSION['u_id']))
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-top-color: coral;">
             <span class="dropdown-menu-arrow" ></span>
-              <a class="dropdown-item" href="<?php echo site_url(); ?>Super_admin/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
+              <a class="dropdown-item" href="<?php echo site_url(); ?>Professor/professor_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
               <a href="<?php echo base_url(); ?>home/logout" class="dropdown-item" id="logoutbtn_id"><i class="fa fa-power-off mr-1"></i>Logout</a>
             </div>
           </li>

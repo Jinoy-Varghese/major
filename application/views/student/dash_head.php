@@ -46,7 +46,7 @@ if(!isset($_SESSION['u_id']))
             
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="<?php echo site_url(); ?>Student/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
+              <a class="dropdown-item" href="<?php echo site_url(); ?>Student/student_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
               <a href="<?php echo base_url(); ?>home/logout" class="dropdown-item" id="logoutbtn_id"><i class="fa fa-power-off mr-1"></i>Logout</a>
             </div>
           </li>
