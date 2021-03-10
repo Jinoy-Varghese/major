@@ -61,14 +61,18 @@ public function update_profile()
    $gender=$this->input->post('gender');
    $phone=$this->input->post('phone');
    $update_data=array('name'=>$name,'email'=>$email,'address'=>$address,'gender'=>$gender,'phone'=>$phone);
-   $this->Super_admin_model->update_profile1($update_data,$id);
+   $this->Student_model->update_profile($update_data,$id);
    $this->session->set_flashdata('update_success',"Successfully Updated");
    redirect('Student/student_profile','refresh');
   }
   else
   {
     $this->session->set_flashdata('update_failed',"Updation Failed");
+<<<<<<< Updated upstream
     redirect('Student/student_profile','refresh');
+=======
+    redirect('Student/student_profile1','refresh');
+>>>>>>> Stashed changes
   }
  }
 
@@ -93,24 +97,40 @@ public function update_profile()
           $update_password=array('password'=>md5($confirm));
           $this->Create_user_model->password_change($update_password,$id);
           $this->session->set_flashdata('changepass_success',"Password Changed Successfully");
+<<<<<<< Updated upstream
           redirect('Student/sudent_profile','refresh');
+=======
+          redirect('Student/student_profile1','refresh');
+>>>>>>> Stashed changes
         }
         else
         {
           $this->session->set_flashdata('changepass_failed',"New Password & Confirm Password Mismatch...!");
+<<<<<<< Updated upstream
           redirect('Student/sudent_profile','refresh');
+=======
+          redirect('Student/student_profile1','refresh');
+>>>>>>> Stashed changes
         }
       }
       else
       {
         $this->session->set_flashdata('changepass_old_failed',"Current Password Mismatch...!");
+<<<<<<< Updated upstream
         redirect('Student/sudent_profile','refresh');
+=======
+        redirect('Student/student_profile1','refresh');
+>>>>>>> Stashed changes
       }
  }
  else
  {
    $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
+<<<<<<< Updated upstream
    redirect('Student/student_profile','refresh');
+=======
+   redirect('Student/tudent_profile1','refresh');
+>>>>>>> Stashed changes
  }
 }
 
