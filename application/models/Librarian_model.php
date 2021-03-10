@@ -25,7 +25,10 @@ class Librarian_model extends CI_Model {
     parent::__construct();
     
   }
-
+  public function update_profile($update_data,$id)
+  {
+    $this->db->where('id',$id)->update('users',$update_data);
+  }
   // ------------------------------------------------------------------------
 
 

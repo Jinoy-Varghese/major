@@ -162,6 +162,79 @@ class Librarian extends CI_Controller
     $this->session->set_flashdata('book_returned',"Sucessfully inserted");
     redirect('Librarian/issued_books','refresh');
   }
+  public function Librarian_profile()
+  {
+    $this->load->view("header.php");
+    $this->load->view("Librarian/dash_head.php");
+    $this->load->view("Librarian/my_profile3.php");
+    $this->load->view("Librarian/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  
+  public function update_profile()
+    {
+    if($this->input->post('update_user'))
+    {
+     $id=$this->input->post('id');; 
+     $name=$this->input->post('name');
+     $email=$this->input->post('email');
+     $address=$this->input->post('address');  
+     $gender=$this->input->post('gender');
+     $phone=$this->input->post('phone');
+     $update_data=array('name'=>$name,'email'=>$email,'address'=>$address,'gender'=>$gender,'phone'=>$phone);
+     $this->Librarian_model->update_profile($update_data,$id);
+     $this->session->set_flashdata('update_success',"Successfully Updated");
+     redirect('Librarian/Librarian_profile','refresh');
+    }
+    else
+    {
+      $this->session->set_flashdata('update_failed',"Updation Failed");
+      redirect('Librarian/Librarian_profile','refresh');
+    }
+   }
+  
+   public function change_password()
+   {
+     if($this->input->post('changepw_btn'))
+     {
+     $id=$this->input->post('id');;
+     $current=$this->input->post('current');
+     $new=$this->input->post('new');
+     $confirm=$this->input->post('confirm');
+  
+      $sql=$this->db->get_where('users',array('email'=>$_SESSION["u_id"]));
+      foreach($sql->result() as $user_details)
+      {
+        $password=$user_details->password;
+      } 
+        if($password==md5($current))
+        {
+          if(md5($new)==md5($confirm))
+          {
+            $update_password=array('password'=>md5($confirm));
+            $this->Create_user_model->password_change($update_password,$id);
+            $this->session->set_flashdata('changepass_success',"Password Changed Successfully");
+            redirect('Librarian/Librarian_profile','refresh');
+          }
+          else
+          {
+            $this->session->set_flashdata('changepass_failed',"New Password & Confirm Password Mismatch...!");
+            redirect('Librarian/Librarian_profile','refresh');
+          }
+        }
+        else
+        {
+          $this->session->set_flashdata('changepass_old_failed',"Current Password Mismatch...!");
+          redirect('Librarian/Librarian_profile','refresh');
+        }
+   }
+   else
+   {
+     $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
+     redirect('Librarian/Librarian_profile','refresh');
+   }
+  }
+  
 }
 
 
