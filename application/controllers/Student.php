@@ -22,6 +22,7 @@ class Student extends CI_Controller
     parent::__construct();
     $this->load->model('Fullcalendar_model');
     $this->load->model('Create_user_model');
+    $this->load->model('Student_model');
   }
 
   public function index()
