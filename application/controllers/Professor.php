@@ -78,6 +78,15 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function notes()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/notes.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function start_meeting()
   {
     $value=array('meet_status'=>1);
