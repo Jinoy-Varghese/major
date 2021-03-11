@@ -355,9 +355,31 @@ class Home extends CI_Controller
      
      else
      {
-      $this->session->set_flashdata('insert_failed',"insertion failed");
+       $this->session->set_flashdata('insert_failed',"insertion failed");
        redirect('Super_admin/add_librarian','refresh');
      }
-     
+    }
+   public function leave_meeting()
+   {
+     $this->db->from('users');
+     $this->db->select('*');
+     $this->db->where('email',$_SESSION['u_id']);
+     $sql=$this->db->get();
+     foreach($sql->result() as $user_data)
+     {
+       $present=$user_data->role;
+     }
+     if($present=='professor')
+     {
+       $value=array('meet_status'=>0);
+       $this->db->where('email',$_SESSION["u_id"]);
+       $this->db->update('professor_data',$value);
+       $this->session->set_flashdata('meeting_over',"Theernnu");
+       redirect('Professor/live_meeting','refresh');
+     }
+     else
+     {
+       redirect('Student/live_meeting','refresh');
+     }
    }
 }
