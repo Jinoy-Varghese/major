@@ -134,7 +134,7 @@ $(document).ready(function(){
     <div class="col-md-3 col-12 text-center pt-md-5 ml-md-n3">
       <div class="pt-md-3"></div>
       <h2 class="col-12 pt-md-5" style="white-space:nowrap;"><?php echo strtoupper($user_details->name);?></h2>
-      <div class="col-12"><h6 class="badge badge-dark" style="font-size:1rem;"><?php echo $user_details->role;?></h6></div>
+      <div class="col-12"><h6 class="badge badge-dark" style="font-size:1rem;"><?php echo strtoupper($user_details->role);?></h6></div>
 
       <div class="col-12 pt-md-5 ml-md-n4">
         <div class="custom-file">
