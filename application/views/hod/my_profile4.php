@@ -143,7 +143,7 @@ $(document).ready(function(){
      {
        $image=$user_data->u_image;
      }
-    echo $image;?>
+    echo base_url($image);?>
     
     " class="img-fluid img-thumbnail">
 		</div>
