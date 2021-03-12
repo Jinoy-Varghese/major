@@ -234,7 +234,22 @@ class Librarian extends CI_Controller
      redirect('Librarian/Librarian_profile','refresh');
    }
   }
-  
+  public function upload_image()
+  {
+  	$image = $_FILES['image']['name'];
+  	$target = "assets/img/profile/".basename($image);
+    $value=array('u_image'=>$target);
+    $this->db->where('email',$_SESSION["u_id"]);
+    $this->db->update('users',$value);
+    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    $this->session->set_flashdata('update_success',"Successfully Updated");
+
+    redirect('Librarian/Librarian_profile','refresh');
+  	
+ 
+  }
+
+
 }
 
 
