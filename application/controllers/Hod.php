@@ -304,9 +304,11 @@ class Hod extends CI_Controller
     $value=array('u_image'=>$target);
     $this->db->where('email',$_SESSION["u_id"]);
     $this->db->update('users',$value);
+    move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $this->session->set_flashdata('update_success',"Successfully Updated");
+
     redirect('Hod/Hod_profile','refresh');
-  	move_uploaded_file($_FILES['image']['tmp_name'], $target);
+  	
  
   }
 
