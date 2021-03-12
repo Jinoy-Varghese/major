@@ -300,7 +300,7 @@ class Hod extends CI_Controller
    public function userimage()
   {
   	$image = $_FILES['image']['name'];
-  	$target = "asset/img/profile/".basename($image);
+  	$target = "assets/img/profile/".basename($image);
     $value=array('u_image'=>$target);
     $this->db->where('email',$_SESSION["u_id"]);
     $this->db->update('users',$value);
