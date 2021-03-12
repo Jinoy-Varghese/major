@@ -134,9 +134,7 @@ $(document).ready(function(){
 		<div class="row">
 	
 		<div class="col-md-3 col-12 mt-5">
-		<img src="
-
-    <?php
+		<img src="<?php
     $this->db->from('users');
     $this->db->select('*');
      $this->db->where('email',$_SESSION['u_id']);
@@ -145,11 +143,7 @@ $(document).ready(function(){
      {
        $image=$user_data->u_image;
      }
-    echo $image;
-    
-    
-    
-    ?>
+    echo $image;?>
     
     " class="img-fluid img-thumbnail">
 		</div>
