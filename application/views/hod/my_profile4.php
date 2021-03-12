@@ -134,7 +134,24 @@ $(document).ready(function(){
 		<div class="row">
 	
 		<div class="col-md-3 col-12 mt-5">
-		<img src="<?php echo base_url("assets/image/profile.jpg");?>" class="img-fluid img-thumbnail">
+		<img src="
+
+    <?php
+    $this->db->from('users');
+    $this->db->select('*');
+     $this->db->where('email',$_SESSION['u_id']);
+     $sql=$this->db->get();
+     foreach($sql->result() as $user_data)
+     {
+       $image=$user_data->u_image;
+     }
+    echo $image;
+    
+    
+    
+    ?>
+    
+    " class="img-fluid img-thumbnail">
 		</div>
     
     <div class="col-md-3 col-12 text-center pt-md-5 ml-md-n3">
