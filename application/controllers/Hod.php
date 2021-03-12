@@ -297,8 +297,18 @@ class Hod extends CI_Controller
      redirect('Hod/Hod_profile','refresh');
    }
   }
-
-
+   public function userimage()
+  {
+  	$image = $_FILES['image']['name'];
+  	$target = "asset/img/profile/".basename($image);
+    $value=array('u_image'=>$target);
+    $this->db->where('email',$_SESSION["u_id"]);
+    $this->db->update('users',$value);
+    $this->session->set_flashdata('update_success',"Successfully Updated");
+    redirect('Hod/Hod_profile','refresh');
+  	move_uploaded_file($_FILES['image']['tmp_name'], $target);
+ 
+  }
 
 
 

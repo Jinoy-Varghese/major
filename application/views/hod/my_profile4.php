@@ -149,9 +149,10 @@ $(document).ready(function(){
        
        
        
+       <form method="post" action="<?php echo base_url("Hod/userimage");?>" enctype="multipart/form-data">
        
-       
-        <input type="file" class="custom-file-input" name="select_img" id="select_img">
+        <input type="file" name="image" class="custom-file-input" name="select_img" id="select_img"><input type=submit value=save name=upload> 
+       </form>
         </div>
       </div>
     </div>
@@ -159,8 +160,6 @@ $(document).ready(function(){
 
     <div class="col-md-2 col-6 mt-n3 p-0"><button id="personal" class="personal" style="outline:none;"><h6>Personal Details</h6></button></div>
     <div class="col-md-2 col-6 mt-n3 p-0"><button id="changepw" class="changepw" style="outline:none;"><h6>Change Password</h6></button></div>
-
-
 		</div> <!--End of 1st div row!--> 
 		</div> <!--End of 1st div container!--> 
 
