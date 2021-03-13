@@ -162,7 +162,7 @@ $(document).ready(function(){
        
        <form method="post" action="<?php echo base_url("Hod/upload_image");?>" enctype="multipart/form-data">
        
-        <input type="file" name="image" class="custom-file-input" name="select_img" id="select_img" onchange="this.form.submit()">
+        <input type="file" name="image" class="custom-file-input" id="select_img" onchange="this.form.submit()">
        </form>
         </div>
       </div>
