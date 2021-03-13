@@ -100,7 +100,7 @@ class Professor extends CI_Controller
     $value=array('meet_status'=>0);
     $this->db->where('email',$_SESSION["u_id"]);
     $this->db->update('professor_data',$value);
-    $this->session->set_flashdata('meeting_over',"Theernnu");
+    $this->session->set_flashdata('meeting_over',);
     redirect('Professor/live_meeting','refresh');
   }
   public function mark_attendance_process()
@@ -138,7 +138,6 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
-  
   public function update_profile()
     {
     if($this->input->post('update_user'))
@@ -203,6 +202,22 @@ class Professor extends CI_Controller
    }
   }
   
+  public function upload_image()
+  {
+  	$image = $_FILES['image']['name'];
+  	$target = "assets/img/profile/".basename($image);
+    $value=array('u_image'=>$target);
+    $this->db->where('email',$_SESSION["u_id"]);
+    $this->db->update('users',$value);
+    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    $this->session->set_flashdata('update_success',"Successfully Updated");
+
+    redirect('Professor/Professor_profile','refresh');
+  	
+ 
+  }
+
+
   }
   
  
