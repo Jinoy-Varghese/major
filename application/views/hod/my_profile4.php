@@ -145,7 +145,7 @@ $(document).ready(function(){
      }
     echo base_url($image);?>
     
-    " class="img-fluid img-thumbnail">
+    "class="img-fluid img-thumbnail">
 		</div>
     
     <div class="col-md-3 col-12 text-center pt-md-5 ml-md-n3">

@@ -128,7 +128,19 @@ $(document).ready(function(){
 		<div class="row">
 	
 		<div class="col-md-3 col-12 mt-5">
-		<img src="<?php echo base_url("assets/image/profile.jpg");?>" class="img-fluid img-thumbnail">
+		<img src="
+    <?php
+    $this->db->from('users');
+    $this->db->select('*');
+     $this->db->where('email',$_SESSION['u_id']);
+     $sql=$this->db->get();
+     foreach($sql->result() as $user_data)
+     {
+       $image=$user_data->u_image;
+     }
+    echo base_url($image);?>
+    
+    "class="img-fluid img-thumbnail">
 		</div>
     
     <div class="col-md-3 col-12 text-center pt-md-5 ml-md-n3">
@@ -139,7 +151,8 @@ $(document).ready(function(){
       <div class="col-12 pt-md-5 ml-md-n4">
         <div class="custom-file">
         <label for="select_img" class="btn btn-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose Photo</label>
-        <input type="file" class="custom-file-input" name="select_img" id="select_img">
+        <form method="post" action="<?php echo base_url("Student/upload_image");?>" enctype="multipart/form-data">
+        <input type="file" class="custom-file-input" name="select_img" id="select_img"  onchange="this.form.submit()"></form>
         </div>
       </div>
     </div>

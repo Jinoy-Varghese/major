@@ -107,13 +107,28 @@ public function update_profile()
         $this->session->set_flashdata('changepass_old_failed',"Current Password Mismatch...!");
         redirect('Student/student_profile','refresh');
       }
- }
- else
+    }
+   else
+    {
+      $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
+      redirect('Student/student_profile','refresh');
+    }
+  }
+  public function upload_image()
  {
-   $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
-   redirect('Student/student_profile','refresh');
+  $image = $_FILES['image']['name'];
+  $target = "assets/img/profile/".basename($image);
+  $value=array('u_image'=>$target);
+  $this->db->where('email',$_SESSION["u_id"]);
+  $this->db->update('users',$value);
+  move_uploaded_file($_FILES['image']['tmp_name'], $target);
+  $this->session->set_flashdata('update_success',"Successfully Updated");
+
+  redirect('Student/Student_profile','refresh');
+  
+
  }
-}
+
 
 }
 
