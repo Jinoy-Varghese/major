@@ -150,7 +150,7 @@ $(document).ready(function(){
         <div class="custom-file">
         <label for="select_img" class="btn btn-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose Photo</label>
         <form method="post" action="<?php echo base_url("Librarian/upload_image");?>" enctype="multipart/form-data">
-        <input type="file" class="custom-file-input" name="select_img" id="select_img"  onchange="this.form.submit()">
+        <input type="file" class="custom-file-input" name="image" id="select_img"  onchange="this.form.submit()">
         </div>
       </div>
     </div>
