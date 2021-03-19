@@ -118,7 +118,7 @@ foreach($sql->result() as $user_data)
 <form name="incharge_change_form" method="post">
 <tr>
     <td class="bs-checkbox"><input data-index="<?php echo $user_data->id ?>" name="btSelectItem" type="checkbox"></td>
-    <td><input disabled value="<?php echo $user_data->name ?>" id="cur_name" style="border:0;background:none;color:black;"></td>
+    <td><?php echo $user_data->name ?></td>
     <td><?php echo $user_data->address ?></td>
     <td><?php echo $user_data->email ?></td>
     <td><?php echo $user_data->dept ?></td>
