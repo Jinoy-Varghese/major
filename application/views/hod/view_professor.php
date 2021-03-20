@@ -137,7 +137,7 @@ foreach($sql->result() as $user_data)
     </td>
     
     <td><?php echo $user_data->phone ?></td>
-    <td><amp-img alt="image" src="<?php echo base_url("assets/image/profile.jpg");?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
+    <td><amp-img alt="image" src="<?php echo base_url($user_data->u_image);?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
   </tr>
   </form>
 <?php		
