@@ -82,7 +82,7 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo base_url('/hod/change_incharge'); ?>" class="list-group-item list-group-item-action bg-light">Add Incharge</a>
         <a href="<?php echo base_url('/hod/add_course'); ?>" class="list-group-item list-group-item-action bg-light">Add Course</a> 
         <a href="<?php echo base_url('/hod/add_subject'); ?>" class="list-group-item list-group-item-action bg-light">Add Subject</a> 
-        <a href="<?php echo base_url('/hod/assign_teachers'); ?>" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="bottom" title="Assign professors for each subject">Assign Teachers</a> 
+        <a href="<?php echo base_url('/hod/assign_teachers'); ?>" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="bottom" title="Assign professors for each subject">Assign Subject</a> 
 
 
         
