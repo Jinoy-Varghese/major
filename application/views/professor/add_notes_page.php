@@ -149,7 +149,7 @@ if($this->session->flashdata('insert_failed')){
             <label for="validationCustom03">Description</label>
             <div class="custom-file">
                 <label for="select_img" class="form-control" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose File</label>
-                <input type="file"  class="custom-file-input" name="image" id="select_img" required>
+                <input type="file"  class="custom-file-input" name="image" id="select_img" required >
                     <div class="invalid-feedback">
                         Please provide the notes.
                     </div>
