@@ -52,7 +52,7 @@ if(!isset($_SESSION['u_id']))
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">All Books</li>
+        <li class="breadcrumb-item active" aria-current="page">My Students</li>
     </ol>
     </nav>
 
