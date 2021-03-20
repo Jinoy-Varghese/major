@@ -130,10 +130,16 @@ if($this->session->flashdata('insert_failed')){
             </div>
 
 
+            <div class="col-md-4 mb-3">
+        <label for="exampleInputEmail1">Heading</label>
+        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" id="exampleInputEmail1" name="u_email" required>
+        <div class="invalid-feedback">
+            Please provide a valid Heading.
+        </div>
+        </div>
 
 
 
-            
             </div>
             <div class="form-row">
             <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit form">
