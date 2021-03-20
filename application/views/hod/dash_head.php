@@ -73,7 +73,7 @@ if(!isset($_SESSION['u_id']))
           <ul class="drop-down-ul">
 
             <a href='<?php echo site_url(); ?>hod/add_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
-            <a href='<?php echo site_url(); ?>hod/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
+            <a href='<?php echo site_url(); ?>hod/add_professor' class="drop-down-a"><li class="drop-down-li">View Professors</li></a>
             <a href='<?php echo site_url(); ?>hod/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
 
           </ul>
