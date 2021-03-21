@@ -113,6 +113,7 @@ class Professor extends CI_Controller
      $note_subject=$this->input->post('note_subject');
      $note_file = $_FILES['note_file']['name'];
      $target = "assets/img/notes/".basename($note_file);
+     move_uploaded_file($_FILES['note_file']['tmp_name'], $target);
      $value=array('note_file'=>$target);
      $insert_note=array('note_for'=>$note_for,'note_by'=>$note_by,'course'=>$course,'note_heading'=>$note_heading,'note_desc'=>$note_desc,'note_subject'=>$note_subject,'note_file'=>$target);
      $this->Professor_model->insert_notes($insert_note);
