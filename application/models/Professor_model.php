@@ -33,7 +33,10 @@ class Professor_model extends CI_Model {
   {
     $this->db->where('id',$id)->update('users',$update_data);
   }
-
+  public function insert_notes($insert_note)
+  {
+  $this->db->insert('notes',$insert_note);
+  }
   // ------------------------------------------------------------------------
 
 }
