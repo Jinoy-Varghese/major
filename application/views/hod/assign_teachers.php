@@ -199,8 +199,7 @@ $("#subject").change(function(){
             for( var i = 0; i<len; i++){
                 var sem = response[i]['sem'];
                 
-                
-                $("#semester").append("<option value='"+sem+"'>"+sem+"</option>");
+                $("#semester").append("<option value='s"+sem+"'>"+sem+"</option>");
 
             }
         }
