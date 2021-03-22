@@ -11,7 +11,27 @@ if(!isset($_SESSION['u_id']))
     return pathinfo($file_name,PATHINFO_EXTENSION);
     }
 ?>
-<div class="container">
+<div class="container p-lg-4">
+<?php 
+if($this->session->flashdata('insert_success')){
+ echo '
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> New Note Inserted.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>';
+}
+if($this->session->flashdata('insert_failed')){
+    echo '
+   <div class="alert alert-danger alert-dismissible fade show" role="alert">
+     <strong>Failed!</strong> Something Wend wrong, please try again.
+     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+     </button>
+   </div>';
+   }
+?>
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
