@@ -118,12 +118,12 @@ class Professor extends CI_Controller
      $insert_note=array('note_for'=>$note_for,'note_by'=>$note_by,'course'=>$course,'note_heading'=>$note_heading,'note_desc'=>$note_desc,'note_subject'=>$note_subject,'note_file'=>$target);
      $this->Professor_model->insert_notes($insert_note);
      $this->session->set_flashdata('insert_success',"Successfully Inserted");
-     redirect('professor/add_notes_page','refresh');
+     redirect('professor/notes','refresh');
     }
     else
     {
       $this->session->set_flashdata('insert_failed',"Insertion Failed");
-      redirect('professor/add_notes_page','refresh');
+      redirect('professor/notes','refresh');
     }
   }
   public function start_meeting()
