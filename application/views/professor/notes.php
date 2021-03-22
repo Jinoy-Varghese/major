@@ -26,15 +26,16 @@ if(!isset($_SESSION['u_id']))
     $this->db->from('notes');
     $this->db->where('note_by',$note_by);
     $sql=$this->db->get();
+    $i=1;
     foreach($sql->result() as $note_data)
     {
     $date=date("d-m-Y",strtotime($note_data->note_date));
 ?>
     <div class="col-md-3 col-6">
-    <div class="border border-dark m-2" style="height:180px;">
-    <div class="col-12 border border-primary" style="height:60%; background-image:url(<?php echo base_url();?>/assets/image/video-thumb1.jpg);"></div>
-    <div class="col-12 border border-primary" style="height:40%;"><b><?php echo $note_data->note_num;?>.<?php echo strtoupper($note_data->note_heading);?></b>
-    <div class="col-md-12 col-12 ml-n3">Upload On <?php echo $date;?></div>
+    <div class="border border-dark m-2 rounded" style="height:180px;">
+    <div class="col-12 border rounded" style="height:60%; background-image:url(<?php echo base_url();?>/assets/image/video-thumb1.jpg);"></div>
+    <div class="col-12 border rounded" id="notehead_id" style="height:40%; font-size:90%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
+    <div class="col-md-12 col-12 ml-n3" style="font-size:90%;">Upload On <?php echo $date;?></div>
     </div>    
     </div>
     </div>
