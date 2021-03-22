@@ -16,8 +16,8 @@ if(!isset($_SESSION['u_id']))
     <div class="row p-0 mt-4 mt-md-5">
 
         <div class="col-md-3 col-6"><div class="border border-dark m-2" style="height:180px;">
-            <div class="col-12 border border-primary" style="height:50%"></div>
-            <div class="col-12 border border-primary" style="height:50%"></div>
+            <div class="col-12 border border-primary" style="height:60%"></div>
+            <div class="col-12 border border-primary" style="height:40%"></div>
 
             
         
