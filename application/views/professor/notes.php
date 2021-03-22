@@ -32,10 +32,10 @@ if(!isset($_SESSION['u_id']))
     $date=date("d-m-Y",strtotime($note_data->note_date));
 ?>
     <div class="col-md-3 col-6">
-    <div class="border border-dark m-2 rounded" style="height:180px;">
-    <div class="col-12 border rounded" style="height:60%; background-image:url(<?php echo base_url();?>/assets/image/video-thumb1.jpg);"></div>
-    <div class="col-12 border rounded" id="notehead_id" style="height:40%; font-size:90%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
-    <div class="col-md-12 col-12 ml-n3" style="font-size:90%;">Upload On <?php echo $date;?></div>
+    <div class="border border-dark m-md-2 rounded" style="">
+    <div class="col-12 border rounded" style="height:120px; background-image:url(<?php echo base_url();?>/assets/image/pdf_file.jpg);background-size:cover;background-position: center;"></div>
+    <div class="col-12 border rounded pt-md-2" id="notehead_id" style=" font-size:85%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
+    <div class="col-md-12 col-12 ml-n2 mb-md-2" style="font-size:85%;">Upload On <?php echo $date;?></div>
     </div>    
     </div>
     </div>
