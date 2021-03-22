@@ -5,6 +5,12 @@ if(!isset($_SESSION['u_id']))
   redirect('Home/login','refresh');
 }
 ?>
+<?php
+    function get_file_extension($file_name)
+    {
+    return pathinfo($file_name,PATHINFO_EXTENSION);
+    }
+?>
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
@@ -33,8 +39,30 @@ if(!isset($_SESSION['u_id']))
 ?>
     <div class="col-md-3 col-6">
     <div class="border border-dark m-md-2 rounded" style="">
-    <div class="col-12 border rounded" style="height:120px; background-image:url(<?php echo base_url();?>/assets/image/pdf_file.jpg);background-size:cover;background-position: center;"></div>
-    <div class="col-12 border rounded pt-md-2" id="notehead_id" style=" font-size:85%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
+    <?php 
+    $file_format=get_file_extension("$note_data->note_file");
+    if($file_format=="pdf")
+    {
+    echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/pdf_file.jpg);background-size:cover;background-position: center;'></div>";
+    }
+    elseif($file_format=="docx")
+    {
+        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/word_file.jpg);background-size:cover;background-position: center;'></div>";
+    }
+    elseif($file_format=="pptx")
+    {
+        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/powerpoint_file.jpg);background-size:cover;background-position: center;'></div>";
+    }
+    elseif($file_format=="jpg" || $file_format=="png")
+    {
+        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/jpg_file.jpg);background-size:cover;background-position: center;'></div>";
+    }
+    else
+    {
+        echo "<div class='col-12 border rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/other_file.jpg);background-size:cover;background-position: center;'></div>";
+    }
+    ?>
+    <div class="col-12 border  rounded-bottom pt-md-2" id="notehead_id" style=" font-size:85%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
     <div class="col-md-12 col-12 ml-n2 mb-md-2" style="font-size:85%;">Upload On <?php echo $date;?></div>
     </div>    
     </div>
