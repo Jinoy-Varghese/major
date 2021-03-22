@@ -62,7 +62,7 @@ if(!isset($_SESSION['u_id']))
         echo "<div class='col-12 border rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/other_file.jpg);background-size:cover;background-position: center;'></div>";
     }
     ?>
-    <div class="col-12 border  rounded-bottom pt-md-2" id="notehead_id" style=" font-size:85%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
+    <div class="col-12 border rounded-bottom pt-md-2" style=" font-size:85%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
     <div class="col-md-12 col-12 ml-n2 mb-md-2" style="font-size:85%;">Upload On <?php echo $date;?></div>
     </div>    
     </div>
