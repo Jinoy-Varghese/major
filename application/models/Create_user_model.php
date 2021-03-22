@@ -5,7 +5,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Create_user_model extends CI_Model {
 
   // ------------------------------------------------------------------------
-
+  public function insert_principal($u_data1,$u_data2)
+  {
+  $this->db->insert('users',$u_data1);
+  $this->db->insert('principal_data',$u_data2);
+  }
   public function insert_hod($u_data1,$u_data2)
   {
   $this->db->insert('users',$u_data1);

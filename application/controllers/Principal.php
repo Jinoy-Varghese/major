@@ -22,55 +22,54 @@ class Principal extends CI_Controller
     parent::__construct();
     $this->load->model('Fullcalendar_model');
     $this->load->model('Create_user_model');
-    $this->load->model('Super_admin_model');
   }
 
   public function index()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/index.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/index.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_professor()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_professor.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_professor.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_Lab_Assistant()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_Lab_Assistant.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_Lab_Assistant.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_Librarian()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_Librarian.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_Librarian.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_hod()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_hod.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_hod.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function verify_student()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/verify_student.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/verify_student.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function verify_student_success()
@@ -94,9 +93,9 @@ class Principal extends CI_Controller
   public function my_profile()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/my_profile.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/my_profile.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
 
