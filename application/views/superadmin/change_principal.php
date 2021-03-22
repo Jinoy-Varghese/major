@@ -25,14 +25,14 @@ if($this->session->flashdata('insert_failed')){
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Add User</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Add Professor</li>
+        <li class="breadcrumb-item active" aria-current="page">Change Principal</li>
     </ol>
     </nav>
-    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>home/insert_professor">
+    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>home/change_principal_process">
     <div class="form-row">
         <div class="col-md-4 mb-3">
         <label for="validationCustom01">First name</label>
-        <input type="text" class="form-control" id="validationCustom01" value="Mark" name="f_name" required>
+        <input type="text" class="form-control" id="validationCustom01" value="" name="f_name" required>
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -42,7 +42,7 @@ if($this->session->flashdata('insert_failed')){
         </div>
         <div class="col-md-4 mb-3">
         <label for="validationCustom02">Last name</label>
-        <input type="text" class="form-control" id="validationCustom02" value="Otto" name="l_name" required>
+        <input type="text" class="form-control" id="validationCustom02" value="" name="l_name" required>
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -99,22 +99,7 @@ if($this->session->flashdata('insert_failed')){
         Your password must be 8-20 characters long, contain letters (both upper and lower case) and numbers.
         </small>
         </div>
-        <div class="col-md-3 mb-3">
-        <label for="validationCustom04">Department</label>
-        <select class="custom-select" id="validationCustom04" name="u_dept" required>
-            <option selected disabled value="">Choose...</option>
-            <option value="B.Sc Computer Science">B.Sc Computer Science</option>
-            <option value="B.Sc Polymer Chemistry">B.Sc Polymer Chemistry</option>
-            <option value="B.Com">B.Com</option>
-            <option value="BBA">BBA</option>
-            <option value="B.Sc Botany">B.Sc Botany</option>
-            <option value="B.Sc Electronics">B.Sc Electronics</option>
-            <option value="BA English">BA English</option>
-        </select>
-        <div class="invalid-feedback">
-            Please select a Department.
-        </div>
-        </div>
+
     </div>
     <div class="form-group">
         <div class="form-check">

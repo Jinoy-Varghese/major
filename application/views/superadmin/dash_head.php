@@ -72,6 +72,7 @@ if(!isset($_SESSION['u_id']))
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
             <a href='<?php echo site_url(); ?>Super_admin/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
+            <a href='<?php echo site_url(); ?>Super_admin/change_principal' class="drop-down-a"><li class="drop-down-li">Change Principal</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_hod' class="drop-down-a"><li class="drop-down-li">HOD</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>

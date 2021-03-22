@@ -49,6 +49,14 @@ class Super_admin extends CI_Controller
     $this->load->view("superadmin/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function change_principal()
+  {
+    $this->load->view("header.php");
+    $this->load->view("superadmin/dash_head.php");
+    $this->load->view("superadmin/change_principal.php");
+    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function add_Librarian()
   {
     $this->load->view("header.php");
@@ -73,6 +81,7 @@ class Super_admin extends CI_Controller
     $this->load->view("superadmin/dash_footer.php");
     $this->load->view("footer.php");
   }
+  
   public function verify_student_success()
   {
     $student_id=$this->uri->segment(3);

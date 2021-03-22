@@ -83,6 +83,10 @@ class Home extends CI_Controller
               {
               redirect('Lab_assistant','refresh');
               }
+              elseif($users->role=="principal")
+              {
+              redirect('Principal','refresh');
+              }
             }
             else
             {
@@ -276,6 +280,32 @@ class Home extends CI_Controller
      {
       $this->session->set_flashdata('insert_failed',"insertion failed");
        redirect('hod/add_professor','refresh');
+     }
+   }
+   public function change_principal_process()
+   {
+     if($this->input->post('u_reg'))
+     {
+       $f_name=$this->input->post('f_name');
+       $l_name=$this->input->post('l_name');
+       $u_name=$f_name." ".$l_name;
+       $u_email=$this->input->post('u_email');
+       $u_address=$this->input->post('u_address');
+       $u_gender=$this->input->post('u_gender');
+       $u_dob=$this->input->post('u_dob');
+       $ph_no=$this->input->post('ph_no');
+       $u_pass=md5($this->input->post('u_pass'));
+       $u_role="principal";
+       $u_data1=array('name'=>$u_name,'password'=>$u_pass,'email'=>$u_email,'address'=>$u_address,'gender'=>$u_gender,'phone'=>$ph_no,'role'=>$u_role);
+       $u_data2=array('principal_email'=>$u_email,'dob'=>$u_dob);
+       $this->Create_user_model->insert_principal($u_data1,$u_data2);
+       $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+       redirect('super_admin/change_principal','refresh');
+     }
+     else
+     {
+      $this->session->set_flashdata('insert_failed',"insertion failed");
+       redirect('super_admin/change_principal','refresh');
      }
    }
    public function insert_lab_assistant_hod()
