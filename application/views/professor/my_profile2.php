@@ -152,6 +152,7 @@ $(document).ready(function(){
         <label for="select_img" class="btn btn-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose Photo</label>
         <form method="post" action="<?php echo base_url("Professor/upload_image");?>" enctype="multipart/form-data">
         <input type="file" class="custom-file-input" name="image" id="select_img" onchange="this.form.submit()">
+        </form>
         </div>
       </div>
     </div>

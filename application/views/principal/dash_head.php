@@ -46,7 +46,7 @@ if(!isset($_SESSION['u_id']))
             
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="<?php echo site_url(); ?>Super_admin/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
+              <a class="dropdown-item" href="<?php echo site_url(); ?>Principal/my_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
               <a href="<?php echo base_url(); ?>home/logout" class="dropdown-item" id="logoutbtn_id"><i class="fa fa-power-off mr-1"></i>Logout</a>
             </div>
           </li>
@@ -67,15 +67,15 @@ if(!isset($_SESSION['u_id']))
         Hi <?php echo $user_name->name; ?>
       </div>
       <div class="list-group list-group-flush">
-        <a href="<?php echo site_url(); ?>Super_admin/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Super_admin/calendar" class="list-group-item list-group-item-action bg-light">Calendar</a>
+        <a href="<?php echo site_url(); ?>Principal/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="<?php echo site_url(); ?>Principal/calendar" class="list-group-item list-group-item-action bg-light">Calendar</a>
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
-            <a href='<?php echo site_url(); ?>Super_admin/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
-            <a href='<?php echo site_url(); ?>Super_admin/add_hod' class="drop-down-a"><li class="drop-down-li">HOD</li></a>
-            <a href='<?php echo site_url(); ?>Super_admin/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
-            <a href='<?php echo site_url(); ?>Super_admin/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
-            <a href='<?php echo site_url(); ?>Super_admin/add_librarian' class="drop-down-a"><li class="drop-down-li">Librarian</li></a>
+            <a href='<?php echo site_url(); ?>Principal/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
+            <a href='<?php echo site_url(); ?>Principal/add_hod' class="drop-down-a"><li class="drop-down-li">HOD</li></a>
+            <a href='<?php echo site_url(); ?>Principal/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
+            <a href='<?php echo site_url(); ?>Principal/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
+            <a href='<?php echo site_url(); ?>Principal/add_librarian' class="drop-down-a"><li class="drop-down-li">Librarian</li></a>
 
           </ul>
  

@@ -93,8 +93,8 @@ if($this->session->flashdata('insert_failed')){
       <td><?php echo $student->gender ?></td>
       <td><?php echo $student->dept ?></td>
       <td class="text-center p-0" >
-        <a href="<?php echo base_url(); ?>Super_admin/verify_student_success/<?php echo $student->student_id; ?>"><i class="fa fa-user-check text-success mr-3"></i></a>
-        <a href="<?php echo base_url(); ?>Super_admin/verify_student_reject/<?php echo $student->student_id; ?>"><i class="fa fa-user-times text-danger"></i></a>
+        <a href="<?php echo base_url(); ?>Principal/verify_student_success/<?php echo $student->student_id; ?>"><i class="fa fa-user-check text-success mr-3"></i></a>
+        <a href="<?php echo base_url(); ?>Principal/verify_student_reject/<?php echo $student->student_id; ?>"><i class="fa fa-user-times text-danger"></i></a>
       </td>
 	  	</tr>
 	<?php		
