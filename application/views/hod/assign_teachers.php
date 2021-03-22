@@ -30,7 +30,6 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-
 <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>hod/assign_teacher_process">
 
 <div class="form-row mt-5">
@@ -71,7 +70,7 @@ if($this->session->flashdata('insert_failed')){
                     Looks good!
                 </div>
                 <div class="invalid-feedback">
-                    Please enter a Semester.
+                    Please enter a course.
                 </div>
             </div>
 
@@ -79,8 +78,8 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
              <label for="validationCustom06">Subject</label>
 
-            <select class="custom-select" id="validationCustom06" required name="subject">
-            <option selected disabled value="">Choose...</option>
+            <select class="custom-select" id="subject" required name="subject">
+            <option selected disabled value="select">Choose...</option>
             <?php 
 
             $id=$_SESSION['u_id'];
@@ -94,9 +93,7 @@ if($this->session->flashdata('insert_failed')){
             $dept=$user_data->dept;
             }
 
-
-
-            $this->db->select('*');
+            $this->db->select('DISTINCT(sub_name)');
             $this->db->from('subjects');
             $this->db->where('sub_dept',$dept);
             $sql=$this->db->get();
@@ -117,14 +114,14 @@ if($this->session->flashdata('insert_failed')){
                 <div class="col-md-4 mb-3">
                 <label for="validationCustom05">Semester</label>
        
-                    <select class="custom-select" id="validationCustom05" required name="semester">
+                    <select class="custom-select" id="semester" required name="semester">
                     <option selected disabled value="">Choose...</option>
-                    <option value="s1">s1</option>
-                    <option value="s2">s2</option>
-                    <option value="s3">s3</option>
-                    <option value="s4">s4</option>
-                    <option value="s5">s5</option>
-                    <option value="s6">s6</option>
+
+
+
+
+
+
                     </select>
                     <div class="valid-feedback">
                     Looks good!
@@ -182,6 +179,37 @@ if($this->session->flashdata('insert_failed')){
 
     </form>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+
+$("#subject").change(function(){
+    var subject = $(this).val();
+
+    $.ajax({
+        url: 'http://localhost/major/hod/view_semester_ajax',
+        type: 'post',
+        data: {post_subject:subject},
+        dataType: 'json',
+        success:function(response){
+          
+            var len = response.length;
+            
+            $("#semester").empty();
+            $("#semester").append("<option disabled value='select' selected>--Select--</option>");
+            for( var i = 0; i<len; i++){
+                var sem = response[i]['sem'];
+                
+                $("#semester").append("<option value='s"+sem+"'>"+sem+"</option>");
+
+            }
+        }
+    });
+});
+
+});
+</script>
+
+
     <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

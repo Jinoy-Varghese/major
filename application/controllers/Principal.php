@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Super_admin
+ * Controller Principal
  *
  * This controller for ...
  *
@@ -14,7 +14,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Super_admin extends CI_Controller
+class Principal extends CI_Controller
 {
     
   public function __construct()
@@ -22,66 +22,56 @@ class Super_admin extends CI_Controller
     parent::__construct();
     $this->load->model('Fullcalendar_model');
     $this->load->model('Create_user_model');
-    $this->load->model('Super_admin_model');
   }
 
   public function index()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/index.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/index.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_professor()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_professor.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_professor.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_Lab_Assistant()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_Lab_Assistant.php");
-    $this->load->view("superadmin/dash_footer.php");
-    $this->load->view("footer.php");
-  }
-  public function change_principal()
-  {
-    $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/change_principal.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_Lab_Assistant.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_Librarian()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_Librarian.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_Librarian.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function add_hod()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/add_hod.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/add_hod.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
   public function verify_student()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/verify_student.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/verify_student.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
-  
   public function verify_student_success()
   {
     $student_id=$this->uri->segment(3);
@@ -89,7 +79,7 @@ class Super_admin extends CI_Controller
     $this->db->where('student_id',$student_id);
     $this->db->update('student_data',$data);
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
-    redirect('Super_admin/verify_student','refresh');
+    redirect('Principal/verify_student','refresh');
   }
   public function verify_student_reject()
   {
@@ -98,14 +88,14 @@ class Super_admin extends CI_Controller
     $this->db->where('student_id',$student_id);
     $this->db->update('student_data',$data);
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
-    redirect('Super_admin/verify_student','refresh');
+    redirect('Principal/verify_student','refresh');
   }
   public function my_profile()
   {
     $this->load->view("header.php");
-    $this->load->view("superadmin/dash_head.php");
-    $this->load->view("superadmin/my_profile.php");
-    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/my_profile.php");
+    $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
 
@@ -120,14 +110,14 @@ class Super_admin extends CI_Controller
      $gender=$this->input->post('gender');
      $phone=$this->input->post('phone');
      $update_data=array('name'=>$name,'email'=>$email,'address'=>$address,'gender'=>$gender,'phone'=>$phone);
-     $this->Super_admin_model->update_profile($update_data,$id);
+     $this->Principal_model->update_profile($update_data,$id);
      $this->session->set_flashdata('update_success',"Successfully Updated");
-     redirect('Super_admin/my_profile','refresh');
+     redirect('Principal/my_profile','refresh');
     }
     else
     {
       $this->session->set_flashdata('update_failed',"Updation Failed");
-      redirect('Super_admin/my_profile','refresh');
+      redirect('Principal/my_profile','refresh');
     }
    }
 
@@ -152,24 +142,24 @@ class Super_admin extends CI_Controller
             $update_password=array('password'=>md5($confirm));
             $this->Create_user_model->password_change($update_password,$id);
             $this->session->set_flashdata('changepass_success',"Password Changed Successfully");
-            redirect('Super_admin/my_profile','refresh');
+            redirect('Principal/my_profile','refresh');
           }
           else
           {
             $this->session->set_flashdata('changepass_failed',"New Password & Confirm Password Mismatch...!");
-            redirect('Super_admin/my_profile','refresh');
+            redirect('Principal/my_profile','refresh');
           }
         }
         else
         {
           $this->session->set_flashdata('changepass_old_failed',"Current Password Mismatch...!");
-          redirect('Super_admin/my_profile','refresh');
+          redirect('Principal/my_profile','refresh');
         }
    }
    else
    {
      $this->session->set_flashdata('changepass_wrong',"Password is wrong...!");
-     redirect('Super_admin/my_profile','refresh');
+     redirect('Principal/my_profile','refresh');
    }
   }
   public function upload_image()
@@ -182,7 +172,7 @@ class Super_admin extends CI_Controller
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $this->session->set_flashdata('update_success',"Successfully Updated");
 
-    redirect('Super_admin/my_profile','refresh');
+    redirect('Principal/my_profile','refresh');
   	
  
   }
@@ -191,5 +181,5 @@ class Super_admin extends CI_Controller
 }
 
 
-/* End of file Super_admin.php */
-/* Location: ./application/controllers/Super_admin.php */
+/* End of file Principal.php */
+/* Location: ./application/controllers/Principal.php */

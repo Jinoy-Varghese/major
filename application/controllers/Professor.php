@@ -96,6 +96,36 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function insert_note_process()
+  {
+    if($this->input->post('n_add'))
+    {
+      $sql=$this->db->get_where('users',array('email'=>$_SESSION["u_id"]));
+      foreach($sql->result() as $user_name)
+      {
+        $note_by=$user_name->name;
+      }
+
+     $note_for=$this->input->post('semester');   
+     $course=$this->input->post('course');
+     $note_heading=$this->input->post('note_heading');  
+     $note_desc=$this->input->post('note_desc');
+     $note_subject=$this->input->post('note_subject');
+     $note_file = $_FILES['note_file']['name'];
+     $target = "assets/img/notes/".basename($note_file);
+     move_uploaded_file($_FILES['note_file']['tmp_name'], $target);
+     $value=array('note_file'=>$target);
+     $insert_note=array('note_for'=>$note_for,'note_by'=>$note_by,'course'=>$course,'note_heading'=>$note_heading,'note_desc'=>$note_desc,'note_subject'=>$note_subject,'note_file'=>$target);
+     $this->Professor_model->insert_notes($insert_note);
+     $this->session->set_flashdata('insert_success',"Successfully Inserted");
+     redirect('professor/add_notes_page','refresh');
+    }
+    else
+    {
+      $this->session->set_flashdata('insert_failed',"Insertion Failed");
+      redirect('professor/add_notes_page','refresh');
+    }
+  }
   public function start_meeting()
   {
     $value=array('meet_status'=>1);
@@ -220,13 +250,8 @@ class Professor extends CI_Controller
     $this->db->update('users',$value);
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $this->session->set_flashdata('update_success',"Successfully Updated");
-
-    redirect('Professor/Professor_profile','refresh');
-  	
- 
+    redirect('Professor/Professor_profile','refresh');	
   }
-
-
   }
   
  

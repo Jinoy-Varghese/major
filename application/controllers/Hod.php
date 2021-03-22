@@ -312,6 +312,30 @@ class Hod extends CI_Controller
  
   }
 
+  public function view_semester_ajax()
+  {
+    
+
+
+        $depart_sub =$_POST['post_subject']; // department id
+      
+
+      $users_arr = array();
+          
+        $this->db->select('*');
+        $this->db->from('subjects');
+        $sql=$this->db->where('sub_name',$depart_sub)->get();
+        foreach($sql->result() as $user_data)
+        {
+          $sem=$user_data->sub_sem;
+          $users_arr[] = array("sem" => $sem);
+        }
+
+      
+      // encoding array to json format
+      echo json_encode($users_arr);
+  }
+
 
 
 

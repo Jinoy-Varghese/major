@@ -73,7 +73,7 @@ if(!isset($_SESSION['u_id']))
           <ul class="drop-down-ul">
 
             <a href='<?php echo site_url(); ?>hod/add_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
-            <a href='<?php echo site_url(); ?>hod/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
+            <a href='<?php echo site_url(); ?>hod/add_professor' class="drop-down-a"><li class="drop-down-li">View Professors</li></a>
             <a href='<?php echo site_url(); ?>hod/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
 
           </ul>
@@ -82,7 +82,7 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo base_url('/hod/change_incharge'); ?>" class="list-group-item list-group-item-action bg-light">Add Incharge</a>
         <a href="<?php echo base_url('/hod/add_course'); ?>" class="list-group-item list-group-item-action bg-light">Add Course</a> 
         <a href="<?php echo base_url('/hod/add_subject'); ?>" class="list-group-item list-group-item-action bg-light">Add Subject</a> 
-        <a href="<?php echo base_url('/hod/assign_teachers'); ?>" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="bottom" title="Assign professors for each subject">Assign Teachers</a> 
+        <a href="<?php echo base_url('/hod/assign_teachers'); ?>" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="bottom" title="Assign professors for each subject">Assign Subject</a> 
 
 
         

@@ -4,7 +4,7 @@
 if($this->session->flashdata('insert_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> New record created.
+  <strong>Success!</strong> New Note Inserted.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -32,7 +32,7 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-<form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>Professor/insert_note_process">
+<form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>Professor/insert_note_process" enctype="multipart/form-data">
 
 <div class="form-row mt-5">
             
@@ -104,7 +104,7 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
                 <label for="validationCustom06">Subject</label>
 
-            <select class="custom-select" id="validationCustom06" required name="subject">
+            <select class="custom-select" id="validationCustom06" required name="note_subject">
             <option selected disabled value="">Choose...</option>
             <?php 
 
@@ -132,7 +132,7 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="col-md-4 mb-3">
         <label for="exampleInputEmail1">Heading</label>
-        <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="form-control" id="exampleInputEmail1" name="u_email" required>
+        <input type="text" class="form-control" id="validationCustom01" name="note_heading" required>
         <div class="invalid-feedback">
             Please provide a valid Heading.
         </div>
@@ -141,15 +141,15 @@ if($this->session->flashdata('insert_failed')){
 
         <div class="col-md-8 mb-3">
         <label for="validationCustom03">Description</label>
-        <textarea rows="1" class="form-control" name="description"></textarea>
+        <textarea rows="1" class="form-control" name="note_desc"></textarea>
         </div>
     
 
         <div class="col-md-4 mb-3">
             <label for="validationCustom03">File</label>
             <div class="custom-file">
-                <label for="select_img" class="form-control border-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose File</label>
-                <input type="file" class="custom-file-input" name="image" id="select_img" required style="display:none;">
+                <label for="note_file_id" class="form-control border-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose File</label>
+                <input type="file" class="custom-file-input" name="note_file" id="note_file_id" required style="display:none;">
                     <div class="invalid-feedback">
                         Please provide the notes.
                     </div>
@@ -163,7 +163,7 @@ if($this->session->flashdata('insert_failed')){
 
             </div>
             <div class="form-row">
-            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit form">
+            <input class="btn btn-primary ml-1" type="submit" name="n_add" value="Submit Note">
             </div>
 
     </form>

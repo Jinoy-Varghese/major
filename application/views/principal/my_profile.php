@@ -128,8 +128,7 @@ $(document).ready(function(){
 		<div class="row">
 	
 		<div class="col-md-3 col-12 mt-5">
-		<img src="
-    <?php
+		<img src="<?php
     $this->db->from('users');
     $this->db->select('*');
      $this->db->where('email',$_SESSION['u_id']);
@@ -138,8 +137,9 @@ $(document).ready(function(){
      {
        $image=$user_data->u_image;
      }
-    echo base_url($image);?>"
-    class="img-fluid img-thumbnail">
+    echo base_url($image);?>
+    
+    " class="img-fluid img-thumbnail">
 		</div>
     
     <div class="col-md-3 col-12 text-center pt-md-5 ml-md-n3">
@@ -150,9 +150,8 @@ $(document).ready(function(){
       <div class="col-12 pt-md-5 ml-md-n4">
         <div class="custom-file">
         <label for="select_img" class="btn btn-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose Photo</label>
-        <form method="post" action="<?php echo base_url("Professor/upload_image");?>" enctype="multipart/form-data">
-        <input type="file" class="custom-file-input" name="image" id="select_img" onchange="this.form.submit()">
-        </form>
+        <form method="post" action="<?php echo base_url("Super_admin/upload_image");?>" enctype="multipart/form-data">
+        <input type="file" class="custom-file-input" name="image" id="select_img"  onchange="this.form.submit()"></form>
         </div>
       </div>
     </div>
@@ -175,7 +174,7 @@ $(document).ready(function(){
 <div class="col-md-12 col-12 text-center mt-3"><h4><b><u>PERSONAL DETAILS</u></b></h4></div>
 
 <div class="col-md-12">
-<form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url("Professor/update_profile");?>">
+<form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url("Super_admin/update_profile");?>">
   <div class="form-row">
     <div class="col-md-4 mb-3">
       <label for="validationCustom01">User_ID</label>
@@ -271,7 +270,7 @@ $(document).ready(function(){
 <div id="changepass" style="display:none;" class="mb-5">
 <div class="col-md-12 col-12 text-center mt-3"><h4><b><u>CHANGE PASSWORD</u></b></h4></div>
 <div class="col-md-12">
-<form class="needs-validation mt-5" novalidate action="<?php echo base_url("Professor/change_password");?>" method="post">
+<form class="needs-validation mt-5" novalidate action="<?php echo base_url("Super_admin/change_password");?>" method="post">
   <div class="form-row">
   <div class="col-md-4 mb-3">
     <label for="inputPassword5">Current Password</label>
