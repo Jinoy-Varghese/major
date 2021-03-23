@@ -58,7 +58,7 @@ if($this->session->flashdata('insert_failed')){
     $date=date("d-m-Y",strtotime($note_data->note_date));
 ?>
     <div class="col-md-3 col-6">
-    <div class="border border-dark m-md-2 rounded" style="">
+    <div class="border border-dark m-md-2 mb-3 rounded" style="">
     <?php 
     $file_format=get_file_extension("$note_data->note_file");
     if($file_format=="pdf")
@@ -73,7 +73,7 @@ if($this->session->flashdata('insert_failed')){
     {
         echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/powerpoint_file.jpg);background-size:cover;background-position: center;'></div>";
     }
-    elseif($file_format=="jpg" || $file_format=="png")
+    elseif($file_format=="jpg" || $file_format=="png" || $file_format=="jpeg")
     {
         echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/jpg_file.jpg);background-size:cover;background-position: center;'></div>";
     }
