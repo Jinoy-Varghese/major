@@ -57,8 +57,43 @@ if($this->session->flashdata('insert_failed')){
     {
     $date=date("d-m-Y",strtotime($note_data->note_date));
 ?>
+
     <div class="col-md-3 col-6">
-    <div class="border border-dark m-md-2 rounded" style="">
+    <div class="border border-dark m-md-2 rounded" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer;">
+
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle"><?php echo strtoupper($note_data->note_heading);?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+      <div class="container">
+      <div class="row">
+      <div class="col-md-5 col-8 ml-md-0 ml-5 border border-dark" style="height:250px;"></div>
+      <div class="col-md-5"><b>Heading :</b> <?php echo strtoupper($note_data->note_heading);?></div>
+      <div class="col-md-5"></div><div class="col-md-5"><b>Description :</b> <?php echo ($note_data->note_desc);?></div>
+      <div class="col-md-5"></div><div class="col-md-5"><b>Course :</b> <?php echo ($note_data->course);?></div>
+      <div class="col-md-5"></div><div class="col-md-5"><b>Subject :</b> <?php echo ($note_data->note_subject);?></div>
+      <div class="col-md-5"></div><div class="col-md-5"><b>Semester :</b> <?php echo($note_data->note_for);?></div>
+      <div class="col-md-5"></div><div class="col-md-5"><b>Date :</b> <?php echo date("d-m-Y",strtotime($note_data->note_date));?></div>
+      </div>
+      </div>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Download</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <?php 
     $file_format=get_file_extension("$note_data->note_file");
     if($file_format=="pdf")
@@ -82,19 +117,27 @@ if($this->session->flashdata('insert_failed')){
         echo "<div class='col-12 border rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/other_file.jpg);background-size:cover;background-position: center;'></div>";
     }
     ?>
-    <div class="col-12 border rounded-bottom pt-md-2" style=" font-size:85%;"><b><?php echo $i; $i++;?>.<?php echo strtoupper($note_data->note_heading);?></b>
+    <div class="col-12 border rounded-bottom pt-md-2" style=" font-size:85%;"><b><?php echo $i; $i++;?>.
+    <?php 
+    if(strlen($note_data->note_heading)>=12)
+    {
+        $new_head=substr($note_data->note_heading,0,17);
+        echo strtoupper($new_head.'...');
+    }
+    else
+    {
+        echo strtoupper($note_data->note_heading);
+    }
+    ?>
+    </b>
     <div class="col-md-12 col-12 ml-n2 mb-md-2" style="font-size:85%;">Upload On <?php echo $date;?></div>
     </div>    
     </div>
     </div>
+
 <?php
     }
 ?>
-
-
-        
-
     </div>
 </div>
-
 <div class="col-md-12 mt-5"></div>
