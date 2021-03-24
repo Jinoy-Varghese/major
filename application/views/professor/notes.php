@@ -74,10 +74,38 @@ if($this->session->flashdata('insert_failed')){
               
                 <div class="container">
                     <div class="row p-0">
-                        <div class="col-4">
-                            <div class="col-md-12 col-12 border border-dark" style="height:250px;"></div>
-                        </div>
-                        <div class="col-8 p-0">
+
+
+
+
+                    <?php 
+                    $file_format=get_file_extension("$note_data->note_file");
+                    if($file_format=="pdf")
+                    {
+                      echo "<div class='col-4'><div class='col-md-12 col-12  p-0' style='height:275px;'><embed src='".base_url($note_data->note_file)."#toolbar=0' class='col-12 p-0' style='height:275px;'></div></div>";
+                    }
+                    elseif($file_format=="jpg" || $file_format=="png" || $file_format=="jpeg")
+                    {
+                      echo "<div class='col-4'><div class='col-md-12 col-12 border border-dark ' style='height:250px;'><img src='".base_url($note_data->note_file)."' class='col-12 p-0' style='height:248px;' loading='lazy'></div></div>";
+                    }
+                    elseif($file_format=="docx")
+                    {
+                      echo "<div class='col-4'><div class='col-md-12 col-12 border border-dark p-0' style='height:250px;'><img src='".base_url('assets/image/word_file.jpg')."' class='col-12 p-0' style='height:248px;' loading='lazy'></div></div>";
+                    }
+                    elseif($file_format=="pptx")
+                    {
+                      echo "<div class='col-4'><div class='col-md-12 col-12 border border-dark p-0' style='height:250px;'><img src='".base_url('assets/image/powerpoint_file.jpg')."' class='col-12 p-0' style='height:248px;' loading='lazy'></div></div>";
+                    }
+                    else
+                    {
+                      echo "<div class='col-4'><div class='col-md-12 col-12 border border-dark p-0' style='height:250px;'><img src='".base_url('assets/image/other_file.jpg')."' class='col-12 p-0' style='height:248px;' loading='lazy'></div></div>";
+                    }
+                    
+
+
+                    ?>
+
+                        <div class="col-8 p-0 mt-md-5">
                             <div class="col-md-12"><b>Heading :</b> <?php echo strtoupper($note_data->note_heading);?></div>
                             <div class="col-md-12"><b>Description :</b> <?php echo ($note_data->note_desc);?></div>
                             <div class="col-md-12"><b>Course :</b> <?php echo ($note_data->course);?></div>
@@ -104,30 +132,30 @@ if($this->session->flashdata('insert_failed')){
     $file_format=get_file_extension("$note_data->note_file");
     if($file_format=="pdf")
     {
-    echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/pdf_file.jpg);background-size:cover;background-position: center;'></div>";
+    echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(".base_url('assets/image/pdf_file.jpg').");background-size:cover;background-position: center;'></div>";
     }
     elseif($file_format=="docx")
     {
-        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/word_file.jpg);background-size:cover;background-position: center;'></div>";
+        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(".base_url('assets/image/word_file.jpg').");background-size:cover;background-position: center;'></div>";
     }
     elseif($file_format=="pptx")
     {
-        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/powerpoint_file.jpg);background-size:cover;background-position: center;'></div>";
+        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(".base_url('assets/image/powerpoint_file.jpg').");background-size:cover;background-position: center;'></div>";
     }
-    elseif($file_format=="jpg" || $file_format=="png")
+    elseif($file_format=="jpg" || $file_format=="png" || $file_format=="jpeg")
     {
-        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/jpg_file.jpg);background-size:cover;background-position: center;'></div>";
+        echo "<div class='col-12 border  rounded-top' style='height:120px; background-image:url(".base_url('assets/image/jpg_file.jpg').");background-size:cover;background-position: center;'></div>";
     }
     else
     {
-        echo "<div class='col-12 border rounded-top' style='height:120px; background-image:url(http://localhost/major/assets/image/other_file.jpg);background-size:cover;background-position: center;'></div>";
+        echo "<div class='col-12 border rounded-top' style='height:120px; background-image:url(".base_url('assets/image/other_file.jpg').");background-size:cover;background-position: center;'></div>";
     }
     ?>
     <div class="col-12 border rounded-bottom pt-md-2" style=" font-size:85%;"><b><?php echo $i; $i++;?>.
     <?php 
     if(strlen($note_data->note_heading)>=12)
     {
-        $new_head=substr($note_data->note_heading,0,17);
+        $new_head=substr($note_data->note_heading,0,16);
         echo strtoupper($new_head.'...');
     }
     else
