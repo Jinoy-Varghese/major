@@ -59,9 +59,9 @@ if($this->session->flashdata('insert_failed')){
 ?>
 
     <div class="col-md-3 col-6">
-    <div class="border border-dark m-md-2 rounded" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer;">
+    <div class="border border-dark m-md-2 rounded" data-toggle="modal" data-target="#exampleModalCenter<?php echo $i; ?>" style="cursor:pointer;">
 
-    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -77,7 +77,7 @@ if($this->session->flashdata('insert_failed')){
               <div class="col-4">
                   <div class="col-md-12 col-12 border border-dark" style="height:250px;"></div>
               </div>
-              <div class="col-6 p-0">
+              <div class="col-8 p-0">
                   <div class="col-md-12"><b>Heading :</b> <?php echo strtoupper($note_data->note_heading);?></div>
                   <div class="col-md-12"><b>Description :</b> <?php echo ($note_data->note_desc);?></div>
                   <div class="col-md-12"><b>Course :</b> <?php echo ($note_data->course);?></div>
@@ -91,7 +91,7 @@ if($this->session->flashdata('insert_failed')){
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Download</button>
+        <button type="button" class="btn btn-primary" onClick="window.open('lorem.html')">Download</button>
       </div>
     </div>
   </div>
