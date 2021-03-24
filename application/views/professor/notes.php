@@ -61,8 +61,8 @@ if($this->session->flashdata('insert_failed')){
     <div class="col-md-3 col-6">
     <div class="border border-dark m-md-2 rounded" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer;">
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalCenterTitle"><?php echo strtoupper($note_data->note_heading);?></h5>
@@ -73,15 +73,19 @@ if($this->session->flashdata('insert_failed')){
       <div class="modal-body">
       
       <div class="container">
-      <div class="row">
-      <div class="col-md-5 col-8 ml-md-0 ml-5 border border-dark" style="height:250px;"></div>
-      <div class="col-md-5"><b>Heading :</b> <?php echo strtoupper($note_data->note_heading);?></div>
-      <div class="col-md-5"></div><div class="col-md-5"><b>Description :</b> <?php echo ($note_data->note_desc);?></div>
-      <div class="col-md-5"></div><div class="col-md-5"><b>Course :</b> <?php echo ($note_data->course);?></div>
-      <div class="col-md-5"></div><div class="col-md-5"><b>Subject :</b> <?php echo ($note_data->note_subject);?></div>
-      <div class="col-md-5"></div><div class="col-md-5"><b>Semester :</b> <?php echo($note_data->note_for);?></div>
-      <div class="col-md-5"></div><div class="col-md-5"><b>Date :</b> <?php echo date("d-m-Y",strtotime($note_data->note_date));?></div>
-      </div>
+          <div class="row p-0">
+              <div class="col-4">
+                  <div class="col-md-12 col-12 border border-dark" style="height:250px;"></div>
+              </div>
+              <div class="col-6 p-0">
+                  <div class="col-md-12"><b>Heading :</b> <?php echo strtoupper($note_data->note_heading);?></div>
+                  <div class="col-md-12"><b>Description :</b> <?php echo ($note_data->note_desc);?></div>
+                  <div class="col-md-12"><b>Course :</b> <?php echo ($note_data->course);?></div>
+                  <div class="col-md-12"><b>Subject :</b> <?php echo ($note_data->note_subject);?></div>
+                  <div class="col-md-12"><b>Semester :</b> <?php echo($note_data->note_for);?></div>
+                  <div class="col-md-12"><b>Date :</b> <?php echo date("d-m-Y",strtotime($note_data->note_date));?></div>
+              </div>
+          </div>
       </div>
       
       </div>
