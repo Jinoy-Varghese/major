@@ -119,7 +119,7 @@ if($this->session->flashdata('insert_failed')){
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onClick="window.open('lorem.html')">Download</button>
+                <a href="<?php echo base_url($note_data->note_file); ?>" class="btn btn-primary text-light" download>Download</a>
               </div>
             </div>
           </div>
