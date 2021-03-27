@@ -38,6 +38,7 @@ class Student extends CI_Controller
     $this->load->view("header.php");
     $this->load->view("amp.php");
     $this->load->view("student/dash_head.php");
+    $this->load->view("amp.php");
     $this->load->view("student/live_meeting.php");
     $this->load->view("student/dash_footer.php");
     $this->load->view("footer.php");
@@ -46,7 +47,17 @@ public function student_profile()
 {
   $this->load->view("header.php");
   $this->load->view("student/dash_head.php");
+  $this->load->view("amp.php");
   $this->load->view("student/my_profile1.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
+public function notes()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("amp.php");
+  $this->load->view("student/notes.php");
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
