@@ -11,6 +11,15 @@ if(!isset($_SESSION['u_id']))
     return pathinfo($file_name,PATHINFO_EXTENSION);
     }
 ?>
+<style>
+.activegrid 
+    {
+        background: #03a9f4;
+        color:#fff
+    }
+
+
+</style>
 <div class="container p-lg-4">
 <?php 
 if($this->session->flashdata('insert_success')){
@@ -32,14 +41,35 @@ if($this->session->flashdata('insert_failed')){
    </div>';
    }
 ?>
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-3"></div>
-        <div class="col-md-4"></div>
+
+
+    <div class="row p-0 mt-5">
+        <div class="list activegrid col-5 col-md-1 border mr-1 mt-1 mb-1 pb-2 pt-2" style="cursor:pointer;" data-filter="all">All</div>
+        <?php
+        $this->db->from('student_data');
+        $this->db->select('s_sem');
+        $sql3=$this->db->where('email',$_SESSION['u_id'])->get();
+        foreach($sql3->result() as $student_data)
+        {
+          $student_sem=$student_data->s_sem;
+        }
+
+
+        $this->db->from('subject_assigned');
+        $this->db->select('*');
+        $sql4=$this->db->where('sem',$student_sem)->get();
+        foreach($sql4->result() as $subject_data)
+        {
+          $subjects=$subject_data->subject;
+          echo '<div class="list col-5 col-md-2 border m-1 pb-2 pt-2" data-filter="'.str_replace(' ','',$subjects).'"  style="cursor:pointer;">'.$subjects.'</div>';
+        }
+
+        ?>
+        </div>
     </div>
 
 
-    <div class="row p-0 mt-4 mt-md-5">
+    <div class="row p-0 mt-4 mt-md-2">
 
     <?php
         $this->db->from('student_data');
@@ -59,10 +89,6 @@ if($this->session->flashdata('insert_failed')){
           $subjects=$subject_data->subject;
         }
         
-
-
-
-
     $this->db->select('*');
     $this->db->from('notes');
     $this->db->where('note_for',$student_sem);
@@ -139,7 +165,7 @@ if($this->session->flashdata('insert_failed')){
           </div>
         </div>
 
-    <div class="col-md-3 col-6">
+    <div class="col-md-3 col-6 itembox <?php echo str_replace(' ','',$note_data->note_subject);?>">
       <div class="border border-dark m-md-2 rounded mb-4" data-toggle="modal" data-target="#exampleModalCenter<?php echo $i; ?>" style="cursor:pointer;">
 
     <?php 
@@ -189,3 +215,23 @@ if($this->session->flashdata('insert_failed')){
   </div>
 </div>
 <div class="col-md-12 mt-5"></div>
+
+<script>
+           $(document).ready(function(){
+               $('.list').click(function(){
+                   const value=$(this).attr('data-filter');
+                   if(value=='all')
+                   {
+                       $('.itembox').show('1000');
+                   }
+                   else
+                   {
+                       $('.itembox').not('.'+value).hide('1000');
+                       $('.itembox').filter('.'+value).show('1000');
+                   }
+               })
+               $('.list').click(function(){
+                   $(this).addClass('activegrid').siblings().removeClass('activegrid');
+               })
+           })
+       </script>
