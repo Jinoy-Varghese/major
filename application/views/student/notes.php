@@ -51,7 +51,6 @@ if($this->session->flashdata('insert_failed')){
         }
 
 
-
         $this->db->from('subject_assigned');
         $this->db->select('*');
         $sql4=$this->db->where('sem',$student_sem)->get();
@@ -59,17 +58,14 @@ if($this->session->flashdata('insert_failed')){
         {
           $subjects=$subject_data->subject;
         }
+        
 
 
 
-    $sql1=$this->db->get_where('users',array('email'=>$_SESSION["u_id"]));
-    foreach($sql1->result() as $user_name)
-    {
-        $note_by=$user_name->name;
-    }
+
     $this->db->select('*');
     $this->db->from('notes');
-    $this->db->where('note_by',$note_by);
+    $this->db->where('note_for',$student_sem);
     $sql=$this->db->get();
     $i=1;
     foreach($sql->result() as $note_data)
@@ -78,7 +74,6 @@ if($this->session->flashdata('insert_failed')){
 ?>
 
  
-
 
         <div class="modal fade bd-example-modal-lg" id="exampleModalCenter<?php echo $i; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
