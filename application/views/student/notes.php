@@ -36,13 +36,32 @@ if($this->session->flashdata('insert_failed')){
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
         <div class="col-md-4"></div>
-        <div class="col-md-2 col-sm-12 mt-5 "><a href="add_notes_page" class="btn btn-primary text-light float-right w-100 mr-md-1 pt-2 pb-2" style="cursor:pointer">Add Notes</a></div>
     </div>
 
 
     <div class="row p-0 mt-4 mt-md-5">
 
     <?php
+        $this->db->from('student_data');
+        $this->db->select('s_sem');
+        $sql3=$this->db->where('email',$_SESSION['u_id'])->get();
+        foreach($sql3->result() as $student_data)
+        {
+          $student_sem=$student_data->s_sem;
+        }
+
+
+
+        $this->db->from('subject_assigned');
+        $this->db->select('*');
+        $sql4=$this->db->where('sem',$student_sem)->get();
+        foreach($sql4->result() as $subject_data)
+        {
+          $subjects=$subject_data->subject;
+        }
+
+
+
     $sql1=$this->db->get_where('users',array('email'=>$_SESSION["u_id"]));
     foreach($sql1->result() as $user_name)
     {
