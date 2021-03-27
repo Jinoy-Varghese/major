@@ -14,10 +14,22 @@ if(!isset($_SESSION['u_id']))
 <style>
 .activegrid 
     {
-        background: #03a9f4;
+      background: linear-gradient(40deg, rgba(63,94,251,1) 0%, rgba(92,126,242,1) 13%, rgba(132,88,244,1) 29%, rgba(203,30,233,1) 43%, rgba(71,226,238,1) 58%, rgba(71,104,244,1) 75%, rgba(70,184,252,1) 100%);
+            background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
         color:#fff
     }
-
+    @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
 
 </style>
 <div class="container p-lg-4">
