@@ -20,6 +20,16 @@ if($this->session->flashdata('insert_failed')){
    </div>';
    }
 ?>
+<link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
+
+<script src="<?php echo base_url('assets/bootstrap-table/tableExport.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-table/jspdf.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-table/jspdf.plugin.autotable.js'); ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table-export.min.js'); ?>"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -119,7 +129,86 @@ if($this->session->flashdata('insert_failed')){
                 </div>
             </div>
 
+            <div class=" col-12 p-0 mt-5 ">
+                <div class="col-12 col-md-12 p-0">
+                    <div id="toolbar">
+                            <select class="form-control">
+                                <option value="all">Export All</option>
+                                <option value="selected">Export Selected</option>
+                            </select>
+                    </div>
+        
+    <table id="table"
+    data-show-export="true"
+    data-toolbar="#toolbar"
+    data-search="true"
+    data-sortable="true"
+    data-show-columns="true"
+    data-toggle="table" 
+    data-pagination="true"
+    class="table"
+    data-visible-search="true"
+    >
+  <thead class="table-primary">
+  
+		<tr>
+			<th data-field="state" data-checkbox="true"></th>
+            <th data-field="no." data-sortable="true">no.</th>
+			<th data-field="name" data-sortable="true">Name</th>
 
+      <th data-field="edit">Action</th>
+		</tr>
+    
+  </thead>
+	<tbody>
+  
+  <?php  
+  $id=$_SESSION['u_id'];
+  $sql2=$this->db->select('*')->from('incharge_list')->where('user_incharge',$id)->limit(1)->order_by('timestamp','desc')->get();
+	foreach($sql2->result() as $incharge)
+	{
+    $sem_charge=$incharge->semester;
+  }
+  $this->db->select('*');
+  $this->db->from('incharge_list');
+  $this->db->where('user_incharge',$id);
+  $sql3=$this->db->get();
+  foreach($sql3->result() as $user_data)
+  {
+    $sem=$user_data->semester;
+    $u_dept=$user_data->incharge_dept;
+  }
+
+
+	$sql=$this->db->select('*')->from('student_data')->where('s_status',2)->where('s_sem',$sem_charge)->where('dept',$u_dept)->join('users','users.email=student_data.email')->get();
+    $i=1;
+	foreach($sql->result() as $student)
+	{
+      
+    ?>
+		<tr>
+			<td class="bs-checkbox"><input data-index="<?php echo $student->student_id ?>" name="btSelectItem" type="checkbox"></td>
+            <td><?php echo $i; ?></td>
+			<td><?php echo $student->name; ?></td>
+
+      <td class="text-center p-0" >
+        <input type="hidden" name="limit" value="<?php echo $i; ?>">
+        <input type="hidden" name="sid<?php echo $i; ?>" value="<?php echo $student->student_id; ?>">
+        <input type="radio" name="<?php echo $i ?>" required value="present"> Present <input type="radio" class="ml-4" name="<?php echo $i ?>" required  value="absent"> Absent 
+      </td>
+	  	</tr>
+    <?php
+     $i=$i+1; 		
+	}
+	?>
+
+	</tbody>
+</table>
+                    
+
+
+                </div>
+            </div>
            
 
             
@@ -157,6 +246,29 @@ $("#subject").change(function(){
     });
 });
 
+$("#semester").change(function(){
+    var subject = $(this).val();
+
+    $.ajax({
+        url: 'http://localhost/major/professor/view_students_ajax',
+        type: 'post',
+        data: {post_subject:subject},
+        dataType: 'json',
+        success:function(response){
+          
+            var len = response.length;
+            
+            $("#semester").empty();
+            for( var i = 0; i<len; i++){
+                var sem = response[i]['sem'];
+                
+                $("#semester").append("<option value='s"+sem+"'>"+sem+"</option>");
+
+            }
+        }
+    });
+});
+
 });
 </script>
 
@@ -180,4 +292,23 @@ $("#subject").change(function(){
     });
   }, false);
 })();
+
+var $table = $('#table')
+
+  $(function() {
+    $('#toolbar').find('select').change(function () {
+      $table.bootstrapTable('destroy').bootstrapTable({
+        exportDataType: $(this).val(),
+        exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+        columns: [
+          {
+            field: 'state',
+            checkbox: true,
+            visible: $(this).val() === 'selected'
+          }
+        ]
+      })
+    }).trigger('change')
+  })
+  
 </script>
