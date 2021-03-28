@@ -96,6 +96,15 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function assignments()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/assignments.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function insert_note_process()
   {
     if($this->input->post('n_add'))
@@ -252,6 +261,42 @@ class Professor extends CI_Controller
     $this->session->set_flashdata('update_success',"Successfully Updated");
     redirect('Professor/Professor_profile','refresh');	
   }
+  public function view_subject_ajax()
+  {
+    
+
+
+        $depart_sub =$_POST['post_subject']; // department id
+      
+
+      $users_arr = array();
+          
+        $this->db->select('*');
+        $this->db->from('subject_assigned');
+        $sql=$this->db->where('subject',$depart_sub)->get();
+        foreach($sql->result() as $user_data)
+        {
+          $sem=$user_data->sem;
+          $users_arr[] = array("sem" => $sem);
+        }
+
+      
+      // encoding array to json format
+      echo json_encode($users_arr);
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
   
  
