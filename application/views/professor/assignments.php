@@ -20,13 +20,90 @@ if($this->session->flashdata('insert_failed')){
    </div>';
    }
 ?>
-    <link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
 
-<script src="<?php echo base_url('assets/bootstrap-table/tableExport.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/bootstrap-table/jspdf.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/bootstrap-table/jspdf.plugin.autotable.js'); ?>"></script>
-<script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table-export.min.js'); ?>"></script>
+
+  
+<style>
+    fieldset {
+  border: 0;
+  color:#fff0;
+  border-radius: 1px;
+  
+ 
+}
+.hidden{
+  opacity:0;
+}
+.star-cb-group {
+  /* remove inline-block whitespace */
+  font-size: 0;
+  /* flip the order so we can use the + and ~ combinators */
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  margin-left:30px;
+  /* the hidden clearer */
+}
+.star-cb-group * {
+  font-size: 2rem;
+}
+.star-cb-group > input {
+  display: none;
+}
+.star-cb-group > input + label {
+  /* only enough room for the star */
+  display: inline-block;
+  overflow: hidden;
+  
+  width: 1em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.star-cb-group > input + label:before {
+  display: inline-block;
+  text-indent: -9999px;
+  content: "☆";
+  margin-left:-12px;
+
+  color: #888;
+}
+.star-cb-group > input:checked ~ label:before, .star-cb-group > input + label:hover ~ label:before, .star-cb-group > input + label:hover:before {
+  content: "★";
+  color: #e52;
+  text-shadow: 0 0 1px #333;
+  
+
+}
+.star-cb-group > .star-cb-clear + label {
+  text-indent: -9999px;
+  width: 0.5em;
+  margin-left: -0.5em;
+    
+
+
+}
+.star-cb-group > .star-cb-clear + label:before {
+  width: 0.5em;
+  
+}
+.star-cb-group:hover > input + label:before {
+  content: "☆";
+  color: #888;
+  text-shadow: none;
+}
+.star-cb-group:hover > input + label:hover ~ label:before, .star-cb-group:hover > input + label:hover:before {
+  content: "★";
+  color: #e52;
+  text-shadow: 0 0 1px #333;
+  
+}
+</style>  
+
+
+    <link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
+    <script src="<?php echo base_url('assets/bootstrap-table/jspdf.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-table/jspdf.plugin.autotable.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table-export.min.js'); ?>"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
@@ -42,8 +119,7 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-    <form class=" mt-5"  method="post"
-        action="<?php echo base_url();?>hod/assign_teacher_process">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>hod/assign_teacher_process">
 
         <div class="form-row mt-5">
 
@@ -200,7 +276,7 @@ $(document).ready(function() {
             success: function(response) {
 
                 var len = response.length;
-                var j=1;
+                var j = 1;
                 $("#table_body").empty();
 
                 for (var i = 0; i < len; i++) {
@@ -208,12 +284,10 @@ $(document).ready(function() {
                     var s_id = response[i]['s_id'];
 
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
-                        "</td><td class='text-center p-0' ><input type='hidden' name='limit' value='" +
+                        "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
                         j + "'><input type='hidden' name='sid" + j + "' value='" +
-                        s_id + "'><input type='radio' name='" + j +
-                        "' required value='present'> Present <input type='radio' class='ml-4' name='" +
-                        j + "' required  value='absent'> Absent </td></tr>");
-                        j++
+                        s_id + "'> <fieldset>  <span class='star-cb-group'><input type='radio' id='rating-5"+j+"' name='rating"+j+"' value='5' /><label for='rating-5"+j+"'>5</label><input type='radio' id='rating-4"+j+"' name='rating"+j+"' value='4'  /><label for='rating-4"+j+"'>4</label><input type='radio' id='rating-3"+j+"' name='rating"+j+"' value='3' /><label for='rating-3"+j+"'>3</label><input type='radio' id='rating-2"+j+"' name='rating"+j+"' value='2' /><label for='rating-2"+j+"'>2</label><input type='radio' id='rating-1"+j+"' name='rating"+j+"' value='1' /><label for='rating-1"+j+"'>1</label><input type='radio' id='rating-0"+j+"' name='rating"+j+"' value='0' class='star-cb-clear' /><label for='rating-0"+j+"' class='hidden'>0</label></span></fieldset></td></tr>");
+                    j++;
 
                 }
 
@@ -224,5 +298,7 @@ $(document).ready(function() {
 
 });
 </script>
+
+
 
 
