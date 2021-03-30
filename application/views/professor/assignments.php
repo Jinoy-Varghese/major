@@ -182,7 +182,7 @@ if($this->session->flashdata('insert_failed')){
                 </select>
 
             </div>
-
+<br>
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom05">Semester</label>
