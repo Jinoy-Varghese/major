@@ -119,7 +119,7 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-    <form class=" mt-5" method="post" action="<?php echo base_url();?>hod/assign_teacher_process">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/mark_assignment">
 
         <div class="form-row mt-5">
 

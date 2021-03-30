@@ -302,7 +302,7 @@ class Professor extends CI_Controller
         {
           $name=$user_data->name;
           $s_id=$user_data->email;
-          $users_arr[] = array("name" => $name,"email"=>$s_id);
+          $users_arr[] = array("name" => $name,"s_id"=>$s_id);
         }
         
       
@@ -310,7 +310,36 @@ class Professor extends CI_Controller
       echo json_encode($users_arr);
   }
 
+  public function mark_assignment()
+  {
 
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('professor_data','professor_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+    $course=$this->input->post('course');
+    $subject=$this->input->post('subject');
+    $semester=$this->input->post('semester');
+    $limit=$this->input->post('limit');
+    for($i=1;$i<=$limit;$i++)
+    {
+
+       $student_id='sid'.$i;
+       $rating='rating'.$i;
+       $mark=$this->input->post($rating);
+       $sid=$this->input->post($student_id);
+       $assignment_data=array('a_email'=>$sid,'a_subject'=>$subject,'a_sem'=>$semester,'a_course'=>$course,'mark'=>$mark,'a_dept'=>$dept);
+       $this->db->insert('assignment',$assignment_data);
+    }
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/assignments','refresh');
+  }
 
 
 
