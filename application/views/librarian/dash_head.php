@@ -8,10 +8,35 @@ if(!isset($_SESSION['u_id']))
 ?>
 <style>
 #navbarDropdownMenuLink::after
-{
-
+  .dropdown-menu-arrow {
+  top: -26px;
+  left: 7%;
+  width: 0;
+  height: 0;
+  position: relative;
 }
-
+.dropdown-menu-arrow:before,
+.dropdown-menu-arrow:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-width: 7px 8px;
+  border-style: solid;
+  border-color: transparent;
+  z-index: 1001;
+}
+.dropdown-menu-arrow:after {
+  bottom: -18px;
+  right: -8px;
+  border-bottom-color: white;
+}
+.dropdown-menu-arrow:before {
+  bottom: 80px;
+  right: 140px;
+  border-bottom-color: white;
+}
 
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -31,7 +56,7 @@ if(!isset($_SESSION['u_id']))
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top"><!-- sticky top can be replaced with fixed-botto or fixed-top -->
     <button class="btn btn-primary" id="menu-toggle">Menu</button>
     <a href="#" class="navbar-brand mx-auto">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -45,7 +70,8 @@ if(!isset($_SESSION['u_id']))
             <?php echo $user_name->name; ?>
             
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-top-color: coral;">
+            <span class="dropdown-menu-arrow" ></span>
               <a class="dropdown-item" href="<?php echo site_url(); ?>Librarian/librarian_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
               <a href="<?php echo site_url(); ?>home/logout" class="dropdown-item" id="logoutbtn_id"><i class="fa fa-power-off mr-1"></i>Logout</a>
             </div>
