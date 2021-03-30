@@ -295,6 +295,7 @@ class Professor extends CI_Controller
         $this->db->from('users');
         $this->db->join('student_data','student_data.email=users.email');
         $this->db->where('s_course',$depart_course);
+        $this->db->where('s_status','2');
         $sql=$this->db->where('s_sem',$depart_sem)->get();
         
         foreach($sql->result() as $user_data)
