@@ -237,7 +237,7 @@ $(document).ready(function() {
         var subject = $(this).val();
 
         $.ajax({
-            url: 'http://localhost/major/professor/view_subject_ajax',
+            url: '<?php echo base_url(); ?>/professor/view_subject_ajax',
             type: 'post',
             data: {
                 post_subject: subject
@@ -266,7 +266,7 @@ $(document).ready(function() {
         var course = $('#course').val();
 
         $.ajax({
-            url: 'http://localhost/major/Professor/view_students_ajax',
+            url: '<?php echo base_url(); ?>/Professor/view_students_ajax',
             type: 'post',
             data: {
                 post_semester: semester,
