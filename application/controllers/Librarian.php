@@ -77,7 +77,7 @@ class Librarian extends CI_Controller
     $this->load->view("header.php");
     $this->load->view("amp.php");
     $this->load->view("librarian/dash_head.php");
-    $this->load->view("Librarian/update_book");
+    $this->load->view("librarian/update_book");
     $this->load->view("librarian/dash_footer.php");
     $this->load->view("footer.php");
   }
@@ -98,7 +98,7 @@ class Librarian extends CI_Controller
     $this->load->view("header.php");
     $this->load->view("amp.php");
     $this->load->view("librarian/dash_head.php");
-    $this->load->view("Librarian/issue_book");
+    $this->load->view("librarian/issue_book");
     $this->load->view("librarian/dash_footer.php");
     $this->load->view("footer.php");
   }
@@ -107,7 +107,7 @@ class Librarian extends CI_Controller
     $this->load->view("header.php");
     $this->load->view("amp.php");
     $this->load->view("librarian/dash_head.php");
-    $this->load->view("Librarian/issue_book_page");
+    $this->load->view("librarian/issue_book_page");
     $this->load->view("librarian/dash_footer.php");
     $this->load->view("footer.php");
   }
@@ -137,7 +137,7 @@ class Librarian extends CI_Controller
     $this->load->view("header.php");
     $this->load->view("amp.php");
     $this->load->view("librarian/dash_head.php");
-    $this->load->view("Librarian/issued_books");
+    $this->load->view("librarian/issued_books");
     $this->load->view("librarian/dash_footer.php");
     $this->load->view("footer.php");
   }
@@ -165,9 +165,9 @@ class Librarian extends CI_Controller
   public function Librarian_profile()
   {
     $this->load->view("header.php");
-    $this->load->view("Librarian/dash_head.php");
-    $this->load->view("Librarian/my_profile3.php");
-    $this->load->view("Librarian/dash_footer.php");
+    $this->load->view("librarian/dash_head.php");
+    $this->load->view("librarian/my_profile3.php");
+    $this->load->view("librarian/dash_footer.php");
     $this->load->view("footer.php");
   }
   
