@@ -1,34 +1,5 @@
-
-
-<div class="container p-lg-4 ">
-<?php 
-if($this->session->flashdata('insert_success')){
- echo '
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> New record created.
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>';
-}
-if($this->session->flashdata('insert_failed')){
-    echo '
-   <div class="alert alert-danger alert-dismissible fade show" role="alert">
-     <strong>Failed!</strong> Something Wend wrong, please try again.
-     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-       <span aria-hidden="true">&times;</span>
-     </button>
-   </div>';
-   }
-?>
-    <nav aria-label="breadcrumb mt-sm-5">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Add User</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Add Lab Assistant</li>
-    </ol>
-    </nav>
-    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>home/insert_lab_assistant">
+<?php
+<form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>home/insert_hod">
     <div class="form-row">
         <div class="col-md-4 mb-3">
         <label for="validationCustom01">First name</label>
@@ -103,12 +74,12 @@ if($this->session->flashdata('insert_failed')){
         <label for="validationCustom04">Department</label>
         <select class="custom-select" id="validationCustom04" name="u_dept" required>
             <option selected disabled value="">Choose...</option>
-            <option value="B.Sc Computer Science">B.Sc Computer Science</option>
-            <option value="B.Sc Polymer Chemistry">B.Sc Polymer Chemistry</option>
+            <option value="Computer Science">Computer Science</option>
+            <option value="Polymer Chemistry">Polymer Chemistry</option>
             <option value="B.Com">B.Com</option>
             <option value="BBA">BBA</option>
-            <option value="B.Sc Botany">B.Sc Botany</option>
-            <option value="B.Sc Electronics">B.Sc Electronics</option>
+            <option value="Botany">Botany</option>
+            <option value="Electronics">Electronics</option>
             <option value="BA English">BA English</option>
         </select>
         <div class="invalid-feedback">
@@ -130,26 +101,3 @@ if($this->session->flashdata('insert_failed')){
     </div>
     <input class="btn btn-primary" type="submit" name="u_reg" value="Submit form">
     </form>
-</div>
-
-
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>

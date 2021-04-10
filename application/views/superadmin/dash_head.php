@@ -91,7 +91,19 @@ if(!isset($_SESSION['u_id']))
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">
-        Hi <?php echo $user_name->name; ?>
+      <?php
+    $this->db->from('users');
+    $this->db->select('*');
+     $this->db->where('email',$_SESSION['u_id']);
+     $sql=$this->db->get();
+     foreach($sql->result() as $user_data)
+     {
+       $image=$user_data->u_image;
+       echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px;'>";
+     }
+     ?>
+    
+      <div class="text-center"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Super_admin/" class="list-group-item list-group-item-action bg-light">Dashboard</a>

@@ -89,11 +89,23 @@ if(!isset($_SESSION['u_id']))
 
   <!--/navigation-->
   <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
-    <div class="bg-light border-right" id="sidebar-wrapper">
+    <div class="bg-light border-right" id="sidebar-wrapper">    
       <div class="sidebar-heading">
-        Hi <?php echo $user_name->name; ?>
+
+    <?php
+    $this->db->from('users');
+    $this->db->select('*');
+     $this->db->where('email',$_SESSION['u_id']);
+     $sql=$this->db->get();
+     foreach($sql->result() as $user_data)
+     {
+       $image=$user_data->u_image;
+       echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px;'>";
+     }
+     ?>
+    
+      <div class="profile_name ml-3"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Principal/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
@@ -101,10 +113,10 @@ if(!isset($_SESSION['u_id']))
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
             <a href='<?php echo site_url(); ?>Principal/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
-            <a href='<?php echo site_url(); ?>Principal/add_hod' class="drop-down-a"><li class="drop-down-li">HOD</li></a>
-            <a href='<?php echo site_url(); ?>Principal/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
-            <a href='<?php echo site_url(); ?>Principal/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
-            <a href='<?php echo site_url(); ?>Principal/add_librarian' class="drop-down-a"><li class="drop-down-li">Librarian</li></a>
+            <a href='<?php echo site_url(); ?>Principal/view_hod' class="drop-down-a"><li class="drop-down-li">View HOD</li></a>
+            <a href='<?php echo site_url(); ?>Principal/view_professor' class="drop-down-a"><li class="drop-down-li">View Professor</li></a>
+            <a href='<?php echo site_url(); ?>Principal/view_lab_assistant' class="drop-down-a"><li class="drop-down-li">View Lab Assistant</li></a>
+            <a href='<?php echo site_url(); ?>Principal/view_librarian' class="drop-down-a"><li class="drop-down-li">View Librarian</li></a>
 
           </ul>
  

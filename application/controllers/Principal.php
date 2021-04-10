@@ -32,35 +32,35 @@ class Principal extends CI_Controller
     $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function add_professor()
+  public function view_professor()
   {
     $this->load->view("header.php");
     $this->load->view("principal/dash_head.php");
-    $this->load->view("principal/add_professor.php");
+    $this->load->view("principal/view_professor.php");
     $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function add_Lab_Assistant()
+  public function view_Lab_Assistant()
   {
     $this->load->view("header.php");
     $this->load->view("principal/dash_head.php");
-    $this->load->view("principal/add_Lab_Assistant.php");
+    $this->load->view("principal/view_Lab_Assistant.php");
     $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function add_Librarian()
+  public function view_Librarian()
   {
     $this->load->view("header.php");
     $this->load->view("principal/dash_head.php");
-    $this->load->view("principal/add_Librarian.php");
+    $this->load->view("principal/view_Librarian.php");
     $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function add_hod()
+  public function view_hod()
   {
     $this->load->view("header.php");
     $this->load->view("principal/dash_head.php");
-    $this->load->view("principal/add_hod.php");
+    $this->load->view("principal/view_hod.php");
     $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
