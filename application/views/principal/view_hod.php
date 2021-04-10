@@ -111,7 +111,7 @@ foreach($sql->result() as $hod_data)
     </td>
     
     <td><?php echo $hod_data->phone ?></td>
-    <td><amp-img alt="image" src="<?php echo base_url($hod_data->u_image);?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
+    <td><img alt="image" src="<?php echo base_url($hod_data->u_image);?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
     </tr>
     </form>
 <?php		
