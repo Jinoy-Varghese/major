@@ -98,11 +98,18 @@ if(!isset($_SESSION['u_id']))
      foreach($sql->result() as $user_data)
      {
        $image=$user_data->u_image;
-       echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px;'>";
-     }
+       if($image==null)
+       {
+        echo "<img src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px; height:150px;'>";
+       }
+       else
+       {
+        echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px;'>";
+       }
+           }
      ?>
     
-      <div class="text-center"><?php echo $user_name->name; ?></div>
+      <div class="text-center font-weight-bold"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Librarian/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
