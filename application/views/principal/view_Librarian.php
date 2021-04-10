@@ -112,11 +112,11 @@ foreach($sql->result() as $librarian_data)
     <?php
     if($librarian_data->u_image==null)
     {
-      echo"<td><amp-img alt='image' src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></amp-img></td>";
+      echo"<td><img alt='image' src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></td>";
     }
     else
     {
-      echo"<td><amp-img alt='image' src='".base_url($librarian_data->u_image)."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></amp-img></td>";
+      echo"<td><img alt='image' src='".base_url($librarian_data->u_image)."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></td>";
     }
     ?>
     </tr>

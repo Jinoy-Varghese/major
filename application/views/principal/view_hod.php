@@ -111,8 +111,17 @@ foreach($sql->result() as $hod_data)
     </td>
     
     <td><?php echo $hod_data->phone ?></td>
-    <td><img alt="image" src="<?php echo base_url($hod_data->u_image);?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
-    </tr>
+    <?php
+    if($hod_data->u_image==null)
+    {
+      echo"<td><img alt='image' src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></td>";
+    }
+    else
+    {
+      echo"<td><img alt='image' src='".base_url($hod_data->u_image)."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></td>";
+    }
+    ?>
+        </tr>
     </form>
 <?php		
 }
