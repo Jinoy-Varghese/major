@@ -180,7 +180,7 @@ var $table = $('#table')
             visible: $(this).val() === 'selected'
           }
         ]
-      })
+      })  
     }).trigger('change')
   })
   
