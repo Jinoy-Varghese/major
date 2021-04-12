@@ -114,6 +114,8 @@ if(!isset($_SESSION['u_id']))
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Student/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="<?php echo site_url(); ?>Student/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
+        <a href="<?php echo site_url(); ?>Student/exams" class="list-group-item list-group-item-action bg-light">My Exams</a>
+
  
  
         <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
