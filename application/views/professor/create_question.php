@@ -29,10 +29,10 @@ for($i=1;$i<=$_GET['question_no'];$i++)
         <div class="col-md-3 mt-md-5">
             <select required type="text" class="col-12 form-control" style="height:35px;">
                 <option disabled selected>select</option>
-                <option value="1">Option 1</option>
-                <option value="2">Option 2</option>
-                <option value="3">Option 3</option>
-                <option value="4">Option 4</option>
+                <option value="a">Option 1</option>
+                <option value="b">Option 2</option>
+                <option value="c">Option 3</option>
+                <option value="d">Option 4</option>
             </select>
         </div>
         </div>
@@ -50,7 +50,7 @@ for($i=1;$i<=$_GET['question_no'];$i++)
 
 
     <div class="form-row mt-4">
-        <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Next">
+        <input class="btn btn-primary ml-1 ml-md-4 mb-2" type="submit" name="u_reg" value="Create Exam">
     </div>
 
 </form>
