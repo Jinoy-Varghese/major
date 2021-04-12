@@ -128,7 +128,7 @@ $(document).ready(function(){
 		<div class="row">
 	
 		<div class="col-md-3 col-12 mt-5">
-		<img src="<?php
+    <?php
     $this->db->from('users');
     $this->db->select('*');
      $this->db->where('email',$_SESSION['u_id']);
@@ -136,10 +136,16 @@ $(document).ready(function(){
      foreach($sql->result() as $user_data)
      {
        $image=$user_data->u_image;
-     }
-    echo base_url($image);?>
-    
-    " class="img-fluid img-thumbnail">
+       if($image==null)
+       {
+        echo "<img src='".base_url('assets/img/no-profile.jpg')."' class='img-fluid img-thumbnail'>";
+       }
+       else
+       {
+        echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail'>";
+       }
+           }
+           ?>
 		</div>
     
     <div class="col-md-3 col-12 text-center pt-md-5 ml-md-n3">

@@ -102,7 +102,7 @@ if(!isset($_SESSION['u_id']))
        $image=$user_data->u_image;
        if($image==null)
        {
-        echo "<img src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px; height:150px;'>";
+        echo "<img src='".base_url('assets/img/no-profile.jpg')."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px; height:150px;'>";
        }
        else
        {

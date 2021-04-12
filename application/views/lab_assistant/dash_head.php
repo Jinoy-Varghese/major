@@ -72,7 +72,7 @@ if(!isset($_SESSION['u_id']))
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" style="border-top-color: coral;">
             <span class="dropdown-menu-arrow" ></span>
-              <a class="dropdown-item" href="<?php echo site_url(); ?>Librarian/librarian_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
+              <a class="dropdown-item" href="<?php echo site_url(); ?>Lab_assistant/lab_assistant_profile"><i class="fa fa-user mr-1"></i>My Profile</a>
               <a href="<?php echo site_url(); ?>home/logout" class="dropdown-item" id="logoutbtn_id"><i class="fa fa-power-off mr-1"></i>Logout</a>
             </div>
           </li>
@@ -113,12 +113,8 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Librarian/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Librarian/all_books" class="list-group-item list-group-item-action bg-light">All Books</a>
-        <a href="<?php echo site_url(); ?>Librarian/add_books" class="list-group-item list-group-item-action bg-light">Add New Book</a>
-        <a href="<?php echo site_url(); ?>Librarian/issue_book" class="list-group-item list-group-item-action bg-light">Issue Book</a>
-        <a href="<?php echo site_url(); ?>Librarian/issued_books" class="list-group-item list-group-item-action bg-light">Issued Books</a>
-        
-        
+        <a href="<?php echo site_url(); ?>Librarian/all_books" class="list-group-item list-group-item-action bg-light">Complaints</a>
+        <a href="<?php echo site_url(); ?>Librarian/add_books" class="list-group-item list-group-item-action bg-light">Event</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -147,3 +143,4 @@ $('#logoutbtn_id').on('click',function(e)
     <div id="page-content-wrapper">
 
       <div class="container-fluid">
+
