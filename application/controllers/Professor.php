@@ -105,6 +105,24 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function create_exam()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/create_exam.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function create_question()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/create_question.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function insert_note_process()
   {
     if($this->input->post('n_add'))

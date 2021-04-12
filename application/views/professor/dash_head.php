@@ -209,6 +209,9 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>Professor/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meeting <i class="fas fa-video float-right mt-1"></i></a>
         <a href="<?php echo site_url(); ?>Professor/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
         <a href="<?php echo site_url(); ?>Professor/assignments" class="list-group-item list-group-item-action bg-light">Assignments</a>
+        <a href="<?php echo site_url(); ?>Professor/create_exam" class="list-group-item list-group-item-action bg-light">Create Exam</a>
+
+
 
         
         
