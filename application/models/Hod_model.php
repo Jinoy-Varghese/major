@@ -34,11 +34,6 @@ class Hod_model extends CI_Model {
     $this->db->where('id',$id)->update('users',$update_data);
   }
 
-  public function Events_process($sub_data)
-  {
-    $this->db->insert('news',$sub_data);
-  }
-
   // ------------------------------------------------------------------------
 
 }
