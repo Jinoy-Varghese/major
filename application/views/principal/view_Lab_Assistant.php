@@ -114,19 +114,16 @@ foreach($sql->result() as $lab_assistant_data)
     <?php
     if($lab_assistant_data->u_image==null)
     {
-<<<<<<< Updated upstream
       echo"<td><img alt='image' src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></td>";
     }
     else
     {
       echo"<td><img alt='image' src='".base_url($lab_assistant_data->u_image)."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></td>";
-=======
       echo"<td><img alt='image' src='".base_url('assets/img/no-img.jpg')."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></amp-img></td>";
     }
     else
     {
       echo"<td><img alt='image' src='".base_url($lab_assistant_data->u_image)."' class='img-fluid img-thumbnail' layout='responsive' height='200px' width='200px'></amp-img></td>";
->>>>>>> Stashed changes
     }
     ?>
     </tr>

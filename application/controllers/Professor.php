@@ -123,23 +123,8 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
-<<<<<<< HEAD
-  public function lab_complaint()
-=======
-  public function create_question()
->>>>>>> 65d98c2aaa1c60b4d982b5cdf0b14cc3229b907c
-  {
-    $this->load->view("header.php");
-    $this->load->view("amp.php");
-    $this->load->view("professor/dash_head.php");
-<<<<<<< HEAD
-    $this->load->view("professor/lab_complaint.php");
-=======
-    $this->load->view("professor/view_internal_mark.php");
->>>>>>> 65d98c2aaa1c60b4d982b5cdf0b14cc3229b907c
-    $this->load->view("professor/dash_footer.php");
-    $this->load->view("footer.php");
-  }
+
+
   public function insert_note_process()
   {
     if($this->input->post('n_add'))

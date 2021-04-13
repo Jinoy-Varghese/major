@@ -210,12 +210,9 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>Professor/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
         <a href="<?php echo site_url(); ?>Professor/assignments" class="list-group-item list-group-item-action bg-light">Assignments</a>
         <a href="<?php echo site_url(); ?>Professor/create_exam" class="list-group-item list-group-item-action bg-light">Create Exam</a>
-<<<<<<< HEAD
         <a href="<?php echo site_url(); ?>Professor/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a>
-=======
         <a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>
 
->>>>>>> 65d98c2aaa1c60b4d982b5cdf0b14cc3229b907c
 
 
 
