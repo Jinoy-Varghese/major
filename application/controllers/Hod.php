@@ -335,7 +335,34 @@ class Hod extends CI_Controller
       // encoding array to json format
       echo json_encode($users_arr);
   }
+  public function Events()
+  {
+    $this->load->view("header.php");
+    $this->load->view("Hod/dash_head.php");
+    $this->load->view("Hod/events.php");
+    $this->load->view("Hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function Events_process()
+  {
+    if($this->input->post('u_reg'))
+    {
 
+    $id=$_SESSION['u_id'];
+
+    $description=$this->input->post('desc');
+    $sub_data=array('description'=>$description,'name'=>$id);
+    $this->Hod_model->Events_process($sub_data);
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('hod/Events','refresh');
+    }
+    else
+    {
+      $this->session->set_flashdata('insert_failed',"failed");
+      redirect('hod/Events','refresh');
+    }
+
+  }
 
 
 
