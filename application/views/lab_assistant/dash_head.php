@@ -112,9 +112,9 @@ if(!isset($_SESSION['u_id']))
       <div class="text-center font-weight-bold"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
-        <a href="<?php echo site_url(); ?>Librarian/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Librarian/all_books" class="list-group-item list-group-item-action bg-light">Complaints</a>
-        <a href="<?php echo site_url(); ?>Librarian/add_books" class="list-group-item list-group-item-action bg-light">Event</a>
+        <a href="<?php echo site_url(); ?>Lab_assistant/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="<?php echo site_url(); ?>Lab_assistant/complaints" class="list-group-item list-group-item-action bg-light">Complaints</a>
+        <a href="<?php echo site_url(); ?>Lab_assistant/add_books" class="list-group-item list-group-item-action bg-light">Event</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -143,4 +143,3 @@ $('#logoutbtn_id').on('click',function(e)
     <div id="page-content-wrapper">
 
       <div class="container-fluid">
-

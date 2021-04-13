@@ -44,11 +44,35 @@ class Lab_assistant extends CI_Controller
     $this->load->view("lab_assistant/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function complaints()
+  {
+    $this->load->view("header.php");
+    $this->load->view("lab_assistant/dash_head.php");
+    $this->load->view("lab_assistant/complaints.php");
+    $this->load->view("lab_assistant/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function update_complaint_data()
+  {
+    if($this->input->post('update_complaint'))
+    {
+     $complaint_id=$this->input->get('complaint_id');
+     $update_complaint=array('status'==1);
+     $this->Lab_assistant_model->update_complaint_data($update_complaint,$complaint_id);
+     $this->session->set_flashdata('update_success',"Complaint Successfully Fixed");
+     redirect('Lab_assistant/complaints','refresh');     
+    }
+    else
+    {
+      $this->session->set_flashdata('update_failed',"Complaint Fixing Failed");
+      redirect('Lab_assistant/complaints','refresh');
+    }
+ }
   public function update_profile()
     {
     if($this->input->post('update_user'))
     {
-     $id=$this->input->post('id');; 
+     $id=$this->input->post('id'); 
      $name=$this->input->post('name');
      $email=$this->input->post('email');
      $address=$this->input->post('address');  

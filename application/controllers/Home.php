@@ -191,9 +191,6 @@ class Home extends CI_Controller
    {
      if($this->input->post('u_reg'))
      {
-      
-
-
        $f_name=$this->input->post('f_name');
        $l_name=$this->input->post('l_name');
        $u_name=$f_name." ".$l_name;

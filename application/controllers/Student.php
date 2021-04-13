@@ -61,6 +61,15 @@ public function notes()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
+public function exams()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("amp.php");
+  $this->load->view("student/exams.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
 
 public function update_profile()
   {

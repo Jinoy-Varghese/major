@@ -37,6 +37,10 @@ class Professor_model extends CI_Model {
   {
   $this->db->insert('notes',$insert_note);
   }
+  public function lab_complaint_data($insert_complaint)
+  {
+    $this->db->insert('lab_complaints',$insert_complaint);
+  }
   // ------------------------------------------------------------------------
 
 }
