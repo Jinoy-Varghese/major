@@ -1,4 +1,3 @@
 # major
- college_management
-..
+ college_management system for
 MarThoma College of Science and Technology
