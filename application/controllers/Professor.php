@@ -399,6 +399,8 @@ class Professor extends CI_Controller
        $this->db->insert('exam_questions',$exam_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/create_exam','refresh');
+
   }
 
   public function lab_complaint_data()
