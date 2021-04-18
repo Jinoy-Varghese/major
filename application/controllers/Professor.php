@@ -373,10 +373,10 @@ class Professor extends CI_Controller
 
     $id=$_SESSION['u_id'];
 
-    $course=$this->input->get('course');
-    $subject=$this->input->get('subject');
-    $semester=$this->input->get('semester');
-    $limit=$this->input->get('limit');
+    $course=$this->input->post('course');
+    $subject=$this->input->post('subject');
+    $semester=$this->input->post('semester');
+    $limit=$this->input->post('limit');
     for($i=1;$i<=$limit;$i++)
     {
 
@@ -387,15 +387,15 @@ class Professor extends CI_Controller
        $optiond='optiond'.$i;
        $answer='answer'.$i;
 
-       $o_question=$this->input->get($question);
-       $o_optiona=$this->input->get($optiona);
-       $o_optionb=$this->input->get($optionb);
-       $o_optionc=$this->input->get($optionc);
-       $o_optiond=$this->input->get($optiond);
-       $o_answer=$this->input->get($answer);
+       $o_question=$this->input->post($question);
+       $o_optiona=$this->input->post($optiona);
+       $o_optionb=$this->input->post($optionb);
+       $o_optionc=$this->input->post($optionc);
+       $o_optiond=$this->input->post($optiond);
+       $o_answer=$this->input->post($answer);
 
 
-       $exam_data=array('qustion'=>$o_question,'option_a'=>$o_optiona,'option_b'=>$o_optionb,'option_c'=>$o_optionc,'option_d'=>$o_optiond,'answer'=>$o_answer,'qstn_by'=>$id,'course'=>$course,'semester'=>$semester,'subject'=>$subject);
+       $exam_data=array('question'=>$o_question,'option_a'=>$o_optiona,'option_b'=>$o_optionb,'option_c'=>$o_optionc,'option_d'=>$o_optiond,'answer'=>$o_answer,'qstn_by'=>$id,'course'=>$course,'semester'=>$semester,'subject'=>$subject);
        $this->db->insert('exam_questions',$exam_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
