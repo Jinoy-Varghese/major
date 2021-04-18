@@ -20,6 +20,12 @@ class Home extends CI_Controller
     $this->load->view("login");
     $this->load->view("footer");
   }
+  public function pen_test()
+  {
+    
+    $this->load->view("pen_test.php");
+    
+  }
   public function logout()
   {
     $_SESSION = array();
