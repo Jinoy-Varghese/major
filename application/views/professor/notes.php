@@ -51,7 +51,7 @@ if($this->session->flashdata('insert_failed')){
     $this->db->select('*');
     $this->db->from('notes');
     $this->db->where('note_by',$note_by);
-    $sql=$this->db->get();
+    $sql=$this->db->get();  
     $i=1;
     foreach($sql->result() as $note_data)
     {
@@ -175,3 +175,5 @@ if($this->session->flashdata('insert_failed')){
   </div>
 </div>
 <div class="col-md-12 mt-5"></div>
+
+

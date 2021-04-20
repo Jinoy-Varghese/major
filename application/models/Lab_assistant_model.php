@@ -29,9 +29,9 @@ class Lab_assistant_model extends CI_Model {
   {
     $this->db->where('id',$id)->update('users',$update_data);
   }
-  public function update_complaint_data($update_complaint,$complaint_id)
+  public function update_complaint_data($update_data,$complaint_id)
   {
-    $this->db->where('complaint_id',$complaint_id)->update('lab_complaints',$update_complaint);
+    $this->db->where('complaint_id',$complaint_id)->update('lab_complaints',$update_data);
   }
   // ------------------------------------------------------------------------
 

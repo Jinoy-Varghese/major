@@ -46,7 +46,7 @@ if($this->session->flashdata('registration_failed')){
         action="<?php echo base_url();?>Professor/lab_complaint_data">
         <div class="form-row">
         <div class="col-md-3"></div>
-            <div class="col-md-4 col-12 mb-3">
+            <div class="col-md-12 col-12 mb-3">
                 <label for="validationCustom01">System No/Device</label>
                 <input type="text" class="form-control" id="validationCustom01" name="sym_no" required>
                 <div class="invalid-feedback">
@@ -56,7 +56,7 @@ if($this->session->flashdata('registration_failed')){
             </div>
             <div class="form-row">
             <div class="col-md-3"></div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-12 mb-3">
                 <div class="form-floating">
                 <label for="validationCustom02">Complaint</label>
                     <textarea class="form-control" name="complaint" id="validationCustom02" placeholder="Leave a Complaint here" style="height: 100px" required></textarea>    
@@ -67,9 +67,10 @@ if($this->session->flashdata('registration_failed')){
             </div>
         
         </div>
-        <div class="col-md-4 mx-md-auto"><input class="btn btn-primary" type="submit" name="complaint_reg" value="Register Complaint"></div>
+        <input class="btn btn-primary" type="submit" name="complaint_reg" value="Register Complaint">
     </form>
 
+<div class="container mt-5">
     <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
                         data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
                         data-visible-search="false">
@@ -115,6 +116,7 @@ if($this->session->flashdata('registration_failed')){
 	?>
 	</tbody>
     </table>
+    </div>
     </div>
 
 

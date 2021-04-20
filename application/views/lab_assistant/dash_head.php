@@ -113,7 +113,23 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Lab_assistant/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Lab_assistant/complaints" class="list-group-item list-group-item-action bg-light">Complaints</a>
+        <a href="<?php echo site_url(); ?>Lab_assistant/complaints" class="list-group-item list-group-item-action bg-light">Complaints
+         
+             
+             <?php
+                $sql=$this->db->select('status')->from('lab_complaints')->get();
+                foreach($sql->result() as $value)
+                {
+                  $status=$value->status;
+                }
+                if($status==1)
+                {
+                ?>
+                <i class="fas fa-bell text-warning alert-bell"></i>
+                <?php 
+                }
+              ?>
+        </a>
         <a href="<?php echo site_url(); ?>Lab_assistant/add_books" class="list-group-item list-group-item-action bg-light">Event</a>
       </div>
     </div>
