@@ -205,7 +205,16 @@ categoryAxis.fontSize = 9;
             <div class="col-md-12">
               <h6 class="justify-content-center d-flex">Notice Board</h6>
               <div class="border border-primary bg-primary rounded"></div>
+<?php
+            $this->db->select('*');
+            $this->db->from('news');
+             $sql=$this->db->get();
+             foreach($sql->result() as $news_data)
+           {
              
+             echo "<marquee direction='up' scrollamount='2'>->$news_data->description</marquee>"."<br>";
+             
+           }?>
             </div>
            
          </div>
