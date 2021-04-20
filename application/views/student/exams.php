@@ -7,6 +7,7 @@ if(!isset($_SESSION['u_id']))
 ?>
 
 <style>
+
 .detail-view
 {
   animation:animate 0.3s linear 1;
@@ -33,7 +34,19 @@ if(!isset($_SESSION['u_id']))
   display:inline-block;
   width:15px;
 }
+.custom-button
+{
 
+  color:#007BFF;
+  text-decoration:none;
+
+}
+.custom-button:hover
+{
+  color:white;
+  background:#007BFF;
+  cursor:pointer;
+}
 
 </style>
 
@@ -100,7 +113,7 @@ foreach($sql->result() as $user_data)
     <td><?php echo $user_data->exam_id ?></td>
     <td><?php echo $user_data->subject ?></td>
     <td><?php echo $user_data->date ?></td>
-    <td></td>
+    <td><a href="#" class="btn border-primary col-12 custom-button">Attend</a></td>
 
   </tr>
   </form>
