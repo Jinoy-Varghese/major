@@ -70,6 +70,16 @@ public function exams()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
+public function exam_page()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("amp.php");
+  $this->load->view("student/exam_page.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
+
 
 public function update_profile()
   {
@@ -145,10 +155,45 @@ public function update_profile()
   $this->session->set_flashdata('update_success',"Successfully Updated");
 
   redirect('Student/Student_profile','refresh');
-  
+ }
+ public function submit_answer_process()
+ {
+
+   $id=$_SESSION['u_id'];
+
+   $limit=$this->input->post('limit')-1;
+   $exam_id=$this->input->post('exam_id');
+   $mark=0;
+   for($i=1;$i<=$limit;$i++)
+   {
+      
+      $answer='answer'.$i;
+      $o_answer=$this->input->post($answer);
+
+      $this->db->select('*');
+      $this->db->from('exam_questions');
+      $this->db->where('exam_id',$exam_id);
+      $this->db->where('question_id',$i);
+      $sql=$this->db->get();
+      foreach($sql->result() as $exam_check)
+      {
+        if($o_answer==$exam_check->answer)
+        {
+          $mark++;
+        }
+      }
+      
+
+    }
+    $my_mark=($mark*10)/$limit;
+
+    $exam_data=array('student_id'=>$id,'mark_obtained'=>$my_mark,'exam_id'=>$exam_id);
+    $this->db->insert('exam_marks',$exam_data);
+
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Student/exams','refresh');
 
  }
-
 
 }
 

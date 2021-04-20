@@ -113,7 +113,7 @@ foreach($sql->result() as $user_data)
     <td><?php echo $user_data->exam_id ?></td>
     <td><?php echo $user_data->subject ?></td>
     <td><?php echo $user_data->date ?></td>
-    <td><a href="#" class="btn border-primary col-12 custom-button">Attend</a></td>
+    <td><a href="<?php echo base_url('/Student/exam_page?exam_id=');echo $user_data->exam_id; ?>" class="btn border-primary col-12 custom-button">Attend</a></td>
 
   </tr>
   </form>
