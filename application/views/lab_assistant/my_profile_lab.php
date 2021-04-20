@@ -1,3 +1,4 @@
+
 <?php 
 if($this->session->flashdata('update_success')){
  echo '
@@ -142,7 +143,7 @@ $(document).ready(function(){
        }
        else
        {
-        echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail'>";
+        echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail' style='height:250px;'>";
        }
            }
            ?>
@@ -156,7 +157,7 @@ $(document).ready(function(){
       <div class="col-12 pt-md-5 ml-md-n4">
         <div class="custom-file">
         <label for="select_img" class="btn btn-primary" style="height:35px;"><i class="fas fa-camera"></i>&nbsp&nbspChoose Photo</label>
-        <form method="post" action="<?php echo base_url("Librarian/upload_image");?>" enctype="multipart/form-data">
+        <form method="post" action="<?php echo base_url("Lab_assistant/upload_image");?>" enctype="multipart/form-data">
         <input type="file" class="custom-file-input" name="image" id="select_img"  onchange="this.form.submit()">
         </form>
         </div>

@@ -59,6 +59,23 @@ class Lab_assistant extends CI_Controller
     $this->session->set_flashdata('update_success',"Successfully Updated");
     redirect('Lab_assistant/complaints','refresh'); 
   }
+  public function notification_count()
+  {
+    if(isset($_POST['view']))
+    {
+    $con = mysqli_connect("localhost", "root", "", "college_management");
+    $query = "SELECT * FROM lab_complaints ORDER BY complaint_id DESC LIMIT 5";
+    $result = mysqli_query($con, $query);
+    
+        $status_query = "SELECT * FROM lab_complaints WHERE status=1";
+        $result_query = mysqli_query($con, $status_query);
+        $count = mysqli_num_rows($result_query);
+        $data = array(
+           'unseen_notification'  => $count
+        );
+        echo json_encode($data);
+    }
+  }
 
   public function update_profile()
     {

@@ -38,6 +38,10 @@ class Hod_model extends CI_Model {
   {
     $this->db->insert('news',$sub_data);
   }
+  public function lab_complaint_data($insert_complaint)
+  {
+    $this->db->insert('lab_complaints',$insert_complaint);
+  }
 
   // ------------------------------------------------------------------------
 

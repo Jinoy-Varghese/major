@@ -224,6 +224,15 @@ class Hod extends CI_Controller
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
     redirect('hod/add_student','refresh');
   }
+  public function lab_complaint()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("Hod/dash_head.php");
+    $this->load->view("Hod/lab_complaint.php");
+    $this->load->view("Hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
 
   public function Hod_profile()
   {
@@ -233,7 +242,25 @@ class Hod extends CI_Controller
     $this->load->view("Hod/dash_footer.php");
     $this->load->view("footer.php");
   }
-  
+  public function lab_complaint_data()
+  {
+    if($this->input->post('complaint_reg'))
+    {
+     $id=$_SESSION['u_id'];
+     $sym_no=$this->input->post('sym_no');; 
+     $complaint=$this->input->post('complaint');
+     $insert_complaint=array('sym_no'=>$sym_no,'complaint'=>$complaint,'register_by'=>$_SESSION['u_id'],'status'=>1);
+     $this->Hod_model->lab_complaint_data($insert_complaint);
+     $this->session->set_flashdata('registered_success',"Complaint Registered Successfully");
+     redirect('hod/lab_complaint','refresh');
+    }
+    else
+    {
+      $this->session->set_flashdata('registration_failed',"Registration Failed");
+      redirect('hod/lab_complaint','refresh');
+    }
+  }
+
   public function update_profile()
     {
     if($this->input->post('update_user'))
