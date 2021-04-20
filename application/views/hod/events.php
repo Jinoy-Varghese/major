@@ -24,7 +24,7 @@ if($this->session->flashdata('insert_failed')){
 <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">News</li>
+        <li class="breadcrumb-item active" aria-current="page">Notice Board</li>
     </ol>
     </nav>
     <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>hod/Events_process">
@@ -34,7 +34,7 @@ if($this->session->flashdata('insert_failed')){
             
             <div class="col-md-4 mb-3">
                 <label for="validationCustom04">Description</label>
-                <textarea class="form-control" id="validationCustom01" value="" name="desc" required></textarea>
+                <textarea cols='40' rows='10' class="form-control" id="validationCustom01" value=""  name="desc" required ></textarea>
              <div class="mt-3">  
               <input class="btn btn-primary" type="submit" name="u_reg" value="Submit"></div>
      </form>
