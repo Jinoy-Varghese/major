@@ -1,5 +1,5 @@
 <div class="container p-lg-4 ">
-<form class=" mt-5" method="get" action="<?php echo base_url();?>Professor/create_question_process">
+<form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/create_question_process">
 
 <input type="hidden" name="semester" value="<?php echo $_GET['semester'] ?>">
 <input type="hidden" name="course" value="<?php echo $_GET['course'] ?>">
