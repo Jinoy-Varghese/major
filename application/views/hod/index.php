@@ -212,7 +212,7 @@ categoryAxis.fontSize = 9;
              foreach($sql->result() as $news_data)
            {
              
-             echo "<marquee direction='up' scrollamount='2'>->$news_data->description</marquee>"."<br>";
+             echo "<marquee direction='up' scrollamount='2'>&#10146 $news_data->description</marquee>"."<br>";
              
            }?>
             </div>
