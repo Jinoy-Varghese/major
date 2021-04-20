@@ -377,6 +377,7 @@ class Professor extends CI_Controller
     $subject=$this->input->post('subject');
     $semester=$this->input->post('semester');
     $limit=$this->input->post('limit');
+    $exam_id=$semester.$subject.rand();
     for($i=1;$i<=$limit;$i++)
     {
 
@@ -386,7 +387,7 @@ class Professor extends CI_Controller
        $optionc='optionc'.$i;
        $optiond='optiond'.$i;
        $answer='answer'.$i;
-
+       
        $o_question=$this->input->post($question);
        $o_optiona=$this->input->post($optiona);
        $o_optionb=$this->input->post($optionb);
@@ -394,8 +395,9 @@ class Professor extends CI_Controller
        $o_optiond=$this->input->post($optiond);
        $o_answer=$this->input->post($answer);
 
+       
 
-       $exam_data=array('question'=>$o_question,'option_a'=>$o_optiona,'option_b'=>$o_optionb,'option_c'=>$o_optionc,'option_d'=>$o_optiond,'answer'=>$o_answer,'question_by'=>$id,'course'=>$course,'semester'=>$semester,'subject'=>$subject);
+       $exam_data=array('question'=>$o_question,'option_a'=>$o_optiona,'option_b'=>$o_optionb,'option_c'=>$o_optionc,'option_d'=>$o_optiond,'answer'=>$o_answer,'question_by'=>$id,'course'=>$course,'semester'=>$semester,'subject'=>$subject,'exam_id'=>$exam_id);
        $this->db->insert('exam_questions',$exam_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
