@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-class Professor_model extends CI_Model {
+class Parents_model extends CI_Model {
 
   // ------------------------------------------------------------------------
 
@@ -24,26 +24,18 @@ class Professor_model extends CI_Model {
   {
     parent::__construct();
   }
-
-  // ------------------------------------------------------------------------
-
-
-  // ------------------------------------------------------------------------
   public function update_profile($update_data,$id)
   {
     $this->db->where('id',$id)->update('users',$update_data);
   }
-  public function insert_notes($insert_note)
-  {
-  $this->db->insert('notes',$insert_note);
-  }
-  public function lab_complaint_data($insert_complaint)
-  {
-    $this->db->insert('lab_complaints',$insert_complaint);
-  }
+  // ------------------------------------------------------------------------
+
+
+  // ------------------------------------------------------------------------
+
   // ------------------------------------------------------------------------
 
 }
 
-/* End of file professor_model.php */
-/* Location: ./application/models/professor_model.php */
+/* End of file parent_model.php */
+/* Location: ./application/models/parent_model.php */

@@ -69,7 +69,7 @@ class Home extends CI_Controller
               }
               elseif($users->role=="parent")
               {
-              redirect('parent','refresh');
+              redirect('Parents','refresh');
               }
               elseif($users->role=="student")
               {
