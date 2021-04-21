@@ -234,7 +234,7 @@ foreach($sql->result() as $user_data)
             if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !
                 document
                 .msFullscreenElement) {
-                document.getElementById("myForm").submit();
+               // document.getElementById("myForm").submit();
             }
         }
     });

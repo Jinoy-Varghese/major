@@ -5,6 +5,8 @@
 <input type="hidden" name="course" value="<?php echo $_GET['course'] ?>">
 <input type="hidden" name="subject" value="<?php echo $_GET['subject'] ?>">
 <input type="hidden" name="limit" value="<?php echo $_GET['question_no'] ?>">
+<input type="hidden" name="time" value="<?php echo $_GET['time'] ?>">
+
 
 
 
