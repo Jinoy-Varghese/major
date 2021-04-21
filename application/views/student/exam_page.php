@@ -185,7 +185,7 @@ foreach($sql->result() as $user_data)
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="overflow-y:scroll;height:60vh">
                     <ul>
                     <li>Please sit in a quiet room with no background noise or people around.</li><br>
                     <li>Ensure proper lighting in the room — Source of light must not be behind you.</li><br>
@@ -234,11 +234,12 @@ foreach($sql->result() as $user_data)
             if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !
                 document
                 .msFullscreenElement) {
-                document.getElementById("myForm").submit();
+               document.getElementById("myForm").submit();
             }
         }
     });
     </script>
+
     <script>
     if (typeof document.onselectstart != "undefined") {
         document.onselectstart = new Function("return false");
@@ -246,15 +247,35 @@ foreach($sql->result() as $user_data)
         document.onmousedown = new Function("return true");
     }
     </script>
+        <?php 
+
+$this->db->select('*');
+$this->db->from('exam_questions');
+$this->db->where('exam_id',$_GET['exam_id']);
+$sql3=$this->db->get();
+foreach($sql3->result() as $user_data3)
+{
+    $time=$user_data3->time;
+
+}
+function seconds_from_time($time) {
+	list($h, $m, $s) = explode(':', $time);
+	return ($h * 3600) + ($m * 60) + $s;
+}
+
+$time=seconds_from_time($time);
+?>
     <script>
+
+    
     var minutes = $('#set-time').val();
 
-    var target_date = new Date().getTime() + ((minutes * 600) * 1000); // set the countdown date 60 to needed seconds
-    var time_limit = ((minutes * 600) * 1000);
+    var target_date = new Date().getTime() + ((minutes * <?php echo $time ?>) * 1000); // set the countdown date 60 to needed seconds
+    var time_limit = ((minutes * <?php echo $time ?>) * 1000);
     //set actual timer 60 to needed seconds
     setTimeout(
         function() {
-            alert('done');
+            document.getElementById("myForm").submit();
         }, time_limit);
 
     var days, hours, minutes, seconds; // variables for time units

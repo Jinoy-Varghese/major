@@ -129,9 +129,11 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Number of questions</label>
                 <input type="number" class="form-control" required name="question_no">
+            </div>
 
-
-
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom01">Count Down Time</label>
+                <input type="time" class="form-control" step="any" name="time" value="00:30:15">
             </div>
 
 
