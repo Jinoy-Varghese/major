@@ -7,8 +7,49 @@ if(!isset($_SESSION['u_id']))
 
 ?>
 <style>
-#navbarDropdownMenuLink::after
-  .dropdown-menu-arrow {
+@keyframes bell-shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    5% {
+        transform: rotate(10deg);
+    }
+    10% {
+        transform: rotate(-10deg);
+    }
+    15% {
+        transform: rotate(10deg);
+    }
+    20% {
+        transform: rotate(-10deg);
+    }
+    25% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(0deg);
+    }
+    80% {
+        transform: rotate(10deg);
+    }
+    85% {
+        transform: rotate(-10deg);
+    }
+    90% {
+        transform: rotate(10deg);
+    }
+    95% {
+        transform: rotate(-10deg);
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+.alert-bell {
+  animation: bell-shake 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
+  animation-delay: 4s;
+}
+.dropdown-menu-arrow {
   top: -26px;
   left: 7%;
   width: 0;
@@ -30,12 +71,12 @@ if(!isset($_SESSION['u_id']))
 .dropdown-menu-arrow:after {
   bottom: -18px;
   right: -8px;
-  border-bottom-color: white;
+  border-bottom-color: #fff;
 }
 .dropdown-menu-arrow:before {
-  bottom: 80px;
-  right: 140px;
-  border-bottom-color: white;
+  bottom: -17px;
+  right: -8px;
+  border-bottom-color: coral;
 }
 
 </style>
