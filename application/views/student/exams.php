@@ -78,7 +78,9 @@ if($this->session->flashdata('insert_success')){
     </ol>
     </nav>
 
-
+    <div id="toolbar">
+      <a href="<?php echo base_url('assets/img/notes/Candidate Guide For Online Examination.pdf');?>" class="btn btn-primary" download>Download Guide</a>
+		</div>
 
 <table id="table"
 data-show-export="false"

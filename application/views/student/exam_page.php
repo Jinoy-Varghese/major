@@ -177,16 +177,32 @@ foreach($sql->result() as $user_data)
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Candidate Guide</h5>
+                    <h5 class="modal-title" id="exampleModalLongTitle">Candidate Guide — On the day of the Assessment</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <ul>
+                    <li>Please sit in a quiet room with no background noise or people around.</li><br>
+                    <li>Ensure proper lighting in the room — Source of light must not be behind you.</li><br>
+                    <li>Please ensure the wall behind you has a plain background with no objects hanging on it.</li><br>
+                    <li>Plan to start your system on the test day 15 minutes before the scheduled time. Start
+                        Exam on time, you will not be allowed to appear after the scheduled time.</li><br>
+                    <li>For the entire duration of the exam, please remain seated in front of your webcam.</li><br>
+                    <li>If you face any technical issue during the exam,please refer to the FAQ Document. If
+                        not resolved, then contact your placement coordinator via email/call/message from
+                        another device.</li><br>
+                    <li>Student should not indulge in any malpractice while writing the exam. Any misconduct
+                        observed by the proctor will be recorded and filed against you, which may lead to suitable
+                        disciplinary action.</li><br>
+                    <li>If you are taking the test from Mobile, then turn-off your message/call/App notification - if
+                        you open your notification during the Exam. it will be counted as a <b style="color:red;">violation</b> After
+                        the certain number of warnings System will <b style="color:red;">Logout your Exam</b>.</li><br>
+                    </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
