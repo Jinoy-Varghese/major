@@ -6,80 +6,7 @@ if(!isset($_SESSION['u_id']))
 }
 
 ?>
-<style>
-@keyframes bell-shake {
-    0% {
-        transform: rotate(0deg);
-    }
-    5% {
-        transform: rotate(10deg);
-    }
-    10% {
-        transform: rotate(-10deg);
-    }
-    15% {
-        transform: rotate(10deg);
-    }
-    20% {
-        transform: rotate(-10deg);
-    }
-    25% {
-        transform: rotate(0deg);
-    }
-    75% {
-        transform: rotate(0deg);
-    }
-    80% {
-        transform: rotate(10deg);
-    }
-    85% {
-        transform: rotate(-10deg);
-    }
-    90% {
-        transform: rotate(10deg);
-    }
-    95% {
-        transform: rotate(-10deg);
-    }
-    100% {
-        transform: rotate(0);
-    }
-}
-.alert-bell {
-  animation: bell-shake 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
-  animation-delay: 4s;
-}
-.dropdown-menu-arrow {
-  top: -26px;
-  left: 7%;
-  width: 0;
-  height: 0;
-  position: relative;
-}
-.dropdown-menu-arrow:before,
-.dropdown-menu-arrow:after {
-  content: "";
-  position: absolute;
-  display: block;
-  width: 0;
-  height: 0;
-  border-width: 7px 8px;
-  border-style: solid;
-  border-color: transparent;
-  z-index: 1001;
-}
-.dropdown-menu-arrow:after {
-  bottom: -18px;
-  right: -8px;
-  border-bottom-color: #fff;
-}
-.dropdown-menu-arrow:before {
-  bottom: -17px;
-  right: -8px;
-  border-bottom-color: coral;
-}
 
-</style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="<?php echo base_url('assets/js/sweetalert2.all.min.js'); ?>"></script>
 <?php 
@@ -104,11 +31,7 @@ if(!isset($_SESSION['u_id']))
     <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
-        <li class="nav-item dropdown ">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-            </a>
-          </li>
         <li class="nav-item dropdown mr-4">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <?php echo $user_name->name; ?>
