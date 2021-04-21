@@ -1,4 +1,3 @@
-
 <div class="container p-lg-4 ">
     <form class="mt-5" method="post" action="<?php echo base_url();?>Student/submit_answer_process" id="myForm">
 

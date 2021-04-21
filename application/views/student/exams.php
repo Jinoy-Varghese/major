@@ -109,14 +109,27 @@ data-detail-view="false"
 <?php 
 $i=1;
 
+$this->db->select('*');
+$this->db->from('exam_marks');
+$this->db->where_not_in('student_id',$_SESSION['u_id']);
+$sql2=$this->db->get();
+
+
+foreach($sql2->result() as $user_data2)
+{
+array_push($array,$user_data2->exam_id);
+}
+
+
 $this->db->select('DISTINCT(exam_id),subject,date');
 $this->db->from('exam_questions');
-
+$this->db->where_in('exam_id',$array);
 $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
+  
+
 ?>
-<form name="incharge_change_form" method="post">
 <tr>
     <td><?php echo $i;$i++; ?></td>
     <td><?php echo $user_data->exam_id ?></td>
@@ -125,8 +138,9 @@ foreach($sql->result() as $user_data)
     <td><a href="<?php echo base_url('/Student/exam_page?exam_id=');echo $user_data->exam_id; ?>" class="btn border-primary col-12 custom-button">Attend</a></td>
 
   </tr>
-  </form>
+
 <?php		
+
 }
 ?>
 </tbody>
