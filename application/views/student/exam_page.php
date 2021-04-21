@@ -92,6 +92,7 @@
   position: absolute;
   z-index: 9;
   cursor: move;
+  height: 96px;
 }
 
 </style>
@@ -106,7 +107,7 @@
 
     </div>
 </div>
-<div class=" col-md-2 col-11">
+<div class=" col-md-2 col-11 float-right mt-1">
         <video autoplay="true" id="videoElement" class=" col-6 col-md-12"></video>
     </div> 
 <div class="container p-lg-4">
@@ -217,7 +218,7 @@ foreach($sql->result() as $user_data)
             if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !
                 document
                 .msFullscreenElement) {
-                document.getElementById("myForm").submit();
+                //document.getElementById("myForm").submit();
             }
         }
     });
