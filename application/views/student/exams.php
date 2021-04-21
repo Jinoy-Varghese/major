@@ -79,7 +79,7 @@ if($this->session->flashdata('insert_success')){
     </nav>
 
     <div id="toolbar">
-      <a href="<?php echo base_url('assets/img/notes/Candidate Guide For Online Examination.pdf');?>" data-toggle="tooltip" title="Canidate Guide For Online Examination" class="btn btn-primary" download>Download Guide</a>
+      <a href="<?php echo base_url('assets/img/notes/Candidate Guide For Online Examination.pdf');?>" data-toggle="tooltip" title="Download Candidate Guide For Online Examination" class="btn btn-primary" download>Download Guide</a>
 		</div>
 
 <table id="table"
