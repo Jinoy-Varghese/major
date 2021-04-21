@@ -111,22 +111,21 @@ $i=1;
 
 $this->db->select('*');
 $this->db->from('exam_marks');
-$this->db->where_not_in('student_id',$_SESSION['u_id']);
+$this->db->where('student_id',$_SESSION['u_id']);
 $sql2=$this->db->get();
+$array=array('0');
 
+  foreach($sql2->result() as $user_data2)
+  {
+  $array[]=$user_data2->exam_id;
+  }
 
-foreach($sql2->result() as $user_data2)
-{
-array_push($array,$user_data2->exam_id);
-}
-
-
-$this->db->select('DISTINCT(exam_id),subject,date');
-$this->db->from('exam_questions');
-$this->db->where_in('exam_id',$array);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
+  $this->db->select('DISTINCT(exam_id),subject,date');
+  $this->db->from('exam_questions');
+  $this->db->where_not_in('exam_id',$array);
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
   
 
 ?>
