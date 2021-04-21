@@ -1,5 +1,117 @@
-<div class="container p-lg-4 ">
-    <form class="mt-5" method="post" action="<?php echo base_url();?>Student/submit_answer_process" id="myForm">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+.timer-body {
+    font: normal 13px/20px Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+}
+
+.countdown-label {
+    font: thin 15px Arial, sans-serif;
+    color: #65584c;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+    letter-spacing: 2px;
+    margin-top: 9px
+}
+
+#countdown {
+    box-shadow: 0 1px 2px 0 rgba(1, 1, 1, 0.4);
+    width: 240px;
+    height: 96px;
+    text-align: center;
+    background: #f1f1f1;
+
+    border-radius: 5px;
+
+    margin: auto;
+
+}
+
+
+
+#countdown #tiles {
+    color: #fff;
+    position: relative;
+    z-index: 1;
+    text-shadow: 1px 1px 0px #ccc;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    text-align: center;
+
+    padding: 20px;
+    border-radius: 5px 5px 0 0;
+    font-size: 48px;
+    font-weight: thin;
+    display: block;
+
+}
+
+.color-full {
+    background: #53bb74;
+}
+
+.color-half {
+    background: #ebc85d;
+}
+
+.color-empty {
+    background: #e5554e;
+}
+
+#countdown #tiles>span {
+    width: 70px;
+    max-width: 70px;
+
+    padding: 18px 0;
+    position: relative;
+}
+
+
+
+
+
+#countdown .labels {
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    position: absolute;
+    bottom: 8px;
+}
+
+#countdown .labels li {
+    width: 102px;
+    font: bold 15px 'Droid Sans', Arial, sans-serif;
+    color: #f47321;
+    text-shadow: 1px 1px 0px #000;
+    text-align: center;
+    text-transform: uppercase;
+    display: inline-block;
+}
+#videoElement {
+  position: absolute;
+  z-index: 9;
+  cursor: move;
+}
+
+</style>
+
+
+<div class="timer-body sticky-top float-md-right mr-md-3 mt-md-1">
+    <input type="hidden" id="set-time" value="1" />
+    <div id="countdown">
+
+        <div id='tiles' class="color-full"></div>
+        <div class="countdown-label">Time Remaining</div>
+
+    </div>
+</div>
+<div class=" col-md-2 col-11">
+        <video autoplay="true" id="videoElement" class=" col-6 col-md-12"></video>
+    </div> 
+<div class="container p-lg-4">
+
+    <form class="mt-5 pt-3" method="post" action="<?php echo base_url();?>Student/submit_answer_process" id="myForm">
 
         <input type="hidden" name="exam_id" value="<?php echo $_GET['exam_id']; ?>">
 
@@ -15,7 +127,7 @@ $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
 ?>
-        <div class="form-row mt-5">
+        <div class="form-row mt-5 col-12">
 
             <div><b> <?php echo $i ?>. </b></div>
             <div class="col-11">
@@ -61,58 +173,179 @@ foreach($sql->result() as $user_data)
 
 
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Candidate Guide</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Candidate Guide</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Accept</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
-<script>
-$(document).ready(function() {
-    $("#exampleModalCenter").modal('show');
-});
-</script>
-<script language="javascript" type="text/javascript">
-var i = 1;
-$('html').click(function() {
-    if (!document.fullscreenElement && i == 1) {
-        $('html')[0].requestFullscreen();
-        i++;
-    }
-    document.addEventListener('fullscreenchange', exitHandler);
-    document.addEventListener('webkitfullscreenchange', exitHandler);
-    document.addEventListener('mozfullscreenchange', exitHandler);
-    document.addEventListener('MSFullscreenChange', exitHandler);
-
-    function exitHandler() {
-        if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document
-            .msFullscreenElement) {
-              document.getElementById("myForm").submit();
+    <script>
+    $(document).ready(function() {
+        $("#exampleModalCenter").modal('show');
+    });
+    </script>
+    <script language="javascript" type="text/javascript">
+    var i = 1;
+    $('html').click(function() {
+        if (!document.fullscreenElement && i == 1) {
+            $('html')[0].requestFullscreen();
+            i++;
         }
+        document.addEventListener('fullscreenchange', exitHandler);
+        document.addEventListener('webkitfullscreenchange', exitHandler);
+        document.addEventListener('mozfullscreenchange', exitHandler);
+        document.addEventListener('MSFullscreenChange', exitHandler);
+
+        function exitHandler() {
+            if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !
+                document
+                .msFullscreenElement) {
+                document.getElementById("myForm").submit();
+            }
+        }
+    });
+    </script>
+    <script>
+    if (typeof document.onselectstart != "undefined") {
+        document.onselectstart = new Function("return false");
+    } else {
+        document.onmousedown = new Function("return true");
     }
-});
-</script>
-<script>
-if (typeof document.onselectstart != "undefined") {
-    document.onselectstart = new Function("return false");
-} else {
-    document.onmousedown = new Function("return true");
+    </script>
+    <script>
+    var minutes = $('#set-time').val();
+
+    var target_date = new Date().getTime() + ((minutes * 600) * 1000); // set the countdown date 60 to needed seconds
+    var time_limit = ((minutes * 600) * 1000);
+    //set actual timer 60 to needed seconds
+    setTimeout(
+        function() {
+            alert('done');
+        }, time_limit);
+
+    var days, hours, minutes, seconds; // variables for time units
+
+    var countdown = document.getElementById("tiles"); // get tag element
+
+    getCountdown();
+
+    setInterval(function() {
+        getCountdown();
+    }, 1000);
+
+    function getCountdown() {
+
+        // find the amount of "seconds" between now and target
+        var current_date = new Date().getTime();
+        var seconds_left = (target_date - current_date) / 1000;
+
+        if (seconds_left >= 0) {
+            console.log(time_limit);
+            if ((seconds_left * 1000) < (time_limit / 2)) {
+                $('#tiles').removeClass('color-full');
+                $('#tiles').addClass('color-half');
+
+            }
+            if ((seconds_left * 1000) < (time_limit / 4)) {
+                $('#tiles').removeClass('color-half');
+                $('#tiles').addClass('color-empty');
+            }
+
+            days = pad(parseInt(seconds_left / 86400));
+            seconds_left = seconds_left % 86400;
+
+            hours = pad(parseInt(seconds_left / 3600));
+            seconds_left = seconds_left % 3600;
+
+            minutes = pad(parseInt(seconds_left / 60));
+            seconds = pad(parseInt(seconds_left % 60));
+
+            // format countdown string + set tag value
+            countdown.innerHTML = "<span>" + hours + ":</span><span>" + minutes + ":</span><span>" + seconds +
+                "</span>";
+
+        }
+
+    }
+
+    function pad(n) {
+        return (n < 10 ? '0' : '') + n;
+    }
+    </script>
+    <script>
+    var video = document.querySelector("#videoElement");
+
+    if (navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({
+                video: true
+            })
+            .then(function(stream) {
+                video.srcObject = stream;
+            })
+            .catch(function(err0r) {
+                console.log("Something went wrong!");
+            });
+    }
+    </script>
+    <script>
+//Make the DIV element draggagle:
+dragElement(document.getElementById("videoElement"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
 }
 </script>
