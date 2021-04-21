@@ -202,9 +202,10 @@ categoryAxis.fontSize = 9;
     </div>
         <div class="row mt-5">  
           <div class="col-lg-3 col-md-6 shadow pt-3 mt-1"> 
-            <div class="col-md-12">
+          <div class="col-md-12 p-0" style="max-height:440px;overflow:hidden;">
               <h6 class="justify-content-center d-flex">Notice Board</h6>
               <div class="border border-primary bg-primary rounded"></div>
+              <marquee direction='up' scrollamount='2' style="height:100%;">
 <?php
             $this->db->select('*');
             $this->db->from('news');
@@ -212,9 +213,10 @@ categoryAxis.fontSize = 9;
              foreach($sql->result() as $news_data)
            {
              
-             echo "<marquee direction='up' scrollamount='2'>&#10146 $news_data->description</marquee>"."<br>";
+             echo "&#10146 $news_data->description"."<br>";
              
            }?>
+           </marquee>
             </div>
            
          </div>
