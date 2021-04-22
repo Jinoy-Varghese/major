@@ -110,7 +110,8 @@ data-detail-view="false"
 <tbody>
 <?php 
 $i=1;
-
+date_default_timezone_set('Asia/Kolkata');
+$cur_datetime=date("Y-m-d H:i:s");
 $this->db->select('*');
 $this->db->from('exam_marks');
 $this->db->where('student_id',$_SESSION['u_id']);
@@ -125,6 +126,7 @@ $array=array('0');
   $this->db->select('DISTINCT(exam_id),subject,date');
   $this->db->from('exam_questions');
   $this->db->where_not_in('exam_id',$array);
+  $this->db->where('scheduled_date<=',$cur_datetime);
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
   {
