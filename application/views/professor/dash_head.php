@@ -49,7 +49,7 @@ if(!isset($_SESSION['u_id']))
   animation: bell-shake 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) infinite;
   animation-delay: 4s;
 }
-.dropdown-menu-arrow {
+.dropdown-menu-arrow,.dropdown-menu-arrow2 {
   top: -26px;
   left: 7%;
   width: 0;
@@ -57,6 +57,8 @@ if(!isset($_SESSION['u_id']))
   position: relative;
 }
 .dropdown-menu-arrow:before,
+.dropdown-menu-arrow2:before,
+.dropdown-menu-arrow2:after,
 .dropdown-menu-arrow:after {
   content: "";
   position: absolute;
@@ -68,12 +70,12 @@ if(!isset($_SESSION['u_id']))
   border-color: transparent;
   z-index: 1001;
 }
-.dropdown-menu-arrow:after {
+.dropdown-menu-arrow:after,.dropdown-menu-arrow2:after {
   bottom: -18px;
   right: -8px;
   border-bottom-color: #fff;
 }
-.dropdown-menu-arrow:before {
+.dropdown-menu-arrow:before,.dropdown-menu-arrow2:before {
   bottom: -17px;
   right: -8px;
   border-bottom-color: coral;
@@ -199,18 +201,26 @@ if(!isset($_SESSION['u_id']))
  
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
-
             <a href='<?php echo site_url(); ?>Professor/add_student' class="drop-down-a"><li class="drop-down-li">Student</li></a>
             <a href='<?php echo site_url(); ?>Professor/add_parent' class="drop-down-a"><li class="drop-down-li">Parent</li></a>
-
-
           </ul>
+
+
         <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="list-group-item list-group-item-action bg-light">Attendance</a>
+                
+        <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down2' class="drop-down-n w-100">Exams<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul2" style="background:#DAE0E5;">
+            <a href='<?php echo site_url(); ?>Professor/create_exam' class="drop-down-a"><li class="drop-down-li">Create Exam</li></a>
+            <a href='<?php echo site_url(); ?>Professor/monitor_student' class="drop-down-a"><li class="drop-down-li">Monitor Exam</li></a>
+          </ul>
+
+
         <a href="<?php echo site_url(); ?>Professor/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meeting <i class="fas fa-video float-right mt-1"></i></a>
         <a href="<?php echo site_url(); ?>Professor/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
         <a href="<?php echo site_url(); ?>Professor/assignments" class="list-group-item list-group-item-action bg-light">Assignments</a>
-        <a href="<?php echo site_url(); ?>Professor/create_exam" class="list-group-item list-group-item-action bg-light">Create Exam</a>
         <a href="<?php echo site_url(); ?>Professor/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a>
+
+
         <a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>
 
 
