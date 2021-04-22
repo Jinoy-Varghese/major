@@ -48,6 +48,7 @@ if(!isset($_SESSION['u_id']))
 <button class="btn btn-primary" id="printpagebtn" onclick="window.print();">Print Internal Sheet</button>
 </div>
 
+<div class="col-md-12">
 <table class="table table-bordered text-center text-nowrap mt-4" style="font-size:10px;">
 
 <tr>
@@ -277,3 +278,4 @@ if(!isset($_SESSION['u_id']))
 
 
 </table>
+</div>
