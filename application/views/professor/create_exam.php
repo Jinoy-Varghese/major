@@ -140,7 +140,7 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Last Date and Time</label>
-                <input type="datetime-local" class="form-control" name="last_date" min="<?php echo date("Y-m-d"); ?>T<?php echo date("H:i"); ?>">
+                <input required type="datetime-local" class="form-control" name="last_date" min="<?php echo date("Y-m-d"); ?>T<?php $time=strtotime(date("H:i"));echo date("H:i", strtotime('+15 minutes', $time)); ?>">
             </div>
 
 

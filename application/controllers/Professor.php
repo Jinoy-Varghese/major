@@ -388,6 +388,7 @@ class Professor extends CI_Controller
     $limit=$this->input->post('limit');
     $time=$this->input->post('time');
     $scheduled_date=$this->input->post('scheduled_date');
+    $last_date=$this->input->post('last_date');
 
 
     $exam_id=$semester.$subject.rand();
@@ -409,7 +410,7 @@ class Professor extends CI_Controller
        $o_answer=$this->input->post($answer);
 
 
-       $exam_data=array('question'=>$o_question,'option_a'=>$o_optiona,'option_b'=>$o_optionb,'option_c'=>$o_optionc,'option_d'=>$o_optiond,'answer'=>$o_answer,'question_by'=>$id,'course'=>$course,'semester'=>$semester,'subject'=>$subject,'exam_id'=>$exam_id,'question_id'=>$i,'time'=>$time,'scheduled_date'=>$scheduled_date);
+       $exam_data=array('question'=>$o_question,'option_a'=>$o_optiona,'option_b'=>$o_optionb,'option_c'=>$o_optionc,'option_d'=>$o_optiond,'answer'=>$o_answer,'question_by'=>$id,'course'=>$course,'semester'=>$semester,'subject'=>$subject,'exam_id'=>$exam_id,'question_id'=>$i,'time'=>$time,'scheduled_date'=>$scheduled_date,'last_date'=>$last_date);
        $this->db->insert('exam_questions',$exam_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
