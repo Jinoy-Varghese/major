@@ -19,6 +19,8 @@ if($this->session->flashdata('insert_failed')){
      </button>
    </div>';
    }
+
+
 ?>
 
 
@@ -131,11 +133,15 @@ if($this->session->flashdata('insert_failed')){
                 <input type="number" class="form-control" required name="question_no">
             </div>
 
-            <div class="col-md-3 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Count Down Time</label>
                 <input type="time" class="form-control" step="any" name="time" value="00:30:15">
             </div>
 
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Last Date and Time</label>
+                <input type="datetime-local" class="form-control" name="last_date" min="<?php echo date("Y-m-d"); ?>T<?php echo date("H:i"); ?>">
+            </div>
 
 
 

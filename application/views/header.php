@@ -57,5 +57,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </ul>
   </div>
 </div>
-
+<?php date_default_timezone_set('Asia/Kolkata'); ?>
 
