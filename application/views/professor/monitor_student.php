@@ -74,13 +74,11 @@ if($this->session->flashdata('insert_success')){
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">My Exams</li>
+        <li class="breadcrumb-item active" aria-current="page">Monitor Exams</li>
     </ol>
     </nav>
 
-    <div id="toolbar">
-      <a href="<?php echo base_url('assets/img/notes/Candidate Guide For Online Examination.pdf');?>" data-toggle="tooltip" title="Download Candidate Guide For Online Examination" class="btn btn-primary" download>Download Guide</a>
-		</div>
+
 
 <table id="table"
 data-show-export="false"
@@ -121,9 +119,10 @@ $array=array('0');
   {
   $array[]=$user_data2->exam_id;
   }
-
+  $cur_datetime=date("Y-m-d H:i:s");
   $this->db->select('DISTINCT(exam_id),subject,date');
   $this->db->from('exam_questions');
+  $this->db->where('scheduled_date<=',$cur_datetime);
   $this->db->where_not_in('exam_id',$array);
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
@@ -136,7 +135,7 @@ $array=array('0');
     <td><?php echo $user_data->exam_id ?></td>
     <td><?php echo $user_data->subject ?></td>
     <td><?php echo $user_data->date ?></td>
-    <td><a href="<?php echo base_url('/Student/exam_page?exam_id=');echo $user_data->exam_id; ?>" class="btn border-primary col-12 custom-button">Attend</a></td>
+    <td><a href="<?php echo base_url('/Student/exam_page?exam_id=');echo $user_data->exam_id; ?>" class="btn border-primary col-12 custom-button">Proctor</a></td>
 
   </tr>
 
