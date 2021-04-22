@@ -45,11 +45,22 @@ for($i=1;$i<=$_GET['question_no'];$i++)
 
   
 
+<div class="form-row mt-5 mt-md-3 pb-3 col-12 pl-0 pr-0 pl-md-4" id="schedule_date">
+<input type="datetime-local" class="col-md-3 col-12 form-control" name="scheduled_date">
+</div>
 
 
-    <div class="form-row mt-4">
-        <input class="btn btn-primary ml-1 ml-md-4 mb-2" type="submit" name="u_reg" value="Create Exam">
+    <div class="form-row mt-4 col-12 p-0">
+        <input class="btn btn-primary ml-md-4 mb-3 col-md-2 col-12" type="submit" name="u_reg" value="Create Exam">
+        <button type="button" class="btn ml-md-4 mb-3 col-md-2 col-12 text-primary" style="border:1.5px solid #007BFF;" id="set_date_button">Schedule Exam</button>
+
     </div>
 
 </form>
 </div>
+<script>
+  $('#schedule_date').hide();
+  $("#set_date_button").click(function () {
+	$("#schedule_date").slideToggle("100");
+});
+</script>
