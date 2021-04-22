@@ -132,6 +132,10 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function view_internal_mark()
+  {
+    $this->load->view("professor/view_internal_mark.php");
+  }
   public function monitor_student()
   {
     $this->load->view("header.php");
