@@ -123,6 +123,7 @@ $array=array('0');
   $this->db->select('DISTINCT(exam_id),subject,date');
   $this->db->from('exam_questions');
   $this->db->where('scheduled_date<=',$cur_datetime);
+  $this->db->where('last_date>=',$cur_datetime);
   $this->db->where_not_in('exam_id',$array);
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
