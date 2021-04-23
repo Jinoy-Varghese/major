@@ -114,16 +114,7 @@ data-detail-view="false"
 <?php 
 $i=1;
 
-$this->db->select('*');
-$this->db->from('exam_marks');
-$this->db->where('student_id',$_SESSION['u_id']);
-$sql2=$this->db->get();
-$array=array('0');
 
-  foreach($sql2->result() as $user_data2)
-  {
-  $array[]=$user_data2->exam_id;
-  }
   $cur_datetime=date("Y-m-d H:i:s");
   $this->db->select('DISTINCT(exam_id),subject,scheduled_date,course,semester,last_date,time');
   $this->db->from('exam_questions');
