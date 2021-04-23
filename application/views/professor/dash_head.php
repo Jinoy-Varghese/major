@@ -212,7 +212,8 @@ if(!isset($_SESSION['u_id']))
           <ul class="drop-down-ul2" style="background:#DAE0E5;">
             <a href='<?php echo site_url(); ?>Professor/create_exam' class="drop-down-a"><li class="drop-down-li">Create Exam</li></a>
             <a href='<?php echo site_url(); ?>Professor/monitor_student' class="drop-down-a"><li class="drop-down-li">Monitor Exam</li></a>
-            <a href='<?php echo site_url(); ?>Professor/monitor_student' class="drop-down-a"><li class="drop-down-li">Exams Conducted</li></a>
+            <a href='<?php echo site_url(); ?>Professor/exams_conducted' class="drop-down-a"><li class="drop-down-li">Exams Conducted</li></a>
+            <a href='<?php echo site_url(); ?>Professor/offline_marks' class="drop-down-a" title="Upload marks of exams conducted offline"><li class="drop-down-li">Upload Offline Marks</li></a>
           </ul>
 
 

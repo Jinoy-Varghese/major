@@ -81,7 +81,7 @@ data-detail-view="true"
 <thead class="table-primary" >
 <tr>
     <th data-field="state" data-checkbox="true"></th>
-    <th data-field="name" data-sortable="true">Name</th>
+    <th data-field="Name" data-sortable="true">Name</th>
     <th data-field="address" data-sortable="true" data-visible="false">Address</th>
     <th data-field="email" data-sortable="true">E-mail</th>
     <th data-field="dept" data-sortable="true" data-visible="false">Department</th>
@@ -129,7 +129,7 @@ foreach($sql->result() as $user_data)
 <form name="incharge_change_form" method="post">
 <tr>
     <td class="bs-checkbox"><input data-index="<?php echo $user_data->id ?>" name="btSelectItem" type="checkbox"></td>
-    <td><input disabled value="<?php echo $user_data->name ?>" id="cur_name" style="border:0;background:none;color:black;"></td>
+    <td><input type="hidden" value="<?php echo $user_data->name ?>" id="cur_name" style="border:0;background:none;color:black;"><?php echo $user_data->name ?></td>
     <td><?php echo $user_data->address ?></td>
     <td><?php echo $user_data->email ?></td>
     <td><?php echo $user_data->dept ?></td>

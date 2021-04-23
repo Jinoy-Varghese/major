@@ -100,7 +100,12 @@ data-detail-view="false"
     <th data-field="#" data-sortable="true">#</th>
     <th data-field="Exam id" data-sortable="true" >Exam id</th>
     <th data-field="Subject" data-sortable="true">Subject</th>
-    <th data-field="Date" data-sortable="true" >Date</th>
+    <th data-field="Exam Date" data-sortable="true" >Exam Date</th>
+    <th data-field="Course" data-sortable="true" data-visible="false">Course</th>
+    <th data-field="Semester" data-sortable="true" data-visible="false">Semester</th>
+    <th data-field="Time" data-sortable="true" >Time</th>
+    <th data-field="Last Date" data-sortable="true" data-visible="false">Last Date</th>
+
     <th data-field="Action" data-sortable="false" >Action</th>
 
 </tr>
@@ -120,7 +125,7 @@ $array=array('0');
   $array[]=$user_data2->exam_id;
   }
   $cur_datetime=date("Y-m-d H:i:s");
-  $this->db->select('DISTINCT(exam_id),subject,date');
+  $this->db->select('DISTINCT(exam_id),subject,scheduled_date,course,semester,last_date,time');
   $this->db->from('exam_questions');
   $this->db->where('scheduled_date<=',$cur_datetime);
   $this->db->where('last_date>=',$cur_datetime);
@@ -134,7 +139,13 @@ $array=array('0');
     <td><?php echo $i;$i++; ?></td>
     <td><?php echo $user_data->exam_id ?></td>
     <td><?php echo $user_data->subject ?></td>
-    <td><?php echo $user_data->date ?></td>
+    <td><?php echo $user_data->scheduled_date ?></td>
+    <td><?php echo $user_data->course ?></td>
+    <td><?php echo $user_data->semester ?></td>
+    <td><?php echo $user_data->time ?></td>
+    <td><?php echo $user_data->last_date ?></td>
+
+
     <td><a href="https://mtcst.herokuapp.com/exam<?php echo $user_data->exam_id ?>" class="btn border-primary col-12 custom-button">Proctor</a></td>
 
   </tr>
