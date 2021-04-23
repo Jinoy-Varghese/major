@@ -234,7 +234,7 @@ foreach($sql->result() as $user_data)
             if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !
                 document
                 .msFullscreenElement) {
-              // document.getElementById("myForm").submit();
+               document.getElementById("myForm").submit();
             }
         }
     });
@@ -327,7 +327,7 @@ $time=seconds_from_time($time);
         return (n < 10 ? '0' : '') + n;
     }
     </script>
- <!--   remove this comment if this site is hosting in a ssl certified domain.
+ <!--   remove this comment if this site is hosting in a ssl certified domain. -->
      
      <script>
     var video = document.querySelector("#videoElement");
@@ -343,7 +343,7 @@ $time=seconds_from_time($time);
                 console.log("Something went wrong!");
             });
     }
-    </script> -->
+    </script> 
     <script>
 //Make the DIV element draggagle:
 dragElement(document.getElementById("videoElement"));
