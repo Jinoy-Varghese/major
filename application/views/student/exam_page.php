@@ -327,7 +327,7 @@ $time=seconds_from_time($time);
         return (n < 10 ? '0' : '') + n;
     }
     </script>
-    <script>
+ <!--   <script>
     var video = document.querySelector("#videoElement");
 
     if (navigator.mediaDevices.getUserMedia) {
@@ -341,7 +341,7 @@ $time=seconds_from_time($time);
                 console.log("Something went wrong!");
             });
     }
-    </script>
+    </script> -->
     <script>
 //Make the DIV element draggagle:
 dragElement(document.getElementById("videoElement"));
