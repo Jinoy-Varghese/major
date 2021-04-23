@@ -160,8 +160,32 @@ public function update_profile()
 
    $id=$_SESSION['u_id'];
 
+
+   $this->db->select('*');
+   $this->db->from('users');
+   $this->db->join('student_data','student_data.email=users.email');
+   $this->db->where('users.email',$id);
+   $sql=$this->db->get();
+   foreach($sql->result() as $user_data)
+   {
+     $s_sem=$user_data->s_sem;
+     $s_course=$user_data->s_course;
+   }
+
+
    $limit=$this->input->post('limit')-1;
    $exam_id=$this->input->post('exam_id');
+
+   $this->db->select('*');
+   $this->db->from('exam_questions');
+   $this->db->where('exam_id',$exam_id);
+   $sql=$this->db->get();
+   foreach($sql->result() as $user_data)
+   {
+     $subject=$user_data->subject;
+   }
+
+
    $mark=0;
    for($i=1;$i<=$limit;$i++)
    {
@@ -186,7 +210,7 @@ public function update_profile()
     }
     $my_mark=($mark*10)/$limit;
 
-    $exam_data=array('student_id'=>$id,'mark_obtained'=>$my_mark,'exam_id'=>$exam_id);
+    $exam_data=array('student_id'=>$id,'mark_obtained'=>$my_mark,'exam_id'=>$exam_id,'sem'=>$s_sem,'course'=>$s_course,'subject'=>$subject);
     $this->db->insert('exam_marks',$exam_data);
 
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
