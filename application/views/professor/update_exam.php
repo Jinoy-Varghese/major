@@ -142,9 +142,10 @@ if($this->session->flashdata('insert_failed')){
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Scheduled Date</label>
-                <input type="datetime-local" class="form-control" required name="scheduled_date"
-                    value="<?php echo $exam->scheduled_date; ?>">
-                   
+                <input type="date" class="form-control" required name="scheduled_date"
+                    value="<?php echo strftime('%y-%m-%d',strtotime($exam->scheduled_date)); ?>">
+            </div>
+
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Count Down Time</label>
                 <input type="time" class="form-control" step="any" name="time" value="00:30:15">
@@ -153,7 +154,7 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Last Date and Time</label>
                 <input required type="datetime-local" class="form-control" name="last_date"
-                    min="<?php echo date("Y-m-d"); ?>T<?php $time=strtotime(date("H:i"));echo date("H:i", strtotime('+15 minutes', $time)); ?>">
+                   >
             </div>
 
 
