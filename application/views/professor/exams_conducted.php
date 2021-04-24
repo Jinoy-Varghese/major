@@ -135,7 +135,7 @@ data-detail-view="false"
     <td><?php echo $user_data->exam_id ?></td>
     <td><?php echo $user_data->subject ?></td>
     <td><?php echo date('d-m-Y',strtotime($user_data->date)); ?></td>
-    <td><a href="<?php echo base_url('/Professor/exams_page?exam_id=');echo $user_data->exam_id; ?>" class="btn border-primary col-12 custom-button">Update</a></td>
+    <td><a href="<?php echo base_url('/Professor/update_exam?exam_id=');echo $user_data->exam_id; ?>" class="btn border-primary col-12 custom-button">Update</a></td>
 
   </tr>
 
