@@ -47,9 +47,9 @@ if($this->session->flashdata('insert_failed')){
     </ol>
     </nav>
      <form class="needs-validation mt-12" novalidate method="post" action="<?php echo base_url();?>Professor/edit_exam">
-     
+     <div class="form-row">
          <div class="col-md-12 mb-3">
-         <div class="form-row">
+
          <label for="validationCustom01">Exam Id</label>
          <input type="text" class="form-control" id="validationCustom01" name="book_name" required value="">
          <input type="hidden" value="" name="exam_id">
@@ -59,7 +59,7 @@ if($this->session->flashdata('insert_failed')){
          <div class="invalid-feedback">
              Please provide a Exam Id
           </div>
-          
+          </div>
 
     <div class="col-md-4 mb-3">
         <label for="validationCustom07">Course</label>

@@ -19,7 +19,7 @@ if($this->session->flashdata('meeting_over')){
     </div>
     <div class="col-md-7 mt-md-5 pt-5">
 
-        <form action="<?php echo base_url();?>Professor/creaate_live_meeting" method="post" class="col-12 form-row pl-0">
+        <form action="<?php echo base_url();?>Professor/create_live_meeting" method="post" class="col-12 form-row pl-0">
 
             <div class="col-md-6 mb-3 p-2">
                 <label for="validationCustom05">Course</label>
@@ -89,7 +89,7 @@ if($this->session->flashdata('meeting_over')){
 
             <div class="col-md-6 mb-3 p-2 mt-2">
             <label for="validationCustom05"></label>
-                <input type="submit" pattern="^\d{10}$" class="form-control btn text-primary border-primary custom-button" id="validationCustom05" name="ph_no" value="Start Meeting">
+                <input type="submit" class="form-control btn text-primary border-primary custom-button" id="validationCustom05" name="start" value="Start Meeting">
 
             </div>
 

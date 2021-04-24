@@ -14,11 +14,85 @@ if($this->session->flashdata('meeting_over')){
 
 
 <div class="row mt-5">
-  <div class="vid-out mt-md-5 col-md-5">
-    <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow" ></video>
-  </div>
-  <div class="col-md-6 mt-md-5 pt-5">
-  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium ratione libero obcaecati nulla fugiat, hic officia, ab enim molestias quod possimus voluptatem distinctio, earum iusto sed quis exercitationem iure ipsam?
+    <div class="vid-out mt-md-5 col-md-5">
+        <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
+    </div>
+    <div class="col-md-6 mt-md-5 ">
+
+
+
+
+    <table id="table"
+  data-show-export="true"
+  data-toolbar="#toolbar"
+  data-search="true"
+  data-sortable="true"
+  data-show-columns="true"
+  data-toggle="table" 
+  data-pagination="true"
+  class="table"
+  data-visible-search="true"
+  >
+  <thead class="table-primary">
+		<tr>
+			<th data-field="name" data-sortable="true">Name</th>
+			<th data-field="author" data-sortable="true">Author</th>
+			<th data-field="copies" data-sortable="true">Copies</th>
+			<th data-field="about" data-sortable="true">About</th>
+      <th data-field="edit">Action</th>
+		</tr>
+  </thead>
+	<tbody>
+	<?php 
+	$sql=$this->db->get('books');
+	foreach($sql->result() as $book)
+	{
+    ?>
+		<tr>
+			<td><?php echo $book->book_name ?></td>
+			<td><?php echo $book->author ?></td>
+			<td><?php echo $book->copies ?></td>
+      <td><?php echo $book->about ?></td>
+      <td class="text-center p-0" >
+        <a href="<?php echo base_url(); ?>Librarian/update_book/<?php echo $book->book_id; ?>"><i class="fa fa-edit text-primary mr-3"></i></a>
+        <a href="<?php echo base_url(); ?>Librarian/delete_book/<?php echo $book->book_id; ?>"><i class="fa fa-trash text-primary ml-3"></i></a>
+      </td>
+	  	</tr>
+	<?php		
+	}
+	?>
+	</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--
    <?php
     $id=$_SESSION['u_id'];
     $this->db->select('*');
@@ -69,9 +143,9 @@ if($this->session->flashdata('meeting_over')){
   <?php 
    }
   ?>
+-->
 
-
-  </div>
+    </div>
 </div>
 
 
@@ -86,28 +160,28 @@ if($this->session->flashdata('meeting_over')){
 var video = document.querySelector("#videoElement");
 
 if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!");
-    });
+    navigator.mediaDevices.getUserMedia({
+            video: true
+        })
+        .then(function(stream) {
+            video.srcObject = stream;
+        })
+        .catch(function(err0r) {
+            console.log("Something went wrong!");
+        });
 }
 </script>
 <style>
-#videoElement
-{
+#videoElement {
 
 
     height: 250px;
-    padding:0;
-    border:1px solid blue;
-/*
+    padding: 0;
+    border: 1px solid blue;
+    /*
   	background: url("<?php echo base_url("assets/image/video-thumb1.jpg");?>");
     background-size:contain;
     background-repeat:no-repeat;
     */
 }
-
 </style>
