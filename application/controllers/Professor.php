@@ -168,10 +168,15 @@ class Professor extends CI_Controller
    $exam_id=$this->input->post('exam_id');
    $subject=$this->input->post('subject');
    $date=$this->input->post('date');
-   $exam_data=array('exam_id'=>$exam_id,'subject'=>$subject,'date'=>$date);
+   $course=$this->input->post('course');
+   $scheduled_date=$this->input->post('scheduled_date');
+   $last_date=$this->input->post('last_date');
+   $semester=$this->input->post('semester');
+   
+   $exam_data=array('exam_id'=>$exam_id,'subject'=>$subject,'date'=>$date,'course'=>$course,'scheduled_date'=>$scheduled_date,'last_date'=>$last_date,'semester'=>$semester);
    $this->Professor_model->edit_exam($exam_data);
    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
-   redirect('Professor/update_exam','refresh');
+   redirect('Professor/exams_conducted','refresh');
  }
 
   public function insert_note_process()
