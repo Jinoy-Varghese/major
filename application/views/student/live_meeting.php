@@ -72,7 +72,7 @@ if($this->session->flashdata('meeting_over')){
   }
 
 
-  $this->db->select('*');
+  $this->db->select('Distinct(subject),meet_by,sem');
   $this->db->from('meeting_data');
   $this->db->where('status',1);
   $this->db->where('sem',$sem);
@@ -88,7 +88,7 @@ if($this->session->flashdata('meeting_over')){
 		<tr>
 			<td><?php echo $i ?></td>
 			<td><?php echo $user_data->subject ?></td>
-      <td><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->meet_by); ?>" class="btn border-primary col-12 custom-button">Join</a></td>
+      <td><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->subject).md5($user_data->sem); ?>" class="btn border-primary col-12 custom-button">Join</a></td>
 	  	</tr>
 	<?php		
   $i++;

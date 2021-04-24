@@ -55,7 +55,7 @@ if($this->session->flashdata('insert_failed')){
 ?>
 
 
-    <div class="row p-0 mt-5">
+    <div class="row p-0 mt-5 col-12">
         <div class="list activegrid col-5 col-md-1 border mr-1 mt-1 mb-1 pb-2 pt-2" style="cursor:pointer;" data-filter="all">All</div>
         <?php
         $this->db->from('student_data');
@@ -73,7 +73,7 @@ if($this->session->flashdata('insert_failed')){
         foreach($sql4->result() as $subject_data)
         {
           $subjects=$subject_data->subject;
-          echo '<div class="list col-5 col-md-2 border m-1 pb-2 pt-2" data-filter="'.str_replace(' ','',$subjects).'"  style="cursor:pointer;">'.$subjects.'</div>';
+          echo '<div class="list col-5 col-md-2 border m-1 pb-2 pt-2" data-filter="'.str_replace(' ','',$subjects).'"  style="cursor:pointer;white-space:nowrap;">'.$subjects.'</div>';
         }
 
         ?>
