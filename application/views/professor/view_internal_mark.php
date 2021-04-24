@@ -52,7 +52,18 @@ if(!isset($_SESSION['u_id']))
 <div class="col-md-6 font-weight-bold ml-5">College Name:-MarThoma College of Science And Technology,Ayur</div>
 <div class="row ml-5">
 <div class="col-md-3 font-weight-bold">College Code : 806</div>
-<div class="col-md-5 font-weight-bold">Name & Code of the Programme : BSc.Computer Science(320)</div>
+<div class="col-md-5 font-weight-bold">Name & Code of the Programme : 
+<?php
+$this->db->select('dept');
+$this->db->from('professor_data');
+$this->db->where('email',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $department)
+{
+  echo "BSc.".$department->dept."(320)";
+}
+?>
+</div>
 </div>
 <div class="row ml-5">
 <div class="col-md-3 font-weight-bold">Admission Year :
@@ -108,7 +119,59 @@ foreach($sql->result() as $user_data)
 ?>
 
 </div>
-<div class="col-md-5 font-weight-bold">Month & Year of Study :June 2020-December 2020</div>
+<div class="col-md-5 font-weight-bold">Month & Year of Study :
+
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $mail=$user_data->email;
+}
+
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $month_year[]=date('M Y',strtotime($user_data->time_stamp));
+
+}
+echo $month_year[0];
+echo "-";
+?>
+
+</div>
 </div>
 <div class="row ml-5">
 <div class="col-md-3 font-weight-bold">Semester : 
@@ -309,12 +372,15 @@ $this->db->join('student_data','student_data.email=users.email');
 $this->db->where('student_data.dept',$dept);
 $this->db->where('s_sem',$sem);
 $this->db->where('s_status',2);
+$this->db->order_by('users.name','ASC');
 $sql=$this->db->get();
+$roll_no=1;
 foreach($sql->result() as $user_data)
 {
+
 ?>
 <tr>
-<th>32018806010</th>
+<th><?php echo $roll_no++;?></th>
 <th><?php echo $user_data->name;?></th>
 <th>5</th>
 <th>5</th>
@@ -354,8 +420,5 @@ foreach($sql->result() as $user_data)
 
 </table>
 </div>
-
-
-
 
 
