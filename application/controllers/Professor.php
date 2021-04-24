@@ -174,6 +174,7 @@ class Professor extends CI_Controller
  }
  public function edit_exam()
  {
+   $exam_id=$this->input->post('exam_id');
    $subject=$this->input->post('subject');
    $date=$this->input->post('date');
    $course=$this->input->post('course');
