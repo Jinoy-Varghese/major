@@ -480,7 +480,7 @@ class Professor extends CI_Controller
 
      $meet_data=array('meet_by'=>$id,'course'=>$course,'sem'=>$semester,'subject'=>$subject,'status'=>1);
      $this->db->insert('meeting_data',$meet_data);
-     redirect('https://mtcst.herokuapp.com/'.md5($id),'refresh');
+     redirect('https://mtcst.herokuapp.com/'.md5($subject).md5($semester));
     }
     else
     {
