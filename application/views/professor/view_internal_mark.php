@@ -351,7 +351,7 @@ foreach($sql->result() as $user_data)
 
 $this->db->select('*');
 $this->db->from('subjects');
-$this->db->where('sub_sem',$sem);
+$this->db->where('sub_sem',5);
 $sql=$this->db->get();
 foreach($sql->result() as $subject)
 {

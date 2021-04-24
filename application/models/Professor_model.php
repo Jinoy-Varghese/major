@@ -41,9 +41,9 @@ class Professor_model extends CI_Model {
   {
     $this->db->insert('lab_complaints',$insert_complaint);
   }
-  public function edit_exam($exam_data)
+  public function edit_exam($exam_data,$exam_id)
   {
-    $this->db->update('exam_questions',$exam_data);
+    $this->db->where('exam_id',$exam_id)->update('exam_questions',$exam_data);
   }
   // ------------------------------------------------------------------------
 

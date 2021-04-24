@@ -148,7 +148,7 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Count Down Time</label>
-                <input type="time" class="form-control" step="any" name="time" value="00:30:15">
+                <input type="time" class="form-control" step="any" name="time" value="00:00:00">
             </div>
 
             <div class="col-md-4 mb-3">
@@ -163,8 +163,7 @@ if($this->session->flashdata('insert_failed')){
 
 
             <div class="form-row mt-4">
-                <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Update">
-                <a href="<?php echo base_url()?>/Professor/edit_exam/<?php echo $exam->exam_id;?>"><input type="submit" name="complaint_btn" class="btn btn-success" value="Mark As Fixed"></a>
+                <a href="<?php echo base_url()?>Professor/edit_exam/<?php echo $exam->exam_id;?>"><input type="submit" name="complaint_btn" class="btn btn-primary" value="Update"></a>
             </div>
 
     </form>

@@ -114,7 +114,7 @@ if($this->session->flashdata('update_failed')){
             <b>Registered On : </b><input type="text" name="registered_on" id="registered_on" value="<?php echo date('d-m-Y',strtotime($complaints_data->registered_on));?>" disabled style="background:none; border:none;"><br>
             <div class="modal-footer">
               <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-              <a href="<?php echo base_url()?>/Lab_assistant/update_complaint_data/<?php echo $complaints_data->complaint_id;?>"><input type="submit" name="complaint_btn" class="btn btn-success" value="Mark As Fixed"></a>
+              <a href="<?php echo base_url()?>Lab_assistant/update_complaint_data/<?php echo $complaints_data->complaint_id;?>"><input type="submit" name="complaint_btn" class="btn btn-success" value="Mark As Fixed"></a>
             </div>
 				</div>
 			</div>

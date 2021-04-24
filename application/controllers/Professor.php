@@ -174,7 +174,6 @@ class Professor extends CI_Controller
  }
  public function edit_exam()
  {
-   
    $subject=$this->input->post('subject');
    $date=$this->input->post('date');
    $course=$this->input->post('course');
@@ -183,7 +182,7 @@ class Professor extends CI_Controller
    $semester=$this->input->post('semester');
    
    $exam_data=array('subject'=>$subject,'date'=>$date,'course'=>$course,'scheduled_date'=>$scheduled_date,'last_date'=>$last_date,'semester'=>$semester);
-   $this->Professor_model->edit_exam($exam_data);
+   $this->Professor_model->edit_exam($exam_data,$exam_id);
    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
    redirect('Professor/exams_conducted','refresh');
  }
