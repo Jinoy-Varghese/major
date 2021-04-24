@@ -163,6 +163,15 @@ class Professor extends CI_Controller
   $this->load->view("Professor/dash_footer.php");
   $this->load->view("footer.php");
  }
+ public function subject_attendance()
+ {
+  $this->load->view("header.php");
+  $this->load->view("amp.php");
+  $this->load->view("professor/dash_head.php");
+  $this->load->view("Professor/subject_attendance.php");
+  $this->load->view("Professor/dash_footer.php");
+  $this->load->view("footer.php");
+ }
  public function edit_exam()
  {
    $exam_id=$this->input->post('exam_id');
@@ -492,8 +501,37 @@ class Professor extends CI_Controller
       $this->session->set_flashdata('registration_failed',"Registration Failed");
       redirect('Professor/live_meeting','refresh');
     }
+  }
+  public function mark_subject_attendance()
+  {
 
-}
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('professor_data','professor_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+    $course=$this->input->post('course');
+    $subject=$this->input->post('subject');
+    $semester=$this->input->post('semester');
+    $limit=$this->input->post('limit');
+    for($i=1;$i<=$limit;$i++)
+    {
+
+       $student_id='sid'.$i;
+       $rating='rating'.$i;
+       $mark=$this->input->post($rating);
+       $sid=$this->input->post($student_id);
+       $assignment_data=array('a_email'=>$sid,'a_subject'=>$subject,'a_sem'=>$semester,'a_course'=>$course,'mark'=>$mark,'a_dept'=>$dept);
+       $this->db->insert('assignment',$assignment_data);
+    }
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/subject_attendance','refresh');
+  }
 
 
 

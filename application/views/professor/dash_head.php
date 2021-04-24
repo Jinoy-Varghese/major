@@ -206,7 +206,9 @@ if(!isset($_SESSION['u_id']))
           </ul>
 
 
-        <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="list-group-item list-group-item-action bg-light">Attendance</a>
+        <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="list-group-item list-group-item-action bg-light">Common Attendance</a>
+        <a href="<?php echo site_url(); ?>Professor/subject_attendance" class="list-group-item list-group-item-action bg-light">Subject Attendance</a>
+
                 
         <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down2' class="drop-down-n w-100">Exams<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul2" style="background:#DAE0E5;">
