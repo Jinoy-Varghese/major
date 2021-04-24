@@ -6,6 +6,14 @@ if(!isset($_SESSION['u_id']))
 }
 ?>
 <style>
+#top_nav
+{
+  background-color:#3c3c3c;
+  height:50px;
+  width:100vw;
+  position:fixed;
+  margin-top:-90px;"
+}
 @media print
 {
 #printpagebtn
@@ -13,9 +21,11 @@ if(!isset($_SESSION['u_id']))
     display:none;
 }
 }
+
 </style>
 <link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
 <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap-4.3.1/css/bootstrap.min.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/fontawesome-5.11.2/css/all.min.css'); ?>">
 
 <script src="<?php echo base_url('assets/bootstrap-4.3.1/js/bootstrap.min.js') ?>"></script>
 <script src="<?php echo base_url('assets/bootstrap-table/tableExport.min.js'); ?>"></script>
@@ -24,8 +34,16 @@ if(!isset($_SESSION['u_id']))
 <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table-export.min.js'); ?>"></script>
 
+<div class="col-12" id="top_nav">
+
+<div class="col-md-12 text-right col-12 mt-3">
+<i class="fas fa-print text-white" data-toggle="tootip" title="Print Internal Sheet" id="printpagebtn" onclick="window.print();" style="cursor:pointer;"></i>
+</div>
+
+</div>
+
 <div class="container mt-5">
-<div class="row">
+<div class="row" style="margin-top:90px;">
 <div class="col-md-12 font-weight-bold text-center" style="font-size:23px;">Consolidated Statement Of Marks of Continous Evaluation(CE)</div>
 <div class="col-md-12 font-weight-bold text-center" style="font-size:21px;">For First Degree Programmes under CBCS System</div>
 </div>
@@ -37,16 +55,101 @@ if(!isset($_SESSION['u_id']))
 <div class="col-md-5 font-weight-bold">Name & Code of the Programme : BSc.Computer Science(320)</div>
 </div>
 <div class="row ml-5">
-<div class="col-md-3 font-weight-bold">Admission Year : 2018-2021</div>
+<div class="col-md-3 font-weight-bold">Admission Year :
+
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $mail=$user_data->email;
+}
+
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $year[]=date('Y',strtotime($user_data->time_stamp));
+}
+  echo $year[0];
+  echo '-';
+  echo $year[0]+3;
+?>
+
+</div>
 <div class="col-md-5 font-weight-bold">Month & Year of Study :June 2020-December 2020</div>
 </div>
 <div class="row ml-5">
-<div class="col-md-3 font-weight-bold">Semester : S5</div>
-</div>
+<div class="col-md-3 font-weight-bold">Semester : 
 
-<div class="col-md-12 col-12 text-right">
-<button class="btn btn-primary" id="printpagebtn" onclick="window.print();">Print Internal Sheet</button>
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
+$this->db->select('DISTINCT(s_sem)');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+ echo strtoupper($user_data->s_sem);
+}
+?>
+
 </div>
+</div>  
 
 <div class="col-md-12">
 <table class="table table-bordered text-center text-nowrap mt-4" style="font-size:10px;">
@@ -135,9 +238,41 @@ if(!isset($_SESSION['u_id']))
 <th>(20)</th>
 </tr>
 
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+?>
 <tr>
 <th>32018806010</th>
-<th>Arun Ayyappan</th>
+<th><?php echo $user_data->name;?></th>
 <th>5</th>
 <th>5</th>
 <th>10</th>
@@ -169,113 +304,57 @@ if(!isset($_SESSION['u_id']))
 <th>5</th>
 <th>20</th>
 </tr>
-
-<tr>
-<th>32018806016</th>
-<th>Devadathan R</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
-</tr>
-
-<tr>
-<th>32018806017</th>
-<th>Febin Mathew</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
-</tr>
-
-<tr>
-<th>32018806023</th>
-<th>Jinoy Varghese</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
-</tr>
-
+<?php
+}
+?>
 
 
 </table>
 </div>
+
+
+
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
+$this->db->select('distinct(s_sem)');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $sem=$user_data->s_sem;
+  echo $sem."<br>";
+}
+
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('sub_sem',$sem);
+$sql=$this->db->get();
+foreach($sql->result() as $subject)
+{
+  echo $subject->sub_name."<br>";
+}
+?>
