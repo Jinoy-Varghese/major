@@ -158,6 +158,7 @@ class Professor extends CI_Controller
 {
   $this->load->view("header.php");
   $this->load->view("amp.php");
+  $this->load->view("professor/dash_head.php");
   $this->load->view("Professor/update_exam.php");
   $this->load->view("Professor/dash_footer.php");
   $this->load->view("footer.php");
