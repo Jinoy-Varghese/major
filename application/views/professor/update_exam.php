@@ -41,31 +41,31 @@ if($this->session->flashdata('insert_failed')){
     </script>
 
     <nav aria-label="breadcrumb mt-sm-5">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item" aria-current="page"><a href="#">Update Exam</a></li>
-    </ol>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Update Exam</a></li>
+        </ol>
     </nav>
-     <form class="needs-validation mt-12" novalidate method="post" action="<?php echo base_url();?>Professor/edit_exam">
-     <div class="form-row">
-         <div class="col-md-12 mb-3">
+    <form class="needs-validation mt-12" novalidate method="post" action="<?php echo base_url();?>Professor/edit_exam">
+        <div class="form-row">
+            <div class="col-md-12 mb-3">
 
-         <label for="validationCustom01">Exam Id</label>
-         <input type="text" class="form-control" id="validationCustom01" name="book_name" required value="">
-         <input type="hidden" value="" name="exam_id">
-         <div class="valid-feedback">
-             Looks good!
-         </div>
-         <div class="invalid-feedback">
-             Please provide a Exam Id
-          </div>
-          </div>
+                <label for="validationCustom01">Exam Id</label>
+                <input type="text" class="form-control" id="validationCustom01" name="book_name" required value="">
+                <input type="hidden" value="" name="exam_id">
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please provide a Exam Id
+                </div>
+            </div>
 
-    <div class="col-md-4 mb-3">
-        <label for="validationCustom07">Course</label>
-        <select class="custom-select" id="course" required name="course">
-            <option selected disabled value="">Choose...</option>
-            <?php 
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom07">Course</label>
+                <select class="custom-select" id="course" required name="course">
+                    <option selected disabled value="">Choose...</option>
+                    <?php 
     $id=$_SESSION['u_id'];
     $this->db->select('*');
     $this->db->from('users');
@@ -87,22 +87,22 @@ if($this->session->flashdata('insert_failed')){
     echo "<option value='$subject_data->sub_course'>$subject_data->sub_course</option>";
     }
     ?>
-        </select>
-        <div class="valid-feedback">
-            Looks good!
-        </div>
-        <div class="invalid-feedback">
-            Please enter a course.
-        </div>
-    </div>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a course.
+                </div>
+            </div>
 
 
-    <div class="col-md-4 mb-3">
-        <label for="validationCustom06">Subject</label>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom06">Subject</label>
 
-        <select class="custom-select" id="subject" required name="subject">
-            <option selected disabled value="select">Choose...</option>
-            <?php 
+                <select class="custom-select" id="subject" required name="subject">
+                    <option selected disabled value="select">Choose...</option>
+                    <?php 
 
     $this->db->select('DISTINCT(subject)');
     $this->db->from('subject_assigned');
@@ -113,51 +113,51 @@ if($this->session->flashdata('insert_failed')){
     echo "<option value='$user_data->subject'>$user_data->subject</option>";
     }
     ?>
-        </select>
+                </select>
 
-    </div>
+            </div>
 
-    <div class="col-md-4 mb-3">
-        <label for="validationCustom05">Semester</label>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom05">Semester</label>
 
-        <select class="custom-select" id="semester" required name="semester">
-            <option selected disabled value="">Choose...</option>
-
-
-
-
-
-
-        </select>
-
-    </div>
-    <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Scheduled Date</label>
-        <input type="number" class="form-control" required name="scheduled_date">
-    </div>
-
-    <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Count Down Time</label>
-        <input type="time" class="form-control" step="any" name="time" value="00:30:15">
-    </div>
-
-    <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Last Date and Time</label>
-        <input required type="datetime-local" class="form-control" name="last_date"
-            min="<?php echo date("Y-m-d"); ?>T<?php $time=strtotime(date("H:i"));echo date("H:i", strtotime('+15 minutes', $time)); ?>">
-    </div>
+                <select class="custom-select" id="semester" required name="semester">
+                    <option selected disabled value="">Choose...</option>
 
 
 
 
 
 
+                </select>
 
-<div class="form-row mt-4">
-    <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Update">
-</div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Scheduled Date</label>
+                <input type="number" class="form-control" required name="scheduled_date">
+            </div>
 
-</form>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Count Down Time</label>
+                <input type="time" class="form-control" step="any" name="time" value="00:30:15">
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom01">Last Date and Time</label>
+                <input required type="datetime-local" class="form-control" name="last_date"
+                    min="<?php echo date("Y-m-d"); ?>T<?php $time=strtotime(date("H:i"));echo date("H:i", strtotime('+15 minutes', $time)); ?>">
+            </div>
+
+
+
+
+
+
+
+            <div class="form-row mt-4">
+                <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Update">
+            </div>
+
+    </form>
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
