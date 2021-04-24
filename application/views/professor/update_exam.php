@@ -164,6 +164,7 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="form-row mt-4">
                 <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Update">
+                <a href="<?php echo base_url()?>/Professor/edit_exam/<?php echo $exam->exam_id;?>"><input type="submit" name="complaint_btn" class="btn btn-success" value="Mark As Fixed"></a>
             </div>
 
     </form>
