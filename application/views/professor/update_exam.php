@@ -46,9 +46,9 @@ if($this->session->flashdata('insert_failed')){
         <li class="breadcrumb-item" aria-current="page"><a href="#">Update Exam</a></li>
     </ol>
     </nav>
-     <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>Professor/edit_exam">
+     <form class="needs-validation mt-12" novalidate method="post" action="<?php echo base_url();?>Professor/edit_exam">
      <div class="form-row">
-         <div class="col-md-5 mb-3">
+         <div class="col-md-4 mb-3">
          <label for="validationCustom01">Exam Id</label>
          <input type="text" class="form-control" id="validationCustom01" name="book_name" required value="">
          <input type="hidden" value="" name="exam_id">
@@ -57,8 +57,8 @@ if($this->session->flashdata('insert_failed')){
          </div>
          <div class="invalid-feedback">
              Please provide a Exam Id
-
-    <div class="form-row mt-5">
+          </div>
+          <div class="form-row mt-3">
 
     <div class="col-md-4 mb-3">
         <label for="validationCustom07">Course</label>
@@ -131,8 +131,8 @@ if($this->session->flashdata('insert_failed')){
 
     </div>
     <div class="col-md-4 mb-3">
-        <label for="validationCustom01">Number of questions</label>
-        <input type="number" class="form-control" required name="question_no">
+        <label for="validationCustom01">Scheduled Date</label>
+        <input type="number" class="form-control" required name="scheduled_date">
     </div>
 
     <div class="col-md-4 mb-3">
@@ -153,7 +153,7 @@ if($this->session->flashdata('insert_failed')){
 
 </div>
 <div class="form-row mt-4">
-    <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Next">
+    <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Update">
 </div>
 
 </form>
