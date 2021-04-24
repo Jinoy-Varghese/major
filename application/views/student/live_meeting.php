@@ -11,7 +11,22 @@ if($this->session->flashdata('meeting_over')){
  
  
 ?>
+<style>
+.custom-button
+{
 
+  color:#007BFF;
+  text-decoration:none;
+
+}
+.custom-button:hover
+{
+  color:white;
+  background:#007BFF;
+  cursor:pointer;
+}
+
+</style>
 
 <div class="row mt-5">
     <div class="vid-out mt-md-5 col-md-5">
@@ -35,30 +50,48 @@ if($this->session->flashdata('meeting_over')){
   >
   <thead class="table-primary">
 		<tr>
-			<th data-field="name" data-sortable="true">Name</th>
-			<th data-field="author" data-sortable="true">Author</th>
-			<th data-field="copies" data-sortable="true">Copies</th>
-			<th data-field="about" data-sortable="true">About</th>
+			<th data-field="#" data-sortable="true">#</th>
+			<th data-field="Subject" data-sortable="true">Subject</th>
       <th data-field="edit">Action</th>
 		</tr>
   </thead>
 	<tbody>
 	<?php 
-	$sql=$this->db->get('books');
-	foreach($sql->result() as $book)
-	{
-    ?>
+	$i=1;
+
+  $id=$_SESSION['u_id'];
+  $this->db->select('*');
+  $this->db->from('users');
+  $this->db->join('student_data','student_data.email=users.email');
+  $this->db->where('users.email',$id);
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
+    $course=$user_data->s_course;
+    $sem=$user_data->s_sem;
+  }
+
+
+  $this->db->select('*');
+  $this->db->from('meeting_data');
+  $this->db->where('status',1);
+  $this->db->where('sem',$sem);
+  $this->db->where('course',$course);
+
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
+  
+
+?>
+  
 		<tr>
-			<td><?php echo $book->book_name ?></td>
-			<td><?php echo $book->author ?></td>
-			<td><?php echo $book->copies ?></td>
-      <td><?php echo $book->about ?></td>
-      <td class="text-center p-0" >
-        <a href="<?php echo base_url(); ?>Librarian/update_book/<?php echo $book->book_id; ?>"><i class="fa fa-edit text-primary mr-3"></i></a>
-        <a href="<?php echo base_url(); ?>Librarian/delete_book/<?php echo $book->book_id; ?>"><i class="fa fa-trash text-primary ml-3"></i></a>
-      </td>
+			<td><?php echo $i ?></td>
+			<td><?php echo $user_data->subject ?></td>
+      <td><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->meet_by); ?>" class="btn border-primary col-12 custom-button">Join</a></td>
 	  	</tr>
 	<?php		
+  $i++;
 	}
 	?>
 	</tbody>
