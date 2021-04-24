@@ -155,16 +155,24 @@ class Professor extends CI_Controller
     $this->load->view("footer.php");
   }
   public function update_exam()
-{
+ {
   $this->load->view("header.php");
   $this->load->view("amp.php");
   $this->load->view("professor/dash_head.php");
   $this->load->view("Professor/update_exam.php");
   $this->load->view("Professor/dash_footer.php");
   $this->load->view("footer.php");
-}
-
-  
+ }
+ public function edit_exam()
+ {
+   $exam_id=$this->input->post('exam_id');
+   $subject=$this->input->post('subject');
+   $date=$this->input->post('date');
+   $exam_data=array('exam_id'=>$exam_id,'subject'=>$subject,'date'=>$date);
+   $this->Professor_model->edit_exam($exam_data);
+   $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+   redirect('Professor/update_exam','refresh');
+ }
 
   public function insert_note_process()
   {
