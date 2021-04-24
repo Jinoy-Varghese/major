@@ -59,7 +59,6 @@ if($this->session->flashdata('insert_failed')){
          <div class="invalid-feedback">
              Please provide a Exam Id
           </div>
-          </date_interval_create_from_date_string>
           
 
     <div class="col-md-4 mb-3">
