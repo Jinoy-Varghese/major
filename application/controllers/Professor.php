@@ -530,15 +530,16 @@ class Professor extends CI_Controller
     {
 
        $student_id='sid'.$i;
-       $rating='rating'.$i;
+       $rating='v'.$i;
        $mark=$this->input->post($rating);
        $sid=$this->input->post($student_id);
-       $assignment_data=array('a_email'=>$sid,'a_subject'=>$subject,'a_sem'=>$semester,'a_course'=>$course,'mark'=>$mark,'a_dept'=>$dept);
-       $this->db->insert('assignment',$assignment_data);
+       $subject_data=array('s_id'=>$sid,'subject'=>$subject,'s_sem'=>$semester,'course'=>$course,'s_attendance'=>$mark,'dept'=>$dept);
+       $this->db->insert('subject_attendance',$subject_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
     redirect('Professor/subject_attendance','refresh');
   }
+
 
 
 
