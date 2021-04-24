@@ -19,34 +19,77 @@ if($this->session->flashdata('meeting_over')){
     </div>
     <div class="col-md-7 mt-md-5 pt-5">
 
-        <form action="" method="post" class="col-12 form-row pl-0">
+        <form action="<?php echo base_url();?>Professor/creaate_live_meeting" method="post" class="col-12 form-row pl-0">
 
             <div class="col-md-6 mb-3 p-2">
                 <label for="validationCustom05">Course</label>
-                <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom05" name="ph_no" required>
+                <select class="custom-select" id="course" required name="course">
+                    <option selected disabled value="">Choose...</option>
+                    <?php 
+
+            $id=$_SESSION['u_id'];
+            $this->db->select('*');
+            $this->db->from('users');
+            $this->db->join('professor_data','professor_data.email=users.email');
+            $this->db->where('users.email',$id);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+             $dept=$user_data->dept;
+            }
+
+
+            $this->db->select('DISTINCT(sub_course)');
+            $this->db->from('subject_assigned');
+            $this->db->where('teacher_id',$_SESSION['u_id']);
+            $sql=$this->db->get();
+            foreach($sql->result() as $subject_data)
+            {
+            echo "<option value='$subject_data->sub_course'>$subject_data->sub_course</option>";
+            }
+            ?>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
                 <div class="invalid-feedback">
-                    Please provide a valid Course.
+                    Please enter a course.
                 </div>
             </div>
             <div class="col-md-6 mb-3 p-2">
                 <label for="validationCustom05">Subject</label>
-                <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom05" name="ph_no" required>
-                <div class="invalid-feedback">
-                    Please provide a valid Subject.
-                </div>
+                <select class="custom-select" id="subject" required name="subject">
+                    <option selected disabled value="select">Choose...</option>
+                    <?php 
+
+            $this->db->select('DISTINCT(subject)');
+            $this->db->from('subject_assigned');
+            $this->db->where('teacher_id',$_SESSION['u_id']);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            echo "<option value='$user_data->subject'>$user_data->subject</option>";
+            }
+            ?>
+                </select>
             </div>
 
             <div class="col-md-6 mb-3 p-2">
                 <label for="validationCustom05">Semester</label>
-                <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom05" name="ph_no" required>
-                <div class="invalid-feedback">
-                    Please provide a valid Semester.
-                </div>
+                <select class="custom-select" id="semester" required name="semester">
+                    <option selected disabled value="">Choose...</option>
+
+
+
+
+
+
+                </select>
             </div>
 
             <div class="col-md-6 mb-3 p-2 mt-2">
             <label for="validationCustom05"></label>
-                <input type="submit" pattern="^\d{10}$" class="form-control btn text-primary border-primary" id="validationCustom05" name="ph_no" value="Start Meeting">
+                <input type="submit" pattern="^\d{10}$" class="form-control btn text-primary border-primary custom-button" id="validationCustom05" name="ph_no" value="Start Meeting">
 
             </div>
 
@@ -121,4 +164,46 @@ if (navigator.mediaDevices.getUserMedia) {
     background-repeat:no-repeat;
     */
 }
+
+.custom-button:hover
+{
+  color:white !important;
+  background:#007BFF;
+  cursor:pointer;
+}
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $("#subject").change(function() {
+        var subject = $(this).val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/professor/view_subject_ajax',
+            type: 'post',
+            data: {
+                post_subject: subject
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+
+                $("#semester").empty();
+                $("#semester").append(
+                    "<option disabled value='select' selected>--Select--</option>");
+                for (var i = 0; i < len; i++) {
+                    var sem = response[i]['sem'];
+
+                    $("#semester").append("<option value='" + sem + "'>" + sem +
+                        "</option>");
+
+                }
+            }
+        });
+    });
+
+
+
+});
+</script>

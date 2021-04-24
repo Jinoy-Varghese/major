@@ -446,18 +446,37 @@ class Professor extends CI_Controller
     if($this->input->post('complaint_reg'))
     {
      $id=$_SESSION['u_id'];
-     $sym_no=$this->input->post('sym_no');; 
+     $sym_no=$this->input->post('sym_no');
      $complaint=$this->input->post('complaint');
      $insert_complaint=array('sym_no'=>$sym_no,'complaint'=>$complaint,'register_by'=>$_SESSION['u_id'],'status'=>1);
      $this->Professor_model->lab_complaint_data($insert_complaint);
      $this->session->set_flashdata('registered_success',"Complaint Registered Successfully");
-     redirect('professor/lab_complaint','refresh');
+     redirect('Professor/lab_complaint','refresh');
     }
     else
     {
       $this->session->set_flashdata('registration_failed',"Registration Failed");
-      redirect('professor/lab_complaint','refresh');
+      redirect('Professor/lab_complaint','refresh');
     }
+  }
+    public function create_live_meeting()
+    {
+      if($this->input->post('complaint_reg'))
+      {
+       $id=$_SESSION['u_id'];
+       $sym_no=$this->input->post('sym_no'); 
+       $complaint=$this->input->post('complaint');
+       $insert_complaint=array('sym_no'=>$sym_no,'complaint'=>$complaint,'register_by'=>$_SESSION['u_id'],'status'=>1);
+       $this->Professor_model->lab_complaint_data($insert_complaint);
+       $this->session->set_flashdata('registered_success',"Complaint Registered Successfully");
+       redirect('Professor/lab_complaint','refresh');
+      }
+      else
+      {
+        $this->session->set_flashdata('registration_failed',"Registration Failed");
+        redirect('Professor/lab_complaint','refresh');
+      }
+
   }
 
 
