@@ -470,16 +470,9 @@ class Professor extends CI_Controller
   }
   public function create_live_meeting()
   {
-    if($this->input->post('complaint_reg'))
     if($this->input->post('start'))
     {
      $id=$_SESSION['u_id'];
-     $sym_no=$this->input->post('sym_no'); 
-     $complaint=$this->input->post('complaint');
-     $insert_complaint=array('sym_no'=>$sym_no,'complaint'=>$complaint,'register_by'=>$_SESSION['u_id'],'status'=>1);
-     $this->Professor_model->lab_complaint_data($insert_complaint);
-     $this->session->set_flashdata('registered_success',"Complaint Registered Successfully");
-     redirect('Professor/lab_complaint','refresh');
      $course=$this->input->post('course');
      $subject=$this->input->post('subject');
      $semester=$this->input->post('semester');
@@ -492,7 +485,6 @@ class Professor extends CI_Controller
     else
     {
       $this->session->set_flashdata('registration_failed',"Registration Failed");
-      redirect('Professor/lab_complaint','refresh');
       redirect('Professor/live_meeting','refresh');
     }
 
