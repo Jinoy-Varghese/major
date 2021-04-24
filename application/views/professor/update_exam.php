@@ -39,6 +39,15 @@ if($this->session->flashdata('insert_failed')){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
+    <?php 
+	$this->db->select('DISTINCT(exam_id),scheduled_date');
+    $this->db->from('exam_questions');
+    $exam_id=$_GET['exam_id'];
+    $this->db->where('exam_id',$exam_id);
+    $sql=$this->db->get();
+	foreach($sql->result() as $exam)
+	{
+    ?>
 
     <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
@@ -51,8 +60,8 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-12 mb-3">
 
                 <label for="validationCustom01">Exam Id</label>
-                <input type="text" class="form-control" id="validationCustom01" name="book_name" required value="">
-                <input type="hidden" value="" name="exam_id">
+                <input type="text" class="form-control" id="validationCustom01" name="exam_id" required
+                    value="<?php echo $exam->exam_id; ?>" disabled>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -133,7 +142,8 @@ if($this->session->flashdata('insert_failed')){
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Scheduled Date</label>
-                <input type="number" class="form-control" required name="scheduled_date">
+                <input type="date" class="form-control" required name="scheduled_date"
+                    value="<?php echo strftime('%y-%m-%d',strtotime($exam->scheduled_date)); ?>">
             </div>
 
             <div class="col-md-4 mb-3">
@@ -144,13 +154,12 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Last Date and Time</label>
                 <input required type="datetime-local" class="form-control" name="last_date"
-                    min="<?php echo date("Y-m-d"); ?>T<?php $time=strtotime(date("H:i"));echo date("H:i", strtotime('+15 minutes', $time)); ?>">
+                   >
             </div>
 
 
 
-
-
+            <?php } ?>
 
 
             <div class="form-row mt-4">
