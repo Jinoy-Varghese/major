@@ -399,9 +399,13 @@ class Home extends CI_Controller
      }
      if($present=='professor')
      {
-       $value=array('meet_status'=>0);
+       $value1=array('meet_status'=>0);
+       $value2=array('status'=>0);
+
        $this->db->where('email',$_SESSION["u_id"]);
-       $this->db->update('professor_data',$value);
+       $this->db->update('professor_data',$value1);
+       $this->db->update('meeting_data',$value2);
+
        $this->session->set_flashdata('meeting_over',"Theernnu");
        redirect('Professor/live_meeting','refresh');
      }
