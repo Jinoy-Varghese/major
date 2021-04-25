@@ -8,7 +8,7 @@ if(!isset($_SESSION['u_id']))
 <style>
 #top_nav
 {
-  background-color:#3c3c3c;
+  background-color:black;
   height:50px;
   width:100vw;
   position:fixed;
@@ -261,6 +261,7 @@ foreach($sql->result() as $user_data)
 $this->db->select('*');
 $this->db->from('subjects');
 $this->db->where('sub_sem',$sem);
+$this->db->order_by('sub_name','ASC');
 $sql=$this->db->get();
 foreach($sql->result() as $subject)
 {
@@ -277,36 +278,48 @@ else
 ?>
 </tr>
 <tr>
+
+<?php
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=substr($user_data->semester,1);
+}
+
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('subjects.sub_dept',$dept);
+$this->db->where('sub_sem',$sem);
+$sql=$this->db->get();
+$no_subjects=$sql->num_rows();
+for ($i=0; $i <$no_subjects ; $i++) 
+{ 
+  ?>
+
 <th>A</th>
 <th>Assig</th>
 <th>T</th>
 <th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>R</th>
-<th>T</th>
-<th>PPS</th>
-<th>Total</th>
-<th>A</th>
-<th>R</th>
-<th>T</th>
-<th>PPS</th>
-<th>Total</th>
+
+<?php
+}
+  ?>
+
 </tr>
 
 <tr>
@@ -422,3 +435,53 @@ foreach($sql->result() as $user_data)
 </div>
 
 
+<?php
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=substr($user_data->semester,1);
+}
+
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('subjects.sub_dept',$dept);
+$this->db->where('sub_sem',$sem);
+$this->db->order_by('sub_name','ASC');
+$sql=$this->db->get();
+$no_subjects=$sql->num_rows();
+foreach($sql->result() as $sub_data)
+{
+  $word=$sub_data->sub_name;
+
+}
+
+  ?>
+
+
+
+<?php
+$word="Lab";
+$sentance=array('Computer Graphics','Computer Graphics Lab','EET','Multimedia','Python','Python Programming Language','System Software');
+echo $sentance[0]."<br>";
+echo $sentance[1]."<br>";
+echo $sentance[2]."<br>";
+echo $sentance[3]."<br>";
+echo $sentance[4]."<br>";
+echo $sentance[5]."<br>";
+echo $sentance[6]."<br>";
+?>

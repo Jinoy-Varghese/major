@@ -146,7 +146,8 @@ class Hod extends CI_Controller
     $sub_name=$this->input->post('sub_name');
     $gradguation=$this->input->post('gradguation');
     $sem_num=$this->input->post('sub_sem');
-    $sub_data=array('sub_name'=>$sub_name,'sub_gradguation'=>$gradguation,'sub_dept'=>$dept,'sub_sem'=>$sem_num);
+    $sub_type=$this->input->post('is_lab');
+    $sub_data=array('sub_name'=>$sub_name,'sub_gradguation'=>$gradguation,'sub_dept'=>$dept,'sub_sem'=>$sem_num,'is_lab'=>$sub_type);
     $this->db->insert('subjects',$sub_data);
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
     redirect('hod/add_subject','refresh');
