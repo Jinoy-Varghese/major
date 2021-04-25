@@ -264,7 +264,7 @@ am4core.ready(function() {
                                                                                 <div
                                                                                                     class="border border-primary bg-primary rounded">
                                                                                 </div>
-                                                                                <marquee direction='up' scrollamount='2' class='font-weight-bold'
+                                                                                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' 
                                                                                                     style="height:90%;">
                                                                                 <?php
             $this->db->select('*');
