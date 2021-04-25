@@ -491,6 +491,9 @@ class Professor extends CI_Controller
      $subject=$this->input->post('subject');
      $semester=$this->input->post('semester');
      $meet_data=array('meet_by'=>$id,'course'=>$course,'sem'=>$semester,'subject'=>$subject,'status'=>1);
+     $value1=array('meet_status'=>1);
+     $this->db->where('email',$id);
+     $this->db->update('professor_data',$value1);
      $this->db->insert('meeting_data',$meet_data);
      redirect('https://mtcst.herokuapp.com/'.md5($subject).md5($semester));
     }

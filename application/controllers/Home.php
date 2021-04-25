@@ -404,6 +404,7 @@ class Home extends CI_Controller
 
        $this->db->where('email',$_SESSION["u_id"]);
        $this->db->update('professor_data',$value1);
+       $this->db->where('meet_by',$_SESSION["u_id"]);
        $this->db->update('meeting_data',$value2);
 
        $this->session->set_flashdata('meeting_over',"Theernnu");
