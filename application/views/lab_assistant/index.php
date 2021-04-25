@@ -224,7 +224,7 @@ categoryAxis.fontSize = 9;
              <div class="col-md-12 shadow pt-3" style="height:100%;"> 
                 <h6 class="justify-content-center d-flex">College News </h6>
                 <div class="border border-primary bg-primary rounded"></div>
-                <marquee direction='up' scrollamount='2' class='font-weight-bold'
+                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center'
                                                                                                     style="height:90%;">
                                                                                 <?php
             $this->db->select('*');
