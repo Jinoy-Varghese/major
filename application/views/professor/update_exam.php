@@ -40,7 +40,7 @@ if($this->session->flashdata('insert_failed')){
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
     <?php 
-	$this->db->select('DISTINCT(exam_id),scheduled_date,last_date');
+	$this->db->select('DISTINCT(exam_id),scheduled_date,last_date,course,subject,semester,time');
     $this->db->from('exam_questions');
     $exam_id=$_GET['exam_id'];
     $this->db->where('exam_id',$exam_id);
@@ -148,7 +148,7 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Count Down Time</label>
-                <input type="time" class="form-control" step="any" name="time">
+                <input type="time" class="form-control" step="any" name="time" value="<?php echo substr($exam->time,0,5); ?>:15">
             </div>
 
             <div class="col-md-4 mb-3">
