@@ -390,7 +390,14 @@ class Hod extends CI_Controller
     }
 
   }
-
+  public function News()
+  {
+    $this->load->view("header.php");
+    $this->load->view("Hod/dash_head.php");
+    $this->load->view("Hod/news.php");
+    $this->load->view("Hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
 
 
 
