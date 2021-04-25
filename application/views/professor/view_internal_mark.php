@@ -261,19 +261,23 @@ foreach($sql->result() as $user_data)
 $this->db->select('*');
 $this->db->from('subjects');
 $this->db->where('sub_sem',$sem);
+$this->db->where('is_lab','theory');
 $this->db->order_by('sub_name','ASC');
 $sql=$this->db->get();
 foreach($sql->result() as $subject)
 {
-$word='Lab';
-if(strpos($subject->sub_name,$word)==false)
-{
   echo "<th colspan='4'>".$subject->sub_name."</th>";
 }
-else
+
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('sub_sem',$sem);
+$this->db->where('is_lab','lab');
+$this->db->order_by('sub_name','ASC');
+$sql=$this->db->get();
+foreach($sql->result() as $subject)
 {
   echo "<th colspan='5'>".$subject->sub_name."</th>";
-}
 }
 ?>
 </tr>
@@ -305,56 +309,97 @@ $this->db->select('*');
 $this->db->from('subjects');
 $this->db->where('subjects.sub_dept',$dept);
 $this->db->where('sub_sem',$sem);
+$this->db->where('is_lab','theory');
 $sql=$this->db->get();
 $no_subjects=$sql->num_rows();
 for ($i=0; $i <$no_subjects ; $i++) 
 { 
-  ?>
-
+?>
 <th>A</th>
 <th>Assig</th>
 <th>T</th>
 <th>Total</th>
-
 <?php
 }
-  ?>
-
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('subjects.sub_dept',$dept);
+$this->db->where('sub_sem',$sem);
+$this->db->where('is_lab','lab');
+$sql=$this->db->get();
+$no_subjects=$sql->num_rows();
+for ($i=0; $i <$no_subjects ; $i++) 
+{ 
+?>
+<th>A</th>
+<th>R</th>
+<th>T</th>
+<th>PPS</th>
+<th>Total</th>
+<?php
+}
+?>
 </tr>
 
 <tr>
 <th></th>
 <th></th>
+<?php
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
+
+
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=substr($user_data->semester,1);
+}
+
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('subjects.sub_dept',$dept);
+$this->db->where('sub_sem',$sem);
+$this->db->where('is_lab','theory');
+$sql=$this->db->get();
+$no_subjects=$sql->num_rows();
+for ($i=0; $i <$no_subjects ; $i++) 
+{ 
+?>
 <th>(5)</th>
 <th>(5)</th>
 <th>(10)</th>
 <th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
+<?php
+}
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('subjects.sub_dept',$dept);
+$this->db->where('sub_sem',$sem);
+$this->db->where('is_lab','lab');
+$sql=$this->db->get();
+$no_subjects=$sql->num_rows();
+for ($i=0; $i <$no_subjects ; $i++) 
+{ 
+?>
 <th>(5)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(20)</th>
+<?php
+}
+?>
 </tr>
 
 <?php 
@@ -433,55 +478,3 @@ foreach($sql->result() as $user_data)
 
 </table>
 </div>
-
-
-<?php
-$id=$_SESSION['u_id'];
-$this->db->select('*');
-$this->db->from('users');
-$this->db->join('professor_data','professor_data.email=users.email');
-$this->db->where('users.email',$id);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $dept=$user_data->dept;
-}
-
-
-$this->db->select('*');
-$this->db->from('incharge_list');
-$this->db->where('user_incharge',$_SESSION['u_id']);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-$sem=substr($user_data->semester,1);
-}
-
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('subjects.sub_dept',$dept);
-$this->db->where('sub_sem',$sem);
-$this->db->order_by('sub_name','ASC');
-$sql=$this->db->get();
-$no_subjects=$sql->num_rows();
-foreach($sql->result() as $sub_data)
-{
-  $word=$sub_data->sub_name;
-
-}
-
-  ?>
-
-
-
-<?php
-$word="Lab";
-$sentance=array('Computer Graphics','Computer Graphics Lab','EET','Multimedia','Python','Python Programming Language','System Software');
-echo $sentance[0]."<br>";
-echo $sentance[1]."<br>";
-echo $sentance[2]."<br>";
-echo $sentance[3]."<br>";
-echo $sentance[4]."<br>";
-echo $sentance[5]."<br>";
-echo $sentance[6]."<br>";
-?>
