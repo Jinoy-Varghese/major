@@ -108,10 +108,12 @@ if($this->session->flashdata('update_success')){
             <td><?php echo $i; ?></td>
 			<td><?php echo $student->name; ?></td>
 
-      <td class="text-center p-0" >
+      <td class="p-0">
+      <div class='form-row col-12 p-0'>
         <input type="hidden" name="limit" value="<?php echo $i; ?>">
         <input type="hidden" name="sid<?php echo $i; ?>" value="<?php echo $student->student_id; ?>">
-        <input type="radio" name="<?php echo $i ?>" required value="present"> Present <input type="radio" class="ml-4" name="<?php echo $i ?>" required  value="absent"> Absent 
+        <div class='col-md-6 text-center'><input type="radio" name="<?php echo $i ?>" required value="present"> Present </div><div class='col-md-6 text-center'><input type="radio"  name="<?php echo $i ?>" required  value="absent"> Absent</div> 
+      </div>
       </td>
 	  	</tr>
     <?php

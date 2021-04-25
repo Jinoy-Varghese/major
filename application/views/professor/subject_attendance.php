@@ -286,8 +286,8 @@ $(document).ready(function() {
 
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
                         "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
-                        j + "'><input type='hidden' name='sid" + j + "' value='" +
-                        s_id + "'><input type='radio' name='v"+j+"' required value='present'> Present <input type='radio' class='ml-4' name='v"+j+"' required  value='absent'> Absent </td></tr>");
+                        j + "'><div class='form-row col-12'><input type='hidden' name='sid" + j + "' value='" +
+                        s_id + "'><div class='col-6 text-center'><input type='radio' name='v"+j+"' required value='present'> Present </div><div class='col-6 text-center'><input type='radio' name='v"+j+"' required  value='absent'> Absent </div></div></td></tr>");
                     j++;
 
                 }
