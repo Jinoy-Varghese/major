@@ -113,7 +113,7 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Super_admin/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Super_admin/calendar" class="list-group-item list-group-item-action bg-light">Calendar</a>
+        <a href="<?php echo site_url(); ?>Super_admin/update_fees" class="list-group-item list-group-item-action bg-light">Update Fees</a>
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
             <a href='<?php echo site_url(); ?>Super_admin/change_principal' class="drop-down-a"><li class="drop-down-li">Change Principal</li></a>
