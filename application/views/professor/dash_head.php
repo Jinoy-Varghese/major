@@ -205,10 +205,11 @@ if(!isset($_SESSION['u_id']))
             <a href='<?php echo site_url(); ?>Professor/add_parent' class="drop-down-a"><li class="drop-down-li">Parent</li></a>
           </ul>
 
-
-        <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="list-group-item list-group-item-action bg-light">Common Attendance</a>
-        <a href="<?php echo site_url(); ?>Professor/subject_attendance" class="list-group-item list-group-item-action bg-light">Subject Attendance</a>
-
+        <div class="list-group-item  bg-light sub-menu3"><a href='#drop-down2' class="drop-down-n w-100">Attendance<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul3" style="background:#DAE0E5;">
+            <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="drop-down-a"><li class="drop-down-li">Common Attendance</li></a>
+            <a href="<?php echo site_url(); ?>Professor/subject_attendance" class="drop-down-a"><li class="drop-down-li">Subject Attendance</li></a>
+        </ul>
                 
         <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down2' class="drop-down-n w-100">Exams<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul2" style="background:#DAE0E5;">

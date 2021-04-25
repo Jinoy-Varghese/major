@@ -40,7 +40,7 @@ if($this->session->flashdata('insert_failed')){
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
     <?php 
-	$this->db->select('DISTINCT(exam_id),scheduled_date');
+	$this->db->select('DISTINCT(exam_id),scheduled_date,last_date');
     $this->db->from('exam_questions');
     $exam_id=$_GET['exam_id'];
     $this->db->where('exam_id',$exam_id);
@@ -142,8 +142,8 @@ if($this->session->flashdata('insert_failed')){
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Scheduled Date</label>
-                <input type="date" class="form-control" required name="scheduled_date"
-                    value="<?php echo strftime('%y-%m-%d',strtotime($exam->scheduled_date)); ?>">
+                <input type="datetime-local" class="form-control" required name="scheduled_date"
+                    value="<?php echo substr($exam->scheduled_date,0,10).'T'.substr($exam->scheduled_date,11,5); ?>">
             </div>
 
             <div class="col-md-4 mb-3">
@@ -153,8 +153,7 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Last Date and Time</label>
-                <input required type="datetime-local" class="form-control" name="last_date"
-                   >
+                <input required type="datetime-local" class="form-control" name="last_date" value="<?php echo substr($exam->last_date,0,10).'T'.substr($exam->last_date,11,5); ?>">
             </div>
 
 
@@ -162,8 +161,8 @@ if($this->session->flashdata('insert_failed')){
             <?php } ?>
 
 
-            <div class="form-row mt-4">
-                <a href="<?php echo base_url()?>Professor/edit_exam/<?php echo $exam->exam_id;?>"><input type="submit" name="complaint_btn" class="btn btn-primary" value="Update"></a>
+            <div class="form-row mt-4 ml-2">
+                <input type="submit" name="complaint_btn" class="btn btn-primary" value="Update">
             </div>
 
     </form>
