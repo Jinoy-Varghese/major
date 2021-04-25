@@ -112,6 +112,7 @@ if($this->session->flashdata('insert_failed')){
     <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Attendance</a></li>
             <li class="breadcrumb-item">Subject Attendance</li>
         </ol>
     </nav>

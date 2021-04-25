@@ -74,7 +74,9 @@ if($this->session->flashdata('insert_success')){
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Exams</li>
+        <li class="breadcrumb-item" aria-current="page"><a href="#">Exams</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Exams Conducted</li>
+
     </ol>
     </nav>
 

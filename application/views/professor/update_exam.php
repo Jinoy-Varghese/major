@@ -52,16 +52,21 @@ if($this->session->flashdata('insert_failed')){
     <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Exams</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Exams Conducted</a></li>
             <li class="breadcrumb-item" aria-current="page"><a href="#">Update Exam</a></li>
+
+
+            
         </ol>
     </nav>
     <form class="needs-validation mt-12" method="post" action="<?php echo base_url();?>Professor/edit_exam">
         <div class="form-row">
             <div class="col-md-12 mb-3">
 
-                <label for="validationCustom01">Exam Id</label>
-                <input type="text" disabled class="form-control" id="validationCustom01" value="<?php echo $exam->exam_id; ?>"> <input type="hidden" name="exam_id" required
-                    value="<?php echo $exam->exam_id; ?>" >
+                <label for="validationCustom01" class="font-weight-bold font-italic">Exam Id : <?php echo $exam->exam_id; ?></label>
+                 <input type="hidden" name="exam_id" required
+                    value="<?php echo $exam->exam_id; ?>">
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -148,12 +153,14 @@ if($this->session->flashdata('insert_failed')){
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Count Down Time</label>
-                <input type="time" class="form-control" step="any" name="time" value="<?php echo substr($exam->time,0,5); ?>:15">
+                <input type="time" class="form-control" step="any" name="time"
+                    value="<?php echo substr($exam->time,0,5); ?>:15">
             </div>
 
             <div class="col-md-4 mb-3">
                 <label for="validationCustom01">Last Date and Time</label>
-                <input required type="datetime-local" class="form-control" name="last_date" value="<?php echo substr($exam->last_date,0,10).'T'.substr($exam->last_date,11,5); ?>">
+                <input required type="datetime-local" class="form-control" name="last_date"
+                    value="<?php echo substr($exam->last_date,0,10).'T'.substr($exam->last_date,11,5); ?>">
             </div>
 
 
