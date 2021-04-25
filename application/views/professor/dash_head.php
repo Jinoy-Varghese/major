@@ -134,7 +134,7 @@ if(!isset($_SESSION['u_id']))
               if($status==1)
               {
             ?>
-              <a class="dropdown-item" href="#">The meeting is running<br> on background</a>
+              <a class="dropdown-item" href="<?php echo base_url('Home/leave_meeting') ?>">A meeting is running on background.<br> Click to close meeting</a>
               <?php 
               }
               else
