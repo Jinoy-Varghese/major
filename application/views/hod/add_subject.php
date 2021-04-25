@@ -32,7 +32,7 @@ if($this->session->flashdata('insert_failed')){
         
         <div class="form-row">
             
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationCustom04">Gradguation</label>
                 <select class="custom-select" id="validationCustom04" name="gradguation" required>
                     <option selected disabled value="">Choose...</option>
@@ -44,7 +44,7 @@ if($this->session->flashdata('insert_failed')){
                 </div>
             </div>
             
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationCustom04">Subject Name</label>
                 <input type="text" class="form-control" id="validationCustom01" value="" name="sub_name" required>
                 <div class="valid-feedback">
@@ -54,7 +54,7 @@ if($this->session->flashdata('insert_failed')){
                     Please enter a Subject Name.
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationCustom04">Semester</label>
                 <input type="number" class="form-control" id="validationCustom03" value="" name="sub_sem" required>
                 <div class="valid-feedback">
@@ -62,6 +62,17 @@ if($this->session->flashdata('insert_failed')){
                 </div>
                 <div class="invalid-feedback">
                     Please enter the semester.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="validationCustom04">Subject Type</label>
+                <select class="custom-select" id="validationCustom04" name="is_lab" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="theory">Theory</option>
+                    <option value="lab">Lab</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a subject type.
                 </div>
             </div>
           </div>
