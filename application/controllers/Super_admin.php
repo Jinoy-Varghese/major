@@ -81,6 +81,14 @@ class Super_admin extends CI_Controller
     $this->load->view("superadmin/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function update_fees()
+  {
+    $this->load->view("header.php");
+    $this->load->view("superadmin/dash_head.php");
+    $this->load->view("superadmin/update_fees.php");
+    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   
   public function verify_student_success()
   {
