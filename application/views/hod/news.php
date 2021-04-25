@@ -26,7 +26,7 @@ if($this->session->flashdata('insert_failed')){
                                                             </li>
                                         </ol>
                     </nav>
-                    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>hod/">
+                    <form class="needs-validation mt-5" enctype="multipart/form-data" novalidate method="post" action="<?php echo base_url();?>hod/News_process">
                                         <div class="form-row">
 
                                                             <div class="col-md-4 mb-3">
@@ -42,15 +42,14 @@ if($this->session->flashdata('insert_failed')){
                                                                                                                         for="validationCustom03">File</label>
                                                                                                     <div
                                                                                                                         class="custom-file">
-                                                                                                                        <label for="note_file_id"
+                                                                                                                        <label for="news_file_id"
                                                                                                                                             class="form-control border-primary"
                                                                                                                                             style="height:35px;"><i
                                                                                                                                                                 class="fas fa-camera"></i>&nbsp&nbspChoose
                                                                                                                                             File</label>
                                                                                                                         <input type="file" class="custom-file-input"
-                                                                                                                                            name="note_file"
-                                                                                                                                            id="note_file_id"
-                                                                                                                                            required
+                                                                                                                                            name="news_file"
+                                                                                                                                            id="news_file_id"
                                                                                                                                             style="display:none;">
                                                                                                                         <div
                                                                                                                                             class="invalid-feedback">
