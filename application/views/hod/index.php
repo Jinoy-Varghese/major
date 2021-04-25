@@ -259,7 +259,7 @@ am4core.ready(function() {
                                                             <div class="col-md-12 shadow pt-3" style="height:100%;">
                                                                                 <h6
                                                                                                     class="justify-content-center d-flex">
-                                                                                                    Recent Activities
+                                                                                                    College News
                                                                                 </h6>
                                                                                 <div
                                                                                                     class="border border-primary bg-primary rounded">
