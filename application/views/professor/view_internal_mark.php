@@ -474,7 +474,5 @@ foreach($sql->result() as $user_data)
 <?php
 }
 ?>
-
-
 </table>
 </div>
