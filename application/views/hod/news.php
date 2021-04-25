@@ -1,5 +1,5 @@
 <div class="container p-lg-4 ">
-                    <?php 
+    <?php 
 if($this->session->flashdata('insert_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -19,54 +19,41 @@ if($this->session->flashdata('insert_failed')){
    </div>';
    }
 ?>
-                    <nav aria-label="breadcrumb mt-sm-5">
-                                        <ol class="breadcrumb">
-                                                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                                            <li class="breadcrumb-item active" aria-current="page">News
-                                                            </li>
-                                        </ol>
-                    </nav>
-                    <form class="needs-validation mt-5" enctype="multipart/form-data" novalidate method="post" action="<?php echo base_url();?>hod/News_process">
-                                        <div class="form-row">
+    <nav aria-label="breadcrumb mt-sm-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">News
+            </li>
+        </ol>
+    </nav>
+    <form class="needs-validation mt-5" enctype="multipart/form-data" novalidate method="post"
+        action="<?php echo base_url();?>hod/news_process">
+        <div class="form-row">
 
-                                                            <div class="col-md-4 mb-3">
-                                                                                <label
-                                                                                                    for="validationCustom04">News</label>
-                                                                                <input type='text' class="form-control"
-                                                                                                    id="validationCustom01"
-                                                                                                    value="" name="news"
-                                                                                                    required>
-                                                            </div>                                        
-                                                                                <div class="col-md-4 mb-3">
-                                                                                                    <label
-                                                                                                                        for="validationCustom03">File</label>
-                                                                                                    <div
-                                                                                                                        class="custom-file">
-                                                                                                                        <label for="news_file_id"
-                                                                                                                                            class="form-control border-primary"
-                                                                                                                                            style="height:35px;"><i
-                                                                                                                                                                class="fas fa-camera"></i>&nbsp&nbspChoose
-                                                                                                                                            File</label>
-                                                                                                                        <input type="file" class="custom-file-input"
-                                                                                                                                            name="news_file"
-                                                                                                                                            id="news_file_id"
-                                                                                                                                            style="display:none;">
-                                                                                                                        <div
-                                                                                                                                            class="invalid-feedback">
-                                                                                                                                            Please
-                                                                                                                                            provide
-                                                                                                                                            the
-                                                                                                                                            notes.
-                                                                                                                        </div>
-                                                                                                    </div>
-                                                                                </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom04">News</label>
+                <input type='text' class="form-control" id="validationCustom01" value="" name="news" required>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom03">File</label>
+                <div class="custom-file">
+                    <label for="news_file_id" class="form-control border-primary" style="height:35px;"><i
+                            class="fas fa-camera"></i>&nbsp&nbspChoose
+                        File</label>
+                    <input type="file" class="custom-file-input" name="news_file" id="news_file_id"
+                        style="display:none;">
+                    <div class="invalid-feedback">
+                        Please
+                        provide
+                        the
+                        notes.
+                    </div>
+                </div>
+            </div>
 
-                                                                                
-                                                                                <div class="col-md-7 mb-3">
-                                                                                                    <input class="btn btn-primary"
-                                                                                                                        type="submit"
-                                                                                                                        name="u_reg"
-                                                                                                                        value="Submit">
-                                                                                </div>      
-                                        </div>
-                    </form>
+
+            <div class="col-md-7 mb-3">
+                <input class="btn btn-primary" type="submit" name="u_reg" value="Submit">
+            </div>
+        </div>
+    </form>

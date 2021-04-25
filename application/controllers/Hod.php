@@ -390,7 +390,7 @@ class Hod extends CI_Controller
     }
 
   }
-  public function News()
+  public function news()
   {
     $this->load->view("header.php");
     $this->load->view("Hod/dash_head.php");
@@ -398,20 +398,15 @@ class Hod extends CI_Controller
     $this->load->view("Hod/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function News_process()
+  public function news_process()
   {
     
-      $sql=$this->db->get_where('users',array('email'=>$_SESSION["u_id"]));
-      foreach($sql->result() as $user_name)
-      {
-        $news_by=$user_name->name;
-      }
      $news=$this->input->post('news');
      $news_file=$_FILES['news_file']['name'];
      $target = "assets/img/news/".basename($news_file);
      move_uploaded_file($_FILES['news_file']['tmp_name'], $target);
      $value=array('news_file'=>$target);
-     $insert_news=array('file_by'=>$news_by,'news'=>$news,'news_file'=>$target);
+     $insert_news=array('file_by'=>$_SESSION["u_id"],'news'=>$news,'news_file'=>$target);
      $this->Hod_model->insert_news($insert_news);
      $this->session->set_flashdata('insert_success',"Successfully Inserted");
      redirect('Hod/news','refresh');
