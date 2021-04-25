@@ -55,13 +55,13 @@ if($this->session->flashdata('insert_failed')){
             <li class="breadcrumb-item" aria-current="page"><a href="#">Update Exam</a></li>
         </ol>
     </nav>
-    <form class="needs-validation mt-12" novalidate method="post" action="<?php echo base_url();?>Professor/edit_exam">
+    <form class="needs-validation mt-12" method="post" action="<?php echo base_url();?>Professor/edit_exam">
         <div class="form-row">
             <div class="col-md-12 mb-3">
 
                 <label for="validationCustom01">Exam Id</label>
-                <input type="text" class="form-control" id="validationCustom01" name="exam_id" required
-                    value="<?php echo $exam->exam_id; ?>" disabled>
+                <input type="text" disabled class="form-control" id="validationCustom01" value="<?php echo $exam->exam_id; ?>"> <input type="hidden" name="exam_id" required
+                    value="<?php echo $exam->exam_id; ?>" >
                 <div class="valid-feedback">
                     Looks good!
                 </div>
