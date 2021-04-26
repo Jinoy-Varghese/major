@@ -191,10 +191,39 @@ class Super_admin extends CI_Controller
     $this->session->set_flashdata('update_success',"Successfully Updated");
 
     redirect('Super_admin/my_profile','refresh');
-  	
  
   }
+  public function view_sem_num()
+  {
+        $depart_course =$_POST['post_course']; // department id
+      
+      $users_arr = array();
+          
+        $this->db->select('sem_num');
+        $this->db->from('course_list');
+        $sql=$this->db->where('course_name',$depart_course)->get();
+        foreach($sql->result() as $user_data)
+        {
+          $sem_num=$user_data->sem_num;
+        }
+        $users_arr[] = array("sem_num" => $sem_num);
+      
+      // encoding array to json format
+      echo json_encode($users_arr);
+  }
+  public function update_fee_process()
+  {
 
+     $course=$this->input->post('course');
+     $semester=$this->input->post('semester');
+     $fees=$this->input->post('fees');
+
+     $fee_data=array('course'=>$course,'sem'=>$semester,'fee'=>$fees);
+     $this->db->insert('fees',$fee_data);
+     $this->session->set_flashdata('insert_success',"fee updated");
+     redirect('Super_admin/update_fees','refresh');
+    }
+  
 
 }
 
