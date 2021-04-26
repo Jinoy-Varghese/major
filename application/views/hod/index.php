@@ -236,7 +236,7 @@ am4core.ready(function() {
                 <marquee direction='up' scrollamount='2' style="height:100%;">
                     <?php
             $this->db->select('*');
-            $this->db->from('notification');
+            $this->db->from('notifications');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {
@@ -258,7 +258,7 @@ am4core.ready(function() {
                 <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:90%;">
                     <?php
             $this->db->select('*');
-            $this->db->from('events');
+            $this->db->from('news');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {

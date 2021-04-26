@@ -208,7 +208,7 @@ categoryAxis.fontSize = 9;
               <marquee direction='up' scrollamount='2' style="height:100%;">
               <?php
             $this->db->select('*');
-            $this->db->from('notification');
+            $this->db->from('notifications');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {
@@ -222,8 +222,20 @@ categoryAxis.fontSize = 9;
          </div>
           <div class="col-lg-3 col-md-6  mt-1">
              <div class="col-md-12 shadow pt-3" style="height:100%;"> 
-                <h6 class="justify-content-center d-flex">Recent Activities</h6>
+                <h6 class="justify-content-center d-flex">College News</h6>
                 <div class="border border-primary bg-primary rounded"></div>
+                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center'
+                                                                                                    style="height:90%;">
+                                                                                <?php
+            $this->db->select('*');
+            $this->db->from('news');
+             $sql=$this->db->get();
+             foreach($sql->result() as $news_data)
+           {
+            $image=$news_data->news_file;
+             echo "$news_data->news";
+             echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail' style='height:150px;'>";
+           }?></marquee>
              </div>
            </div>
             <div class="col-lg-6 col-md-12 shadow pt-3 mt-1s ">

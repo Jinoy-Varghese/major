@@ -208,7 +208,7 @@ categoryAxis.fontSize = 9;
               <marquee direction='up' scrollamount='2' style="height:100%;">
               <?php
             $this->db->select('*');
-            $this->db->from('notification');
+            $this->db->from('notifications');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {
@@ -228,7 +228,7 @@ categoryAxis.fontSize = 9;
                                                                                                     style="height:90%;">
                                                                                 <?php
             $this->db->select('*');
-            $this->db->from('events');
+            $this->db->from('news');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {
