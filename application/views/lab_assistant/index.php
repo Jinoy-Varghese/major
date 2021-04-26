@@ -208,7 +208,7 @@ categoryAxis.fontSize = 9;
               <marquee direction='up' scrollamount='2' style="height:100%;">
               <?php
             $this->db->select('*');
-            $this->db->from('news');
+            $this->db->from('notifications');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {

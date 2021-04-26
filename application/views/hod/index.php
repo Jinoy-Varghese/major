@@ -243,7 +243,7 @@ am4core.ready(function() {
                                                                                                     style="height:100%;">
                                                                                                     <?php
             $this->db->select('*');
-            $this->db->from('news');
+            $this->db->from('notifications');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {

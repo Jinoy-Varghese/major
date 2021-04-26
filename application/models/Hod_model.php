@@ -36,7 +36,7 @@ class Hod_model extends CI_Model {
 
   public function Events_process($sub_data)
   {
-    $this->db->insert('news',$sub_data);
+    $this->db->insert('notifications',$sub_data);
   }
   public function lab_complaint_data($insert_complaint)
   {
