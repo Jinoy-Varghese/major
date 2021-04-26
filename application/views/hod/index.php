@@ -268,7 +268,7 @@ am4core.ready(function() {
                                                                                                     style="height:90%;">
                                                                                 <?php
             $this->db->select('*');
-            $this->db->from('events');
+            $this->db->from('news');
              $sql=$this->db->get();
              foreach($sql->result() as $news_data)
            {
