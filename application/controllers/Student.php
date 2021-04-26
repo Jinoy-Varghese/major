@@ -78,7 +78,15 @@ public function exam_page()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
-
+public function fee_payment()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("amp.php");
+  $this->load->view("student/fee_payment.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
 
 public function update_profile()
   {
