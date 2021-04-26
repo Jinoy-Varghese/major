@@ -472,7 +472,3 @@ foreach($sql->result() as $user_data)
 ?>
 </table>
 </div>
-
-
-
-
