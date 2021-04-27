@@ -48,16 +48,22 @@ if($isValidChecksum == "TRUE") {
 				echo "<br/>" . $paramName . " = " . $paramValue;
 				if($paramName=="TXNAMOUNT"&&$_POST["STATUS"] == "TXN_SUCCESS")
 				{
-
-					$sql2="SELECT * from programs where name='donation'";
-					
-					$result=$conn->query($sql2);
-					$row=$result->fetch_assoc();
-					
+					$id=$_SESSION['u_id'];
 					$amount=$paramValue;
-					$amount=$amount+$row["credit"];
-					$sql="update programs set credit='$amount' where name='donation'";
-					$conn->query($sql);
+					$this->db->select('*');
+					$this->db->from('users');
+					$this->db->join('student_data','student_data.email=users.email');
+					$this->db->where('users.email',$id);
+					$sql=$this->db->get();
+					foreach($sql->result() as $user_data)
+					{
+					  $s_sem=$user_data->s_sem;
+					  $s_course=$user_data->s_course;
+					}
+					$fee_data=array('paid_by'=>$id,'amount'=>$amount,'sem'=>$s_sem,'course'=>$s_course);
+					$this->db->insert('fees_paid',$fee_data);					
+					
+					
 				}
 		}
 	}
