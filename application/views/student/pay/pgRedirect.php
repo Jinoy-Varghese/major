@@ -3,8 +3,7 @@ header("Pragma: no-cache");
 header("Cache-Control: no-cache");
 header("Expires: 0");
 // following files need to be included
-require_once("./lib/config_paytm.php");
-require_once("./lib/encdec_paytm.php");
+
 
 $checkSum = "";
 $paramList = array();
@@ -24,7 +23,7 @@ $paramList["CHANNEL_ID"] = $CHANNEL_ID;
 $paramList["TXN_AMOUNT"] = $TXN_AMOUNT;
 $paramList["WEBSITE"] = PAYTM_MERCHANT_WEBSITE;
 
-$paramList["CALLBACK_URL"] = "http://localhost/php/pay/pgResponse.php";
+$paramList["CALLBACK_URL"] = base_url("Student/pgResponse");
 /*
 $paramList["CALLBACK_URL"] = "http://localhost/PaytmKit/pgResponse.php";
 $paramList["MSISDN"] = $MSISDN; //Mobile number of customer

@@ -1,5 +1,5 @@
 
-<a href="http://localhost/project/eparish.php">Back To Home</a>
+<a href='<?php echo base_url('Student/fee_payment'); ?>'>Back To Home</a>
 <script >
 if (window.history.replaceState)
 {
@@ -13,8 +13,7 @@ header("Cache-Control: no-cache");
 header("Expires: 0");
 
 // following files need to be included
-require_once("./lib/config_paytm.php");
-require_once("./lib/encdec_paytm.php");
+
 
 $paytmChecksum = "";
 $paramList = array();
@@ -49,7 +48,6 @@ if($isValidChecksum == "TRUE") {
 				echo "<br/>" . $paramName . " = " . $paramValue;
 				if($paramName=="TXNAMOUNT"&&$_POST["STATUS"] == "TXN_SUCCESS")
 				{
-					include("config.php");
 
 					$sql2="SELECT * from programs where name='donation'";
 					

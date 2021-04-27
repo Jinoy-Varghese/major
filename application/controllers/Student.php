@@ -78,6 +78,7 @@ public function exam_page()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
+
 public function fee_payment()
 {
   $this->load->view("header.php");
@@ -87,6 +88,19 @@ public function fee_payment()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
+public function pgRedirect()
+{
+  $this->load->view("student/pay/lib/config_paytm.php");
+  $this->load->view("student/pay/lib/encdec_paytm.php");
+  $this->load->view("student/pay/pgRedirect.php");
+}
+public function pgResponse()
+{
+  $this->load->view("student/pay/lib/config_paytm.php");
+  $this->load->view("student/pay/lib/encdec_paytm.php");
+  $this->load->view("student/pay/pgResponse.php");
+}
+
 
 public function update_profile()
   {
