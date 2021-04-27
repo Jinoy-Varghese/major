@@ -30,6 +30,11 @@ class Create_user_model extends CI_Model {
   $this->db->insert('users',$u_data1);
   $this->db->insert('librarian_data',$u_data2);
   }
+  public function insert_office_staff($u_data1,$u_data2)
+  {
+  $this->db->insert('users',$u_data1);
+  $this->db->insert('office_data',$u_data2);
+  }
   public function insert_student($u_data1,$u_data2)
   {
   $this->db->insert('users',$u_data1);

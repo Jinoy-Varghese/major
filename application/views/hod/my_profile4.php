@@ -1,3 +1,4 @@
+<div class="container p-lg-4 ">
 <?php 
 if($this->session->flashdata('update_success')){
  echo '
@@ -62,6 +63,12 @@ if(!isset($_SESSION['u_id']))
 }
 ?>
 
+<nav aria-label="breadcrumb mt-sm-5">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">My Profile</li>
+        </ol>
+    </nav>
 
 <head>
 
@@ -312,4 +319,5 @@ $(document).ready(function(){
 </div>
 
 
+</div>
 </div>
