@@ -111,7 +111,7 @@ if(!isset($_SESSION['u_id']))
       <div class="text-center font-weight-bold"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
-        <a href="<?php echo site_url(); ?>Super_admin/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="<?php echo site_url(); ?>Office/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
         <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
         
