@@ -120,6 +120,8 @@ if(!isset($_SESSION['u_id']))
             <a href='<?php echo site_url(); ?>Super_admin/add_professor' class="drop-down-a"><li class="drop-down-li">Professor</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_librarian' class="drop-down-a"><li class="drop-down-li">Librarian</li></a>
+            <a href='<?php echo site_url(); ?>Office/add_librarian' class="drop-down-a"><li class="drop-down-li">Office Staff</li></a>
+
 
           </ul>
  

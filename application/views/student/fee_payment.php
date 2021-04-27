@@ -159,7 +159,7 @@ if($this->session->flashdata('insert_success')){
                                 </div>
 
 
-    <?php
+                                <?php
         error_reporting(0);
         $this->db->select('*');
         $this->db->from('fees');
@@ -185,8 +185,7 @@ if($this->session->flashdata('insert_success')){
                                 {
                                     echo $fee;
                                 }
-                                ?>"
-                                    placeholder=" Amount" style="border:none;" class="ml-2">
+                                ?>" placeholder=" Amount" style="border:none;" class="ml-2">
 
 
 
