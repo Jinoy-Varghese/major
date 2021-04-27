@@ -424,51 +424,28 @@ foreach($sql->result() as $user_data)
 $sem=$user_data->semester;
 }
 
-$this->db->select('distinct(s_sem)');
+$this->db->select('*');
 $this->db->from('users');
 $this->db->join('student_data','student_data.email=users.email');
 $this->db->where('student_data.dept',$dept);
 $this->db->where('s_sem',$sem);
 $this->db->where('s_status',2);
-$this->db->order_by('users.name','ASC');
 $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
-  $semester=$user_data->s_sem;
+  $mail=$user_data->email;
 }
-$this->db->select('distinct(a_email)');
-$this->db->from('assignment');
-$this->db->join('users','users.email=assignment.a_email');
-$this->db->where('a_sem',$semester);
-$this->db->order_by('users.name','ASC');
-$this->db->order_by('assignment.a_subject','ASC');
-$sql=$this->db->get();
-$roll_no=1;
-foreach($sql->result() as $user_data)
-{
-  $email_id=$user_data->a_email;
+
 $this->db->select('*');
 $this->db->from('users');
-$this->db->where('email',$email_id);
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
 $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
-?>
-<tr>
-<th><?php echo $roll_no++;?></th>
-<th><?php echo $user_data->name;?></th>
-<?php
+  $year[]=date('Y',strtotime($user_data->time_stamp));
 }
-?>
-<th>5</th>
-<th>
 
-</th>
-<th>10</th>
-<th>20</th>
-</tr>
-<?php
-}
 ?>
-</table>
-</div>
