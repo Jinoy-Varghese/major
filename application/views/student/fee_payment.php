@@ -153,7 +153,7 @@ if($this->session->flashdata('insert_success')){
                                     <input id="CUST_ID" tabindex="2" maxlength="12" size="12" name="CUST_ID"
                                         autocomplete="off" value="<?php echo $_SESSION['u_id'] ?>">
                                     <input id="INDUSTRY_TYPE_ID" tabindex="4" maxlength="12" size="12"
-                                        name="INDUSTRY_TYPE_ID" autocomplete="off" value="Retail">
+                                        name="INDUSTRY_TYPE_ID" autocomplete="off" value="<?php echo $svalue ?>">
                                     <input id="CHANNEL_ID" tabindex="4" maxlength="12" size="12" name="CHANNEL_ID"
                                         autocomplete="off" value="WEB">
                                 </div>
