@@ -79,10 +79,10 @@ if($this->session->flashdata('insert_success')){
 
 
     <div class="row mt-5">
-        <div class="vid-out mt-md-5 col-md-5">
+        <div class="vid-out mt-md-4 col-md-5">
             <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
         </div>
-        <div class="col-md-6 mt-md-5 pt-4">
+        <div class="col-md-6 mt-md-4 pt-4">
 
 
 
@@ -176,8 +176,17 @@ if($this->session->flashdata('insert_success')){
 
 
 
-                                <input title="TXN_AMOUNT" tabindex="10" type="number" name="TXN_AMOUNT" value="<?php echo $fee; ?>"
-                                    placeholder=" Amount">
+                                <input title="TXN_AMOUNT" tabindex="10" type="number" name="TXN_AMOUNT" value="<?php 
+                                if($fee==NULL)
+                                {
+                                    echo '0';
+                                } 
+                                else
+                                {
+                                    echo $fee;
+                                }
+                                ?>"
+                                    placeholder=" Amount" style="border:none;" class="ml-2">
 
 
 
