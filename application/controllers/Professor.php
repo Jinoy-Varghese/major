@@ -543,36 +543,34 @@ class Professor extends CI_Controller
   
   public function offline_mark_process()
   {
-
     $id=$_SESSION['u_id'];
-    $this->db->select('*');
-    $this->db->from('users');
-    $this->db->join('professor_data','professor_data.email=users.email');
-    $this->db->where('users.email',$id);
-    $sql=$this->db->get();
-    foreach($sql->result() as $user_data)
-    {
-      $dept=$user_data->dept;
-    }
+
     $course=$this->input->post('course');
     $subject=$this->input->post('subject');
     $semester=$this->input->post('semester');
+    $total=$this->input->post('total_mark');
     $limit=$this->input->post('limit');
+    
+
+    $exam_id=$semester.$subject.rand();
     for($i=1;$i<=$limit;$i++)
     {
 
-       $student_id='sid'.$i;
-       $rating='v'.$i;
-       $mark=$this->input->post($rating);
-       $sid=$this->input->post($student_id);
-       $subject_data=array('s_id'=>$sid,'subject'=>$subject,'s_sem'=>$semester,'course'=>$course,'s_attendance'=>$mark,'dept'=>$dept);
-       $this->db->insert('subject_attendance',$subject_data);
-    }
+      $student_id='sid'.$i;
+      $rating='v'.$i;
+      $mark=$this->input->post($rating);
+      $sid=$this->input->post($student_id);
+
+
+       $exam_data=array('total_mark'=>$total,'student_id'=>$sid,'mark_obtained'=>$mark,'exam_id'=>$exam_id);
+       $this->db->insert('exam_marks',$exam_data);
+    
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
-    redirect('Professor/subject_attendance','refresh');
+    redirect('Professor/offline_mark','refresh');
+   
   }
 
-
+  }
 
 
 
