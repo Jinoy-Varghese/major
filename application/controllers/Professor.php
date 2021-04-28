@@ -561,14 +561,13 @@ class Professor extends CI_Controller
       $mark=$this->input->post($rating);
       $sid=$this->input->post($student_id);
 
-
        $exam_data=array('total_mark'=>$total,'student_id'=>$sid,'mark_obtained'=>$mark,'exam_id'=>$exam_id);
        $this->db->insert('exam_marks',$exam_data);
-    
+    }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
     redirect('Professor/offline_mark','refresh');
    
-  }
+  
 
   }
 
