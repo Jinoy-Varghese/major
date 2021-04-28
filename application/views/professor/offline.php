@@ -41,7 +41,7 @@ if($this->session->flashdata('registration_failed')){
             <li class="breadcrumb-item"><a href="#">Offline Mark</a></li>
     </nav>
     <form class="needs-validation mt-5" novalidate method="post"
-        action="<?php echo base_url();?>Professor/lab_complaint_data">
+        action="<?php echo base_url();?>Professor/offline_mark_process">
         <div class="form-row">
      
             <div class="col-md-6 col-6 mb-3">
@@ -53,18 +53,34 @@ if($this->session->flashdata('registration_failed')){
             </div>
 
             <div class="col-md-6 col-6 mb-3">
-                <label for="validationCustom01">Subject</label>
-                <input type="text" class="form-control" id="validationCustom01" name="subject" required>
-                <div class="invalid-feedback">
-                    Please provide a subject
-                </div>
+          
+                <label for="validationCustom06">Subject</label>
+
+                <select class="custom-select" id="subject" required name="subject">
+                    <option selected disabled value="select">Choose...</option>
+                    <?php 
+
+            $this->db->select('DISTINCT(subject)');
+            $this->db->from('subject_assigned');
+            $this->db->where('teacher_id',$_SESSION['u_id']);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            echo "<option value='$user_data->subject'>$user_data->subject</option>";
+            }
+            ?>
+                </select>
+
             </div>
             <div class="col-md-6 col-6 mb-3">
-                <label for="validationCustom01">Semester</label>
-                <input type="text" class="form-control" id="validationCustom01" name="sem" required>
-                <div class="invalid-feedback">
-                    Please provide semester
-                </div>
+          
+            
+                <label for="validationCustom05">Semester</label>
+
+                <select class="custom-select" id="semester" required name="semester">
+                    <option selected disabled value="">Choose...</option>
+                </select>
+      
             </div>
             <div class="col-md-6 col-6 mb-3">
                 <label for="validationCustom01">Mark</label>
@@ -76,3 +92,24 @@ if($this->session->flashdata('registration_failed')){
             </div>
             <input class="btn btn-primary" type="submit" name="complaint_reg" value="Submit">
     </form>
+    
+    <script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+    }, false);
+})();
+</script>

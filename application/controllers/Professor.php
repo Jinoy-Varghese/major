@@ -540,7 +540,18 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
-
+  public function offline_mark_process()
+  {
+    $name=$this->input->post('name');
+    $subject=$this->input->post('subject');
+    $semester=$this->input->post('semester');
+    $mark=$this->input->post('mark');
+    $insert_mark=array('name'=>$name,'subject'=>$subject,'semester'=>$semester,'mark'=>$mark);
+    $this->Professor_model->insert_mark($insert_mark);
+    $this->session->set_flashdata('insert_success',"Successfully Inserted");
+    redirect('Hod/','offline_mark');
+   
+  }
 
 
 
