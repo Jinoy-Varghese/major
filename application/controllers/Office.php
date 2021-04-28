@@ -36,11 +36,22 @@ class Office extends CI_Controller
   public function office_profile()
   {
     $this->load->view("header.php");
+    $this->load->view("amp.php");
     $this->load->view("office/dash_head.php");
     $this->load->view("office/office_profile.php");
     $this->load->view("office/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function fees_paid()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("office/dash_head.php");
+    $this->load->view("office/fees_paid.php");
+    $this->load->view("office/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+
   public function update_profile()
   {
   if($this->input->post('update_user'))

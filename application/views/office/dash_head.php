@@ -112,8 +112,7 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Office/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
+        <a href="<?php echo site_url(); ?>Office/fees_paid" class="list-group-item list-group-item-action bg-light">Fees Paid</a>
         
         
       </div>
