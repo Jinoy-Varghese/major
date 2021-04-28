@@ -107,6 +107,15 @@ class Hod extends CI_Controller
     $this->load->view("hod/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function upgrade_students()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("hod/dash_head.php");
+    $this->load->view("hod/upgrade_students.php");
+    $this->load->view("hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function add_course_process()
   {
     $id=$_SESSION['u_id'];
@@ -412,6 +421,24 @@ class Hod extends CI_Controller
      $this->session->set_flashdata('insert_success',"Successfully Inserted");
      redirect('Hod/news','refresh');
     
+  }
+  public function view_sem_num()
+  {
+        $depart_course =$_POST['post_course']; // department id
+      
+      $users_arr = array();
+          
+        $this->db->select('sem_num');
+        $this->db->from('course_list');
+        $sql=$this->db->where('course_name',$depart_course)->get();
+        foreach($sql->result() as $user_data)
+        {
+          $sem_num=$user_data->sem_num;
+        }
+        $users_arr[] = array("sem_num" => $sem_num);
+      
+      // encoding array to json format
+      echo json_encode($users_arr);
   }
 
 

@@ -66,7 +66,6 @@ if(!isset($_SESSION['u_id']))
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
         <li class="nav-item dropdown mr-4">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <?php echo $user_name->name; ?>
@@ -131,6 +130,8 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>/hod/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a> 
         <a href="<?php echo base_url('/hod/events'); ?>" class="list-group-item list-group-item-action bg-light">Notice Board</a> 
         <a href="<?php echo base_url('/hod/news'); ?>" class="list-group-item list-group-item-action bg-light">News</a> 
+        <a href="<?php echo base_url('/hod/upgrade_students'); ?>" class="list-group-item list-group-item-action bg-light">Upgrade Students</a> 
+
         
       </div>
     </div>
