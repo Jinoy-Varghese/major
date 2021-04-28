@@ -532,7 +532,14 @@ class Professor extends CI_Controller
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
     redirect('Professor/subject_attendance','refresh');
   }
-
+  public function offline_mark()
+  {
+    $this->load->view("header.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/offline.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
 
 
 

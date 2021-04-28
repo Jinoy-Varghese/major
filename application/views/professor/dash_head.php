@@ -227,6 +227,7 @@ if(!isset($_SESSION['u_id']))
 
 
         <a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>
+        <a href="<?php echo site_url(); ?>Professor/offline_mark" class="list-group-item list-group-item-action bg-light">Submit Offline Mark </a>
 
 
 
