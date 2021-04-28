@@ -560,8 +560,8 @@ class Professor extends CI_Controller
       $rating='v'.$i;
       $mark=$this->input->post($rating);
       $sid=$this->input->post($student_id);
-
-       $exam_data=array('total_mark'=>$total,'student_id'=>$sid,'mark_obtained'=>$mark,'exam_id'=>$exam_id);
+      $my_mark=($mark*10)/$total;
+       $exam_data=array('subject'=>$subject,'student_id'=>$sid,'mark_obtained'=>$my_mark,'exam_id'=>$exam_id,'course'=>$course,'sem'=>$semester);
        $this->db->insert('exam_marks',$exam_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
