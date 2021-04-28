@@ -540,20 +540,37 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  
   public function offline_mark_process()
   {
-    $name=$this->input->post('name');
+
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('professor_data','professor_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+    $course=$this->input->post('course');
     $subject=$this->input->post('subject');
     $semester=$this->input->post('semester');
-    $mark=$this->input->post('mark');
-    $insert_mark=array('name'=>$name,'subject'=>$subject,'semester'=>$semester,'mark'=>$mark);
-    $this->Professor_model->insert_mark($insert_mark);
-    $this->session->set_flashdata('insert_success',"Successfully Inserted");
-    redirect('Hod/','offline_mark');
-   
+    $limit=$this->input->post('limit');
+    for($i=1;$i<=$limit;$i++)
+    {
+
+       $student_id='sid'.$i;
+       $rating='v'.$i;
+       $mark=$this->input->post($rating);
+       $sid=$this->input->post($student_id);
+       $insert_mark=array('s_id'=>$sid,'subject'=>$subject,'semester'=>$semester,'course'=>$course,'mark'=>$mark);
+       $this->db->insert('offline_mark',$insert_mark);
+    }
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/offline_mark','refresh');
   }
-
-
 
 
 
