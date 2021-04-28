@@ -126,7 +126,7 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationCustom07">Course</label>
 
                 <select class="custom-select" id="course" required name="course">
@@ -164,7 +164,7 @@ if($this->session->flashdata('insert_failed')){
             </div>
 
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationCustom06">Subject</label>
 
                 <select class="custom-select" id="subject" required name="subject">
@@ -184,7 +184,7 @@ if($this->session->flashdata('insert_failed')){
 
             </div>
 
-            <div class="col-md-4 mb-3">
+            <div class="col-md-3 mb-3">
                 <label for="validationCustom05">Semester</label>
 
                 <select class="custom-select" id="semester" required name="semester">
@@ -198,7 +198,12 @@ if($this->session->flashdata('insert_failed')){
                 </select>
 
             </div>
-
+            <div class="col-md-3 mb-3">
+            <label for="validationCustom03">Total Mark</label>
+                <input type="text" class="form-control" id="validationCustom03" name="u_address" required>
+                <div class="invalid-feedback">
+                    Please provide mark</div>
+            </div>
             <div class=" col-12 p-0 mt-5 ">
                 <div class="col-12 col-md-12 p-0">
 
