@@ -200,7 +200,7 @@ if($this->session->flashdata('insert_failed')){
             </div>
             <div class="col-md-3 mb-3">
             <label for="validationCustom03">Total Mark</label>
-                <input type="text" class="form-control" id="validationCustom03" name="u_address" required>
+                <input type="text" class="form-control" id="validationCustom03" name="total_mark" required>
                 <div class="invalid-feedback">
                     Please provide mark</div>
             </div>
