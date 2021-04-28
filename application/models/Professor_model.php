@@ -45,12 +45,7 @@ class Professor_model extends CI_Model {
   {
     $this->db->where('exam_id',$exam_id)->update('exam_questions',$exam_data);
   }
-  public function insert_mark($insert_mark)
-  {
-  $this->db->insert('offline_mark',$insert_mark);
-  }
-
-  // ------------------------------------------------------------------------
+----------------------------------------------------------
 
 }
 
