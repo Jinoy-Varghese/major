@@ -40,6 +40,30 @@ class Parents extends CI_Controller
     $this->load->view("parents/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function view_attendance()
+  {
+    $this->load->view("header.php");
+    $this->load->view("parents/dash_head.php");
+    $this->load->view("parents/view_attendance.php");
+    $this->load->view("parents/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function view_results()
+  {
+    $this->load->view("header.php");
+    $this->load->view("parents/dash_head.php");
+    $this->load->view("parents/view_results.php");
+    $this->load->view("parents/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function view_assignments()
+  {
+    $this->load->view("header.php");
+    $this->load->view("parents/dash_head.php");
+    $this->load->view("parents/view_assignments.php");
+    $this->load->view("parents/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function update_profile()
   {
   if($this->input->post('update_user'))
@@ -113,7 +137,5 @@ class Parents extends CI_Controller
    $this->session->set_flashdata('update_success',"Successfully Updated");
 
    redirect('Parents/parent_profile','refresh');
-   
-
  }
 } 
