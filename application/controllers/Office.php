@@ -51,6 +51,15 @@ class Office extends CI_Controller
     $this->load->view("office/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function fees_offline_paid()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("office/dash_head.php");
+    $this->load->view("office/fees_offline.php");
+    $this->load->view("office/dash_footer.php");
+    $this->load->view("footer.php");
+  }
 
   public function update_profile()
   {

@@ -113,6 +113,8 @@ if(!isset($_SESSION['u_id']))
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Office/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="<?php echo site_url(); ?>Office/fees_paid" class="list-group-item list-group-item-action bg-light">Fees Paid</a>
+        <a href="<?php echo site_url(); ?>Office/fees_offline_paid" class="list-group-item list-group-item-action bg-light">Pay Fee Offline</a>
+        
         
         
       </div>
