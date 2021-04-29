@@ -402,6 +402,9 @@ for ($i=0; $i <$no_subjects ; $i++)
 ?>
 </tr>
 
+
+
+
 <?php 
 $id=$_SESSION['u_id'];
 $this->db->select('*');
@@ -424,7 +427,7 @@ foreach($sql->result() as $user_data)
 $sem=$user_data->semester;
 }
 
-$this->db->select('*');
+$this->db->select('distinct(name)');
 $this->db->from('users');
 $this->db->join('student_data','student_data.email=users.email');
 $this->db->where('student_data.dept',$dept);
@@ -433,19 +436,31 @@ $this->db->where('s_status',2);
 $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
-  $mail=$user_data->email;
+  $name=$user_data->name;
 }
 
 $this->db->select('*');
-$this->db->from('users');
-$this->db->join('student_data','student_data.email=users.email');
-$this->db->where('student_data.dept',$dept);
-$this->db->where('s_sem',$sem);
-$this->db->where('s_status',2);
+$this->db->from('assignment');
+$this->db->where('a_email','arun@gmail.com');
+$this->db->order_by('a_email','ASC');
+$this->db->order_by('a_subject','ASC');
 $sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $year[]=date('Y',strtotime($user_data->time_stamp));
-}
-
+$roll_no=1;
 ?>
+<th></th>
+<th></th>
+<?php
+foreach($sql->result() as $user_data)
+{
+?>
+<th></th>
+<th><?php echo $user_data->mark;?></th>
+<th></th>
+<th></th>
+<?php
+}
+?>
+
+
+
+</table>
