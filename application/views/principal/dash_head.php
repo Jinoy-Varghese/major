@@ -67,7 +67,6 @@ if(!isset($_SESSION['u_id']))
       <ul class="navbar-nav my-2 my-lg-0">
         <li class="nav-item active"><a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a></li>
         <li class="nav-item"><a class="nav-link" href="#">Link</a></li>
-        <li class="nav-item"><a class="nav-link disabled" href="#">Disabled</a></li>
         <li class="nav-item dropdown mr-4">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
             <?php echo $user_name->name; ?>
@@ -115,8 +114,7 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Principal/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Principal/calendar" class="list-group-item list-group-item-action bg-light">Calendar</a>
-        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
+        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">View Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
             <a href='<?php echo site_url(); ?>Principal/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
             <a href='<?php echo site_url(); ?>Principal/view_hod' class="drop-down-a"><li class="drop-down-li">View HOD</li></a>
@@ -126,9 +124,7 @@ if(!isset($_SESSION['u_id']))
 
           </ul>
  
-        <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="<?php echo site_url(); ?>Principal/active_meetings" class="list-group-item list-group-item-action bg-light">Active Meetings</a>
         
         
       </div>

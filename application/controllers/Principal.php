@@ -98,6 +98,14 @@ class Principal extends CI_Controller
     $this->load->view("principal/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function active_meetings()
+  {
+    $this->load->view("header.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/active_meetings.php");
+    $this->load->view("principal/dash_footer.php");
+    $this->load->view("footer.php");
+  }
 
   public function update_profile()
     {
