@@ -129,7 +129,7 @@ if($this->session->flashdata('insert_failed')){
                                 <th data-field="no." data-sortable="true">no.</th>
                                 <th data-field="name" data-sortable="true">Name</th>
 
-                                <th data-field="edit">Mark</th>
+                                <th data-field="edit">Action</th>
                             </tr>
 
                         </thead>
@@ -207,7 +207,7 @@ $(document).ready(function() {
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
                         "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
                         j + "'><div class='form-row col-12'><input type='hidden' name='sid" + j + "' value='" +
-                        s_id + "'><div class='col-12 text-center'><input type='number' name='v"+j+"' required value='' class='form-control'> </div></div></td></tr>");
+                        s_id + "'><div class='col-12 text-center'><input type='button' name='v"+j+"' required value='Paid' class='form-control'> </div></div></td></tr>");
                     j++;
 
                 }
