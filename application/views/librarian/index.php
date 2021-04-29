@@ -33,7 +33,10 @@ am4core.ready(function() {
     ]
 
 
-
+    let title = chart.titles.create();
+    title.text = "Most issued books";
+    title.fontSize = 22;
+    
     var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
     categoryAxis.dataFields.category = "country";
     categoryAxis.renderer.grid.template.location = 0;
@@ -107,6 +110,10 @@ am4core.ready(function() {
             ?>
     ];
 
+
+    let title = chart.titles.create();
+    title.text = "Book issued on last 7 days";
+    title.fontSize = 20;
     // Create axes
     var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
     dateAxis.renderer.labels.template.fontSize = 8;
@@ -185,7 +192,7 @@ am4core.ready(function() {
 
         <div class="col-lg-4 col-md-4 mt-1 p-0">
             <div class="shadow col-md-12 p-0 justify-content-center align-items-center d-flex" style="height:100%;">
-                <div id="piechart" class="col-md-12 p-0" style="height:230px;"></div>
+                <div id="piechart" class="col-md-12 p-0" style="height:300px;"></div>
             </div>
         </div>
     </div>
