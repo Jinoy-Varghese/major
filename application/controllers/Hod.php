@@ -440,7 +440,21 @@ class Hod extends CI_Controller
       // encoding array to json format
       echo json_encode($users_arr);
   }
-
+  public function upgrade_student_process()
+  {
+    $course=$this->input->post('course');
+    $semester=$this->input->post('semester');
+    $new_sem=substr($semester,1);
+    $new_sem=(int)$new_sem;
+    $new_sem++;
+    $new_sem='s'.$new_sem;
+    $data=array('s_sem'=>$new_sem);
+    $this->db->where('s_sem',$semester);
+    $this->db->where('s_course',$course);
+    $this->db->update('student_data',$data);
+    $this->session->set_flashdata('insert_success',"Sucessfully verified");
+    redirect('Hod/upgrade_students','refresh');
+  }
 
 
 

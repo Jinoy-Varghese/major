@@ -4,7 +4,7 @@
 if($this->session->flashdata('insert_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> Fees updated successfully.
+  <strong>Success!</strong> Student semester updated successfully.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -56,7 +56,7 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-    <form class=" mt-5" method="post" action="<?php echo base_url();?>Super_admin/upgrade_student_process" id="submitmyForm">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>Hod/upgrade_student_process" id="submitmyForm">
 
         <div class="form-row mt-5">
 
