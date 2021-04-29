@@ -79,8 +79,13 @@ if(!isset($_SESSION['u_id']))
       <div class="text-center font-weight-bold"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
-        <a href="<?php echo site_url(); ?>Parent/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="<?php echo site_url(); ?>Parent/" class="list-group-item list-group-item-action bg-light">My Student</a>
+        <a href="<?php echo site_url();?>Parents" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">My Student Details<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul">
+            <a href='<?php echo site_url(); ?>Parents/view_attendance' class="drop-down-a"><li class="drop-down-li">View Attendance</li></a>
+            <a href='<?php echo site_url(); ?>Parents/view_results' class="drop-down-a"><li class="drop-down-li">View Results</li></a>
+            <a href='<?php echo site_url(); ?>Parents/view_assignments' class="drop-down-a"><li class="drop-down-li">View Assignments</li></a>
+          </ul>
         <a href="<?php echo site_url(); ?>Parent/" class="list-group-item list-group-item-action bg-light">Event</a>
       </div>
     </div>
