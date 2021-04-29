@@ -120,4 +120,162 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-    <form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>office/offline_fees_process">
+    <div class="form-row mt-5">
+
+
+
+<div class="col-md-3 mb-3">
+    <label for="validationCustom07">Course</label>
+
+    <select class="custom-select" id="course" required name="course">
+        <option selected disabled value="">Choose...</option>
+        <?php 
+
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('office_data','office_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+ $dept=$user_data->dept;
+}
+
+
+$this->db->select('DISTINCT(sub_course)');
+$this->db->from('subject_assigned');
+$this->db->where('teacher_id',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $subject_data)
+{
+echo "<option value='$subject_data->sub_course'>$subject_data->sub_course</option>";
+}
+?>
+    </select>
+    <div class="valid-feedback">
+        Looks good!
+    </div>
+    <div class="invalid-feedback">
+        Please enter a course.
+    </div>
+</div>
+
+
+
+<div class="col-md-3 mb-3">
+    <label for="validationCustom05">Semester</label>
+
+    <select class="custom-select" id="semester" required name="semester">
+        <option selected disabled value="">Choose...</option>
+
+
+
+
+
+
+    </select>
+
+</div>
+
+            <div class=" col-12 p-0 mt-5 ">
+                <div class="col-12 col-md-12 p-0">
+
+
+                    <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
+                        data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
+                        data-visible-search="false">
+                        <thead class="table-primary">
+
+                            <tr>
+                                <th data-field="no." data-sortable="true">no.</th>
+                                <th data-field="name" data-sortable="true">Name</th>
+
+                                <th data-field="edit">Mark</th>
+                            </tr>
+
+                        </thead>
+                        <tbody id="table_body">
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+            </div>
+        </div>
+        <div class="form-row mt-4">
+            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit">
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $("#subject").change(function() {
+        var subject = $(this).val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/office/view_subject_ajax',
+            type: 'post',
+            data: {
+                post_subject: subject
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+
+                $("#semester").empty();
+                $("#semester").append(
+                    "<option disabled value='select' selected>--Select--</option>");
+                for (var i = 0; i < len; i++) {
+                    var sem = response[i]['sem'];
+
+                    $("#semester").append("<option value='" + sem + "'>" + sem +
+                        "</option>");
+
+                }
+            }
+        });
+    });
+
+    $("#semester").change(function() {
+        var semester = $(this).val();
+        var course = $('#course').val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/office/view_students_ajax',
+            type: 'post',
+            data: {
+                post_semester: semester,
+                post_course: course
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#table_body").empty();
+
+                for (var i = 0; i < len; i++) {
+                    var name = response[i]['name'];
+                    var s_id = response[i]['s_id'];
+
+                    $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
+                        "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
+                        j + "'><div class='form-row col-12'><input type='hidden' name='sid" + j + "' value='" +
+                        s_id + "'><div class='col-12 text-center'><input type='number' name='v"+j+"' required value='' class='form-control'> </div></div></td></tr>");
+                    j++;
+
+                }
+
+
+            }
+        });
+    });
+
+});
+</script>

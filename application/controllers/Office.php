@@ -60,6 +60,35 @@ class Office extends CI_Controller
     $this->load->view("office/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function offline_fees_process()
+  {
+    $id=$_SESSION['u_id'];
+
+    $course=$this->input->post('course');
+    $semester=$this->input->post('semester');
+    $total=$this->input->post('total_mark');
+    $limit=$this->input->post('limit');
+    
+
+    $exam_id=$semester.$subject.rand();
+    for($i=1;$i<=$limit;$i++)
+    {
+
+      $student_id='sid'.$i;
+      $rating='v'.$i;
+      $mark=$this->input->post($rating);
+      $sid=$this->input->post($student_id);
+      $my_mark=($mark*10)/$total;
+       $exam_data=array('subject'=>$subject,'student_id'=>$sid,'mark_obtained'=>$my_mark,'exam_id'=>$exam_id,'course'=>$course,'sem'=>$semester);
+       $this->db->insert('exam_marks',$exam_data);
+    }
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/offline_mark','refresh');
+   
+  
+
+  }
+
 
   public function update_profile()
   {
@@ -136,4 +165,53 @@ public function upload_image()
   redirect('Office/office_profile','refresh');
 
 }
+public function view_subject_ajax()
+{
+  
+
+      $depart_sub =$_POST['post_subject']; // department id
+    
+
+    $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('subject_assigned');
+      $sql=$this->db->where('subject',$depart_sub)->get();
+      foreach($sql->result() as $user_data)
+      {
+        $sem=$user_data->sem;
+        $users_arr[] = array("sem" => $sem);
+      }
+
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
+
+public function view_students_ajax()
+{
+  
+    $depart_sem =$_POST['post_semester']; 
+    $depart_course=$_POST['post_course'];
+    $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('users');
+      $this->db->join('student_data','student_data.email=users.email');
+      $this->db->where('s_course',$depart_course);
+      $this->db->where('s_status','2');
+      $sql=$this->db->where('s_sem',$depart_sem)->get();
+      
+      foreach($sql->result() as $user_data)
+      {
+        $name=$user_data->name;
+        $s_id=$user_data->email;
+        $users_arr[] = array("name" => $name,"s_id"=>$s_id);
+      }
+      
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
+
 }   
