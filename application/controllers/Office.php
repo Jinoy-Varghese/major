@@ -77,7 +77,7 @@ class Office extends CI_Controller
       $rating='v'.$i;
       $mark=$this->input->post($rating);
       $sid=$this->input->post($student_id);
-       $fee_data=array('paid_by'=>$sid,'status'=>$mark,'course'=>$course,'sem'=>$semester,'amount'=>$amount);
+       $fee_data=array('paid_by'=>$sid,'course'=>$course,'sem'=>$semester,'amount'=>$amount);
        $this->db->insert('fees_paid',$fee_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
