@@ -213,5 +213,22 @@ public function view_students_ajax()
     // encoding array to json format
     echo json_encode($users_arr);
 }
-
+public function view_sem_num()
+{
+      $depart_course =$_POST['post_course']; // department id
+    
+    $users_arr = array();
+        
+      $this->db->select('sem_num');
+      $this->db->from('course_list');
+      $sql=$this->db->where('course_name',$depart_course)->get();
+      foreach($sql->result() as $user_data)
+      {
+        $sem_num=$user_data->sem_num;
+      }
+      $users_arr[] = array("sem_num" => $sem_num);
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
 }   
