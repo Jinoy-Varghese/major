@@ -50,7 +50,7 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-    <form class=" mt-5" method="post" action="<?php echo base_url();?>office/offline_fee_process">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>office/offline_fees_process">
 
         <div class="form-row mt-5">
 
@@ -106,7 +106,7 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Fee Amount</label>
 
-                <input type="number" class="form-control" id="validationCustom02" value="" name="fees" required>
+                <input type="number" class="form-control" id="validationCustom02" value="" name="amount" required>
 
                 <div class="valid-feedback">
                     Looks good!
@@ -136,15 +136,16 @@ if($this->session->flashdata('insert_failed')){
                         <tbody id="table_body">
                         </tbody>
                     </table>
+                    <div class="form-row mt-4">
+            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit">
+        </div>
 
 
 
                 </div>
             </div>
         </div>
-        <div class="form-row mt-4">
-            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit">
-        </div>
+      
 
     </form>
 </div>
@@ -207,7 +208,7 @@ $(document).ready(function() {
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
                         "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
                         j + "'><div class='form-row col-12'><input type='hidden' name='sid" + j + "' value='" +
-                        s_id + "'><div class='col-12 text-center'><input type='button' name='v"+j+"' required value='Paid' class='form-control'> </div></div></td></tr>");
+                        s_id + "'><div class='col-12 text-center'><input type='radio' name='v"+j+"' required value='' class='form-control'>Paid</div></div></td></tr>");
                     j++;
 
                 }

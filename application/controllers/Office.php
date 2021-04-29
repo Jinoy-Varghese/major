@@ -66,11 +66,10 @@ class Office extends CI_Controller
 
     $course=$this->input->post('course');
     $semester=$this->input->post('semester');
-    $total=$this->input->post('total_mark');
+    $amount=$this->input->post('amount');
     $limit=$this->input->post('limit');
     
 
-    $exam_id=$semester.$subject.rand();
     for($i=1;$i<=$limit;$i++)
     {
 
@@ -78,12 +77,11 @@ class Office extends CI_Controller
       $rating='v'.$i;
       $mark=$this->input->post($rating);
       $sid=$this->input->post($student_id);
-      $my_mark=($mark*10)/$total;
-       $exam_data=array('subject'=>$subject,'student_id'=>$sid,'mark_obtained'=>$my_mark,'exam_id'=>$exam_id,'course'=>$course,'sem'=>$semester);
-       $this->db->insert('exam_marks',$exam_data);
+       $fee_data=array('paid_by'=>$sid,'status'=>$mark,'course'=>$course,'sem'=>$semester,'amount'=>$amount);
+       $this->db->insert('fees_paid',$fee_data);
     }
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
-    redirect('Professor/offline_mark','refresh');
+    redirect('Office/fees_offline_paid','refresh');
    
   
 
@@ -164,28 +162,6 @@ public function upload_image()
 
   redirect('Office/office_profile','refresh');
 
-}
-public function view_subject_ajax()
-{
-  
-
-      $depart_sub =$_POST['post_subject']; // department id
-    
-
-    $users_arr = array();
-        
-      $this->db->select('*');
-      $this->db->from('subject_assigned');
-      $sql=$this->db->where('subject',$depart_sub)->get();
-      foreach($sql->result() as $user_data)
-      {
-        $sem=$user_data->sem;
-        $users_arr[] = array("sem" => $sem);
-      }
-
-    
-    // encoding array to json format
-    echo json_encode($users_arr);
 }
 
 public function view_students_ajax()
