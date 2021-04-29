@@ -263,8 +263,8 @@ am4core.ready(function() {
              foreach($sql->result() as $news_data)
            {
             $image=$news_data->news_file;
-             echo "$news_data->news";
-             echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail' style='height:150px;'>";
+            echo "<div class='row'><div class='col-12'>$news_data->news</div></div><br>";
+            echo "<div class='row'><div class='col-12'><img src='".base_url($image)."' class='img-fluid img-thumbnail' style='height:150px;'></div></div><br>";
            }?></marquee>
             </div>
         </div>
