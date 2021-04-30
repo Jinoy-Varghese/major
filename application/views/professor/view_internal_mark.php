@@ -233,47 +233,64 @@ $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
   $s_sem=$user_data->semester;
+  $s_course=$user_data->course;
+}
+$s_sem=substr($s_sem,1);
+$total_subject=0;
+$total_theory=0;
+$total_lab=0;
+
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('sub_sem',$s_sem);
+$this->db->where('is_lab','theory');
+$sql=$this->db->where('sub_course',$s_course)->get();
+foreach($sql->result() as $user_data)
+{
+  echo '<th colspan="4">'.$user_data->sub_name.'</th>';
+  $total_subject++;
+  $total_theory++;
 }
 $this->db->select('*');
 $this->db->from('subjects');
 $this->db->where('sub_sem',$s_sem);
+$this->db->where('is_lab','lab');
+$sql=$this->db->where('sub_course',$s_course)->get();
+foreach($sql->result() as $user_data)
+{
+  echo '<th colspan="5">'.$user_data->sub_name.'</th>';
+  $total_subject++;
+  $total_lab++;
+}
 
 ?>
-<th colspan="4">Subject 1</th>
+
 
 </tr>
 
 <tr>
+
+
+
+
 <th>A</th>
 <th>Assig</th>
 <th>T</th>
 <th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
-<th>A</th>
-<th>Assig</th>
-<th>T</th>
-<th>Total</th>
+
+
+
 <th>A</th>
 <th>R</th>
 <th>T</th>
 <th>PPS</th>
 <th>Total</th>
-<th>A</th>
-<th>R</th>
-<th>T</th>
-<th>PPS</th>
-<th>Total</th>
+
+
+
+
+
+
 </tr>
 
 <tr>

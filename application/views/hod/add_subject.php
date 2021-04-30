@@ -33,12 +33,34 @@ if($this->session->flashdata('insert_failed')){
         <div class="form-row">
             
             <div class="col-md-3 mb-3">
-                <label for="validationCustom04">Gradguation</label>
-                <select class="custom-select" id="validationCustom04" name="gradguation" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option value="UG">UG</option>
-                    <option value="PG">PG</option>
-                </select>
+                <label for="validationCustom04">Course</label>
+                <select class="custom-select" id="validationCustom08" required name="course">
+            <option selected disabled value="">Choose...</option>
+            <?php 
+
+            $id=$_SESSION['u_id'];
+            $this->db->select('*');
+            $this->db->from('users');
+            $this->db->join('hod_data','hod_data.email=users.email');
+            $this->db->where('users.email',$id);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            $dept=$user_data->dept;
+            }
+
+
+            $this->db->distinct();
+            $this->db->select('course_name');
+            $this->db->from('course_list');
+            $this->db->where('department',$dept);
+            $sql=$this->db->get();
+            foreach($sql->result() as $course_data)
+            {
+            echo "<option value='$course_data->course_name'>$course_data->course_name</option>";
+            }
+            ?>
+            </select>
                 <div class="invalid-feedback">
                     Please select a Gradguation.
                 </div>
