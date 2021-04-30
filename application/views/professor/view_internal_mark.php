@@ -215,7 +215,7 @@ foreach($sql->result() as $user_data)
 </div>  
 
 <div class="col-md-12">
-<table class="table table-bordered text-center text-nowrap mt-4" style="font-size:10px;">
+<table class="table table-bordered text-center text-nowrap mt-4" style="font-size:10px; width:100%;">
 
 <tr>
 <th rowspan="3" class="align-middle">Candidate Code</th>
@@ -224,243 +224,121 @@ foreach($sql->result() as $user_data)
 </tr>
 
 <tr>
-<?php 
-$id=$_SESSION['u_id'];
-$this->db->select('*');
-$this->db->from('users');
-$this->db->join('professor_data','professor_data.email=users.email');
-$this->db->where('users.email',$id);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $dept=$user_data->dept;
-}
-
-
-$this->db->select('*');
-$this->db->from('incharge_list');
-$this->db->where('user_incharge',$_SESSION['u_id']);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-$sem=$user_data->semester;
-}
-
-$this->db->select('distinct(s_sem)');
-$this->db->from('users');
-$this->db->join('student_data','student_data.email=users.email');
-$this->db->where('student_data.dept',$dept);
-$this->db->where('s_sem',$sem);
-$this->db->where('s_status',2);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $sem=substr($user_data->s_sem,1);
-}
-
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('sub_sem',$sem);
-$this->db->where('is_lab','theory');
-$this->db->order_by('sub_name','ASC');
-$sql=$this->db->get();
-foreach($sql->result() as $subject)
-{
-  echo "<th colspan='4'>".$subject->sub_name."</th>";
-}
-
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('sub_sem',$sem);
-$this->db->where('is_lab','lab');
-$this->db->order_by('sub_name','ASC');
-$sql=$this->db->get();
-foreach($sql->result() as $subject)
-{
-  echo "<th colspan='5'>".$subject->sub_name."</th>";
-}
-?>
+<th colspan="4">Subject 1</th>
+<th colspan="4">Subject 2</th>
+<th colspan="4">Subject 3</th>
+<th colspan="4">Subject 4</th>
+<th colspan="4">Subject 5</th>
+<th colspan="5">Subject 6</th>
+<th colspan="5">Subject 7</th>
 </tr>
+
 <tr>
-
-<?php
-$id=$_SESSION['u_id'];
-$this->db->select('*');
-$this->db->from('users');
-$this->db->join('professor_data','professor_data.email=users.email');
-$this->db->where('users.email',$id);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $dept=$user_data->dept;
-}
-
-
-$this->db->select('*');
-$this->db->from('incharge_list');
-$this->db->where('user_incharge',$_SESSION['u_id']);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-$sem=substr($user_data->semester,1);
-}
-
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('subjects.sub_dept',$dept);
-$this->db->where('sub_sem',$sem);
-$this->db->where('is_lab','theory');
-$sql=$this->db->get();
-$no_subjects=$sql->num_rows();
-for ($i=0; $i <$no_subjects ; $i++) 
-{ 
-?>
 <th>A</th>
 <th>Assig</th>
 <th>T</th>
 <th>Total</th>
-<?php
-}
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('subjects.sub_dept',$dept);
-$this->db->where('sub_sem',$sem);
-$this->db->where('is_lab','lab');
-$sql=$this->db->get();
-$no_subjects=$sql->num_rows();
-for ($i=0; $i <$no_subjects ; $i++) 
-{ 
-?>
+<th>A</th>
+<th>Assig</th>
+<th>T</th>
+<th>Total</th>
+<th>A</th>
+<th>Assig</th>
+<th>T</th>
+<th>Total</th>
+<th>A</th>
+<th>Assig</th>
+<th>T</th>
+<th>Total</th>
+<th>A</th>
+<th>Assig</th>
+<th>T</th>
+<th>Total</th>
 <th>A</th>
 <th>R</th>
 <th>T</th>
 <th>PPS</th>
 <th>Total</th>
-<?php
-}
-?>
+<th>A</th>
+<th>R</th>
+<th>T</th>
+<th>PPS</th>
+<th>Total</th>
 </tr>
 
 <tr>
 <th></th>
 <th></th>
-<?php
-$id=$_SESSION['u_id'];
-$this->db->select('*');
-$this->db->from('users');
-$this->db->join('professor_data','professor_data.email=users.email');
-$this->db->where('users.email',$id);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $dept=$user_data->dept;
-}
-
-
-$this->db->select('*');
-$this->db->from('incharge_list');
-$this->db->where('user_incharge',$_SESSION['u_id']);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-$sem=substr($user_data->semester,1);
-}
-
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('subjects.sub_dept',$dept);
-$this->db->where('sub_sem',$sem);
-$this->db->where('is_lab','theory');
-$sql=$this->db->get();
-$no_subjects=$sql->num_rows();
-for ($i=0; $i <$no_subjects ; $i++) 
-{ 
-?>
 <th>(5)</th>
 <th>(5)</th>
 <th>(10)</th>
 <th>(20)</th>
-<?php
-}
-$this->db->select('*');
-$this->db->from('subjects');
-$this->db->where('subjects.sub_dept',$dept);
-$this->db->where('sub_sem',$sem);
-$this->db->where('is_lab','lab');
-$sql=$this->db->get();
-$no_subjects=$sql->num_rows();
-for ($i=0; $i <$no_subjects ; $i++) 
-{ 
-?>
+<th>(5)</th>
+<th>(5)</th>
+<th>(10)</th>
+<th>(20)</th>
+<th>(5)</th>
+<th>(5)</th>
+<th>(10)</th>
+<th>(20)</th>
+<th>(5)</th>
+<th>(5)</th>
+<th>(10)</th>
+<th>(20)</th>
+<th>(5)</th>
+<th>(5)</th>
+<th>(10)</th>
+<th>(20)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(20)</th>
-<?php
-}
-?>
+<th>(5)</th>
+<th>(5)</th>
+<th>(5)</th>
+<th>(5)</th>
+<th>(20)</th>
+</tr>
+
+<tr>
+<th>32018806010</th>
+<th>Arun Ayyappan</th>
+<th>5</th>
+<th>5</th>
+<th>10</th>
+<th>20</th>
+<th>5</th>
+<th>5</th>
+<th>10</th>
+<th>20</th>
+<th>5</th>
+<th>5</th>
+<th>10</th>
+<th>20</th>
+<th>5</th>
+<th>5</th>
+<th>10</th>
+<th>20</th>
+<th>5</th>
+<th>5</th>
+<th>10</th>
+<th>20</th>
+<th>5</th>
+<th>5</th>
+<th>5</th>
+<th>5</th>
+<th>20</th>
+<th>5</th>
+<th>5</th>
+<th>5</th>
+<th>5</th>
+<th>20</th>
 </tr>
 
 
 
 
-<?php 
-$id=$_SESSION['u_id'];
-$this->db->select('*');
-$this->db->from('users');
-$this->db->join('professor_data','professor_data.email=users.email');
-$this->db->where('users.email',$id);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $dept=$user_data->dept;
-}
-
-
-$this->db->select('*');
-$this->db->from('incharge_list');
-$this->db->where('user_incharge',$_SESSION['u_id']);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-$sem=$user_data->semester;
-}
-
-$this->db->select('distinct(name)');
-$this->db->from('users');
-$this->db->join('student_data','student_data.email=users.email');
-$this->db->where('student_data.dept',$dept);
-$this->db->where('s_sem',$sem);
-$this->db->where('s_status',2);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-  $name=$user_data->name;
-}
-
-$this->db->select('*');
-$this->db->from('assignment');
-$this->db->where('a_email','arun@gmail.com');
-$this->db->order_by('a_email','ASC');
-$this->db->order_by('a_subject','ASC');
-$sql=$this->db->get();
-$roll_no=1;
-?>
-<th></th>
-<th></th>
-<?php
-foreach($sql->result() as $user_data)
-{
-?>
-<th></th>
-<th><?php echo $user_data->mark;?></th>
-<th></th>
-<th></th>
-<?php
-}
-?>
-
-
 
 </table>
+</div>

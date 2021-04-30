@@ -221,6 +221,13 @@ if(!isset($_SESSION['u_id']))
 
 
         <a href="<?php echo site_url(); ?>Professor/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meeting <i class="fas fa-video float-right mt-1"></i></a>
+
+        <div class="list-group-item  bg-light sub-menu4"><a href='#drop-down4' class="drop-down-n w-100">Lab Data<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul4" style="background:#DAE0E5;">
+            <a href='<?php echo site_url(); ?>Professor/create_exam' class="drop-down-a"><li class="drop-down-li">Record</li></a>
+            <a href='<?php echo site_url(); ?>Professor/monitor_student' class="drop-down-a"><li class="drop-down-li">PPS</li></a>
+          </ul>
+
         <a href="<?php echo site_url(); ?>Professor/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
         <a href="<?php echo site_url(); ?>Professor/assignments" class="list-group-item list-group-item-action bg-light">Assignments</a>
         <a href="<?php echo site_url(); ?>Professor/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a>

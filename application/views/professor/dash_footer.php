@@ -22,4 +22,9 @@ $('.drop-down-ul3').hide();
 	$(".drop-down-ul3").slideToggle("100");
   $(this).find(".angle").toggleClass("fa-angle-up fa-angle-down");
 });
+$('.drop-down-ul4').hide();
+  $(".sub-menu4").click(function () {
+	$(".drop-down-ul4").slideToggle("100");
+  $(this).find(".angle").toggleClass("fa-angle-up fa-angle-down");
+});
 </script>
