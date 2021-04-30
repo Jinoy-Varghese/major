@@ -172,6 +172,26 @@ class Professor extends CI_Controller
   $this->load->view("Professor/dash_footer.php");
   $this->load->view("footer.php");
  }
+ public function lab_record()
+ {
+  $this->load->view("header.php");
+  $this->load->view("amp.php");
+  $this->load->view("professor/dash_head.php");
+  $this->load->view("Professor/lab_record.php");
+  $this->load->view("Professor/dash_footer.php");
+  $this->load->view("footer.php");
+ }
+ public function lab_pps()
+ {
+  $this->load->view("header.php");
+  $this->load->view("amp.php");
+  $this->load->view("professor/dash_head.php");
+  $this->load->view("Professor/lab_pps.php");
+  $this->load->view("Professor/dash_footer.php");
+  $this->load->view("footer.php");
+ }
+
+
  public function edit_exam()
  {
    $exam_id=$this->input->post('exam_id');
