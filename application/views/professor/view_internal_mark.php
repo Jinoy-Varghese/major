@@ -224,13 +224,23 @@ foreach($sql->result() as $user_data)
 </tr>
 
 <tr>
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $s_sem=$user_data->semester;
+}
+$this->db->select('*');
+$this->db->from('subjects');
+$this->db->where('sub_sem',$s_sem);
+
+?>
 <th colspan="4">Subject 1</th>
-<th colspan="4">Subject 2</th>
-<th colspan="4">Subject 3</th>
-<th colspan="4">Subject 4</th>
-<th colspan="4">Subject 5</th>
-<th colspan="5">Subject 6</th>
-<th colspan="5">Subject 7</th>
+
 </tr>
 
 <tr>
