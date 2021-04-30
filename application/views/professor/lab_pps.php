@@ -112,14 +112,15 @@ if($this->session->flashdata('insert_failed')){
     <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item">Assignments</li>
+            <li class="breadcrumb-item"><a href="#">Lab Data</a></li>
+            <li class="breadcrumb-item active">PPS</li>
         </ol>
     </nav>
 
 
 
 
-    <form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/mark_assignment">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/lab_pps">
 
         <div class="form-row mt-5">
 
@@ -170,13 +171,17 @@ if($this->session->flashdata('insert_failed')){
                     <option selected disabled value="select">Choose...</option>
                     <?php 
 
-            $this->db->select('DISTINCT(subject)');
+            $this->db->select('DISTINCT(subject),is_lab');
             $this->db->from('subject_assigned');
+            $this->db->join('subjects','subjects.sub_name=subject_assigned.subject');
             $this->db->where('teacher_id',$_SESSION['u_id']);
             $sql=$this->db->get();
             foreach($sql->result() as $user_data)
             {
-            echo "<option value='$user_data->subject'>$user_data->subject</option>";
+                if($user_data->is_lab=='lab')
+                {
+                     echo "<option value='$user_data->subject'>$user_data->subject</option>";
+                }
             }
             ?>
                 </select>

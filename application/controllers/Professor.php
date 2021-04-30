@@ -587,10 +587,67 @@ class Professor extends CI_Controller
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
     redirect('Professor/offline_mark','refresh');
    
-  
-
   }
+  public function mark_lab_record()
+  {
 
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('professor_data','professor_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+    $course=$this->input->post('course');
+    $subject=$this->input->post('subject');
+    $semester=$this->input->post('semester');
+    $limit=$this->input->post('limit');
+    for($i=1;$i<=$limit;$i++)
+    {
+
+       $student_id='sid'.$i;
+       $rating='rating'.$i;
+       $mark=$this->input->post($rating);
+       $sid=$this->input->post($student_id);
+       $lab_record_data=array('email'=>$sid,'subject'=>$subject,'sem'=>$semester,'course'=>$course,'mark'=>$mark,'dept'=>$dept);
+       $this->db->insert('lab_record',$lab_record_data);
+    }
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/lab_record','refresh');
+  }
+  public function mark_lab_pps()
+  {
+
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('professor_data','professor_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
+    $course=$this->input->post('course');
+    $subject=$this->input->post('subject');
+    $semester=$this->input->post('semester');
+    $limit=$this->input->post('limit');
+    for($i=1;$i<=$limit;$i++)
+    {
+
+       $student_id='sid'.$i;
+       $rating='rating'.$i;
+       $mark=$this->input->post($rating);
+       $sid=$this->input->post($student_id);
+       $pps_mark_data=array('email'=>$sid,'subject'=>$subject,'sem'=>$semester,'course'=>$course,'mark'=>$mark,'dept'=>$dept);
+       $this->db->insert('pps_mark',$pps_mark_data);
+    }
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Professor/lab_pps','refresh');
+  }
 
 
 
