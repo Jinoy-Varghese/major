@@ -279,10 +279,7 @@ foreach($sql->result() as $user_data)
 <th>Total</th>
 <?php
   }
-?>
-
-<?php 
-  for($i=0;$i<$total_lab;$i++)
+for($i=0;$i<$total_lab;$i++)
   {
 ?>
 <th>A</th>
@@ -302,36 +299,30 @@ foreach($sql->result() as $user_data)
 <tr>
 <th></th>
 <th></th>
+
+
+<?php 
+  for($i=0;$i<$total_theory;$i++)
+  {
+?>
 <th>(5)</th>
 <th>(5)</th>
 <th>(10)</th>
 <th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(10)</th>
-<th>(20)</th>
+<?php
+  }
+for($i=0;$i<$total_lab;$i++)
+  {
+?>
 <th>(5)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(5)</th>
 <th>(20)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(5)</th>
-<th>(20)</th>
+<?php
+  }
+?>
+
 </tr>
 
 <tr>
