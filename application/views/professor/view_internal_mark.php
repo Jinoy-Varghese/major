@@ -264,29 +264,35 @@ foreach($sql->result() as $user_data)
 }
 
 ?>
-
-
 </tr>
-
 <tr>
 
 
 
-
+<?php 
+  for($i=0;$i<$total_theory;$i++)
+  {
+?>
 <th>A</th>
 <th>Assig</th>
 <th>T</th>
 <th>Total</th>
+<?php
+  }
+?>
 
-
-
+<?php 
+  for($i=0;$i<$total_lab;$i++)
+  {
+?>
 <th>A</th>
 <th>R</th>
 <th>T</th>
 <th>PPS</th>
 <th>Total</th>
-
-
+<?php
+  }
+?>
 
 
 
