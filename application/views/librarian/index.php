@@ -218,7 +218,7 @@ am4core.ready(function() {
         </div>
         <div class="col-lg-3 col-md-6  mt-1">
             <div class="col-md-12 shadow pt-3" style="height:100%;">
-                <h6 class="justify-content-center d-flex">Colege News</h6>
+                <h6 class="justify-content-center d-flex">College News</h6>
                 <div class="border border-primary bg-primary rounded"></div>
                 <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:90%;">
                     <?php
