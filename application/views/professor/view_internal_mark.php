@@ -481,14 +481,160 @@ for($i=1;$i<=$total_theory;$i++)
 <?php
   }
 
-for($i=1;$i<=$total_lab;$i++)
+for($i=$total_theory+1;$i<=$total_subject;$i++)
   {
 ?>
+<th>
+
+<?php
+      //--- attendance ---
+      $this->db->select('*');
+      $this->db->from('subject_attendance');
+      $this->db->where('s_id',$s_email);
+      $this->db->where('s_sem',$s_sem);
+      $this->db->where('course',$student_course);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_attendance=$sql2->num_rows();
+
+
+      $this->db->select('*');
+      $this->db->from('subject_attendance');
+      $this->db->where('s_id',$s_email);
+      $this->db->where('course',$student_course);
+      $this->db->where('s_sem',$s_sem);
+      $this->db->where('subject',$subject_array[$i]);
+      $this->db->where('s_attendance','present');
+      $sql2=$this->db->get();
+      $total_present=$sql2->num_rows();
+      
+      if($total_attendance==0)
+      {
+        echo $attendance_average=5;
+      }
+      else
+      {
+      echo $attendance_average=round($attend_mark=($total_present*5)/$total_attendance);
+      }
+      //--- end attendance ---
+    ?>
+
+</th>
+<th>
+
+<?php
+      //--- lab_record ---
+      $this->db->select('*');
+      $this->db->from('lab_record');
+      $this->db->where('email',$s_email);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('course',$student_course);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_lab_record=$sql2->num_rows();
+
+      $mark=0;
+      $this->db->select('*');
+      $this->db->from('lab_record');
+      $this->db->where('email',$s_email);
+      $this->db->where('course',$student_course);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      foreach($sql2->result() as $user_data2)
+      {
+        $record_mark=$user_data2->mark;
+      }
+      
+      if($total_lab_record==0)
+      {
+        echo $record_mark=0;
+      }
+      else
+      {
+      echo $record_mark;
+      }
+      //--- end lab_record ---
+    ?>
+
+
+</th>
+<th>
+
+<?php
+      //--- testpaper/xam ---
+      $this->db->select('DISTINCT(exam_id)');
+      $this->db->from('exam_marks');
+      $this->db->where('sem',$s_sem);
+      $this->db->where('course',$student_course);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_exam=$sql2->num_rows();
+
+      $mark=0;
+      $this->db->select('*');
+      $this->db->from('exam_marks');
+      $this->db->where('student_id',$s_email);
+      $this->db->where('course',$student_course);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      foreach($sql2->result() as $user_data2)
+      {
+        $mark=$mark+$user_data2->mark_obtained;
+      }
+      
+      if($total_exam==0)
+      {
+        echo $exam_average=10;
+      }
+      else
+      {
+      echo $exam_average=round(($mark/$total_exam));
+      }
+      //--- end testpaper/xam ---
+    ?>
+
+</th>
+<th>
+
+<?php
+      //--- pps_mark ---
+      $this->db->select('mark');
+      $this->db->from('pps_mark');
+      $this->db->where('email',$s_email);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('course',$student_course);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_pps_mark=$sql2->num_rows();
+
+      $mark=0;
+      $this->db->select('mark');
+      $this->db->from('pps_mark');
+      $this->db->where('email',$s_email);
+      $this->db->where('course',$student_course);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      foreach($sql2->result() as $user_data2)
+      {
+        $pps_mark=$user_data2->mark;
+      }
+      
+      if($total_pps_mark==0)
+      {
+        echo $pps_mark=0;
+      }
+      else
+      {
+      echo $pps_mark;
+      }
+      //--- end pps_mark ---
+    ?>
+
+</th>
 <th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
 <?php
   }
 ?>
