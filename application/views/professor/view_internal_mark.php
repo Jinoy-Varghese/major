@@ -360,7 +360,7 @@ for($i=1;$i<=$total_theory;$i++)
 
 <th>
     <?php
-      //attendance
+      //--- attendance ---
       $this->db->select('*');
       $this->db->from('subject_attendance');
       $this->db->where('s_id',$s_email);
@@ -383,17 +383,55 @@ for($i=1;$i<=$total_theory;$i++)
       
       if($total_attendance==0)
       {
-        echo 0;
+        echo '5';
       }
       else
       {
-      echo $attend_mark=($total_present*5)/$total_attendance;
+      echo round($attend_mark=($total_present*5)/$total_attendance);
       }
+      //--- end attendance ---
     ?>
 </th>
-<th>5</th>
+<th>
+
+<?php
+      //--- assignment ---
+      $this->db->select('*');
+      $this->db->from('assignment');
+      $this->db->where('a_email',$s_email);
+      $this->db->where('a_sem',$s_sem);
+      $this->db->where('a_course',$student_course);
+      $this->db->where('a_subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_assignment=$sql2->num_rows();
+
+
+      $this->db->select('*');
+      $this->db->from('assignment');
+      $this->db->where('a_email',$s_email);
+      $this->db->where('a_course',$student_course);
+      $this->db->where('a_sem',$s_sem);
+      $this->db->where('a_subject',$subject_array[$i]);
+      $this->db->where('s_attendance','present');
+      $sql2=$this->db->get();
+      $total_present=$sql2->num_rows();
+      
+      if($total_assignment==0)
+      {
+        echo '5';
+      }
+      else
+      {
+      echo round($attend_mark=($total_present*5)/$total_assignment);
+      }
+      //--- end assignment ---
+    ?>
+
+</th>
 <th>10</th>
 <th>20</th>
+
+
 <?php
   }
 
