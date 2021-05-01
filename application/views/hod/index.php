@@ -196,7 +196,7 @@ am4core.ready(function() {
         <div class="col-lg-3 col-md-6">
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
-                <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap"></i></div>
+                <div class="text-right" style="opacity:0.8;"><i class="fa fa-user-graduate"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                     <?php echo $this->db->count_all('student_data');?></div>
                 <div class="text-white">Total Students</div>
@@ -206,7 +206,7 @@ am4core.ready(function() {
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-chalkboard-teacher"></i></div>
-                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
                     <?php echo $this->db->count_all('professor_data');?></div>
                 <div class="text-white">Total Professors</div>
             </div>
@@ -215,7 +215,7 @@ am4core.ready(function() {
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-sticky-note"></i></div>
-                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
                     <?php echo $this->db->count_all('subjects');?></div>
                 <div class="text-white">Total Subjects</div>
             </div>
@@ -223,6 +223,10 @@ am4core.ready(function() {
         <div class="col-lg-3 col-md-6">
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
+                <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
+                    <?php echo $this->db->count_all('course_list');?></div>
+                <div class="text-white">Total course</div>
             </div>
         </div>
     </div>
