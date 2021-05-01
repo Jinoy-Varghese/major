@@ -325,43 +325,73 @@ for($i=0;$i<$total_lab;$i++)
 
 </tr>
 
+
+<?php
+      $s_sem='s'.$s_sem;
+      $this->db->select('*');
+      $this->db->from('users');
+      $this->db->join('student_data','student_data.email=users.email');
+      $this->db->where('s_course',$s_course);
+      $this->db->where('s_sem',$s_sem);
+      $this->db->where('s_status','2');
+      $this->db->order_by('name','ASC');
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+        $s_id=$user_data->id;
+
+?>
 <tr>
-<th>32018806010</th>
-<th>Arun Ayyappan</th>
-<th>5</th>
+
+
+
+<th><?php echo $s_id; ?></th>
+<th><?php echo $user_data->name; ?></th>
+
+<?php 
+for($i=0;$i<$total_theory;$i++)
+  {
+?>
+
+
+<th>
+    <?php
+      //attendance
+      $this->db->select('*');
+      $this->db->from('subject_attendance');
+      $this->db->where('s_id',$s_id);
+      $this->db->where('s_attendance','present');
+      $sql2=$this->db->get();
+      echo $total_present=$sql2->num_rows();
+
+    ?>
+</th>
 <th>5</th>
 <th>10</th>
 <th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>10</th>
+<?php
+  }
+
+for($i=0;$i<$total_lab;$i++)
+  {
+?>
 <th>20</th>
 <th>5</th>
 <th>5</th>
 <th>5</th>
 <th>5</th>
-<th>20</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>5</th>
-<th>20</th>
+<?php
+  }
+?>
+
+
+
+
 </tr>
 
-
-
+<?php
+      }
+?>
 
 
 </table>
