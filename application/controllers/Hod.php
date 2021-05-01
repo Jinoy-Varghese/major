@@ -455,7 +455,14 @@ class Hod extends CI_Controller
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
     redirect('Hod/upgrade_students','refresh');
   }
-
+  public function remove_subject()
+  {
+    $this->load->view("header.php");
+    $this->load->view("Hod/dash_head.php");
+    $this->load->view("Hod/remove_subject.php");
+    $this->load->view("Hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
 
 
 
