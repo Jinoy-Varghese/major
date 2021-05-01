@@ -383,11 +383,11 @@ for($i=1;$i<=$total_theory;$i++)
       
       if($total_attendance==0)
       {
-        echo '5';
+        echo $attendance_average=5;
       }
       else
       {
-      echo round($attend_mark=($total_present*5)/$total_attendance);
+      echo $attendance_average=round($attend_mark=($total_present*5)/$total_attendance);
       }
       //--- end attendance ---
     ?>
@@ -420,7 +420,7 @@ for($i=1;$i<=$total_theory;$i++)
       
       if($total_assignment==0)
       {
-        echo '5';
+        echo $assignment_average=5;
       }
       else
       {
@@ -437,7 +437,6 @@ for($i=1;$i<=$total_theory;$i++)
       //--- testpaper/xam ---
       $this->db->select('DISTINCT(exam_id)');
       $this->db->from('exam_marks');
-      $this->db->where('student_id',$s_email);
       $this->db->where('sem',$s_sem);
       $this->db->where('course',$student_course);
       $this->db->where('subject',$subject_array[$i]);
@@ -454,23 +453,29 @@ for($i=1;$i<=$total_theory;$i++)
       $sql2=$this->db->get();
       foreach($sql2->result() as $user_data2)
       {
-        $mark=$mark+$user_data2->mark;
+        $mark=$mark+$user_data2->mark_obtained;
       }
       
-      if($total_assignment==0)
+      if($total_exam==0)
       {
-        echo '5';
+        echo $exam_average=10;
       }
       else
       {
-      echo $assignment_average=round(($mark/$total_assignment));
+      echo $exam_average=round(($mark/$total_exam));
       }
       //--- end testpaper/xam ---
     ?>
 
 
 </th>
-<th>20</th>
+<th>
+
+<?php 
+  echo $exam_average+$assignment_average+$attendance_average;
+?>
+
+</th>
 
 
 <?php
