@@ -239,6 +239,7 @@ $s_sem=substr($s_sem,1);
 $total_subject=0;
 $total_theory=0;
 $total_lab=0;
+$subject_array=array();
 
 $this->db->select('*');
 $this->db->from('subjects');
@@ -250,6 +251,7 @@ foreach($sql->result() as $user_data)
   echo '<th colspan="4">'.$user_data->sub_name.'</th>';
   $total_subject++;
   $total_theory++;
+  $subject_array[$total_subject]=$user_data->sub_name;
 }
 $this->db->select('*');
 $this->db->from('subjects');
@@ -261,8 +263,8 @@ foreach($sql->result() as $user_data)
   echo '<th colspan="5">'.$user_data->sub_name.'</th>';
   $total_subject++;
   $total_lab++;
+  $subject_array[$total_subject]=$user_data->sub_name;
 }
-
 ?>
 </tr>
 <tr>
@@ -270,7 +272,7 @@ foreach($sql->result() as $user_data)
 
 
 <?php 
-  for($i=0;$i<$total_theory;$i++)
+  for($i=1;$i<=$total_theory;$i++)
   {
 ?>
 <th>A</th>
@@ -279,7 +281,7 @@ foreach($sql->result() as $user_data)
 <th>Total</th>
 <?php
   }
-for($i=0;$i<$total_lab;$i++)
+for($i=1;$i<=$total_lab;$i++)
   {
 ?>
 <th>A</th>
@@ -302,7 +304,7 @@ for($i=0;$i<$total_lab;$i++)
 
 
 <?php 
-  for($i=0;$i<$total_theory;$i++)
+  for($i=1;$i<=$total_theory;$i++)
   {
 ?>
 <th>(5)</th>
@@ -311,7 +313,7 @@ for($i=0;$i<$total_lab;$i++)
 <th>(20)</th>
 <?php
   }
-for($i=0;$i<$total_lab;$i++)
+for($i=1;$i<=$total_lab;$i++)
   {
 ?>
 <th>(5)</th>
@@ -339,6 +341,8 @@ for($i=0;$i<$total_lab;$i++)
       foreach($sql->result() as $user_data)
       {
         $s_id=$user_data->id;
+        $s_email=$user_data->email;
+        $student_course=$user_data->s_course;
 
 ?>
 <tr>
@@ -349,7 +353,7 @@ for($i=0;$i<$total_lab;$i++)
 <th><?php echo $user_data->name; ?></th>
 
 <?php 
-for($i=0;$i<$total_theory;$i++)
+for($i=1;$i<=$total_theory;$i++)
   {
 ?>
 
@@ -359,11 +363,32 @@ for($i=0;$i<$total_theory;$i++)
       //attendance
       $this->db->select('*');
       $this->db->from('subject_attendance');
-      $this->db->where('s_id',$s_id);
+      $this->db->where('s_id',$s_email);
+      $this->db->where('s_sem',$s_sem);
+      $this->db->where('course',$student_course);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_attendance=$sql2->num_rows();
+
+
+      $this->db->select('*');
+      $this->db->from('subject_attendance');
+      $this->db->where('s_id',$s_email);
+      $this->db->where('course',$student_course);
+      $this->db->where('s_sem',$s_sem);
+      $this->db->where('subject',$subject_array[$i]);
       $this->db->where('s_attendance','present');
       $sql2=$this->db->get();
-      echo $total_present=$sql2->num_rows();
-
+      $total_present=$sql2->num_rows();
+      
+      if($total_attendance==0)
+      {
+        echo 0;
+      }
+      else
+      {
+      echo $attend_mark=($total_present*5)/$total_attendance;
+      }
     ?>
 </th>
 <th>5</th>
@@ -372,7 +397,7 @@ for($i=0;$i<$total_theory;$i++)
 <?php
   }
 
-for($i=0;$i<$total_lab;$i++)
+for($i=1;$i<=$total_lab;$i++)
   {
 ?>
 <th>20</th>
