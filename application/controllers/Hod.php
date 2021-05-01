@@ -463,8 +463,12 @@ class Hod extends CI_Controller
     $this->load->view("Hod/dash_footer.php");
     $this->load->view("footer.php");
   }
-
-
+  public function delete_subject($sub_num)
+  {
+   $this->Hod_model->delete_subject($sub_num);
+   $this->session->set_flashdata('delete_success',"Sucessfully deleted");
+   redirect('Hod/remove_subject','refresh');
+  }
 
 
 

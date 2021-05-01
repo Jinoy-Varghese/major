@@ -131,7 +131,7 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo base_url('/hod/events'); ?>" class="list-group-item list-group-item-action bg-light">Notice Board</a> 
         <a href="<?php echo base_url('/hod/news'); ?>" class="list-group-item list-group-item-action bg-light">News</a> 
         <a href="<?php echo base_url('/hod/upgrade_students'); ?>" class="list-group-item list-group-item-action bg-light">Upgrade Students</a> 
-        <a href="<?php echo base_url('/hod/remove_subject'); ?>" class="list-group-item list-group-item-action bg-light">Remove Subjects</a> 
+        <a href="<?php echo base_url('/hod/remove_subject'); ?>" class="list-group-item list-group-item-action bg-light">All Subjects</a> 
 
         
       </div>

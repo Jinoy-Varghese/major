@@ -46,7 +46,11 @@ class Hod_model extends CI_Model {
   {
   $this->db->insert('news',$insert_news);
   }
-  
+  public function delete_subject($sub_num)
+  {
+    $this->db->where('sub_num',$sub_num);
+    $this->db->delete('subjects');
+  }
   // ------------------------------------------------------------------------
 
 }
