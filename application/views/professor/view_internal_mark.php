@@ -430,7 +430,46 @@ for($i=1;$i<=$total_theory;$i++)
     ?>
 
 </th>
-<th>10</th>
+<th>
+
+
+<?php
+      //--- testpaper/xam ---
+      $this->db->select('DISTINCT(exam_id)');
+      $this->db->from('exam_marks');
+      $this->db->where('student_id',$s_email);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('course',$student_course);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      $total_exam=$sql2->num_rows();
+
+      $mark=0;
+      $this->db->select('*');
+      $this->db->from('exam_marks');
+      $this->db->where('student_id',$s_email);
+      $this->db->where('course',$student_course);
+      $this->db->where('sem',$s_sem);
+      $this->db->where('subject',$subject_array[$i]);
+      $sql2=$this->db->get();
+      foreach($sql2->result() as $user_data2)
+      {
+        $mark=$mark+$user_data2->mark;
+      }
+      
+      if($total_assignment==0)
+      {
+        echo '5';
+      }
+      else
+      {
+      echo $assignment_average=round(($mark/$total_assignment));
+      }
+      //--- end testpaper/xam ---
+    ?>
+
+
+</th>
 <th>20</th>
 
 
