@@ -405,16 +405,18 @@ for($i=1;$i<=$total_theory;$i++)
       $sql2=$this->db->get();
       $total_assignment=$sql2->num_rows();
 
-
+      $mark=0;
       $this->db->select('*');
       $this->db->from('assignment');
       $this->db->where('a_email',$s_email);
       $this->db->where('a_course',$student_course);
       $this->db->where('a_sem',$s_sem);
       $this->db->where('a_subject',$subject_array[$i]);
-      $this->db->where('s_attendance','present');
       $sql2=$this->db->get();
-      $total_present=$sql2->num_rows();
+      foreach($sql2->result() as $user_data2)
+      {
+        $mark=$mark+$user_data2->mark;
+      }
       
       if($total_assignment==0)
       {
@@ -422,7 +424,7 @@ for($i=1;$i<=$total_theory;$i++)
       }
       else
       {
-      echo round($attend_mark=($total_present*5)/$total_assignment);
+      echo $assignment_average=round(($mark/$total_assignment));
       }
       //--- end assignment ---
     ?>
