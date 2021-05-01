@@ -586,11 +586,11 @@ for($i=$total_theory+1;$i<=$total_subject;$i++)
       
       if($total_exam==0)
       {
-        echo $exam_average=10;
+        echo $exam_average=5;
       }
       else
       {
-      echo $exam_average=round(($mark/$total_exam));
+      echo $exam_average=round(($mark/$total_exam)/2);
       }
       //--- end testpaper/xam ---
     ?>
@@ -634,7 +634,11 @@ for($i=$total_theory+1;$i<=$total_subject;$i++)
     ?>
 
 </th>
-<th>20</th>
+<th>
+
+<?php echo $pps_mark+$exam_average+$record_mark+$attendance_average; ?>
+
+</th>
 <?php
   }
 ?>
