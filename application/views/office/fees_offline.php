@@ -220,12 +220,49 @@ $(document).ready(function() {
                 var len = response.length;
                 var j = 1;
                 $("#student").empty();
-
+                $("#student").append(
+                    "<option disabled value='select' selected>--Select--</option>");
                 for (var i = 0; i < len; i++) {
                     var name = response[i]['name'];
                     var s_id = response[i]['s_id'];
 
-                    $("#student").append("<option value='s" + j + "'>" + j +
+                    $("#student").append("<option value='s" + j + "'>" + name +
+                        "</option>");
+                    j++;
+
+                }
+
+
+            }
+        });
+    });
+
+    $("#student").change(function() {
+        var student = $(this).val();
+        var semester = $('#semester').val();
+        var course = $('#course').val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/office/view_fee_status_ajax',
+            type: 'post',
+            data: {
+                post_student: student,
+                post_semester: semester,
+                post_course: course
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#student").empty();
+                $("#student").append(
+                    "<option disabled value='select' selected>--Select--</option>");
+                for (var i = 0; i < len; i++) {
+                    var name = response[i]['name'];
+                    var s_id = response[i]['s_id'];
+
+                    $("#student").append("<option value='s" + j + "'>" + name +
                         "</option>");
                     j++;
 
@@ -237,4 +274,7 @@ $(document).ready(function() {
     });
 
 });
+
+
+
 </script>

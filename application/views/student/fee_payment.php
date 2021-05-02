@@ -99,8 +99,8 @@ if($this->session->flashdata('insert_success')){
                     </tr>
                 </thead>
                 <tbody>
-                    <?php 
-	$i=1;
+<?php 
+  $i=1;
   $k=1;
 
   $id=$_SESSION['u_id'];
