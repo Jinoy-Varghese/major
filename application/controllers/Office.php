@@ -182,6 +182,10 @@ public function view_students_ajax()
       {
         $name=$user_data->name;
         $s_id=$user_data->email;
+        
+        $this->db->select('*');
+        $this->db->from('fees_paid');
+
         $users_arr[] = array("name" => $name,"s_id"=>$s_id);
       }
       
