@@ -103,6 +103,25 @@ if($this->session->flashdata('insert_failed')){
                     Please enter a course.
                 </div>
             </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom05">Student</label>
+
+                <select class="custom-select" id="student" required name="student">
+                    <option selected disabled value="">Choose...</option>
+
+
+
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a course.
+                </div>
+            </div>
+
             <div class="col-md-4 mb-3">
                 <label for="validationCustom02">Fee Amount</label>
 
@@ -200,16 +219,14 @@ $(document).ready(function() {
 
                 var len = response.length;
                 var j = 1;
-                $("#table_body").empty();
+                $("#student").empty();
 
                 for (var i = 0; i < len; i++) {
                     var name = response[i]['name'];
                     var s_id = response[i]['s_id'];
 
-                    $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
-                        "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
-                        j + "'><div class='form-row col-12'><input type='hidden' name='sid" + j + "' value='" +
-                        s_id + "'><div class='col-12 text-center'><input type='checkbox' name='v"+j+"' value='' class='form-control'> </div></div></td></tr>");
+                    $("#student").append("<option value='s" + j + "'>" + j +
+                        "</option>");
                     j++;
 
                 }
