@@ -261,13 +261,17 @@ public function view_fee_status_ajax()
            $fee=$user_data2->fee;
           }
           $semes='Sem '.$j;
-          $users_arr[] = array("sem" => $semes,"s_id"=>$id,"amount"=>$fee);
+          $users_arr[] = array("sem" => $semes,"s_id"=>$id,"amount"=>$fee,"course"=>$current_course);
         }
       
       }
       echo json_encode($users_arr);
   }
+  public function mark_fees_paid()
+  {
+    $course =$_POST['course'];
 
+  }
 
 
 

@@ -282,9 +282,11 @@ $(document).ready(function() {
                     var sem = response[i]['sem'];
                     var s_id = response[i]['s_id'];
                     var amount = response[i]['amount'];
+                    var course = response[i]['course'];
 
 
-                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td><td><input class='btn border-primary col-12 custom-button' value='Mark as Paid' type='submit'></td></tr>");
+
+                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td><td><form method='post' action='<?php echo base_url(); ?>/Office/mark_fees_paid'><input type='hidden' name='course' value='"+course+"'><input type='hidden' name='paid_by' value='"+s_id+"'><input class='btn border-primary col-12 custom-button' value='Mark as Paid' type='submit'></form></td></tr>");
                     j++;
 
                 }
