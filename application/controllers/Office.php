@@ -239,7 +239,6 @@ public function view_fee_status_ajax()
       {
       
         $sem_array[$i]=$user_data->sem;
-    
         $i++;
       }
       for($j=1;$j<=substr($current_sem,1,1);$j++)
@@ -251,7 +250,18 @@ public function view_fee_status_ajax()
         }
         else
         {
-          $users_arr[] = array("sem" => $svalue,"s_id"=>$s_id);
+          $this->db->select('*');
+          $this->db->from('fees');
+          $this->db->where('course',$current_course);
+          $this->db->where('sem',$svalue);
+          $sql2=$this->db->get();
+          $fee='Fees not Assigned';
+          foreach($sql2->result() as $user_data2)
+          {
+           $fee=$user_data2->fee;
+          }
+          $semes='Sem '.$j;
+          $users_arr[] = array("sem" => $semes,"s_id"=>$id,"amount"=>$fee);
         }
       
       }
