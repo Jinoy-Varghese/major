@@ -24,17 +24,6 @@ if(!isset($_SESSION['u_id']))
     </nav>
 
 
-<table class="text-center" data-toolbar="#toolbar" data-toggle="table" class="table" data-visible-search="true">
-                        <thead class="table-primary">
-
-                            <tr>
-                                <th data-field="sl.no" data-sortable="true">Sl.No</th>
-                                <th data-field="name" data-sortable="true">Date</th>
-                                <th data-field="complaint" data-sortable="true">Presnt/Absent</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
 
 <?php 
 $id=$_SESSION['u_id'];
@@ -55,6 +44,7 @@ $sql=$this->db->get();
 foreach($sql->result() as $user_data)
 {
   $s_id=$user_data->student_id;
+  $s_sem=$user_data->s_sem;
 }
 
 $this->db->select('*');
@@ -65,20 +55,26 @@ $slno=1;
 foreach($sql->result() as $user_data)
 {
   $s_attendance=$user_data->s_attendance;
-?>
-<tr>
-<td><?php echo $slno++;?></td>
-<td><?php echo date('d-m-Y',strtotime($user_data->timestamp));?></td>
-<td><?php echo $user_data->s_attendance;?></td>
-</tr>
-<?php  
 }
+
+$con = mysqli_connect("localhost", "root", "", "college_management");
+$query2="SELECT COUNT(s_attendance) as total FROM attendance WHERE s_id='$s_id' AND s_attendance='present'";
+$sql2=mysqli_query($con,$query2);
+$result2=mysqli_fetch_assoc($sql2);
+$result2['total'];
+
+
+$query4="SELECT s_id,s_sem,count(*) as occur from attendance group by s_id,s_sem having count(*)=(SELECT COUNT(*) as occur from attendance group by s_id,s_sem order by occur desc limit 1)";
+$sql4=mysqli_query($con,$query4);
+$result4=mysqli_fetch_assoc($sql4);
+$result4['occur']."<br>";
+
+$present=$result2['total'];
+$total=$result4['occur'];
+$total_attendance=round(($present*5)/$total);
+echo $total_attendance;
 ?>
 </tbody>
 <table>
 
-
-
-
 </div>    
-

@@ -184,7 +184,64 @@ categoryAxis.fontSize = 9;
 <h1 class="mt-4">Dashboard</h1>
 <div class="container-fluid">
     <div class="row mt-5"> 
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;"></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
+        
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-book-open text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                <?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('parent_data','parent_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $s_mail=$user_data->s_mail;
+}
+
+$this->db->select('*');
+$this->db->from('student_data');
+$this->db->where('email',$s_mail);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $s_id=$user_data->student_id;
+  $s_sem=$user_data->s_sem;
+}
+
+$this->db->select('*');
+$this->db->from('attendance');
+$this->db->where('s_id',$s_id);
+$sql=$this->db->get();
+$slno=1;
+foreach($sql->result() as $user_data)
+{
+  $s_attendance=$user_data->s_attendance;
+}
+
+$con = mysqli_connect("localhost", "root", "", "college_management");
+$query2="SELECT COUNT(s_attendance) as total FROM attendance WHERE s_id='$s_id' AND s_attendance='present'";
+$sql2=mysqli_query($con,$query2);
+$result2=mysqli_fetch_assoc($sql2);
+$result2['total'];
+
+
+$query4="SELECT s_id,s_sem,count(*) as occur from attendance group by s_id,s_sem having count(*)=(SELECT COUNT(*) as occur from attendance group by s_id,s_sem order by occur desc limit 1)";
+$sql4=mysqli_query($con,$query4);
+$result4=mysqli_fetch_assoc($sql4);
+$result4['occur']."<br>";
+
+$present=$result2['total'];
+$total=$result4['occur'];
+$total_attendance=round(($present*5)/$total);
+echo $total_attendance;
+?>
+                    
+                    </div>
+                <div class="text-white">Total Attendance</div>
+        
+        </div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;"></div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;"></div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;"></div></div>
@@ -256,3 +313,30 @@ categoryAxis.fontSize = 9;
 
 <br>
 <br><br><br><br><br><br><br>
+
+
+<script>
+let elm = document.querySelector('.number-animation1');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm.innerHTML <= 0) {
+
+} else {
+    animateValue(elm, 0, 2000);
+}
+</script>

@@ -297,7 +297,106 @@ am4core.ready(function() {
     }
 }
 </style>
+<script>
+let elm = document.querySelector('.number-animation1');
 
+function animateValue(id, start, duration) {
+    let end = parseInt(elm.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm.innerHTML <= 0) {
+
+} else {
+    animateValue(elm, 0, 2000);
+}
+</script>
+<script>
+let elm2 = document.querySelector('.number-animation2');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm2.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm2;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm2.innerHTML <= 0) {
+
+} else {
+    animateValue(elm2, 0, 2000);
+}
+</script>
+<script>
+let elm3 = document.querySelector('.number-animation3');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm3.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm3;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm3.innerHTML <= 0) {
+
+} else {
+    animateValue(elm3, 0, 2000);
+}
+</script>
+<script>
+let elm4 = document.querySelector('.number-animation4');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm4.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm4;
+    let timer = setInterval(function() {
+        current += increment;
+
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+if (elm4.innerHTML <= 0) {
+
+} else {
+    animateValue(elm4, 0, 2000);
+}
+</script>
 
 <br>
 <br><br><br><br><br><br><br>
