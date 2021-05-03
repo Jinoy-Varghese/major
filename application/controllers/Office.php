@@ -60,32 +60,6 @@ class Office extends CI_Controller
     $this->load->view("office/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function offline_fees_process()
-  {
-    $id=$_SESSION['u_id'];
-
-    $course=$this->input->post('course');
-    $semester=$this->input->post('semester');
-    $amount=$this->input->post('amount');
-    $limit=$this->input->post('limit');
-    
-
-    for($i=1;$i<=$limit;$i++)
-    {
-
-      $student_id='sid'.$i;
-      $rating='v'.$i;
-      $mark=$this->input->post($rating);
-      $sid=$this->input->post($student_id);
-       $fee_data=array('paid_by'=>$sid,'course'=>$course,'sem'=>$semester,'amount'=>$amount);
-       $this->db->insert('fees_paid',$fee_data);
-    }
-    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
-    redirect('Office/fees_offline_paid','refresh');
-   
-  
-
-  }
 
 
   public function update_profile()
@@ -270,7 +244,14 @@ public function view_fee_status_ajax()
   public function mark_fees_paid()
   {
     $course =$_POST['course'];
+    $paid_by =$_POST['paid_by'];
+    $sem ='s'.substr($_POST['sem'],4);
+    $amount=$this->input->post('amount');
 
+    $fee_data=array('paid_by'=>$paid_by,'course'=>$course,'sem'=>$sem,'amount'=>$amount);
+    $this->db->insert('fees_paid',$fee_data);
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('Office/fees_offline_paid','refresh');
   }
 
 

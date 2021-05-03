@@ -286,7 +286,7 @@ $(document).ready(function() {
 
 
 
-                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td><td><form method='post' action='<?php echo base_url(); ?>/Office/mark_fees_paid'><input type='hidden' name='course' value='"+course+"'><input type='hidden' name='paid_by' value='"+s_id+"'><input class='btn border-primary col-12 custom-button' value='Mark as Paid' type='submit'></form></td></tr>");
+                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td><td><form method='post' action='<?php echo base_url(); ?>/Office/mark_fees_paid'><input type='hidden' name='course' value='"+course+"'><input type='hidden' name='paid_by' value='"+s_id+"'><input type='hidden' name='sem' value='"+sem+"'><input type='hidden' name='amount' value='"+amount+"'><input class='btn border-primary col-12 custom-button' value='Mark as Paid' type='submit'></form></td></tr>");
                     j++;
 
                 }
