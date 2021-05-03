@@ -58,13 +58,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 <?php date_default_timezone_set('Asia/Kolkata'); ?>
-<style>
 
-html{
-  filter:invert(1) hue-rotate(180deg);
-}
-img,amp-img{
-  filter:invert(1) hue-rotate(180deg);
-}
-</style>
 
