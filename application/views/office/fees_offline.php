@@ -122,18 +122,6 @@ if($this->session->flashdata('insert_failed')){
                 </div>
             </div>
 
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom02">Fee Amount</label>
-
-                <input type="number" class="form-control" id="validationCustom02" value="" name="amount" required>
-
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
-                </div>
-            </div>
 
             <div class=" col-12 p-0 mt-5 ">
                 <div class="col-12 col-md-12 p-0">
@@ -145,10 +133,10 @@ if($this->session->flashdata('insert_failed')){
                         <thead class="table-primary">
 
                             <tr>
-                                <th data-field="no." data-sortable="true">no.</th>
-                                <th data-field="name" data-sortable="true">Name</th>
-
-                                <th data-field="edit">Paid</th>
+                                <th data-field="no." data-sortable="true">#</th>
+                                <th data-field="name" data-sortable="true">Semester</th>
+                                <th data-field="name" data-sortable="true">Amount</th>
+                                <th data-field="edit">Action</th>
                               
                             </tr>
 
@@ -226,7 +214,7 @@ $(document).ready(function() {
                     var name = response[i]['name'];
                     var s_id = response[i]['s_id'];
 
-                    $("#student").append("<option value='s" + j + "'>" + name +
+                    $("#student").append("<option value='" + s_id + "'>" + name +
                         "</option>");
                     j++;
 
@@ -241,7 +229,7 @@ $(document).ready(function() {
         var student = $(this).val();
         var semester = $('#semester').val();
         var course = $('#course').val();
-        alert(semester);
+   
 
         $.ajax({
             url: '<?php echo base_url(); ?>/Office/view_fee_status_ajax',
@@ -260,8 +248,10 @@ $(document).ready(function() {
                 for (var i = 0; i < len; i++) {
                     var sem = response[i]['sem'];
                     var s_id = response[i]['s_id'];
+                    var amount = response[i]['amount'];
 
-                    $("#table_body").append("<tr><td>"+sem+"ddd</td></tr>");
+
+                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td></tr>");
                     j++;
 
                 }
