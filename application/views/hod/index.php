@@ -198,7 +198,7 @@ am4core.ready(function() {
                 style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-user-graduate"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
-                    <?php echo $this->db->count_all('student_data');?></div>
+                    <?php echo $this->db->select('student_id')->where('s_status',1)->from('student_data')->num_rows();?></div>
                 <div class="text-white">Total Students</div>
             </div>
         </div>
