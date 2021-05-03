@@ -40,14 +40,6 @@ class Parents extends CI_Controller
     $this->load->view("parents/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function view_attendance()
-  {
-    $this->load->view("header.php");
-    $this->load->view("parents/dash_head.php");
-    $this->load->view("parents/view_attendance.php");
-    $this->load->view("parents/dash_footer.php");
-    $this->load->view("footer.php");
-  }
   public function view_results()
   {
     $this->load->view("header.php");

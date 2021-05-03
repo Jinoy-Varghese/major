@@ -186,7 +186,7 @@ categoryAxis.fontSize = 9;
     <div class="row mt-5"> 
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
         
-        <div class="text-right" style="opacity:0.8;"><i class="fa fa-book-open text-white"></i></div>
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-hourglass text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                 <?php 
 $id=$_SESSION['u_id'];
