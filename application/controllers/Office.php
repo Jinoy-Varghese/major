@@ -260,7 +260,8 @@ public function view_fee_status_ajax()
           {
            $fee=$user_data2->fee;
           }
-          $users_arr[] = array("sem" => $svalue,"s_id"=>$id,"amount"=>$fee);
+          $semes='Sem '.$j;
+          $users_arr[] = array("sem" => $semes,"s_id"=>$id,"amount"=>$fee);
         }
       
       }

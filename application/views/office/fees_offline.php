@@ -25,9 +25,44 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-    <style>
+<style>
+.detail-view {
+    animation: animate 0.3s linear 1;
+}
 
-    </style>
+@keyframes animate {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.b {
+    display: inline-block;
+    width: 114px;
+}
+
+.colan {
+    display: inline-block;
+    width: 15px;
+}
+
+.custom-button {
+
+    color: #007BFF;
+    text-decoration: none;
+
+}
+
+.custom-button:hover {
+    color: white;
+    background: #007BFF;
+    cursor: pointer;
+}
+</style>
 
 
     <link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
@@ -144,9 +179,7 @@ if($this->session->flashdata('insert_failed')){
                         <tbody id="table_body">
                         </tbody>
                     </table>
-                    <div class="form-row mt-4">
-            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit">
-        </div>
+
 
 
 
@@ -251,12 +284,12 @@ $(document).ready(function() {
                     var amount = response[i]['amount'];
 
 
-                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td></tr>");
+                    $("#table_body").append("<tr><td>"+j+"</td><td>"+sem+"</td><td>"+amount+"</td><td><input class='btn border-primary col-12 custom-button' value='Mark as Paid' type='submit'></td></tr>");
                     j++;
 
                 }
 
-
+                
             }
             
         });
