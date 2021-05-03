@@ -88,6 +88,8 @@ data-detail-view="true"
     <th data-field="dob" data-sortable="true" data-visible="false">DOB</th>
     <th data-field="gender" data-sortable="true" data-visible="false">Gender</th>
     <th data-field="phone">Mobile Number</th>
+    <th data-field="u_sslc" data-sortable="true" data-visible="false">Score in 10th</th>
+    <th data-field="u_plustwo" data-sortable="true" data-visible="false">Score in +2</th>
     <th data-field="image" data-visible="false">Image</th>
 </tr>
 </thead>
@@ -148,6 +150,8 @@ foreach($sql->result() as $user_data)
     </td>
     
     <td><?php echo $user_data->phone ?></td>
+    <td><?php echo $user_data->u_sslc ?></td>
+    <td><?php echo $user_data->u_plustwo ?></td>
     <td><amp-img alt="image" src="<?php echo base_url($user_data->u_image);?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
   </tr>
   </form>
@@ -160,7 +164,7 @@ foreach($sql->result() as $user_data)
 </div>
 <script>
   function detailFormatter(index, row) {
-    return  '<div class="container"><div class="row mt-4 ml-md-2 ml-n5"><div class="col-9"> <div class="col-12 "><b class="b">Name  </b> <b class="colan"> : </b>'  + row.name + '</div><div class="col-12"><b class="b">E-mail </b> <b class="colan"> : </b>' + row.email + '</div><div class="col-12"><b class="b">Phone Number </b> <b class="colan"> : </b>' + row.phone + '</div><div class="col-12"><b class="b">Address </b> <b class="colan"> : </b>' + row.address + '</div><div class="col-12"> <b class="b">Department </b> <b class="colan"> : </b>' + row.dept +' </div><div class="col-12"><b class="b">Date of Birth </b> <b class="colan"> : </b>' + row.dob + '</div><div class="col-12"> <b class="b">Gender </b> <b class="colan"> : </b>' + row.gender + '</div>  </div><div class="col-3 col-md-3">' + row.image +' </div>  </div></div>';
+    return  '<div class="container"><div class="row mt-4 ml-md-2 ml-n5"><div class="col-9"> <div class="col-12 "><b class="b">Name  </b> <b class="colan"> : </b>'  + row.name + '</div><div class="col-12"><b class="b">E-mail </b> <b class="colan"> : </b>' + row.email + '</div><div class="col-12"><b class="b">Phone Number </b> <b class="colan"> : </b>' + row.phone + '</div><div class="col-12"><b class="b">Address </b> <b class="colan"> : </b>' + row.address + '</div><div class="col-12"> <b class="b">Department </b> <b class="colan"> : </b>' + row.dept +' </div><div class="col-12"><b class="b">Date of Birth </b> <b class="colan"> : </b>' + row.dob + '</div><div class="col-12"> <b class="b">Gender </b> <b class="colan"> : </b>' + row.gender + '</div><div class="col-12"> <b class="b">Score In 10th </b> <b class="colan"> : </b>' + row.u_sslc + '</div><div class="col-12"> <b class="b">Score In +2 </b> <b class="colan"> : </b>' + row.u_plustwo + '</div></div></div><div class="col-3 col-md-3">' + row.image +' </div>  </div></div>';
   }
 
 </script>

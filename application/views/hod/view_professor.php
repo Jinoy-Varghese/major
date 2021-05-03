@@ -84,9 +84,13 @@ data-detail-view="true"
     <th data-field="name" data-sortable="true">Name</th>
     <th data-field="address" data-sortable="true" data-visible="false">Address</th>
     <th data-field="email" data-sortable="true">E-mail</th>
+    <th data-field="u_education" data-sortable="true" data-visible="false">Education Qualification</th>
+    <th data-field="u_net" data-sortable="true" data-visible="false">NET</th>
+    <th data-field="u_set" data-sortable="true" data-visible="false">SET</th>
     <th data-field="dept" data-sortable="true" data-visible="false">Department</th>
     <th data-field="dob" data-sortable="true" data-visible="false">DOB</th>
     <th data-field="gender" data-sortable="true" data-visible="false">Gender</th>
+
     <th data-field="phone">Mobile Number</th>
     <th data-field="image" data-visible="false">Image</th>
 </tr>
@@ -121,6 +125,9 @@ foreach($sql->result() as $user_data)
     <td><?php echo $user_data->name ?></td>
     <td><?php echo $user_data->address ?></td>
     <td><?php echo $user_data->email ?></td>
+    <td><?php echo $user_data->u_education ?></td>
+    <td><?php echo $user_data->u_net ?></td>
+    <td><?php echo $user_data->u_set ?></td>
     <td><?php echo $user_data->dept ?></td>
     <td><?php echo $user_data->dob ?></td>
     <td>
@@ -135,7 +142,6 @@ foreach($sql->result() as $user_data)
           }
     ?>
     </td>
-    
     <td><?php echo $user_data->phone ?></td>
     <td><amp-img alt="image" src="<?php echo base_url($user_data->u_image);?>" class="img-fluid img-thumbnail" layout="responsive" height="200px" width="200px"></amp-img></td>
   </tr>
@@ -149,7 +155,7 @@ foreach($sql->result() as $user_data)
 </div>
 <script>
   function detailFormatter(index, row) {
-    return  '<div class="container"><div class="row mt-4 ml-md-2 ml-n5"><div class="col-9"> <div class="col-12 "><b class="b">Name  </b> <b class="colan"> : </b>'  + row.name + '</div><div class="col-12"><b class="b">E-mail </b> <b class="colan"> : </b>' + row.email + '</div><div class="col-12"><b class="b">Phone Number </b> <b class="colan"> : </b>' + row.phone + '</div><div class="col-12"><b class="b">Address </b> <b class="colan"> : </b>' + row.address + '</div><div class="col-12"> <b class="b">Department </b> <b class="colan"> : </b>' + row.dept +' </div><div class="col-12"><b class="b">Date of Birth </b> <b class="colan"> : </b>' + row.dob + '</div><div class="col-12"> <b class="b">Gender </b> <b class="colan"> : </b>' + row.gender + '</div>  </div><div class="col-3 col-md-3">' + row.image +' </div>  </div></div>';
+    return  '<div class="container"><div class="row mt-4 ml-md-2 ml-n5"><div class="col-9"> <div class="col-12 "><b class="b">Name  </b> <b class="colan"> : </b>'  + row.name + '</div><div class="col-12"><b class="b">E-mail </b> <b class="colan"> : </b>' + row.email + '</div><div class="col-12"><b class="b">Phone Number </b> <b class="colan"> : </b>' + row.phone + '</div><div class="col-12"><b class="b">Address </b> <b class="colan"> : </b>' + row.address + '</div><div class="col-12"><b class="b">Qualification </b> <b class="colan"> : </b>' + row.u_education + '</div><div class="col-12"><b class="b">NET </b> <b class="colan"> : </b>' + row.u_net + '</div><div class="col-12"><b class="b">SET </b> <b class="colan"> : </b>' + row.u_set + '</div><div class="col-12"> <b class="b">Department </b> <b class="colan"> : </b>' + row.dept +' </div><div class="col-12"><b class="b">Date of Birth </b> <b class="colan"> : </b>' + row.dob + '</div><div class="col-12"> <b class="b">Gender </b> <b class="colan"> : </b>' + row.gender + '</div>  </div><div class="col-3 col-md-3">' + row.image +' </div>  </div></div>';
   }
 
 </script>
