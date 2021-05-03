@@ -51,6 +51,17 @@ class Hod_model extends CI_Model {
     $this->db->where('sub_num',$sub_num);
     $this->db->delete('subjects');
   }
+  public function delete_student($student_id)
+  {
+    $array = array(
+      's_status' => 3
+);
+
+  $this->db->set($array);
+   
+    $this->db->where('student_id',$student_id);
+    $this->db->update('student_data');
+  }
   // ------------------------------------------------------------------------
 
 }
