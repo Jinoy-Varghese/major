@@ -85,23 +85,53 @@ if($this->session->flashdata('insert_failed')){
             Please provide a valid Date.
         </div>
         </div>
+        <div class="form-row">
+        <div class="col-md-6 mb-3">
+        <label for="validationCustom06">Education Qualification</label>
+        <input type="text" class="form-control" id="validationCustom06" name="u_education" required>
+        <div class="invalid-feedback">
+            Please provide a Education Qualification.
+        </div>
+        </div>
         <div class="col-md-3 mb-3">
-        <label for="validationCustom05">Phone Number</label>
-        <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom05" name="ph_no" required>
+        <label for="validationCustom07">NET Exam</label>
+        <select class="custom-select" id="validationCustom07" name="u_net" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="Passed">Passed</option>
+            <option value="Not Passed">Not Passed</option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a option.
+        </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        <label for="validationCustom08">SET Exam</label>
+        <select class="custom-select" id="validationCustom08" name="u_set" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="Passed">Passed</option>
+            <option value="Not Passed">Not Passed</option>
+        </select>
+        <div class="invalid-feedback">
+            Please provide a option.    
+        </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        <label for="validationCustom09">Phone Number</label>
+        <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom09" name="ph_no" required>
         <div class="invalid-feedback">
             Please provide a valid Phone Number.
         </div>
         </div>
         <div class="col-md-3 mb-3">
-        <label for="inputPassword5">Password</label>
-        <input type="password" id="inputPassword5" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" aria-describedby="passwordHelpBlock" name="u_pass" required>
+        <label for="inputPassword10">Password</label>
+        <input type="password" id="inputPassword10" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" aria-describedby="passwordHelpBlock" name="u_pass" required>
         <small id="passwordHelpBlock" class="form-text text-muted ">
         Your password must be 8-20 characters long, contain letters (both upper and lower case) and numbers.
         </small>
         </div>
         <div class="col-md-3 mb-3">
-        <label for="validationCustom04">Department</label>
-        <select class="custom-select" id="validationCustom04" name="u_dept" required>
+        <label for="validationCustom11">Department</label>
+        <select class="custom-select" id="validationCustom11" name="u_dept" required>
             <option selected disabled value="">Choose...</option>
             <option value="Computer Science">Computer Science</option>
             <option value="Polymer Chemistry">Polymer Chemistry</option>
@@ -126,7 +156,7 @@ if($this->session->flashdata('insert_failed')){
             You must agree before submitting.
         </div>
         </div>
-        
+        </div>
     </div>
     <input class="btn btn-primary" type="submit" name="u_reg" value="Submit form">
     </form>

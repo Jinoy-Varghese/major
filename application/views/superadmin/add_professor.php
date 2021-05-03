@@ -85,6 +85,36 @@ if($this->session->flashdata('insert_failed')){
             Please provide a valid Date.
         </div>
         </div>
+        <div class="form-row">
+        <div class="col-md-6 mb-3">
+        <label for="validationCustom06">Education Qualification</label>
+        <input type="text" class="form-control" id="validationCustom06" name="u_education" required>
+        <div class="invalid-feedback">
+            Please provide a Education Qualification.
+        </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        <label for="validationCustom07">NET Exam</label>
+        <select class="custom-select" id="validationCustom07" name="u_net" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="Passed">Passed</option>
+            <option value="Not Passed">Not Passed</option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a option.
+        </div>
+        </div>
+        <div class="col-md-3 mb-3">
+        <label for="validationCustom08">SET Exam</label>
+        <select class="custom-select" id="validationCustom08" name="u_set" required>
+            <option selected disabled value="">Choose...</option>
+            <option value="Passed">Passed</option>
+            <option value="Not Passed">Not Passed</option>
+        </select>
+        <div class="invalid-feedback">
+            Please provide a option.    
+        </div>
+        </div>
         <div class="col-md-3 mb-3">
         <label for="validationCustom05">Phone Number</label>
         <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom05" name="ph_no" required>
@@ -126,7 +156,7 @@ if($this->session->flashdata('insert_failed')){
             You must agree before submitting.
         </div>
         </div>
-        
+        </div>
     </div>
     <input class="btn btn-primary" type="submit" name="u_reg" value="Submit form">
     </form>
