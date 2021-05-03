@@ -117,8 +117,7 @@ foreach($sql->result() as $user_data)
                 <tr>
                     <td class="bs-checkbox"><input data-index="<?php echo $user_data->id ?>" name="btSelectItem"
                             type="checkbox"></td>
-                    <td><input type="hidden" value="<?php echo $user_data->name ?>" id="cur_name"
-                            style="border:0;background:none;color:black;"><?php echo $user_data->name ?></td>
+                    <td><?php echo $user_data->name ?></td>
                     <td><?php echo $user_data->address ?></td>
                     <td><?php echo $user_data->email ?></td>
                     <td><?php echo $user_data->dept ?></td>
