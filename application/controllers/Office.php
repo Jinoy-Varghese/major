@@ -210,30 +210,55 @@ public function view_sem_num()
     echo json_encode($users_arr);
 }
 public function view_fee_status_ajax()
-{
-  
-    $depart_sem =$_POST['post_semester']; 
-    $depart_course=$_POST['post_course'];
-    $users_arr = array();
-        
+  {
+    
+      $depart_sem =$_POST['post_semester']; 
+      $depart_course=$_POST['post_course'];
+      $depart_student=$_POST['post_student'];
+      $i=1;
+      $users_arr = array();
+          
+      $id=$depart_student;
       $this->db->select('*');
       $this->db->from('users');
       $this->db->join('student_data','student_data.email=users.email');
-      $this->db->where('s_course',$depart_course);
-      $this->db->where('s_status','2');
-      $sql=$this->db->where('s_sem',$depart_sem)->get();
-      
+      $this->db->where('users.email',$id);
+      $sql=$this->db->get();
       foreach($sql->result() as $user_data)
       {
-        $name=$user_data->name;
-        $s_id=$user_data->email;
-        
-
-        $users_arr[] = array("name" => $name,"s_id"=>$s_id);
+        $current_sem=$user_data->s_sem;
+        $current_course=$user_data->s_course;
       }
-      
+      $sem_array=array();
     
-    // encoding array to json format
-    echo json_encode($users_arr);
-}
+      $this->db->select('*');
+      $this->db->from('fees_paid');
+      $this->db->where('paid_by',$id);
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+      
+        $sem_array[$i]=$user_data->sem;
+    
+        $i++;
+      }
+      for($j=1;$j<=substr($current_sem,1,1);$j++)
+      {
+        $svalue='s'.$j;
+        if(array_search($svalue,$sem_array,true))
+        {
+          
+        }
+        else
+        {
+          $users_arr[] = array("sem" => $svalue,"s_id"=>$s_id);
+        }
+      
+      }
+      echo json_encode($users_arr);
+  }
+
+
+
+
 }   
