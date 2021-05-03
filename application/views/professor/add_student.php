@@ -85,15 +85,39 @@ if($this->session->flashdata('insert_failed')){
                     Please provide a valid Date.
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">SSLC Board Name</label>
+                <select class="custom-select" id="validationCustom04" name="u_sslcboard" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="Kerala State Education Board">Kerala State Education Board</option>
+                    <option value="CBSE">Central Board of Secondary Education(CBSE)</option>
+                    <option value="ICSE">Indian Certificate of Secondary Education(ICSE)</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a Gender.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
                 <label for="validationCustom05">Score In 10th</label>
                 <input type="number" class="form-control" id="validationCustom05" name="u_sslc" required>
                 <div class="invalid-feedback">
                     Please provide a valid Date.
                 </div>
             </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom05">Score In +2</label>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom04">Plus Two Board Name</label>
+                <select class="custom-select" id="validationCustom04" name="u_plusboard" required>
+                    <option selected disabled value="">Choose...</option>
+                    <option value="Kerala Higher Secondary Examination Board">Kerala Higher Secondary Examination Board</option>
+                    <option value="CBSE">Central Board of Secondary Education(CBSE)</option>
+                    <option value="ICSE">Indian Certificate of Secondary Education(ICSE)</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a Gender.
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom05">Score In Plus Two</label>
                 <input type="number" class="form-control" id="validationCustom05" name="u_plustwo" required>
                 <div class="invalid-feedback">
                     Please provide a valid Date.
@@ -130,7 +154,7 @@ if($this->session->flashdata('insert_failed')){
                     Please enter a Course.
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-4 mb-3">
                 <label for="inputPassword5">Password</label>
                 <input type="password" id="inputPassword5" class="form-control"
                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}" aria-describedby="passwordHelpBlock" name="u_pass"
