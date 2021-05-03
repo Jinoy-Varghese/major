@@ -85,7 +85,21 @@ if($this->session->flashdata('insert_failed')){
                     Please provide a valid Date.
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom05">Score In 10th</label>
+                <input type="number" class="form-control" id="validationCustom05" name="u_sslc" required>
+                <div class="invalid-feedback">
+                    Please provide a valid Date.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom05">Score In +2</label>
+                <input type="number" class="form-control" id="validationCustom05" name="u_plustwo" required>
+                <div class="invalid-feedback">
+                    Please provide a valid Date.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
                 <label for="validationCustom05">Phone Number</label>
                 <input type="tel" pattern="^\d{10}$" class="form-control" id="validationCustom05" name="ph_no" required>
                 <div class="invalid-feedback">
