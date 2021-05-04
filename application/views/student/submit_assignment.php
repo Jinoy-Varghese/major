@@ -60,16 +60,31 @@ if($this->session->flashdata('insert_success')){
                     <select class="custom-select" id="validationCustom04" name="subject" required>
                         <option selected disabled value="">Choose...</option>
                         <?php 
+                            $id=$_SESSION['u_id'];
+                            $this->db->select('*');
+                            $this->db->from('users');
+                            $this->db->join('student_data','student_data.email=users.email');
+                            $this->db->where('users.email',$id);
+                            $sql=$this->db->get();
+                            foreach($sql->result() as $user_data)
+                            {
+                              $sem=substr($user_data->s_sem,1);
+                            }
 
-$this->db->select('DISTINCT(subject)');
-$this->db->from('subject_assigned');
-$this->db->where('teacher_id',$_SESSION['u_id']);
-$sql=$this->db->get();
-foreach($sql->result() as $user_data)
-{
-echo "<option value='$user_data->subject'>$user_data->subject</option>";
-}
-?>
+                            $this->db->select('*');
+                            $this->db->from('subjects');
+                            $this->db->where('sub_sem',$sem);
+                            $this->db->where('is_lab','theory');
+                            $sql=$this->db->get();
+                            foreach($sql->result() as $user_data)
+                            {
+                                $subject=$user_data->sub_name;
+                                ?>
+                                <option value="<?php echo $subject;?>"><?php echo $subject;?></option>
+                                <?php
+                            }
+                        ?>
+                        
                     </select>
                     <div class="invalid-feedback">
                         Please select the Subject.
