@@ -57,7 +57,7 @@ if($this->session->flashdata('insert_success')){
 
             <div class="col-md-8 mb-3 ml-5">
                 <label for="validationCustom04">Subject</label>
-                    <select class="custom-select" id="validationCustom04" name="subject" required>
+                    <select class="custom-select" id="subject" name="subject" required>
                         <option selected disabled value="">Choose...</option>
                         <?php 
                             $id=$_SESSION['u_id'];
@@ -93,7 +93,7 @@ if($this->session->flashdata('insert_success')){
                 <div class="col-md-14 mt-3">
                 <label for="validationCustom05">Submitted To</label>
 
-                <select class="custom-select" id="semester" required name="semester">
+                <select class="custom-select" id="assign_professor" required name="assign_professor">
                     <option selected disabled value="">Choose...</option>
 
 
@@ -123,7 +123,6 @@ if($this->session->flashdata('insert_success')){
 </div>
 </form>
 
-
 <script type="text/javascript">
 $(document).ready(function() {
 
@@ -141,13 +140,13 @@ $(document).ready(function() {
 
                 var len = response.length;
 
-                $("#semester").empty();
-                $("#semester").append(
+                $("#assign_professor").empty();
+                $("#assign_professor").append(
                     "<option disabled value='select' selected>--Select--</option>");
                 for (var i = 0; i < len; i++) {
-                    var sem = response[i]['sem'];
+                    var name = response[i]['name'];
 
-                    $("#semester").append("<option value='" + sem + "'>" + sem +
+                    $("#assign_professor").append("<option value='" + name + "'>" + name +
                         "</option>");
 
                 }

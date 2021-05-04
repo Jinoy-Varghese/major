@@ -110,20 +110,30 @@ public function pgResponse()
 
 public function view_subject_ajax()
 {
-  
-
-      $depart_sub =$_POST['post_subject']; // department id
-    
-
-    $users_arr = array();
-        
+      $id=$_SESSION['u_id'];
       $this->db->select('*');
-      $this->db->from('subject_assigned');
-      $sql=$this->db->where('subject',$depart_sub)->get();
+      $this->db->from('student_data');
+      $this->db->where('email',$id);
+      $sql=$this->db->get();
       foreach($sql->result() as $user_data)
       {
-        $sem=$user_data->sem;
-        $users_arr[] = array("sem" => $sem);
+        $semester=$user_data->s_sem;
+      }
+        $depart_sub =$_POST['post_subject']; // department id
+    
+
+        $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('users');
+      $this->db->join('subject_assigned','subject_assigned.teacher_id=users.email');
+      $this->db->where('subject',$depart_sub);
+      $this->db->where('sem',$semester);
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+        $name=$user_data->name;
+        $users_arr[] = array("name" => $name);
       }
 
     
