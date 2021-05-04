@@ -113,6 +113,7 @@ if($this->session->flashdata('insert_failed')){
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
             <li class="breadcrumb-item">Assignments</li>
+            <li class="breadcrumb-item active" aria-current="page">Assignment Mark</li>
         </ol>
     </nav>
 
