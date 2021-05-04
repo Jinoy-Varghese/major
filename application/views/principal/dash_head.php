@@ -116,7 +116,11 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>Principal/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">View Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
+            <a href='<?php echo site_url(); ?>Principal/' class="drop-down-a"><li class="drop-down-li">View Student</li></a>
+            <ul class="drop-down-ul">
+            <a href='<?php echo site_url(); ?>Principal/all_student' class="drop-down-a"><li class="drop-down-li">All Students</li></a>
             <a href='<?php echo site_url(); ?>Principal/verify_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
+            </ul>
             <a href='<?php echo site_url(); ?>Principal/view_hod' class="drop-down-a"><li class="drop-down-li">View HOD</li></a>
             <a href='<?php echo site_url(); ?>Principal/view_professor' class="drop-down-a"><li class="drop-down-li">View Professor</li></a>
             <a href='<?php echo site_url(); ?>Principal/view_lab_assistant' class="drop-down-a"><li class="drop-down-li">View Lab Assistant</li></a>
