@@ -238,14 +238,36 @@ if(!isset($_SESSION['u_id']))
       $this->db->select('*');
       $this->db->from('incharge_list');
       $this->db->where('user_incharge',$_SESSION['u_id']);
+      $this->db->limit(1);
+      $this->db->order_by('timestamp','DESC');
       $sql=$this->db->get();
       foreach($sql->result() as $user_data)
       {
-        $time=$user_data->timestamp;
+       $course1=$user_data->course;
+       $sem1=$user_data->semester;
+       $time1=$user_data->timestamp;
       }
-      echo $time;
+      $this->db->select('*');
+      $this->db->from('incharge_list');
+      $this->db->where('course',$course1);
+      $this->db->where('semester',$sem1);
+
+      $this->db->limit(1);
+      $this->db->order_by('timestamp','DESC');
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+       $time2=$user_data->timestamp;
+      }
+      if($time1>=$time2)
+      {
+        echo '<a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>';
+      }
+
+
+
   ?>
-        <a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>
+        
 
 
 
