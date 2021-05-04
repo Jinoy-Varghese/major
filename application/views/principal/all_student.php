@@ -207,15 +207,15 @@ $(document).ready(function() {
     });
 
 
-    $("#semester").change(function() {
-        var semester = $(this).val();
+    $("#department").change(function() {
+        var department = $(this).val();
         var course = $('#course').val();
 
         $.ajax({
             url: '<?php echo base_url(); ?>/principal/view_students_ajax',
             type: 'post',
             data: {
-                post_semester: semester,
+                post_department: department,
                 post_course: course
             },
             dataType: 'json',
