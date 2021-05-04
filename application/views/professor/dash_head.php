@@ -175,22 +175,24 @@ if(!isset($_SESSION['u_id']))
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">
       <?php
-    $this->db->from('users');
-    $this->db->select('*');
-     $this->db->where('email',$_SESSION['u_id']);
-     $sql=$this->db->get();
-     foreach($sql->result() as $user_data)
-     {
-       $image=$user_data->u_image;
-       if($image==null)
-       {
-        echo "<img src='".base_url('assets/img/no-profile.jpg')."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px; height:150px;'>";
-       }
-       else
-       {
-        echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px;'>";
-       }
-     }
+         $this->db->from('users');
+         $this->db->select('*');
+         $this->db->join('professor_data','professor_data.email=users.email');
+         $this->db->where('professor_data.email',$_SESSION['u_id']);
+         $sql=$this->db->get();
+        foreach($sql->result() as $user_data)
+        {  
+          $dept=$user_data->dept;
+          $image=$user_data->u_image;
+          if($image==null)
+          {
+            echo "<img src='".base_url('assets/img/no-profile.jpg')."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px; height:150px;'>";
+          }
+          else
+          {
+            echo "<img src='".base_url($image)."' class='img-fluid img-thumbnail rounded-circle ml-md-2 ml-2' style='width:150px;'>";
+          }
+        }
      ?>
     
       <div class="text-center font-weight-bold"><?php echo $user_name->name; ?></div>
@@ -231,8 +233,18 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>Professor/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
         <a href="<?php echo site_url(); ?>Professor/assignments" class="list-group-item list-group-item-action bg-light">Assignments</a>
         <a href="<?php echo site_url(); ?>Professor/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a>
+  <?php
 
-
+      $this->db->select('*');
+      $this->db->from('incharge_list');
+      $this->db->where('user_incharge',$_SESSION['u_id']);
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+        $time=$user_data->timestamp;
+      }
+      echo $time;
+  ?>
         <a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>
 
 
