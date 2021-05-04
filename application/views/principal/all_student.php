@@ -152,9 +152,10 @@ if($this->session->flashdata('insert_failed')){
 
                             <tr>
                                 <th data-field="no." data-sortable="true">#</th>
-                                <th data-field="name" data-sortable="true">Semester</th>
-                                <th data-field="name" data-sortable="true">Amount</th>
-                                <th data-field="edit">Action</th>
+                                <th data-field="name" data-sortable="true">Name</th>
+                                <th data-field="name" data-sortable="true">DoB</th>
+                                
+                                
                               
                             </tr>
 
