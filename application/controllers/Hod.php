@@ -469,8 +469,20 @@ class Hod extends CI_Controller
    $this->session->set_flashdata('delete_success',"Sucessfully deleted");
    redirect('Hod/remove_subject','refresh');
   }
-
-
+  public function remove_student()
+  {
+    $this->load->view("header.php");
+    $this->load->view("Hod/dash_head.php");
+    $this->load->view("Hod/remove_student.php");
+    $this->load->view("Hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function delete_student($student_id)
+  {
+   $this->Hod_model->delete_student($student_id);
+   $this->session->set_flashdata('delete_success',"Sucessfully deleted");
+   redirect('Hod/remove_student','refresh');
+  }
 
 
 
