@@ -27,4 +27,9 @@ $('.drop-down-ul4').hide();
 	$(".drop-down-ul4").slideToggle("100");
   $(this).find(".angle").toggleClass("fa-angle-up fa-angle-down");
 });
+$('.drop-down-ul5').hide();
+  $(".sub-menu5").click(function () {
+	$(".drop-down-ul5").slideToggle("100");
+  $(this).find(".angle").toggleClass("fa-angle-up fa-angle-down");
+});
 </script>
