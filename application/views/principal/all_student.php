@@ -106,7 +106,7 @@ if($this->session->flashdata('insert_failed')){
             foreach($sql->result() as $user_data)
             {
         
-            echo "<option value='$user_data->course_name'>$user_data->course_name</option>";
+            echo "<option value='$user_data->gradguation'>$user_data->gradguation</option>";
             
             }
             ?>
@@ -123,9 +123,9 @@ if($this->session->flashdata('insert_failed')){
 
 
             <div class="col-md-4 mb-3">
-                <label for="validationCustom05">Semester</label>
+                <label for="validationCustom05">Department</label>
 
-                <select class="custom-select" id="semester" required name="semester">
+                <select class="custom-select" id="department" required name="department">
                     <option selected disabled value="">Choose...</option>
 
 
@@ -189,7 +189,7 @@ $(document).ready(function() {
         var course = $(this).val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>/office/view_sem_num',
+            url: '<?php echo base_url(); ?>/principal/view_sem_num',
             type: 'post',
             data: {
                 post_course: course
@@ -199,14 +199,15 @@ $(document).ready(function() {
 
                 var len = response.length;
 
-                $("#semester").empty();
-                $("#semester").append(
+                $("#department").empty();
+                $("#department").append(
                     "<option disabled value='select' selected>--Select--</option>");
-                var sem_num = response[0]['sem_num'];
-                var j = 1;
-                for (var i = 0; i < sem_num; i++) {
 
-                    $("#semester").append("<option value='s" + j + "'>" + j +
+                var j = 1;
+                for (var i = 0; i < department; i++) {
+                    var dep = response[i]['department'];
+
+                    $("#department").append("<option value='s" + j + "'>" + j +
                         "</option>");
                     j++;
 
@@ -221,7 +222,7 @@ $(document).ready(function() {
         var course = $('#course').val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>/office/view_students_ajax',
+            url: '<?php echo base_url(); ?>/principal/view_students_ajax',
             type: 'post',
             data: {
                 post_semester: semester,

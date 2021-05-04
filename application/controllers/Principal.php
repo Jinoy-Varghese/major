@@ -193,54 +193,6 @@ class Principal extends CI_Controller
   	
  
   }
-  public function view_subject_ajax()
-  {
-    
-
-        $depart_sub =$_POST['post_subject']; // department id
-      
-
-      $users_arr = array();
-          
-        $this->db->select('*');
-        $this->db->from('subject_assigned');
-        $sql=$this->db->where('subject',$depart_sub)->get();
-        foreach($sql->result() as $user_data)
-        {
-          $sem=$user_data->sem;
-          $users_arr[] = array("sem" => $sem);
-        }
-
-      
-      // encoding array to json format
-      echo json_encode($users_arr);
-  }
-
-  public function view_students_ajax()
-  {
-    
-      $depart_sem =$_POST['post_semester']; 
-      $depart_course=$_POST['post_course'];
-      $users_arr = array();
-          
-        $this->db->select('*');
-        $this->db->from('users');
-        $this->db->join('student_data','student_data.email=users.email');
-        $this->db->where('s_course',$depart_course);
-        $this->db->where('s_status','2');
-        $sql=$this->db->where('s_sem',$depart_sem)->get();
-        
-        foreach($sql->result() as $user_data)
-        {
-          $name=$user_data->name;
-          $s_id=$user_data->email;
-          $users_arr[] = array("name" => $name,"s_id"=>$s_id);
-        }
-        
-      
-      // encoding array to json format
-      echo json_encode($users_arr);
-  }
 
 
 }
