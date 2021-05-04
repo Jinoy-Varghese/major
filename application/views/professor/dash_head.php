@@ -285,8 +285,8 @@ if(!isset($_SESSION['u_id']))
           </ul>
 
 
-          <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down3' class="drop-down-n w-100">Assignments<div class='angle fas fa-angle-down right'></div></a></div>
-          <ul class="drop-down-ul2" style="background:#DAE0E5;">
+          <div class="list-group-item  bg-light sub-menu5"><a href='#drop-down2' class="drop-down-n w-100">Assignments<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul5" style="background:#DAE0E5;">
             <a href='<?php echo site_url(); ?>Professor/add_assignment' class="drop-down-a"><li class="drop-down-li">Add Assignments</li></a>
             <a href='<?php echo site_url(); ?>Professor/view_assignment' class="drop-down-a"><li class="drop-down-li">View Assignments</li></a>
             <a href='<?php echo site_url(); ?>Professor/assignments' class="drop-down-a"><li class="drop-down-li">Mark Assignments</li></a>
