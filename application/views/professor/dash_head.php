@@ -275,17 +275,14 @@ if(!isset($_SESSION['u_id']))
             <a href='<?php echo site_url(); ?>Professor/exams_conducted' class="drop-down-a"><li class="drop-down-li">Exams Conducted</li></a>
             <a href='<?php echo site_url(); ?>Professor/offline_mark' class="drop-down-a" title="Upload marks of exams conducted offline"><li class="drop-down-li">Upload Offline Marks</li></a>
           </ul>
-
         <a href="<?php echo site_url(); ?>Professor/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meeting <i class="fas fa-video float-right mt-1"></i></a>
-
         <div class="list-group-item  bg-light sub-menu4"><a href='#drop-down4' class="drop-down-n w-100">Lab Data<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul4" style="background:#DAE0E5;">
             <a href='<?php echo site_url(); ?>Professor/lab_record' class="drop-down-a"><li class="drop-down-li">Record</li></a>
             <a href='<?php echo site_url(); ?>Professor/lab_pps' class="drop-down-a"><li class="drop-down-li">PPS</li></a>
           </ul>
 
-
-          <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down3' class="drop-down-n w-100">Assignments<div class='angle fas fa-angle-down right'></div></a></div>
+          <div class="list-group-item  bg-light sub-menu1"><a href='#drop-down3' class="drop-down-n w-100">Assignment<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul2" style="background:#DAE0E5;">
             <a href='<?php echo site_url(); ?>Professor/add_assignment' class="drop-down-a"><li class="drop-down-li">Add Assignments</li></a>
             <a href='<?php echo site_url(); ?>Professor/view_assignment' class="drop-down-a"><li class="drop-down-li">View Assignments</li></a>

@@ -133,16 +133,16 @@ if($this->session->flashdata('insert_failed')){
                     <option selected disabled value="">Choose...</option>
                     <?php 
 
-            $id=$_SESSION['u_id'];
-            $this->db->select('*');
-            $this->db->from('users');
-            $this->db->join('professor_data','professor_data.email=users.email');
-            $this->db->where('users.email',$id);
-            $sql=$this->db->get();
-            foreach($sql->result() as $user_data)
-            {
-             $dept=$user_data->dept;
-            }
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+ $dept=$user_data->dept;
+}
 
 
             $this->db->select('DISTINCT(sub_course)');
