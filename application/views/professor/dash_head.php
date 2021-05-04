@@ -261,7 +261,7 @@ if(!isset($_SESSION['u_id']))
       }
       if($time1>=$time2)
       {
-        echo '<a href="<?php echo site_url(); ?>Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>';
+        echo '<a href="'.site_url().'Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>';
       }
 
 
