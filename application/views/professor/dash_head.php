@@ -90,8 +90,8 @@ if(!isset($_SESSION['u_id']))
   {
     $user_name->name;
   }
-
 ?>
+
   <!-- Custom styles for this template -->
 
   <link href="<?php echo base_url('assets/css/simple-sidebar.css'); ?>" rel="stylesheet">
@@ -195,12 +195,60 @@ if(!isset($_SESSION['u_id']))
         }
      ?>
     
+<!-- special privilage -->
+<?php
+  $time1=0;
+  $time2=2;
+  $this->db->select('*');
+  $this->db->from('incharge_list');
+  $this->db->where('user_incharge',$_SESSION['u_id']);
+  $this->db->limit(1);
+  $this->db->order_by('timestamp','DESC');
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
+    $course1=$user_data->course;
+    $sem1=$user_data->semester;
+    $time1=$user_data->timestamp;
+    $this->db->select('*');
+    $this->db->from('incharge_list');
+    $this->db->where('course',$course1);
+    $this->db->where('semester',$sem1);
+
+    $this->db->limit(1);
+    $this->db->order_by('timestamp','DESC');
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+    $time2=$user_data->timestamp;
+    }
+  }
+
+  if($time1>=$time2)
+  {
+    $extra_menu=1;
+  }
+  else{
+    $extra_menu=0;
+  }
+
+?>
+<!-- /special privilage -->
+
+
+
       <div class="text-center font-weight-bold"><?php echo $user_name->name; ?></div>
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Professor/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <?php
+            if($extra_menu==1)
+            {
+          ?>
         <a href="<?php echo site_url(); ?>Professor/view_students" class="list-group-item list-group-item-action bg-light">My Students</a>
- 
+        <?php
+            }
+          ?>
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
             <a href='<?php echo site_url(); ?>Professor/add_student' class="drop-down-a"><li class="drop-down-li">Student</li></a>
@@ -209,7 +257,14 @@ if(!isset($_SESSION['u_id']))
 
         <div class="list-group-item  bg-light sub-menu3"><a href='#drop-down2' class="drop-down-n w-100">Attendance<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul3" style="background:#DAE0E5;">
+          <?php
+            if($extra_menu==1)
+            {
+          ?>
             <a href="<?php echo site_url(); ?>Professor/mark_attendance" class="drop-down-a"><li class="drop-down-li">Common Attendance</li></a>
+          <?php
+            }
+          ?>
             <a href="<?php echo site_url(); ?>Professor/subject_attendance" class="drop-down-a"><li class="drop-down-li">Subject Attendance</li></a>
         </ul>
                 
@@ -234,38 +289,10 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>Professor/assignments" class="list-group-item list-group-item-action bg-light">Assignments</a>
         <a href="<?php echo site_url(); ?>Professor/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a>
   <?php
-
-      $this->db->select('*');
-      $this->db->from('incharge_list');
-      $this->db->where('user_incharge',$_SESSION['u_id']);
-      $this->db->limit(1);
-      $this->db->order_by('timestamp','DESC');
-      $sql=$this->db->get();
-      foreach($sql->result() as $user_data)
-      {
-       $course1=$user_data->course;
-       $sem1=$user_data->semester;
-       $time1=$user_data->timestamp;
-      }
-      $this->db->select('*');
-      $this->db->from('incharge_list');
-      $this->db->where('course',$course1);
-      $this->db->where('semester',$sem1);
-
-      $this->db->limit(1);
-      $this->db->order_by('timestamp','DESC');
-      $sql=$this->db->get();
-      foreach($sql->result() as $user_data)
-      {
-       $time2=$user_data->timestamp;
-      }
-      if($time1>=$time2)
+      if($extra_menu==1)
       {
         echo '<a href="'.site_url().'Professor/view_internal_mark" class="list-group-item list-group-item-action bg-light">View Internal Mark</a>';
       }
-
-
-
   ?>
         
 
