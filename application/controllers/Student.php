@@ -78,7 +78,14 @@ public function exam_page()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
-
+public function assignment()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("student/submit_assignment.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
 public function fee_payment()
 {
   $this->load->view("header.php");
@@ -100,6 +107,30 @@ public function pgResponse()
   $this->load->view("student/pay/lib/encdec_paytm.php");
   $this->load->view("student/pay/pgResponse.php");
 }
+
+public function view_subject_ajax()
+{
+  
+
+      $depart_sub =$_POST['post_subject']; // department id
+    
+
+    $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('subject_assigned');
+      $sql=$this->db->where('subject',$depart_sub)->get();
+      foreach($sql->result() as $user_data)
+      {
+        $sem=$user_data->sem;
+        $users_arr[] = array("sem" => $sem);
+      }
+
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
+
 
 
 public function update_profile()

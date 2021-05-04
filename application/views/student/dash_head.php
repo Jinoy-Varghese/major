@@ -114,7 +114,7 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>Student/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="<?php echo site_url(); ?>Student/notes" class="list-group-item list-group-item-action bg-light">Notes</a>
         <a href="<?php echo site_url(); ?>Student/exams" class="list-group-item list-group-item-action bg-light">My Exams</a>
-
+        <a href="<?php echo site_url(); ?>Student/assignment" class="list-group-item list-group-item-action bg-light">Assignment</a>
  
  
         <a href="<?php echo site_url(); ?>Student/fee_payment" class="list-group-item list-group-item-action bg-light">Fee Payment</a>
