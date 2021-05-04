@@ -96,6 +96,24 @@ class Professor extends CI_Controller
     $this->load->view("professor/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function add_assignment()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/add_assignment.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function view_assignment()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("professor/dash_head.php");
+    $this->load->view("professor/view_assignment.php");
+    $this->load->view("professor/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function assignments()
   {
     $this->load->view("header.php");

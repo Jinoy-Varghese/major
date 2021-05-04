@@ -107,7 +107,35 @@ public function pgResponse()
   $this->load->view("student/pay/lib/encdec_paytm.php");
   $this->load->view("student/pay/pgResponse.php");
 }
-
+public function upload_assignment()
+{
+  $id=$_SESSION['u_id'];
+  $this->db->select('*');
+  $this->db->from('student_data');
+  $this->db->where('email',$id);
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
+    $semester=$user_data->s_sem;
+  }
+  if($this->input->post('assign_btn'))
+  {
+   $assign_by=$_SESSION['u_id'];
+   $assign_sem=$user_data->s_sem;
+   $address=$this->input->post('address');  
+   $gender=$this->input->post('gender');
+   $phone=$this->input->post('phone');
+   $update_data=array('name'=>$name,'email'=>$email,'address'=>$address,'gender'=>$gender,'phone'=>$phone);
+   $this->Student_model->update_profile($update_data,$id);
+   $this->session->set_flashdata('update_success',"Successfully Updated");
+   redirect('Student/student_profile','refresh');
+  }
+  else
+  {
+    $this->session->set_flashdata('update_failed',"Updation Failed");
+    redirect('Student/student_profile','refresh');
+  }
+}
 public function view_subject_ajax()
 {
       $id=$_SESSION['u_id'];
@@ -140,8 +168,6 @@ public function view_subject_ajax()
     // encoding array to json format
     echo json_encode($users_arr);
 }
-
-
 
 public function update_profile()
   {

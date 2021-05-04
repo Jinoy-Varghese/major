@@ -43,7 +43,7 @@ if($this->session->flashdata('insert_success')){
         </ol>
     </nav>
 
-    <form method="post" action="" enctype="multipart/form-data">
+    <form method="post" action="<?php echo base_url();?>Student/upload_assignment" enctype="multipart/form-data">
     <div class="form-row mt-5 ml-5">
         <div class="col-md-3 col-12 mt-4 file_border">
         
