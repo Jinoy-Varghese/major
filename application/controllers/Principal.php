@@ -90,6 +90,14 @@ class Principal extends CI_Controller
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
     redirect('Principal/verify_student','refresh');
   }
+  public function all_student()
+  {
+    $this->load->view("header.php");
+    $this->load->view("principal/dash_head.php");
+    $this->load->view("principal/all_student.php");
+    $this->load->view("principal/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function my_profile()
   {
     $this->load->view("header.php");
