@@ -116,6 +116,29 @@ class Principal extends CI_Controller
     $this->load->view("footer.php");
   }
 
+  public function view_sem_num()
+{
+        $depart_course=$_POST['post_course']; // department id
+    
+
+        $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('course_list');
+      $this->db->where('gradguation',$depart_course);
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+        $department=$user_data->$department;
+        $users_arr[] = array("department" => $department);
+      }
+
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
+
+
   public function update_profile()
     {
     if($this->input->post('update_user'))

@@ -140,15 +140,6 @@ if($this->session->flashdata('insert_failed')){
                 </div>
             </div>
 
-            
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
-                </div>
-            </div>
-
 
             <div class=" col-12 p-0 mt-5 ">
                 <div class="col-12 col-md-12 p-0">
@@ -203,13 +194,12 @@ $(document).ready(function() {
                 $("#department").append(
                     "<option disabled value='select' selected>--Select--</option>");
 
-                var j = 1;
+
                 for (var i = 0; i < department; i++) {
                     var dep = response[i]['department'];
 
-                    $("#department").append("<option value='s" + j + "'>" + j +
+                    $("#department").append("<option value='" + dep + "'>" + dep +
                         "</option>");
-                    j++;
 
                 }
             }
