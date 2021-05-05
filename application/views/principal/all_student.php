@@ -221,10 +221,10 @@ $(document).ready(function() {
 
    $("#department").change(function() {
         var department = $(this).val();
-        var course = $('#gradguation').val();
+        var gradguation = $('#gradguation').val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>/principal/view_students_ajax',
+            url: '<?php echo base_url(); ?>/principal/view_course',
             type: 'post',
             data: {
                 post_department: department,
@@ -235,14 +235,14 @@ $(document).ready(function() {
 
                 var len = response.length;
                 var j = 1;
-                $("#student").empty();
-                $("#student").append(
+                $("#course").empty();
+                $("#course").append(
                     "<option disabled value='select' selected>--Select--</option>");
                 for (var i = 0; i < len; i++) {
-                    var name = response[i]['name'];
-                    var s_id = response[i]['s_id'];
+                    var course= response[i]['course_name'];
+                
 
-                    $("#student").append("<option value='" + s_id + "'>" + name +
+                    $("#course").append("<option value='" + course + "'>" + course +
                         "</option>");
                     j++;
 

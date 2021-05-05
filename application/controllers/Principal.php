@@ -136,6 +136,29 @@ class Principal extends CI_Controller
     // encoding array to json format
     echo json_encode($users_arr);
 }
+public function view_course()
+{
+        $depart_gradguation=$_POST['post_gradguation']; // department id
+        $department=$_POST['post_department'];
+
+        $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('course_list');
+      $this->db->where('gradguation',$depart_gradguation);
+      $this->db->where('department',$department);
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+        $course=$user_data->course_name;
+        $users_arr[] = array("course_name" => $course);
+      }
+
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
+
 public function view_students_ajax()
 {
   
