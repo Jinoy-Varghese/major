@@ -135,6 +135,21 @@ if($this->session->flashdata('insert_failed')){
                 </div>
               
             </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom05">course</label>
+
+                <select class="custom-select" id="course" required name="course">
+                    <option selected disabled value="">Choose...</option>
+
+
+
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+              
+            </div>
 
 
             <div class=" col-12 p-0 mt-5 ">
