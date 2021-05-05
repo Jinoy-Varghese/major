@@ -254,9 +254,9 @@ $(document).ready(function() {
     });
     
     $("#course").change(function() {
-        var student = $(this).val();
-        var semester = $('#gradguation').val();
-        var course = $('#department').val();
+        var course = $(this).val();
+        var gradguation = $('#gradguation').val();
+        var department = $('#department').val();
    
 
         $.ajax({
