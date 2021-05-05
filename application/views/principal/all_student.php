@@ -189,8 +189,8 @@ if($this->session->flashdata('insert_failed')){
 $(document).ready(function() {
 
     $("#gradguation").change(function() {
-        var course = $(this).val();
-    
+        var gradguation = $(this).val();
+
         $.ajax({
             url: '<?php echo base_url(); ?>/principal/view_sem_num',
             type: 'post',
