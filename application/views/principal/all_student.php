@@ -93,9 +93,9 @@ if($this->session->flashdata('insert_failed')){
 
 
             <div class="col-md-4 mb-3">
-                <label for="validationCustom07">Course</label>
+                <label for="validationCustom07">Gradguation</label>
 
-                <select class="custom-select" id="course" required name="course">
+                <select class="custom-select" id="gradguation" required name="gradguation">
                     <option selected disabled value="">Choose...</option>
                     <?php 
 
@@ -114,9 +114,7 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
-                </div>
+                
             </div>
 
 
@@ -135,9 +133,22 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
+              
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom05">course</label>
+
+                <select class="custom-select" id="course" required name="course">
+                    <option selected disabled value="">Choose...</option>
+
+
+
+
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
                 </div>
+              
             </div>
 
 
@@ -145,16 +156,18 @@ if($this->session->flashdata('insert_failed')){
                 <div class="col-12 col-md-12 p-0">
 
 
-                    <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
-                        data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
-                        data-visible-search="false">
+                <table id="table" data-show-export="true" data-toolbar="#toolbar" data-search="true" data-sortable="true"
+        data-show-columns="true" data-toggle="table" data-pagination="true" class="table" data-visible-search="true"
+        data-detail-formatter="detailFormatter" data-detail-view="true">
                         <thead class="table-primary">
 
                             <tr>
-                                <th data-field="no." data-sortable="true">#</th>
-                                <th data-field="name" data-sortable="true">Semester</th>
-                                <th data-field="name" data-sortable="true">Amount</th>
-                                <th data-field="edit">Action</th>
+                               
+                                <th data-field="name" data-sortable="true">Name</th>
+                                <th data-field="name" data-sortable="true">E-Mail</th>
+                                
+                                
+                                
                               
                             </tr>
 
@@ -176,14 +189,14 @@ if($this->session->flashdata('insert_failed')){
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $("#course").change(function() {
-        var course = $(this).val();
+    $("#gradguation").change(function() {
+        var gradguation = $(this).val();
 
         $.ajax({
             url: '<?php echo base_url(); ?>/principal/view_sem_num',
             type: 'post',
             data: {
-                post_course: course
+                post_gradguation: gradguation
             },
             dataType: 'json',
             success: function(response) {
@@ -195,7 +208,7 @@ $(document).ready(function() {
                     "<option disabled value='select' selected>--Select--</option>");
 
 
-                for (var i = 0; i < department; i++) {
+                for (var i = 0; i <len; i++) {
                     var dep = response[i]['department'];
 
                     $("#department").append("<option value='" + dep + "'>" + dep +
@@ -207,30 +220,30 @@ $(document).ready(function() {
     });
 
 
-    $("#department").change(function() {
+   $("#department").change(function() {
         var department = $(this).val();
-        var course = $('#course').val();
+        var gradguation = $('#gradguation').val();
 
         $.ajax({
-            url: '<?php echo base_url(); ?>/principal/view_students_ajax',
+            url: '<?php echo base_url(); ?>/principal/view_course',
             type: 'post',
             data: {
                 post_department: department,
-                post_course: course
+                post_gradguation: gradguation
             },
             dataType: 'json',
             success: function(response) {
 
                 var len = response.length;
                 var j = 1;
-                $("#student").empty();
-                $("#student").append(
+                $("#course").empty();
+                $("#course").append(
                     "<option disabled value='select' selected>--Select--</option>");
                 for (var i = 0; i < len; i++) {
-                    var name = response[i]['name'];
-                    var s_id = response[i]['s_id'];
+                    var course= response[i]['course_name'];
+                
 
-                    $("#student").append("<option value='" + s_id + "'>" + name +
+                    $("#course").append("<option value='" + course + "'>" + course +
                         "</option>");
                     j++;
 
@@ -240,8 +253,64 @@ $(document).ready(function() {
             }
         });
     });
+    
+    $("#course").change(function() {
+        var course = $(this).val();
+        var gradguation = $('#gradguation').val();
+        var department = $('#department').val();
+   
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/principal/view_students_ajax',
+            type: 'post',
+            data: {
+                post_department: department,
+            
+                post_course: course
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#table_body").empty();
+                for (var i = 0; i < len; i++) {
+                    var name = response[i]['name'];
+                    var s_id = response[i]['s_id'];
+
+                    $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
+                        "</td><td>" + s_id +"</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
+                        j + "'><input type='hidden' name='sid" + j + "' value='" +
+                        s_id + "'> </tr></td>");
+                    j++;
+
+                }
+
+                
+            }
+            
+        });
+    });
+    });
 
     
 
 
+</script>
+<script>
+var $table = $('#table')
+
+$(function() {
+    $('#toolbar').find('select').change(function() {
+        $table.bootstrapTable('destroy').bootstrapTable({
+            exportDataType: $(this).val(),
+            exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                visible: $(this).val() === 'selected'
+            }]
+        })
+    }).trigger('change')
+})
 </script>

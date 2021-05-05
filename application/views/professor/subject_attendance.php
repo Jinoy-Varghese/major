@@ -262,42 +262,7 @@ $(document).ready(function() {
         });
     });
 
-    $("#semester").change(function() {
-        var semester = $(this).val();
-        var course = $('#course').val();
-
-        $.ajax({
-            url: '<?php echo base_url(); ?>/Professor/view_students_ajax',
-            type: 'post',
-            data: {
-                post_semester: semester,
-                post_course: course
-            },
-            dataType: 'json',
-            success: function(response) {
-
-                var len = response.length;
-                var j = 1;
-                $("#table_body").empty();
-
-                for (var i = 0; i < len; i++) {
-                    var name = response[i]['name'];
-                    var s_id = response[i]['s_id'];
-
-                    $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
-                        "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
-                        j + "'><div class='form-row col-12'><input type='hidden' name='sid" + j + "' value='" +
-                        s_id + "'><div class='col-6 text-center'><input type='radio' name='v"+j+"' required value='present'> Present </div><div class='col-6 text-center'><input type='radio' name='v"+j+"' required  value='absent'> Absent </div></div></td></tr>");
-                    j++;
-
-                }
-
-
-            }
-        });
-    });
-
-});
+   
 </script>
 
 

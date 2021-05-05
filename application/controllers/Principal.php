@@ -118,18 +118,17 @@ class Principal extends CI_Controller
 
   public function view_sem_num()
 {
-        $depart_course=$_POST['post_course']; // department id
-    
+        $depart_gradguation=$_POST['post_gradguation']; // department id
 
         $users_arr = array();
         
       $this->db->select('*');
       $this->db->from('course_list');
-      $this->db->where('gradguation',$depart_course);
+      $this->db->where('gradguation',$depart_gradguation);
       $sql=$this->db->get();
       foreach($sql->result() as $user_data)
       {
-        $department=$user_data->$department;
+        $department=$user_data->department;
         $users_arr[] = array("department" => $department);
       }
 
@@ -137,7 +136,57 @@ class Principal extends CI_Controller
     // encoding array to json format
     echo json_encode($users_arr);
 }
+public function view_course()
+{
+        $depart_gradguation=$_POST['post_gradguation']; // department id
+        $department=$_POST['post_department'];
 
+        $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('course_list');
+      $this->db->where('gradguation',$depart_gradguation);
+      $this->db->where('department',$department);
+      $sql=$this->db->get();
+      foreach($sql->result() as $user_data)
+      {
+        $course=$user_data->course_name;
+        $users_arr[] = array("course_name" => $course);
+      }
+
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
+
+public function view_students_ajax()
+{
+  
+    $department=$_POST['post_department']; 
+    
+    $course=$_POST['post_course'];
+    $users_arr = array();
+        
+      $this->db->select('*');
+      $this->db->from('users');
+      $this->db->join('student_data','student_data.email=users.email');
+      $this->db->where('s_course',$course);
+      $this->db->where('dept',$department);
+      $sql=$this->db->get();
+      
+      foreach($sql->result() as $user_data)
+      {
+        $name=$user_data->name;
+        $s_id=$user_data->email;
+        
+
+        $users_arr[] = array("name" => $name,"s_id"=>$s_id);
+      }
+      
+    
+    // encoding array to json format
+    echo json_encode($users_arr);
+}
 
   public function update_profile()
     {
