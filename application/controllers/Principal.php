@@ -118,14 +118,14 @@ class Principal extends CI_Controller
 
   public function view_sem_num()
 {
-        $depart_course=$_POST['post_gradguation']; // department id
+        $depart_gradguation=$_POST['post_gradguation']; // department id
     
 
         $users_arr = array();
         
       $this->db->select('*');
       $this->db->from('course_list');
-      $this->db->where('gradguation',$depart_course);
+      $this->db->where('gradguation',$depart_gradguation);
       $sql=$this->db->get();
       foreach($sql->result() as $user_data)
       {
