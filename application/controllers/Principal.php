@@ -118,7 +118,7 @@ class Principal extends CI_Controller
 
   public function view_sem_num()
 {
-        $depart_course=$_POST['post_course']; // department id
+        $depart_course=$_POST['post_gradguation']; // department id
     
 
         $users_arr = array();
