@@ -189,9 +189,21 @@ categoryAxis.fontSize = 9;
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                     <?php echo $this->db->count_all('users');?></div>
                 <div class="text-white">Users</div></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;"></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-building text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
+                    <?php echo $this->db->count_all('hod_data');?></div>
+                <div class="text-white">HOD</div></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-chalkboard-teacher text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
+                    <?php echo $this->db->count_all('professor_data');?></div>
+                <div class="text-white">Professors</div></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-user-graduate text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
+                    <?php $query=$this->db->select('*')->from('student_data')->where('s_status',2)->get();echo $query->num_rows(); ?></div>
+                <div class="text-white">Students</div></div></div>
     </div>
     <div class="row mt-5">        
         <div class="col-lg-8 col-md-8 mt-1 pr-lg-2 p-0">

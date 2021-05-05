@@ -156,13 +156,13 @@ if($this->session->flashdata('insert_failed')){
                 <div class="col-12 col-md-12 p-0">
 
 
-                    <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
-                        data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
-                        data-visible-search="false">
+                <table id="table" data-show-export="true" data-toolbar="#toolbar" data-search="true" data-sortable="true"
+        data-show-columns="true" data-toggle="table" data-pagination="true" class="table" data-visible-search="true"
+        data-detail-formatter="detailFormatter" data-detail-view="true">
                         <thead class="table-primary">
 
                             <tr>
-                                <th data-field="no." data-sortable="true">No</th>
+                               
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="name" data-sortable="true">E-Mail</th>
                                 
@@ -296,4 +296,21 @@ $(document).ready(function() {
     
 
 
+</script>
+<script>
+var $table = $('#table')
+
+$(function() {
+    $('#toolbar').find('select').change(function() {
+        $table.bootstrapTable('destroy').bootstrapTable({
+            exportDataType: $(this).val(),
+            exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+            columns: [{
+                field: 'state',
+                checkbox: true,
+                visible: $(this).val() === 'selected'
+            }]
+        })
+    }).trigger('change')
+})
 </script>
