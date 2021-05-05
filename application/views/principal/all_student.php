@@ -157,24 +157,18 @@ if($this->session->flashdata('insert_failed')){
 
             <div class=" col-12 p-0 mt-5 ">
                 <div class="col-12 col-md-12 p-0">
-                    <div id="toolbar">
-                        <select class="form-control">
-                            <option value="all">Export All</option>
-                            <option value="selected">Export Selected</option>
-                        </select>
-                    </div>
 
-                    <table id="table" data-show-export="true" data-toolbar="#toolbar" data-search="true"
-                        data-sortable="true" data-show-columns="true" data-toggle="table" data-pagination="true"
-                        class="table" data-visible-search="true" data-detail-formatter="detailFormatter"
+
+                    <table id="table" data-show-export="false" data-toolbar="#toolbar" data-search="false"
+                        data-sortable="false" data-show-columns="false" data-toggle="table" data-pagination="false"
+                        class="table" data-visible-search="false" data-detail-formatter="detailFormatter"
                         data-detail-view="false">
                         <thead class="table-primary">
 
                             <tr>
-                                <th data-field="state" data-checkbox="true"></th>
-                                <th data-field="#" data-sortable="true">#</th>
-                                <th data-field="name" data-sortable="true">Name</th>
-                                <th data-field="email" data-sortable="true">E-Mail</th>
+                                <th data-field="#" data-sortable="false">#</th>
+                                <th data-field="name" data-sortable="false">Name</th>
+                                <th data-field="email" data-sortable="false">E-Mail</th>
 
 
 
