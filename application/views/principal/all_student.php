@@ -162,7 +162,7 @@ if($this->session->flashdata('insert_failed')){
                         <thead class="table-primary">
 
                             <tr>
-                                <th data-field="no." data-sortable="true">#</th>
+                                <th data-field="no." data-sortable="true">no.</th>
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="name" data-sortable="true">DoB</th>
                                 
@@ -250,6 +250,44 @@ $(document).ready(function() {
 
 
             }
+        });
+    });
+    
+    $("#course").change(function() {
+        var student = $(this).val();
+        var semester = $('#gradguation').val();
+        var course = $('#department').val();
+   
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/principal/view_students_ajax',
+            type: 'post',
+            data: {
+                post_department: department,
+                post_gradguation: gradguation,
+                post_course: course
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#table_body").empty();
+                for (var i = 0; i < len; i++) {
+                    var name = response[i]['name'];
+                    var s_id = response[i]['s_id'];
+
+                    $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
+                        "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
+                        j + "'><input type='hidden' name='sid" + j + "' value='" +
+                        s_id + "'> </tr></td>");
+                    j++;
+
+                }
+
+                
+            }
+            
         });
     });
     });
