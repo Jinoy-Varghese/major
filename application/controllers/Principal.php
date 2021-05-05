@@ -163,7 +163,7 @@ public function view_students_ajax()
 {
   
     $department=$_POST['post_department']; 
-    $depart_gradguation=$_POST['post_gradguation'];
+    
     $course=$_POST['post_course'];
     $users_arr = array();
         
@@ -171,7 +171,8 @@ public function view_students_ajax()
       $this->db->from('users');
       $this->db->join('student_data','student_data.email=users.email');
       $this->db->where('s_course',$course);
-      $sql=$this->db->where('dept',$department)->get();
+      $this->db->where('dept',$department);
+      $sql=$this->db->get();
       
       foreach($sql->result() as $user_data)
       {

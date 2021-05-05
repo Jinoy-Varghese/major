@@ -264,7 +264,7 @@ $(document).ready(function() {
             type: 'post',
             data: {
                 post_department: department,
-                post_gradguation: gradguation,
+            
                 post_course: course
             },
             dataType: 'json',
