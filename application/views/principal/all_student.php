@@ -162,7 +162,7 @@ if($this->session->flashdata('insert_failed')){
                         <thead class="table-primary">
 
                             <tr>
-                                <th data-field="no." data-sortable="true">no.</th>
+                                <th data-field="no." data-sortable="true">No</th>
                                 <th data-field="name" data-sortable="true">Name</th>
                                 <th data-field="name" data-sortable="true">E-Mail</th>
                                 
