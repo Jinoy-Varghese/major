@@ -153,8 +153,5 @@ $(document).ready(function() {
             }
         });
     });
-
-
-
 });
 </script>

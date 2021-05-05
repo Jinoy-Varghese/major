@@ -298,6 +298,18 @@ class Professor extends CI_Controller
     redirect('Professor/mark_attendance','refresh');
   }
 
+  public function add_assignment_data()
+  {
+   $as_topic=$this->input->post('as_topic');
+   $subject=$this->input->post('subject');
+   $semester=$this->input->post('semester');  
+   $last_date=$this->input->post('last_date');
+   $course=$this->input->post('course');
+   $assign_data=array('as_topic'=>$as_topic,'subject'=>$subject,'semester'=>$semester,'last_date'=>$last_date,'course'=>$course);
+   $this->db->insert('assignment_topic',$assign_data);
+   $this->session->set_flashdata('add_topic',"Successfully Added");
+   redirect('professor/add_assignment','refresh');
+ }
 
   public function professor_profile()
   {
@@ -404,6 +416,53 @@ class Professor extends CI_Controller
       // encoding array to json format
       echo json_encode($users_arr);
   }
+  public function view_sem_num()
+  {
+        $depart_course =$_POST['post_course']; // department id
+      
+      $users_arr = array();
+          
+        $this->db->select('DISTINCT(sem)');
+        $this->db->from('subject_assigned');
+        $this->db->where('sub_course',$depart_course);
+        $this->db->where('teacher_id',$_SESSION['u_id']);
+        $sql=$this->db->get();
+        foreach($sql->result() as $user_data)
+        {
+          $sem=$user_data->sem;
+          $users_arr[] = array("sem" => $sem);
+        }
+        
+      
+      // encoding array to json format
+      echo json_encode($users_arr);
+  }
+
+  public function view_assign_subject_ajax()
+  {
+    
+      $depart_sem =$_POST['post_semester']; 
+      $depart_course=$_POST['post_course'];
+      $users_arr = array();
+
+        $this->db->select('subject');
+        $this->db->from('subject_assigned');
+        $this->db->where('teacher_id',$_SESSION['u_id']);
+        $this->db->where('sub_course',$depart_course);
+        $this->db->where('sem',$depart_sem);
+        $sql=$this->db->get();
+        
+        foreach($sql->result() as $user_data)
+        {
+          $subject=$user_data->subject; 
+          $users_arr[] = array("subject" => $subject);
+        }
+        
+      
+      // encoding array to json format
+      echo json_encode($users_arr);
+  }
+
 
   public function view_students_ajax()
   {

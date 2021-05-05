@@ -6,10 +6,10 @@ if(!isset($_SESSION['u_id']))
 {
   redirect('Home/login','refresh');
 }
-if($this->session->flashdata('insert_success')){
+if($this->session->flashdata('add_topic')){
     echo '
    <div class="alert alert-success alert-dismissible fade show" role="alert">
-     <strong>Success!</strong> Assignment submitted successfully.
+     <strong>Success!</strong> New Assignment Added.
      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
        <span aria-hidden="true">&times;</span>
      </button>
@@ -35,40 +35,27 @@ if($this->session->flashdata('insert_success')){
         </ol>
     </nav>
 
-    <form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/mark_assignment">
+    <form class=" mt-5" method="post" action="<?php echo base_url();?>Professor/add_assignment_data">
 
 <div class="form-row mt-5">
 
 
 
-    <div class="col-md-3 mb-3">
+    <div class="col-md-6 mb-3">
         <label for="validationCustom07">Course</label>
 
         <select class="custom-select" id="course" required name="course">
             <option selected disabled value="">Choose...</option>
-            <?php 
-
-    $id=$_SESSION['u_id'];
-    $this->db->select('*');
-    $this->db->from('users');
-    $this->db->join('professor_data','professor_data.email=users.email');
-    $this->db->where('users.email',$id);
-    $sql=$this->db->get();
-    foreach($sql->result() as $user_data)
-    {
-     $dept=$user_data->dept;
-    }
-
-
-    $this->db->select('DISTINCT(sub_course)');
-    $this->db->from('subject_assigned');
-    $this->db->where('teacher_id',$_SESSION['u_id']);
-    $sql=$this->db->get();
-    foreach($sql->result() as $subject_data)
-    {
-    echo "<option value='$subject_data->sub_course'>$subject_data->sub_course</option>";
-    }
-    ?>
+            <?php
+                $this->db->select('DISTINCT(sub_course)');
+                $this->db->from('subject_assigned');
+                $this->db->where('teacher_id',$_SESSION['u_id']);
+                $sql=$this->db->get();
+                foreach($sql->result() as $subject_data)
+                {
+                echo "<option value='$subject_data->sub_course'>$subject_data->sub_course</option>";
+                }
+            ?>
         </select>
         <div class="valid-feedback">
             Looks good!
@@ -79,62 +66,128 @@ if($this->session->flashdata('insert_success')){
     </div>
 
 
-    <div class="col-md-3 mb-3">
-        <label for="validationCustom06">Subject</label>
+    <div class="col-md-6 mb-3">
+        <label for="validationCustom05">Semester</label>
+
+        <select class="custom-select" id="semester" required name="semester">
+            <option selected disabled value="">Choose...</option>
+
+
+
+
+
+
+        </select>
+
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="validationCustom05">Subjects</label>
 
         <select class="custom-select" id="subject" required name="subject">
-            <option selected disabled value="select">Choose...</option>
-            <?php 
-
-    $this->db->select('DISTINCT(subject)');
-    $this->db->from('subject_assigned');
-    $this->db->where('teacher_id',$_SESSION['u_id']);
-    $sql=$this->db->get();
-    foreach($sql->result() as $user_data)
-    {
-    echo "<option value='$user_data->subject'>$user_data->subject</option>";
-    }
-    ?>
-        </select>
-
-    </div>
-
-    <div class="col-md-3 mb-3">
-        <label for="validationCustom05">Semester</label>
-
-        <select class="custom-select" id="semester" required name="semester">
             <option selected disabled value="">Choose...</option>
 
 
 
-
-
-
         </select>
 
     </div>
 
 
-    <div class="col-md-3 mb-3">
-        <label for="validationCustom05">Semester</label>
-
-        <select class="custom-select" id="semester" required name="semester">
-            <option selected disabled value="">Choose...</option>
-
-
-
-
+    <div class="col-md-6 mb-3">
+                <label for="validationCustom05">Submission Date</label>
+                <input type="date" class="form-control" id="validationCustom05" name="last_date" required>
+                <div class="invalid-feedback">
+                    Please provide a valid Date.
+                </div>
+            </div>
 
 
-        </select>
+            <div class="col-md-12 mt-3">
+                <div class="form-floating">
+                <label for="validationCustom02">Assignment Topic</label>
+                    <textarea class="form-control" name="as_topic" id="validationCustom02" placeholder="Assignment Topic" style="height: 100px" required></textarea>    
+                    <div class="invalid-feedback">
+                    Please Leave the Topic.
+                </div>
+                </div>
 
-    </div>
+
 
 </div>
 <div class="form-row mt-4">
-    <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Submit">
+    <input class="btn btn-primary ml-1" type="submit" name="add_assign_btn" value="Submit">
 </div>
 
 </form>
 
 </div>    
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+
+    $("#course").change(function() {
+        var course = $(this).val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/professor/view_sem_num',
+            type: 'post',
+            data: {
+                post_course: course
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#semester").empty();
+                $("#semester").append(
+                    "<option disabled value='select' selected>--Select--</option>");
+                
+                for (var i = 0; i < len; i++) {
+                    var sem = response[i]['sem'];
+                    $("#semester").append("<option value='" + sem + "'>" + sem +
+                        "</option>");
+                    j++;
+                }
+            }
+        });
+    });
+
+    $("#semester").change(function() {
+        var semester = $(this).val();
+        var course = $('#course').val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/professor/view_assign_subject_ajax',
+            type: 'post',
+            data: {
+                post_semester: semester,
+                post_course: course
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#subject").empty();
+                $("#subject").append(
+                    "<option disabled value='select' selected>--Select--</option>");
+                for (var i = 0; i < len; i++) {
+                    var subject = response[i]['subject'];
+
+                    $("#subject").append("<option value='" + subject + "'>" + subject +
+                        "</option>");
+                    j++;
+
+                }
+
+
+            }
+        });
+    });
+
+    
+});
+</script>
