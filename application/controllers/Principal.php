@@ -129,7 +129,7 @@ class Principal extends CI_Controller
       $sql=$this->db->get();
       foreach($sql->result() as $user_data)
       {
-        $department=$user_data->$department;
+        $department=$user_data->department;
         $users_arr[] = array("department" => $department);
       }
 
@@ -140,8 +140,8 @@ class Principal extends CI_Controller
 public function view_students_ajax()
 {
   
-    $depart_sem =$_POST['post_department']; 
-    $depart_course=$_POST['post_course'];
+    $department=$_GET['post_department']; 
+    $depart_gradguation=$_GET['post_gradguation'];
     $users_arr = array();
         
       $this->db->select('*');

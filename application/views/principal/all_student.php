@@ -93,9 +93,9 @@ if($this->session->flashdata('insert_failed')){
 
 
             <div class="col-md-4 mb-3">
-                <label for="validationCustom07">Course</label>
+                <label for="validationCustom07">Gradguation</label>
 
-                <select class="custom-select" id="course" required name="course">
+                <select class="custom-select" id="gradguation" required name="gradguation">
                     <option selected disabled value="">Choose...</option>
                     <?php 
 
@@ -114,9 +114,7 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
-                </div>
+                
             </div>
 
 
@@ -135,9 +133,7 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
-                </div>
+              
             </div>
 
 
@@ -177,14 +173,14 @@ if($this->session->flashdata('insert_failed')){
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $("#course").change(function() {
+    $("#gradguation").change(function() {
         var course = $(this).val();
-
+    
         $.ajax({
             url: '<?php echo base_url(); ?>/principal/view_sem_num',
             type: 'post',
             data: {
-                post_course: course
+                post_gradguation: gradguation
             },
             dataType: 'json',
             success: function(response) {
@@ -196,7 +192,7 @@ $(document).ready(function() {
                     "<option disabled value='select' selected>--Select--</option>");
 
 
-                for (var i = 0; i < department; i++) {
+                for (var i = 0; i <len; i++) {
                     var dep = response[i]['department'];
 
                     $("#department").append("<option value='" + dep + "'>" + dep +
@@ -208,16 +204,16 @@ $(document).ready(function() {
     });
 
 
-    $("#department").change(function() {
+   $("#department").change(function() {
         var department = $(this).val();
-        var course = $('#course').val();
+        var course = $('#gradguation').val();
 
         $.ajax({
             url: '<?php echo base_url(); ?>/principal/view_students_ajax',
             type: 'post',
             data: {
                 post_department: department,
-                post_course: course
+                post_gradguation: gradguation
             },
             dataType: 'json',
             success: function(response) {
@@ -240,6 +236,7 @@ $(document).ready(function() {
 
             }
         });
+    });
     });
 
     
