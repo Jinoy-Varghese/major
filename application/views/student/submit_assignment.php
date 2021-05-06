@@ -96,18 +96,24 @@ if($this->session->flashdata('insert_success')){
                 </tr>
 
 
-                <form class="needs-validation mt-5" novalidate method="post" id="myform<?php echo $sl_no; ?>"
-                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>">
-
+  
                     <div class="modal fade bd-example-modal-lg"
                         id="exampleModalCenter<?php echo $assignment_data->as_id;?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        
+
+                        <form class="needs-validation mt-5" novalidate method="post"
+                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>">
+
+
+                        
                         <div class="modal-dialog modal-dialog-centered modal-lg">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title">Details</h4>
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
+                                
                                 <div class="modal-body">
 
                                     <input type="hidden" name="assign_id" value="<?php echo $assignment_data->as_id;?>"
@@ -135,15 +141,15 @@ if($this->session->flashdata('insert_success')){
                                             <div class="col-md-14 mt-3">
                                                 <label for="validationCustom05">Submitted To</label>
                                                 <?php
-                        $this->db->select('*');
-                        $this->db->from('users');
-                        $this->db->where('email',$assignment_data->as_by);
-                        $sql=$this->db->get();
-                        foreach($sql->result() as $name)
-                        {
-                        echo "<input type='text' class='form-control' name='assign_to' value='".$name->name."' disabled>";
-                        }
-                        ?>
+                                                $this->db->select('*');
+                                                $this->db->from('users');
+                                                $this->db->where('email',$assignment_data->as_by);
+                                                $sql=$this->db->get();
+                                                foreach($sql->result() as $name)
+                                                {
+                                                echo "<input type='text' class='form-control' name='assign_to' value='".$name->name."' disabled>";
+                                                }
+                                                ?>
                                             </div>
 
                                             <div class="col-md-14 mt-3">
@@ -173,13 +179,8 @@ if($this->session->flashdata('insert_success')){
 
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-                                    <input type="submit" name="assign_btn" class="btn btn-primary" value="Upload File" onclick="myfunction()">
-                                    <script>
-                                        function myfunction() {
-                                            alert('<?php echo $sl_no; ?>')
-                                        document.getElementById("myform<?php echo $sl_no; ?>").submit();
-                                        }
-                                    </script>
+                                    <input type="submit" name="assign_btn" class="btn btn-primary" value="Upload File">
+
                                 </div>
                             </div>
                         </div>
