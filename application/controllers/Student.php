@@ -119,7 +119,7 @@ public function upload_assignment($as_id)
     $semester=$user_data->s_sem;
   }
    $assign_sem=$user_data->s_sem;
-   echo 'hh'.$subject=$this->input->post('subject');  
+   $subject=$this->input->post('subject');  
    $assign_to=$this->input->post('assign_to');
    $assign_topic=$this->input->post('assign_topic');
    $assign_upload=array('assign_id'=>$as_id,'assign_by'=>$_SESSION['u_id'],'assign_sem'=>$assign_sem,'assign_subject'=>$subject,'assign_to'=>$assign_to,'assign_topic'=>$assign_topic,'assign_date'=>date('d-m-Y'));
