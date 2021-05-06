@@ -25,47 +25,49 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-<style>
-.detail-view {
-    animation: animate 0.3s linear 1;
-}
-
-@keyframes animate {
-    0% {
-        opacity: 0;
+    <style>
+    .detail-view {
+        animation: animate 0.3s linear 1;
     }
 
-    100% {
-        opacity: 1;
+    @keyframes animate {
+        0% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
     }
-}
 
-.b {
-    display: inline-block;
-    width: 114px;
-}
+    .b {
+        display: inline-block;
+        width: 114px;
+    }
 
-.colan {
-    display: inline-block;
-    width: 15px;
-}
+    .colan {
+        display: inline-block;
+        width: 15px;
+    }
 
-.custom-button {
+    .custom-button {
 
-    color: #007BFF;
-    text-decoration: none;
+        color: #007BFF;
+        text-decoration: none;
 
-}
+    }
 
-.custom-button:hover {
-    color: white;
-    background: #007BFF;
-    cursor: pointer;
-}
-</style>
+    .custom-button:hover {
+        color: white;
+        background: #007BFF;
+        cursor: pointer;
+    }
+    </style>
 
 
     <link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
+
+    <script src="<?php echo base_url('assets/bootstrap-table/tableExport.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/bootstrap-table/jspdf.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/bootstrap-table/jspdf.plugin.autotable.js'); ?>"></script>
     <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
@@ -74,6 +76,7 @@ if($this->session->flashdata('insert_failed')){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
     </script>
+
 
     <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
@@ -114,7 +117,7 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-                
+
             </div>
 
 
@@ -133,7 +136,7 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-              
+
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom05">course</label>
@@ -148,7 +151,7 @@ if($this->session->flashdata('insert_failed')){
                 <div class="valid-feedback">
                     Looks good!
                 </div>
-              
+
             </div>
 
 
@@ -156,19 +159,20 @@ if($this->session->flashdata('insert_failed')){
                 <div class="col-12 col-md-12 p-0">
 
 
-                <table id="table" data-show-export="true" data-toolbar="#toolbar" data-search="true" data-sortable="true"
-        data-show-columns="true" data-toggle="table" data-pagination="true" class="table" data-visible-search="true"
-        data-detail-formatter="detailFormatter" data-detail-view="true">
+                    <table id="table" data-show-export="false" data-toolbar="#toolbar" data-search="false"
+                        data-sortable="false" data-show-columns="false" data-toggle="table" data-pagination="false"
+                        class="table" data-visible-search="false" data-detail-formatter="detailFormatter"
+                        data-detail-view="false">
                         <thead class="table-primary">
 
                             <tr>
-                               
-                                <th data-field="name" data-sortable="true">Name</th>
-                                <th data-field="name" data-sortable="true">E-Mail</th>
-                                
-                                
-                                
-                              
+                                <th data-field="#" data-sortable="false">#</th>
+                                <th data-field="name" data-sortable="false">Name</th>
+                                <th data-field="email" data-sortable="false">E-Mail</th>
+
+
+
+
                             </tr>
 
                         </thead>
@@ -182,7 +186,7 @@ if($this->session->flashdata('insert_failed')){
                 </div>
             </div>
         </div>
-      
+
 
     </form>
 </div>
@@ -208,7 +212,7 @@ $(document).ready(function() {
                     "<option disabled value='select' selected>--Select--</option>");
 
 
-                for (var i = 0; i <len; i++) {
+                for (var i = 0; i < len; i++) {
                     var dep = response[i]['department'];
 
                     $("#department").append("<option value='" + dep + "'>" + dep +
@@ -220,7 +224,7 @@ $(document).ready(function() {
     });
 
 
-   $("#department").change(function() {
+    $("#department").change(function() {
         var department = $(this).val();
         var gradguation = $('#gradguation').val();
 
@@ -240,8 +244,8 @@ $(document).ready(function() {
                 $("#course").append(
                     "<option disabled value='select' selected>--Select--</option>");
                 for (var i = 0; i < len; i++) {
-                    var course= response[i]['course_name'];
-                
+                    var course = response[i]['course_name'];
+
 
                     $("#course").append("<option value='" + course + "'>" + course +
                         "</option>");
@@ -253,19 +257,19 @@ $(document).ready(function() {
             }
         });
     });
-    
+
     $("#course").change(function() {
         var course = $(this).val();
         var gradguation = $('#gradguation').val();
         var department = $('#department').val();
-   
+
 
         $.ajax({
             url: '<?php echo base_url(); ?>/principal/view_students_ajax',
             type: 'post',
             data: {
                 post_department: department,
-            
+
                 post_course: course
             },
             dataType: 'json',
@@ -279,23 +283,20 @@ $(document).ready(function() {
                     var s_id = response[i]['s_id'];
 
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
-                        "</td><td>" + s_id +"</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
+                        "</td><td>" + s_id +
+                        "</td><td class=' p-0' ><input type='hidden' name='limit' value='" +
                         j + "'><input type='hidden' name='sid" + j + "' value='" +
                         s_id + "'> </tr></td>");
                     j++;
 
                 }
 
-                
+
             }
-            
+
         });
     });
-    });
-
-    
-
-
+});
 </script>
 <script>
 var $table = $('#table')
