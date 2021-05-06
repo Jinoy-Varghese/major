@@ -118,16 +118,14 @@ public function upload_assignment($as_id)
   {
     $semester=$user_data->s_sem;
   }
-
    $assign_sem=$user_data->s_sem;
-   $assign_subject=$this->input->post('assign_subject');  
+   $subject=$this->input->post('subject');  
    $assign_to=$this->input->post('assign_to');
    $assign_topic=$this->input->post('assign_topic');
-   $assign_upload=array('assign_id'=>$as_id,'assign_by'=>$_SESSION['u_id'],'assign_subject'=>$assign_subject,'assign_to'=>$assign_to,'assign_topic'=>$assign_topic,'assign_date'=>date('d-m-Y'));
-   $this->Student_model->update_profile($assign_upload,$as_id);
+   $assign_upload=array('assign_id'=>$as_id,'assign_by'=>$_SESSION['u_id'],'assign_sem'=>$assign_sem,'assign_subject'=>$subject,'assign_to'=>$assign_to,'assign_topic'=>$assign_topic,'assign_date'=>date('d-m-Y'));
+   $this->Student_model->upload_assignment($assign_upload);
    $this->session->set_flashdata('update_success',"Successfully Uploaded");
    redirect('Student/assignment','refresh');
-
 }
 public function view_subject_ajax()
 {

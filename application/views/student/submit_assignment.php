@@ -92,11 +92,11 @@ if($this->session->flashdata('insert_success')){
 			<td><?php echo $assignment_data->subject ?></td>
 			<td><?php echo $assignment_data->as_topic ?></td>
 			<td><?php echo date('d-m-Y',strtotime($assignment_data->last_date)) ?></td>
-            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<?php echo $assignment_data->as_id;?>">Upload File</button></td>
+      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<?php echo $assignment_data->as_id;?>">Upload File</button></td>
 	  	</tr>
 
 
-    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>">
+    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>Student/upload_assignment">
 
     <div class="modal fade bd-example-modal-lg" id="exampleModalCenter<?php echo $assignment_data->as_id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered modal-lg">
@@ -107,7 +107,7 @@ if($this->session->flashdata('insert_success')){
 				    </div>
             <div class="modal-body">
 
-            <input type="hidden" name="assign_id" id="assign_id" value="<?php echo $assignment_data->as_id;?>" disabled style="background:none; border:none;">
+            <input type="hidden" name="assign_id" value="<?php echo $assignment_data->as_id;?>" disabled style="background:none; border:none;">
 
             <div class="form-row mt-5 ml-5">
         <div class="col-md-3 col-12 mt-4 file_border">
@@ -122,7 +122,7 @@ if($this->session->flashdata('insert_success')){
 
             <div class="col-md-8 mb-3 ml-5">
                 <label for="validationCustom04">Subject</label>
-                <input type="text" class="form-control" name="assign_subject" id="assign_subject" value="<?php echo $assignment_data->subject;?>" disabled>
+                <input type="text" class="form-control" name="subject" value="<?php echo $assignment_data->subject;?>">
 
                 <div class="col-md-14 mt-3">
                 <label for="validationCustom05">Submitted To</label>
@@ -133,7 +133,7 @@ if($this->session->flashdata('insert_success')){
                 $sql=$this->db->get();
                 foreach($sql->result() as $name)
                 {
-                  echo "<input type='text' class='form-control' name='assign_to' id='assign_to' value='".$name->name."' disabled>";
+                  echo "<input type='text' class='form-control' name='assign_to' value='".$name->name."' disabled>";
                 }
                 ?>
             </div>
@@ -158,12 +158,9 @@ if($this->session->flashdata('insert_success')){
         </div>
 </div>
 
-
-
-            
             <div class="modal-footer">
               <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
-              <a href="<?php echo base_url()?>Students/upload_assignment/<?php echo $assignment_data->as_id;?>"><input type="submit" name="assign_btn" class="btn btn-primary" value="Upload File"></a>
+              <a href="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>"><input type="submit" name="assign_btn" class="btn btn-primary" value="Upload File"></a>
             </div>
 				</div>
 			</div>
