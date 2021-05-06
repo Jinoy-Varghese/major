@@ -85,6 +85,8 @@ if($this->session->flashdata('add_assign')){
     $sl_no=1;
 	foreach($sql->result() as $assignment_data)
 	{
+    if($assignment_data->assign_status==0)
+    {
     ?>
 
                 <tr class="text-center">
@@ -96,7 +98,9 @@ if($this->session->flashdata('add_assign')){
                             data-target="#exampleModalCenter<?php echo $assignment_data->assign_id;?>">Upload File</button>
                     </td>
                 </tr>
-
+<?php
+    }
+?>
 
                     <div class="modal fade bd-example-modal-lg"
                         id="exampleModalCenter<?php echo $assignment_data->assign_id;?>" tabindex="-1" role="dialog"
