@@ -85,9 +85,8 @@ if($this->session->flashdata('add_assign')){
     $sl_no=1;
 	foreach($sql->result() as $assignment_data)
 	{
-    if($assignment_data->assign_status==0)
-    {
     ?>
+
                 <tr class="text-center">
                     <td><?php echo $sl_no; $sl_no++;?></td>
                     <td><?php echo $assignment_data->assign_subject ?></td>
@@ -97,9 +96,7 @@ if($this->session->flashdata('add_assign')){
                             data-target="#exampleModalCenter<?php echo $assignment_data->assign_id;?>">Upload File</button>
                     </td>
                 </tr>
-<?php
-    }
-?>
+
 
                     <div class="modal fade bd-example-modal-lg"
                         id="exampleModalCenter<?php echo $assignment_data->assign_id;?>" tabindex="-1" role="dialog"
@@ -107,7 +104,7 @@ if($this->session->flashdata('add_assign')){
                         
 
                         <form class="needs-validation mt-5" novalidate method="post"
-                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->assign_id;?>">
+                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->assign_id;?>" enctype="multipart/form-data">
 
 
                         
@@ -129,10 +126,10 @@ if($this->session->flashdata('add_assign')){
                                             <div class="col-12 text-center file_1"><i class="fas fa-cloud-upload-alt"
                                                     style="font-size:50px;"></i>
                                                 <p>Upload the File Here</p><br>
-                                                <label for="select_img" class="btn btn-primary mt-n5">Choose
+                                                <label for="select_assign" class="btn btn-primary mt-n5">Choose
                                                     File</label>
-                                                <input type="file" class="custom-file-input" name="image"
-                                                    id="select_img">
+                                                <input type="file" class="custom-file-input" name="upload_file"
+                                                    id="select_assign" required>
                                             </div>
 
                                         </div>
@@ -198,3 +195,4 @@ if($this->session->flashdata('add_assign')){
         </table>
     </div>
     </div>
+

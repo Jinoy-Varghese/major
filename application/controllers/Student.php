@@ -109,10 +109,13 @@ public function pgResponse()
 }
 public function upload_assignment($assign_id)
 {
-   $assign_upload=array('submitted_by'=>$_SESSION['u_id'],'submitted_date'=>date('Y-m-d'),'assign_status'=>1);
-   $this->Student_model->upload_assignment($assign_upload,$assign_id);
-   $this->session->set_flashdata('add_assign',"Successfully Uploaded");
-   redirect('Student/assignment','refresh');
+  $upload_file = $_FILES['upload_file']['name'];
+  $target = "assets/img/assignments/".basename($upload_file);
+  $assign_upload=array('submitted_by'=>$_SESSION['u_id'],'submitted_date'=>date('Y-m-d'),'assign_status'=>1,'assign_file'=>$target);
+  move_uploaded_file($_FILES['upload_file']['tmp_name'], $target);
+  $this->Student_model->upload_assignment($assign_upload,$assign_id);
+  $this->session->set_flashdata('add_assign',"Successfully Uploaded");
+  redirect('Student/assignment','refresh');
 }
 public function view_subject_ajax()
 {
