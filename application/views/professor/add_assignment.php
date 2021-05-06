@@ -121,6 +121,50 @@ if($this->session->flashdata('add_topic')){
 
 </form>
 
+
+<div class="container mt-5">
+    <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
+                        data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
+                        data-visible-search="false">
+                        <thead class="table-primary">
+
+                            <tr class="text-center">
+                                <th data-field="sl.no" data-sortable="true">Sl.No</th>
+                                <th data-field="department" data-sortable="true">Department</th>
+                                <th data-field="semester" data-sortable="true">Semester</th>
+                                <th data-field="subject" data-sortable="true">Subject</th>
+                                <th data-field="topic" data-sortable="true">Topic</th>
+                                <th data-field="last_date" data-sortable="true">Submission_date</th>
+                            </tr>
+
+                        </thead>
+	<tbody>
+	<?php 
+    $this->db->select('*');
+    $this->db->from('assignment_topic');
+    $this->db->where('as_by',$_SESSION['u_id']);
+    $sql=$this->db->get();
+    $sl_no=1;
+	foreach($sql->result() as $assignment_data)
+	{
+    ?>
+		<tr class="text-center">
+            <td><?php echo $sl_no; $sl_no++;?></td>
+			<td><?php echo $assignment_data->course ?></td>
+			<td><?php echo $assignment_data->semester ?></td>
+            <td><?php echo $assignment_data->subject ?></td>
+            <td><?php echo $assignment_data->as_topic ?></td>
+			<td><?php echo date('d-m-Y',strtotime($assignment_data->last_date)) ?></td>
+	  	</tr>
+	<?php		
+	}
+	?>
+	</tbody>
+    </table>
+    </div>
+
+
+
 </div>    
 
 

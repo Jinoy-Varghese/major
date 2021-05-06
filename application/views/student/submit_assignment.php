@@ -14,6 +14,18 @@ if($this->session->flashdata('insert_success')){
    </div>';
    }
 ?>
+
+
+<link href="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.css'); ?>" rel="stylesheet">
+    <script src="<?php echo base_url('assets/bootstrap-table/jspdf.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-table/jspdf.plugin.autotable.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap-table/bootstrap-table-export.min.js'); ?>"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
+    </script>
+
 <style>
 .file_border
 {
@@ -31,9 +43,6 @@ if($this->session->flashdata('insert_success')){
 }
 </style>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-        integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous">
-    </script>
 <div class="container" class="col-md-12"><br>
 
     <nav aria-label="breadcrumb mt-sm-5">
@@ -43,8 +52,64 @@ if($this->session->flashdata('insert_success')){
         </ol>
     </nav>
 
-    <form method="post" action="<?php echo base_url();?>Student/upload_assignment" enctype="multipart/form-data">
-    <div class="form-row mt-5 ml-5">
+    
+    <div class="container mt-5">
+    <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
+                        data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
+                        data-visible-search="false">
+                        <thead class="table-primary">
+
+                            <tr class="text-center">
+                                <th data-field="sl.no" data-sortable="true">Sl.No</th>
+                                <th data-field="subject" data-sortable="true">Subject</th>
+                                <th data-field="topic" data-sortable="true">topic</th>
+                                <th data-field="last_date" data-sortable="true">Submission_date</th>
+                                <th data-field="action" data-sortable="true">Upload</th>
+                            </tr>
+
+                        </thead>
+	<tbody>
+	<?php
+    $this->db->select('s_sem');
+    $this->db->from('student_data');
+    $this->db->where('email',$_SESSION['u_id']);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+	{
+        $login_id=$user_data->s_sem;
+    }
+    
+    $this->db->select('*');
+    $this->db->from('assignment_topic');
+    $this->db->where('semester',$login_id);
+    $sql=$this->db->get();
+    $sl_no=1;
+	foreach($sql->result() as $assignment_data)
+	{
+    ?>
+		<tr class="text-center">
+            <td><?php echo $sl_no; $sl_no++;?></td>
+			<td><?php echo $assignment_data->subject ?></td>
+			<td><?php echo $assignment_data->as_topic ?></td>
+			<td><?php echo date('d-m-Y',strtotime($assignment_data->last_date)) ?></td>
+            <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter<?php echo $assignment_data->as_id;?>">Upload File</button></td>
+	  	</tr>
+
+
+    <form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>">
+
+    <div class="modal fade bd-example-modal-lg" id="exampleModalCenter<?php echo $assignment_data->as_id;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+			    <div class="modal-content">
+					<div class="modal-header">
+             <h4 class="modal-title">Details</h4>
+						 <button type="button" class="close" data-dismiss="modal">&times;</button>
+				    </div>
+            <div class="modal-body">
+
+            <input type="hidden" name="assign_id" id="assign_id" value="<?php echo $assignment_data->as_id;?>" disabled style="background:none; border:none;">
+
+            <div class="form-row mt-5 ml-5">
         <div class="col-md-3 col-12 mt-4 file_border">
         
     <div class="col-12 text-center file_1"><i class="fas fa-cloud-upload-alt" style="font-size:50px;"></i>
@@ -57,101 +122,58 @@ if($this->session->flashdata('insert_success')){
 
             <div class="col-md-8 mb-3 ml-5">
                 <label for="validationCustom04">Subject</label>
-                    <select class="custom-select" id="subject" name="subject" required>
-                        <option selected disabled value="">Choose...</option>
-                        <?php 
-                            $id=$_SESSION['u_id'];
-                            $this->db->select('*');
-                            $this->db->from('users');
-                            $this->db->join('student_data','student_data.email=users.email');
-                            $this->db->where('users.email',$id);
-                            $sql=$this->db->get();
-                            foreach($sql->result() as $user_data)
-                            {
-                              $sem=substr($user_data->s_sem,1);
-                            }
-
-                            $this->db->select('*');
-                            $this->db->from('subjects');
-                            $this->db->where('sub_sem',$sem);
-                            $this->db->where('is_lab','theory');
-                            $sql=$this->db->get();
-                            foreach($sql->result() as $user_data)
-                            {
-                                $subject=$user_data->sub_name;
-                                ?>
-                                <option value="<?php echo $subject;?>"><?php echo $subject;?></option>
-                                <?php
-                            }
-                        ?>
-                        
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select the Subject.
-                    </div>
+                <input type="text" class="form-control" name="assign_subject" id="assign_subject" value="<?php echo $assignment_data->subject;?>" disabled>
 
                 <div class="col-md-14 mt-3">
                 <label for="validationCustom05">Submitted To</label>
-
-                <select class="custom-select" id="assign_professor" required name="assign_professor">
-                    <option selected disabled value="">Choose...</option>
-
-
-
-
-                </select>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please enter a course.
-                </div>
+                <?php
+                $this->db->select('*');
+                $this->db->from('users');
+                $this->db->where('email',$assignment_data->as_by);
+                $sql=$this->db->get();
+                foreach($sql->result() as $name)
+                {
+                  echo "<input type='text' class='form-control' name='assign_to' id='assign_to' value='".$name->name."' disabled>";
+                }
+                ?>
             </div>
 
                 <div class="col-md-14 mt-3">
                 <div class="form-floating">
-                <label for="validationCustom02">Description</label>
-                    <textarea class="form-control" name="desc" id="validationCustom02" placeholder="Description(Optional)" style="height: 100px" required></textarea>    
-                    <div class="invalid-feedback">
-                    Please Leave the complaint.
+                <label for="validationCustom02">Topic</label>
+                <input type="text" class="form-control" name="assign_topic" id="assign_topic" value="<?php echo $assignment_data->as_topic;?>" disabled>
+
                 </div>
-                </div>
-                <div class="sub_btn"><input class="btn btn-primary mt-4" type="submit" name="assign_btn" value="Upload Assignment" style="width:700px;"></div>
             </div>
+
+            <div class="col-md-14 mt-3">
+                <div class="form-floating">
+                <label for="validationCustom02">Submission Date</label>
+                <input type="text" class="form-control" name="assign_date" id="assign_date" value="<?php echo date('d-m-Y',strtotime($assignment_data->last_date));?>" disabled>
+
+                </div>
+            </div>
+
             </div>
         </div>
 </div>
-</form>
 
-<script type="text/javascript">
-$(document).ready(function() {
 
-    $("#subject").change(function() {
-        var subject = $(this).val();
 
-        $.ajax({
-            url: '<?php echo base_url(); ?>/student/view_subject_ajax',
-            type: 'post',
-            data: {
-                post_subject: subject
-            },
-            dataType: 'json',
-            success: function(response) {
+            
+            <div class="modal-footer">
+              <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Close">
+              <a href="<?php echo base_url()?>Students/upload_assignment/<?php echo $assignment_data->as_id;?>"><input type="submit" name="assign_btn" class="btn btn-primary" value="Upload File"></a>
+            </div>
+				</div>
+			</div>
+		</div>
 
-                var len = response.length;
+</form>  
+<?php		
+	}
+	?>
+	</tbody>
+    </table>
+    </div>
 
-                $("#assign_professor").empty();
-                $("#assign_professor").append(
-                    "<option disabled value='select' selected>--Select--</option>");
-                for (var i = 0; i < len; i++) {
-                    var name = response[i]['name'];
-
-                    $("#assign_professor").append("<option value='" + name + "'>" + name +
-                        "</option>");
-
-                }
-            }
-        });
-    });
-});
-</script>
