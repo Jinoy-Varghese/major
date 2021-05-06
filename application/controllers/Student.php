@@ -107,24 +107,11 @@ public function pgResponse()
   $this->load->view("student/pay/lib/encdec_paytm.php");
   $this->load->view("student/pay/pgResponse.php");
 }
-public function upload_assignment($as_id)
+public function upload_assignment($assign_id)
 {
-  $id=$_SESSION['u_id'];
-  $this->db->select('*');
-  $this->db->from('student_data');
-  $this->db->where('email',$id);
-  $sql=$this->db->get();
-  foreach($sql->result() as $user_data)
-  {
-    $semester=$user_data->s_sem;
-  }
-   $assign_sem=$user_data->s_sem;
-   $subject=$this->input->post('subject');  
-   $assign_to=$this->input->post('assign_to');
-   $assign_topic=$this->input->post('assign_topic');
-   $assign_upload=array('assign_id'=>$as_id,'assign_by'=>$_SESSION['u_id'],'assign_sem'=>$assign_sem,'assign_subject'=>$subject,'assign_to'=>$assign_to,'assign_topic'=>$assign_topic,'assign_date'=>date('d-m-Y'));
-   $this->Student_model->upload_assignment($assign_upload);
-   $this->session->set_flashdata('update_success',"Successfully Uploaded");
+   $assign_upload=array('submitted_by'=>$_SESSION['u_id'],'submitted_date'=>date('Y-m-d'),'assign_status'=>1);
+   $this->Student_model->upload_assignment($assign_upload,$assign_id);
+   $this->session->set_flashdata('add_assign',"Successfully Uploaded");
    redirect('Student/assignment','refresh');
 }
 public function view_subject_ajax()

@@ -141,8 +141,8 @@ if($this->session->flashdata('add_topic')){
 	<tbody>
 	<?php 
     $this->db->select('*');
-    $this->db->from('assignment_topic');
-    $this->db->where('as_by',$_SESSION['u_id']);
+    $this->db->from('assignment_data');
+    $this->db->where('submitted_to',$_SESSION['u_id']);
     $sql=$this->db->get();
     $sl_no=1;
 	foreach($sql->result() as $assignment_data)
@@ -151,9 +151,9 @@ if($this->session->flashdata('add_topic')){
 		<tr class="text-center">
             <td><?php echo $sl_no; $sl_no++;?></td>
 			<td><?php echo $assignment_data->course ?></td>
-			<td><?php echo $assignment_data->semester ?></td>
-            <td><?php echo $assignment_data->subject ?></td>
-            <td><?php echo $assignment_data->as_topic ?></td>
+			<td><?php echo $assignment_data->assign_sem ?></td>
+            <td><?php echo $assignment_data->assign_subject ?></td>
+            <td><?php echo $assignment_data->assign_topic ?></td>
 			<td><?php echo date('d-m-Y',strtotime($assignment_data->last_date)) ?></td>
 	  	</tr>
 	<?php		
