@@ -28,6 +28,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- We will put our React component inside this div. -->
     <div id="header"></div>
 
