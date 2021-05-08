@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-
+<img src="https://www.mtcstayur.org/assets/images/slider/s_6.jpeg" alt="marthoma college of science and technology ayur" width="100%" />
 
 
 
