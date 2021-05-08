@@ -120,9 +120,14 @@
             </div>
 
 
-            <div class="col-md-8 mb-3">
-                <label for="validationCustom03">Description</label>
-                <textarea rows="1" class="form-control" name="note_desc"></textarea>
+            <div class="col-md-8 mb-3 speech row">
+                <div class="col-10 p-0">
+                    <label for="validationCustom03">Description</label>
+                    <textarea rows="1" class="form-control rounded-left" name="note_desc" id="transcript"></textarea>
+                </div>
+                <div class="col-2 mt-4 pt-2 pl-0 ml-0 mb-1">
+                    <img onclick="startDictation()" src="https://i.imgur.com/cHidSVu.gif" class=" rounded-right border-left-0 border " />
+                </div>
             </div>
 
 
@@ -170,4 +175,53 @@
         });
     }, false);
 })();
+</script>
+<style>
+.speech {
+
+    padding: 0;
+
+    margin: 0
+}
+
+.speech input {}
+
+.speech img {
+
+    width: 37px
+}
+</style>
+<script>
+function startDictation() {
+
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+
+        var recognition = new webkitSpeechRecognition();
+
+        recognition.continuous = false;
+
+        recognition.interimResults = false;
+
+        recognition.lang = "en-US";
+
+        recognition.start();
+
+        recognition.onresult = function(e) {
+
+            document.getElementById('transcript').value = e.results[0][0].transcript;
+
+            recognition.stop();
+
+
+        };
+
+        recognition.onerror = function(e) {
+
+            recognition.stop();
+
+        }
+
+    }
+
+}
 </script>
