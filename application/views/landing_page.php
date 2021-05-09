@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="col-12 p-0 m-0">
         <amp-img height="85" width="200" class="col-12 p-0 m-0" id="lap_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
-        <amp-img height="85" width="200" class="col-12 p-0 m-0" id="mobile_mtcst"
+        <amp-img height="150" width="100" class="col-12 p-0 m-0" id="mobile_mtcst"
             src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
 
