@@ -71,8 +71,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
 
 
+<div class="col-12 p-0 m-0">
+    <!-- <img class="col-12 p-0 m-0" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>" alt="marthoma college of science and technology ayur" /> -->
+    <img class="col-12 p-0 m-0" src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>" alt="marthoma college of science and technology ayur" />
 
-<img src="https://www.mtcstayur.org/assets/images/slider/s_6.jpeg" alt="marthoma college of science and technology ayur" width="100%" />
+</div>
 
 
 
