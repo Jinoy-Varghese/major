@@ -20,6 +20,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ]
     }
     </script>
+    <style>
+        #lap_mtcst{
+            display:block;
+        }
+        #mobile_mtcst{
+            display:none;
+        }
+        @media all and (max-width:499px) {
+            #mobile_mtcst{
+                display:block;
+        }
+            #lap_mtcst{
+                display:none;
+        }
+            
+        }
+    </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome-5.11.2/css/all.min.css'); ?>">
@@ -72,8 +89,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <div class="col-12 p-0 m-0">
-    <!-- <img class="col-12 p-0 m-0" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>" alt="marthoma college of science and technology ayur" /> -->
-    <img class="col-12 p-0 m-0" src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>" alt="marthoma college of science and technology ayur" />
+    <img class="col-12 p-0 m-0" id="lap_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>" alt="marthoma college of science and technology ayur" />
+    <img class="col-12 p-0 m-0" id="mobile_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>" alt="marthoma college of science and technology ayur" />
 
 </div>
 
