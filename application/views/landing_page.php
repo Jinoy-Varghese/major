@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/image/marthoma.png'); ?>" />
-    <script async src="https://cdn.ampproject.org/v0.js"></script> 
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
 
     <script type="application/ld+json">
     {
@@ -21,21 +21,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     </script>
     <style>
-        #lap_mtcst{
-            display:block;
+    #lap_mtcst {
+        display: block;
+    }
+
+    #mobile_mtcst {
+        display: none;
+    }
+
+    @media all and (max-width:499px) {
+        #mobile_mtcst {
+            display: block;
         }
-        #mobile_mtcst{
-            display:none;
+
+        #lap_mtcst {
+            display: none;
         }
-        @media all and (max-width:499px) {
-            #mobile_mtcst{
-                display:block;
-        }
-            #lap_mtcst{
-                display:none;
-        }
-            
-        }
+
+    }
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -88,11 +91,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
 
 
-<div class="col-12 p-0 m-0">
-    <img class="col-12 p-0 m-0" id="lap_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>" alt="marthoma college of science and technology ayur" />
-    <img class="col-12 p-0 m-0" id="mobile_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>" alt="marthoma college of science and technology ayur" />
+    <div class="col-12 p-0 m-0">
+        <amp-img height="85" width="200" class="col-12 p-0 m-0" id="lap_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>"
+            alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
+        <amp-img height="85" width="200" class="col-12 p-0 m-0" id="mobile_mtcst"
+            src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>"
+            alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
 
-</div>
+    </div>
 
 
 
