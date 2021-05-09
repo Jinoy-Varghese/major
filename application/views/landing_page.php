@@ -37,6 +37,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         #lap_mtcst {
             display: none;
         }
+    }
+    nav{
+        background-color:rgba(154,206,255);
+        
+    }
+    .new_bg{
+        background-color:white;
+        filter: blur(0px);
 
     }
     </style>
@@ -90,7 +98,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             render(){
                 return (<div>
 
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light sticky-top">
         <a className="navbar-brand" href="#">Logo</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -136,13 +144,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
 
-    </div>
+    </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
                 );
             }
         }
         
         ReactDOM.render(<Welcome />, document.querySelector('#header'));
+    </script>
+    <script>
+        $(window).on("scroll", function() {
+    if($(window).scrollTop() > 2) {
+        $(".navbar").addClass("new_bg");
+    } else {
+        //remove the background property so it comes transparent again (defined in your css)
+       $(".navbar").removeClass("new_bg");
+    }
+});
     </script>
 </body>
 
