@@ -20,7 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ]
     }
     </script>
-    <style>
+    <style amp-custom>
     #lap_mtcst {
         display: block;
     }
@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     </style>
     <title>MTCST</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="<?php echo base_url('assets/fontawesome-5.11.2/css/all.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap-4.3.1/css/bootstrap.min.css'); ?>">
 </head>
@@ -117,10 +117,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="header"></div>
     <!-- Load React. -->
     <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
-    <script src="<?php echo base_url('assets/bootstrap-4.3.1/js/bootstrap.min.js'); ?>"></script>
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script async src="<?php echo base_url('assets/bootstrap-4.3.1/js/bootstrap.min.js'); ?>"></script>
+    <script async src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script async src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script async src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 
     <!-- Load our React component. -->
