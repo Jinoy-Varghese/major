@@ -55,8 +55,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     }
     .search-input::placeholder {
-    color: red;
-    opacity: 1;
+    color: white !important;
+    opacity: .6 !important;
     }
 
     .typewrite-h1,.typewrite {
@@ -125,25 +125,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <li className="nav-item active">
                     <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item mr-3">
                     <a className="nav-link text-white" href="<?php echo base_url('Home/login'); ?>">Login</a>
-                </li>
-                <li className="nav-item dropdown">
-                    <a className="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Something else here</a>
-                    </div>
                 </li>
 
             </ul>
             <form className="form-inline my-2 my-lg-0" >
-                <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search" aria-label="Search" />
+                <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search..." aria-label="Search" />
                 <button className="btn btn-outline-light my-2 my-sm-0" type="submit"><i className="fas fa-search"></i></button>
             </form>
         </div>
