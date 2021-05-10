@@ -40,15 +40,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 
     nav {
-        background-color: rgba(154, 206, 255);
+        background-color: #6789A9;
 
     }
 
-    .card-img-overlay{
-        background:black;
-        opacity:.3;
+    .new_bg {
+        background-color: white;
+        filter: blur(0px);
+
     }
 
+    .card-img-overlay {
+        background: #0005;
+
+    }
+
+    @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+
+
+    .line-1 {
+        position: relative;
+        top: 50%;
+        width: 100%;
+        margin: 0 auto;
+        border-right: 2px solid rgba(255, 255, 255, .75);
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        transform: translateY(-50%);
+    }
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -110,13 +131,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav  ">
                 <li className="nav-item active">
-                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                    <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="<?php echo base_url('Home/login'); ?>">Login</a>
+                    <a className="nav-link text-white" href="<?php echo base_url('Home/login'); ?>">Login</a>
                 </li>
                 <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a className="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Dropdown
                     </a>
@@ -127,11 +148,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <a className="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link disabled" href="#">Disabled</a>
-                </li>
+
             </ul>
-            <form className="form-inline my-2 my-lg-0">
+            <form className="form-inline my-2 my-lg-0" style={{opacity: ".5"}}>
                 <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
                 <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
@@ -142,14 +161,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div className=" col-12 p-0 m-0 view ">
         <amp-img height="85" width="200" className="col-12 p-0 m-0" id="lap_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
-            <div class="card-img-overlay card-inverse">
-
-             </div>
         <amp-img height="155" width="100" className="col-12 p-0 m-0" id="mobile_mtcst"
             src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
+            <div className="card-img-overlay card-inverse">
+            <h1>
+                <a href="" className="typewrite line-1 text-white" data-period="2000" data-type='[ "Mar Thoma College of Science and Technology" ]'>
+                    <span className="wrap"></span>
+                </a>
+            </h1>  
+          </div>
 
-    </div><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    </div>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
                 );
             }
@@ -166,6 +190,64 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $(".navbar").removeClass("new_bg");
         }
     });
+    var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+            this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+            this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) {
+            delta /= 2;
+        }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+            delta = this.period;
+            this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+            this.isDeleting = false;
+            this.loopNum++;
+            delta = 500;
+        }
+
+        setTimeout(function() {
+            that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i = 0; i < elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+                new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
     </script>
 </body>
 
