@@ -38,15 +38,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             display: none;
         }
     }
-    nav{
-        background-color:rgba(154,206,255);
-        
-    }
-    .new_bg{
-        background-color:white;
-        filter: blur(0px);
+
+    nav {
+        background-color: rgba(154, 206, 255);
 
     }
+
+    .card-img-overlay{
+        background:black;
+        opacity:.3;
+    }
+
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -137,9 +139,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </nav>
 
 
-    <div className="col-12 p-0 m-0">
+    <div className=" col-12 p-0 m-0 view ">
         <amp-img height="85" width="200" className="col-12 p-0 m-0" id="lap_mtcst" src="<?php echo base_url('assets/image/mtcst_cloud.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
+            <div class="card-img-overlay card-inverse">
+
+             </div>
         <amp-img height="155" width="100" className="col-12 p-0 m-0" id="mobile_mtcst"
             src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
@@ -153,14 +158,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ReactDOM.render(<Welcome />, document.querySelector('#header'));
     </script>
     <script>
-        $(window).on("scroll", function() {
-    if($(window).scrollTop() > 2) {
-        $(".navbar").addClass("new_bg");
-    } else {
-        //remove the background property so it comes transparent again (defined in your css)
-       $(".navbar").removeClass("new_bg");
-    }
-});
+    $(window).on("scroll", function() {
+        if ($(window).scrollTop() > 2) {
+            $(".navbar").addClass("new_bg");
+        } else {
+            //remove the background property so it comes transparent again (defined in your css)
+            $(".navbar").removeClass("new_bg");
+        }
+    });
     </script>
 </body>
 
