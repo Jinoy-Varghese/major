@@ -55,20 +55,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     }
 
-    @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
 
-
-
-    .line-1 {
-        position: relative;
-        top: 50%;
-        width: 100%;
-        margin: 0 auto;
-        border-right: 2px solid rgba(255, 255, 255, .75);
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-        transform: translateY(-50%);
+    .typewrite-h1,.typewrite {
+        height:100%;
     }
     </style>
     <title>MTCST</title>
@@ -165,8 +154,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             src="<?php echo base_url('assets/image/mtcst_cloud_mobile.jpeg') ?>"
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
             <div className="card-img-overlay card-inverse">
-            <h1>
-                <a href="" className="typewrite line-1 text-white" data-period="2000" data-type='[ "Mar Thoma College of Science and Technology" ]'>
+            <h1 className="typewrite-h1">
+                <a href="" className="typewrite text-white d-flex justify-content-center align-items-center" data-period="2000" data-type='[ "Mar Thoma College of Science and Technology","The Best College for Good Education" ]'>
                     <span className="wrap"></span>
                 </a>
             </h1>  
