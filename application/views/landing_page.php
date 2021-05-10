@@ -54,7 +54,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         background: #0005;
 
     }
-
+    .search-input::placeholder {
+    color: red;
+    opacity: 1;
+    }
 
     .typewrite-h1,.typewrite {
         height:100%;
@@ -139,9 +142,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
 
             </ul>
-            <form className="form-inline my-2 my-lg-0" style={{opacity: ".5"}}>
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
-                <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+            <form className="form-inline my-2 my-lg-0" >
+                <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search" aria-label="Search" />
+                <button className="btn btn-outline-light my-2 my-sm-0" type="submit"><i className="fas fa-search"></i></button>
             </form>
         </div>
     </nav>
@@ -155,7 +158,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             alt="marthoma college of science and technology ayur" layout="responsive"></amp-img>
             <div className="card-img-overlay card-inverse">
             <h1 className="typewrite-h1">
-                <a href="" className="typewrite text-white d-flex justify-content-center align-items-center" data-period="2000" data-type='[ "Mar Thoma College of Science and Technology","The Best College for Good Education" ]'>
+                <a  className="typewrite text-white d-flex justify-content-center align-items-center" data-period="2000" data-type='[ "Mar Thoma College of Science and Technology","The Best College for Good Education" ]'>
                     <span className="wrap"></span>
                 </a>
             </h1>  
