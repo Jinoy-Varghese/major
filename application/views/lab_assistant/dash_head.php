@@ -192,7 +192,7 @@ if(!isset($_SESSION['u_id']))
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>Lab_assistant/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <a href="<?php echo site_url(); ?>Lab_assistant/complaints" class="list-group-item list-group-item-action bg-light">Complaints<span class="badge badge-danger count" style="border-radius:20px; margin-left:63px;"></span></a>
-        <a href="<?php echo site_url(); ?>Lab_assistant/add_books" class="list-group-item list-group-item-action bg-light">Event</a>
+  
       </div>
     </div>
 
