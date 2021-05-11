@@ -118,8 +118,8 @@ if(!isset($_SESSION['u_id']))
  
  
         <a href="<?php echo site_url(); ?>Student/fee_payment" class="list-group-item list-group-item-action bg-light">Fee Payment</a>
-        <a href="<?php echo site_url(); ?>Student/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meating <i class="fas fa-video float-right mt-1"></i></a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+        <a href="<?php echo site_url(); ?>Student/live_meeting" class="list-group-item list-group-item-action bg-light">Live Meeting <i class="fas fa-video float-right mt-1"></i></a>
+      
         
         
       </div>
