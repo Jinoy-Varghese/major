@@ -79,32 +79,32 @@ if($this->session->flashdata('add_assign')){
     }
     
     $this->db->select('*');
-    $this->db->from('assignment_data');
-    $this->db->where('assign_sem',$login_id);
-    $this->db->where('assign_status',0);
+    $this->db->from('assignment_topic');
+    $this->db->where('semester',$login_id);
     $sql=$this->db->get();
     $sl_no=1;
 	foreach($sql->result() as $assignment_data)
 	{
     ?>
-
                 <tr class="text-center">
                     <td><?php echo $sl_no; $sl_no++;?></td>
-                    <td><?php echo $assignment_data->assign_subject ?></td>
-                    <td><?php echo $assignment_data->assign_topic ?></td>
+                    <td><?php echo $assignment_data->subject ?></td>
+                    <td><?php echo $assignment_data->as_topic ?></td>
                     <td><?php echo date('d-m-Y',strtotime($assignment_data->last_date)) ?></td>
                     <td><button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalCenter<?php echo $assignment_data->assign_id;?>">Upload File</button>
+                            data-target="#exampleModalCenter<?php echo $assignment_data->as_id;?>">Upload File</button>
                     </td>
                 </tr>
 
+
+  
                     <div class="modal fade bd-example-modal-lg"
-                        id="exampleModalCenter<?php echo $assignment_data->assign_id;?>" tabindex="-1" role="dialog"
+                        id="exampleModalCenter<?php echo $assignment_data->as_id;?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         
 
                         <form class="needs-validation mt-5" novalidate method="post"
-                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->assign_id;?>" enctype="multipart/form-data">
+                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>">
 
 
                         
@@ -117,7 +117,7 @@ if($this->session->flashdata('add_assign')){
                                 
                                 <div class="modal-body">
 
-                                    <input type="hidden" name="assign_id" value="<?php echo $assignment_data->assign_id;?>"
+                                    <input type="hidden" name="assign_id" value="<?php echo $assignment_data->as_id;?>"
                                         disabled style="background:none; border:none;">
 
                                     <div class="form-row mt-5 ml-5">
@@ -126,10 +126,10 @@ if($this->session->flashdata('add_assign')){
                                             <div class="col-12 text-center file_1"><i class="fas fa-cloud-upload-alt"
                                                     style="font-size:50px;"></i>
                                                 <p>Upload the File Here</p><br>
-                                                <label for="select_assign" class="btn btn-primary mt-n5">Choose
+                                                <label for="select_img" class="btn btn-primary mt-n5">Choose
                                                     File</label>
-                                                <input type="file" class="custom-file-input" name="upload_file"
-                                                    id="select_assign" required>
+                                                <input type="file" class="custom-file-input" name="image"
+                                                    id="select_img">
                                             </div>
 
                                         </div>
@@ -137,14 +137,14 @@ if($this->session->flashdata('add_assign')){
                                         <div class="col-md-8 mb-3 ml-5">
                                             <label for="validationCustom04">Subject</label>
                                             <input type="text" class="form-control" name="subject"
-                                                value="<?php echo $assignment_data->assign_subject;?>" readonly>
+                                                value="<?php echo $assignment_data->subject;?>" readonly>
 
                                             <div class="col-md-14 mt-3">
                                                 <label for="validationCustom05">Submitted To</label>
                                                 <?php
                                                 $this->db->select('*');
                                                 $this->db->from('users');
-                                                $this->db->where('email',$assignment_data->submitted_to);
+                                                $this->db->where('email',$assignment_data->as_by);
                                                 $sql=$this->db->get();
                                                 foreach($sql->result() as $name)
                                                 {
@@ -158,7 +158,7 @@ if($this->session->flashdata('add_assign')){
                                                     <label for="validationCustom02">Topic</label>
                                                     <input type="text" class="form-control" name="assign_topic"
                                                         id="assign_topic"
-                                                        value="<?php echo $assignment_data->assign_topic;?>" readonly>
+                                                        value="<?php echo $assignment_data->as_topic;?>" readonly>
 
                                                 </div>
                                             </div>
@@ -195,4 +195,3 @@ if($this->session->flashdata('add_assign')){
         </table>
     </div>
     </div>
-

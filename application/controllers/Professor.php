@@ -305,8 +305,8 @@ class Professor extends CI_Controller
    $semester=$this->input->post('semester');  
    $last_date=$this->input->post('last_date');
    $course=$this->input->post('course');
-   $assign_data=array('assign_topic'=>$assign_topic,'submitted_to'=>$_SESSION['u_id'],'assign_subject'=>$subject,'assign_sem'=>$semester,'last_date'=>$last_date,'course'=>$course);
-   $this->db->insert('assignment_data',$assign_data);
+   $assign_data=array('as_topic'=>$assign_topic,'as_by'=>$_SESSION['u_id'],'subject'=>$subject,'semester'=>$semester,'last_date'=>$last_date,'course'=>$course);
+   $this->db->insert('assignment_topic',$assign_data);
    $this->session->set_flashdata('add_topic',"Successfully Added");
    redirect('professor/add_assignment','refresh');
  }

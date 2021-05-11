@@ -33,10 +33,6 @@ class Student_model extends CI_Model {
   {
     $this->db->where('id',$id)->update('users',$update_data);
   }
-  public function upload_assignment($assign_upload,$assign_id)
-  {
-    $this->db->where('assign_id',$assign_id)->update('assignment_data',$assign_upload);
-  }
   // ------------------------------------------------------------------------
 
 }

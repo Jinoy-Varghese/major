@@ -107,16 +107,31 @@ public function pgResponse()
   $this->load->view("student/pay/lib/encdec_paytm.php");
   $this->load->view("student/pay/pgResponse.php");
 }
-public function upload_assignment($assign_id)
+
+public function upload_assignment($as_id)
 {
-  $upload_file = $_FILES['upload_file']['name'];
-  $target = "assets/img/assignments/".basename($upload_file);
-  $assign_upload=array('submitted_by'=>$_SESSION['u_id'],'submitted_date'=>date('Y-m-d'),'assign_status'=>1,'assign_file'=>$target);
-  move_uploaded_file($_FILES['upload_file']['tmp_name'], $target);
-  $this->Student_model->upload_assignment($assign_upload,$assign_id);
-  $this->session->set_flashdata('add_assign',"Successfully Uploaded");
-  redirect('Student/assignment','refresh');
+  $id=$_SESSION['u_id'];
+  $this->db->select('*');
+  $this->db->from('student_data');
+  $this->db->where('email',$id);
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
+    $semester=$user_data->s_sem;
+  }
+   $upload_file = $_FILES['upload_file']['name'];
+   $target = "assets/img/assignments/".basename($upload_file);
+   move_uploaded_file($_FILES['upload_file']['tmp_name'], $target);
+   $assign_sem=$user_data->s_sem;
+   $subject=$this->input->post('subject');  
+   $tr_id=$this->input->post('tr_id');
+   $assign_topic=$this->input->post('assign_topic');
+   $assign_upload=array('assign_id'=>$as_id,'assign_by'=>$_SESSION['u_id'],'assign_sem'=>$assign_sem,'assign_subject'=>$subject,'assign_to'=>$tr_id,'assign_topic'=>$assign_topic,'assign_date'=>date('Y-m-d'),'assign_file'=>$target);
+   $this->db->insert('assignment_submit',$assign_upload);
+   $this->session->set_flashdata('add_assign',"Successfully Uploaded");
+   redirect('Student/assignment','refresh');
 }
+
 public function view_subject_ajax()
 {
       $id=$_SESSION['u_id'];
