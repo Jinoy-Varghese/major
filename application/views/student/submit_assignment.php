@@ -126,10 +126,10 @@ if($this->session->flashdata('add_assign')){
                                             <div class="col-12 text-center file_1"><i class="fas fa-cloud-upload-alt"
                                                     style="font-size:50px;"></i>
                                                 <p>Upload the File Here</p><br>
-                                                <label for="select_img" class="btn btn-primary mt-n5">Choose
+                                                <label for="upload_file_id" class="btn btn-primary mt-n5">Choose
                                                     File</label>
-                                                <input type="file" class="custom-file-input" name="image"
-                                                    id="select_img">
+                                                <input type="file" class="custom-file-input" name="upload_file"
+                                                    id="upload_file_id">
                                             </div>
 
                                         </div>
