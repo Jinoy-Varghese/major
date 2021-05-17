@@ -130,7 +130,7 @@ public function upload_assignment($as_id)
    $assign_upload=array('assign_id'=>$as_id,'assign_by'=>$_SESSION['u_id'],'assign_sem'=>$assign_sem,'assign_subject'=>$subject,'assign_to'=>$tr_id,'assign_topic'=>$assign_topic,'assign_date'=>date('Y-m-d'),'assign_file'=>$target);
    $this->db->insert('assignment_submit',$assign_upload);
    $this->session->set_flashdata('add_assign',"Successfully Uploaded");
-   //redirect('Student/assignment','refresh');
+   redirect('Student/assignment','refresh');
 }
 
 public function view_subject_ajax()
