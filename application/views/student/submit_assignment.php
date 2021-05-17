@@ -128,7 +128,7 @@ if($this->session->flashdata('add_assign')){
                                                 <p>Upload the File Here</p><br>
                                                 <label for="upload_file_id" class="btn btn-primary mt-n5">Choose
                                                     File</label>
-                                                <input type="file" class="custom-file-input" name="upload_file"
+                                                <input type="file" class="custom-file-input" name="u_file"
                                                     id="upload_file_id">
                                             </div>
 
