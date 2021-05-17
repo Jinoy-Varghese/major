@@ -104,7 +104,7 @@ if($this->session->flashdata('add_assign')){
                         
 
                         <form class="needs-validation mt-5" novalidate method="post"
-                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>">
+                    action="<?php echo base_url()?>Student/upload_assignment/<?php echo $assignment_data->as_id;?>" enctype="multipart/form-data">
 
 
                         
