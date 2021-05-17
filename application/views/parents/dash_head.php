@@ -84,6 +84,7 @@ if(!isset($_SESSION['u_id']))
           <ul class="drop-down-ul">
             <a href='<?php echo site_url(); ?>Parents/view_results' class="drop-down-a"><li class="drop-down-li">View Results</li></a>
             <a href='<?php echo site_url(); ?>Parents/view_assignments' class="drop-down-a"><li class="drop-down-li">View Assignments</li></a>
+            <a href='<?php echo site_url(); ?>Parents/view_assignments' class="drop-down-a"><li class="drop-down-li">Live Meeting</li></a>
           </ul>
 
       </div>
