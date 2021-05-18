@@ -115,21 +115,27 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo site_url(); ?>hod/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
         <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul">
-
             <a href='<?php echo site_url(); ?>hod/add_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
+          </ul>
+          <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down' class="drop-down-n w-100">Manage Students<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul2" style="background:#DAE0E5;">
+          <a href='<?php echo base_url('/hod/remove_student'); ?>' class="drop-down-a"><li class="drop-down-li">Students</li></a>
+          <a href='<?php echo base_url('/hod/upgrade_students'); ?>' class="drop-down-a"><li class="drop-down-li">Upgrade Students</li></a>
+          </ul>
+          <div class="list-group-item  bg-light sub-menu3"><a href='#drop-down' class="drop-down-n w-100">Manage Subject<div class='angle fas fa-angle-down right'></div></a></div>
+          <ul class="drop-down-ul3" style="background:#DAE0E5;">
+          <a href='<?php echo base_url('/hod/add_subject'); ?>' class="drop-down-a"><li class="drop-down-li">Add Subject</li></a>
+          <a href='<?php echo base_url('/hod/remove_subject'); ?>' class="drop-down-a"><li class="drop-down-li">Subjects</li></a>
+          </ul>
 
-          </ul> 
         <a href="<?php echo site_url(); ?>hod/view_professor" class="list-group-item list-group-item-action bg-light">Professors</a>
         <a href="<?php echo base_url('/hod/change_incharge'); ?>" class="list-group-item list-group-item-action bg-light">Add Incharge</a>
-        <a href="<?php echo base_url('/hod/add_course'); ?>" class="list-group-item list-group-item-action bg-light">Add Course</a> 
-        <a href="<?php echo base_url('/hod/add_subject'); ?>" class="list-group-item list-group-item-action bg-light">Add Subject</a> 
+        <a href="<?php echo base_url('/hod/add_course'); ?>" class="list-group-item list-group-item-action bg-light">Add Course</a>  
         <a href="<?php echo base_url('/hod/assign_teachers'); ?>" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="bottom" title="Assign professors for each subject">Assign Subject</a>
-        <a href="<?php echo site_url(); ?>/hod/lab_complaint" class="list-group-item list-group-item-action bg-light">Report Complaints</a> 
+        <a href="<?php echo site_url(); ?>/hod/lab_complaint" class="list-group-item list-group-item-action bg-light">Lab Complaints</a> 
         <a href="<?php echo base_url('/hod/events'); ?>" class="list-group-item list-group-item-action bg-light">Notice Board</a> 
         <a href="<?php echo base_url('/hod/news'); ?>" class="list-group-item list-group-item-action bg-light">News</a> 
-        <a href="<?php echo base_url('/hod/upgrade_students'); ?>" class="list-group-item list-group-item-action bg-light">Upgrade Students</a> 
-        <a href="<?php echo base_url('/hod/remove_subject'); ?>" class="list-group-item list-group-item-action bg-light">All Subjects</a>
-        <a href="<?php echo base_url('/hod/remove_student'); ?>" class="list-group-item list-group-item-action bg-light">All Students</a>  
+ 
 
         
       </div>
