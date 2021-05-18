@@ -12,4 +12,9 @@
 	$(".drop-down-ul").slideToggle("100");
   $(this).find(".angle").toggleClass("fa-angle-up fa-angle-down");
 });
+$('.drop-down-ul2').hide();
+  $(".sub-menu2").click(function () {
+	$(".drop-down-ul2").slideToggle("100");
+  $(this).find(".angle").toggleClass("fa-angle-up fa-angle-down");
+});
 </script>
