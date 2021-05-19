@@ -11,7 +11,13 @@ if($this->session->flashdata('meeting_over')){
  
  
 ?>
-
+ <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-4"></div>
+ <div class="col-md-2 col-sm-12 mt-5 ">
+            <a href="<?php echo base_url();?>Professor/create_pta_meeting"class="btn border-primary col-12 custom-button" style="cursor:pointer">PTA Meeting</a>
+            </div>
 
 <div class="row mt-5">
     <div class="vid-out mt-md-5 col-md-5">
@@ -81,18 +87,18 @@ if($this->session->flashdata('meeting_over')){
 
 
 
-
+                   
 
 
                 </select>
             </div>
-
+           
             <div class="col-md-6 mb-3 p-2 mt-2">
             <label for="validationCustom05"></label>
                 <input type="submit" class="form-control btn text-primary border-primary custom-button" id="validationCustom05" name="start" value="Start Meeting">
-
+                
             </div>
-
+           
 
         </form>
 

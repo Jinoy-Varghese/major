@@ -599,6 +599,30 @@ class Professor extends CI_Controller
       redirect('Professor/live_meeting','refresh');
     }
   }
+  public function create_pta_meeting()
+  {
+    
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('incharge_list');
+    $this->db->where('user_incharge',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $semester=$user_data->semester;
+      $course=$user_data->course;
+    }
+     $meet_data=array('meet_by'=>$id,'course'=>$course,'sem'=>$semester,'status'=>1);
+     $value1=array('meet_status'=>1);
+     $this->db->where('email',$id);
+     $this->db->update('professor_data',$value1);
+     $this->db->insert('meeting_data',$meet_data);
+     redirect('https://mtcst.herokuapp.com/'.md5($course).md5($semester));
+    
+  
+     // redirect('Professor/live_meeting','refresh');
+    
+  }
   public function mark_subject_attendance()
   {
 
