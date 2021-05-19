@@ -80,12 +80,11 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url();?>Parents" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">My Student Details<div class='angle fas fa-angle-down right'></div></a></div>
-          <ul class="drop-down-ul">
-            <a href='<?php echo site_url(); ?>Parents/view_results' class="drop-down-a"><li class="drop-down-li">View Results</li></a>
-            <a href='<?php echo site_url(); ?>Parents/view_assignments' class="drop-down-a"><li class="drop-down-li">View Assignments</li></a>
-            <a href='<?php echo site_url(); ?>Parents/view_assignments' class="drop-down-a"><li class="drop-down-li">Live Meeting</li></a>
-          </ul>
+        <a href='<?php echo site_url(); ?>Parents/view_attendance' class="list-group-item list-group-item-action bg-light">Attendance</a>
+        <a href='<?php echo site_url(); ?>Parents/view_results' class="list-group-item list-group-item-action bg-light">Results</a>
+        <a href='<?php echo site_url(); ?>Parents/view_internal_mark' class="list-group-item list-group-item-action bg-light">Internal Mark</a>
+        <a href='<?php echo site_url(); ?>Parents/view_assignments' class="list-group-item list-group-item-action bg-light">Live Meeting</a>
+
 
       </div>
     </div>

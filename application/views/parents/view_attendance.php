@@ -19,8 +19,7 @@ if(!isset($_SESSION['u_id']))
 <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">My Student Details</a></li>
-            <li class="breadcrumb-item active" aria-current="page">View Assignments</li>
+            <li class="breadcrumb-item active" aria-current="page">View Attendance</li>
         </ol>
     </nav>
 </div>
@@ -33,10 +32,8 @@ if(!isset($_SESSION['u_id']))
 
                             <tr>
                                 <th data-field="sl.no" data-sortable="true">Sl.No</th>
-                                <th data-field="subject" data-sortable="true">Subject</th>
-                                <th data-field="semester" data-sortable="true">Semester</th>
-                                <th data-field="date" data-sortable="true">Submitted On</th>
-                                <th data-field="mark" data-sortable="true">Mark Obtained</th>
+                                <th data-field="subject" data-sortable="true">Date</th>
+                                <th data-field="semester" data-sortable="true">Present/Absent</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,8 +49,19 @@ foreach($sql->result() as $user_data)
 }
 
 $this->db->select('*');
-$this->db->from('assignment');
-$this->db->where('a_email',$s_mail);
+$this->db->from('student_data');
+$this->db->where('email',$s_mail);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $student_id=$user_data->student_id;
+  $s_sem=$user_data->s_sem;
+}
+
+$this->db->select('*');
+$this->db->from('attendance');
+$this->db->where('s_id',$student_id);
+$this->db->where('s_sem',$s_sem);
 $sql=$this->db->get();
 $i=1;
 foreach($sql->result() as $user_data)
@@ -61,10 +69,8 @@ foreach($sql->result() as $user_data)
 ?>
 <tr>
 <th><?php echo $i++;?></th>
-<th><?php echo $user_data->a_subject;?></th>
-<th><?php echo $user_data->a_sem;?></th>
-<th><?php echo date('d-m-Y',strtotime($user_data->date));?></th>
-<th><?php echo $user_data->mark;?></th>
+<th><?php echo date('d-m-Y',strtotime($user_data->timestamp));?></th>
+<th><?php echo $user_data->s_attendance;?></th>
 </tr>
   
   

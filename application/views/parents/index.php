@@ -186,7 +186,7 @@ categoryAxis.fontSize = 9;
     <div class="row mt-5"> 
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
         
-        <div class="text-right" style="opacity:0.8;"><i class="fa fa-hourglass text-white"></i></div>
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-hourglass text-black"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                 <?php 
 $id=$_SESSION['u_id'];
@@ -213,6 +213,7 @@ foreach($sql->result() as $user_data)
 $this->db->select('*');
 $this->db->from('attendance');
 $this->db->where('s_id',$s_id);
+$this->db->where('s_sem',$s_sem);
 $sql=$this->db->get();
 $slno=1;
 foreach($sql->result() as $user_data)
@@ -221,16 +222,15 @@ foreach($sql->result() as $user_data)
 }
 
 $con = mysqli_connect("localhost", "root", "", "college_management");
-$query2="SELECT COUNT(s_attendance) as total FROM attendance WHERE s_id='$s_id' AND s_attendance='present'";
+$query2="SELECT COUNT(s_attendance) as total FROM attendance WHERE s_id='$s_id' AND s_sem='$s_sem' AND s_attendance='present'";
 $sql2=mysqli_query($con,$query2);
 $result2=mysqli_fetch_assoc($sql2);
 $result2['total'];
 
-
 $query4="SELECT s_id,s_sem,count(*) as occur from attendance group by s_id,s_sem having count(*)=(SELECT COUNT(*) as occur from attendance group by s_id,s_sem order by occur desc limit 1)";
 $sql4=mysqli_query($con,$query4);
 $result4=mysqli_fetch_assoc($sql4);
-$result4['occur']."<br>";
+$result4['occur'];
 
 $present=$result2['total'];
 $total=$result4['occur'];
