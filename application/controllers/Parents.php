@@ -138,4 +138,12 @@ class Parents extends CI_Controller
 
    redirect('Parents/parent_profile','refresh');
  }
+ public function live_meeting()
+ {
+   $this->load->view("header.php");
+   $this->load->view("parents/dash_head.php");
+   $this->load->view("parents/live_meeting.php");
+   $this->load->view("parents/dash_footer.php");
+   $this->load->view("footer.php");
+ }
 } 
