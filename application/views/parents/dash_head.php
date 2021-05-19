@@ -83,7 +83,7 @@ if(!isset($_SESSION['u_id']))
         <a href='<?php echo site_url(); ?>Parents/view_attendance' class="list-group-item list-group-item-action bg-light">Attendance</a>
         <a href='<?php echo site_url(); ?>Parents/view_results' class="list-group-item list-group-item-action bg-light">Results</a>
         <a href='<?php echo site_url(); ?>Parents/view_internal_mark' class="list-group-item list-group-item-action bg-light">Internal Mark</a>
-        <a href='<?php echo site_url(); ?>Parents/view_assignments' class="list-group-item list-group-item-action bg-light">Live Meeting</a>
+        <a href='<?php echo site_url(); ?>Parents/live_meeting' class="list-group-item list-group-item-action bg-light">Live Meeting</a>
 
 
       </div>
