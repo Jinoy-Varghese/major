@@ -86,6 +86,30 @@ public function assignment()
   $this->load->view("student/dash_footer.php");
   $this->load->view("footer.php");
 }
+public function attendance()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("student/attendance.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
+public function results()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("student/results.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
+public function internal_mark()
+{
+  $this->load->view("header.php");
+  $this->load->view("student/dash_head.php");
+  $this->load->view("student/internal_mark.php");
+  $this->load->view("student/dash_footer.php");
+  $this->load->view("footer.php");
+}
 public function fee_payment()
 {
   $this->load->view("header.php");
