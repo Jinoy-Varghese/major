@@ -113,10 +113,9 @@ if(!isset($_SESSION['u_id']))
       </div>
       <div class="list-group list-group-flush">
         <a href="<?php echo site_url(); ?>hod/" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <div class="list-group-item  bg-light sub-menu"><a href='#drop-down' class="drop-down-n w-100">Add Users<div class='angle fas fa-angle-down right'></div></a></div>
-          <ul class="drop-down-ul">
-            <a href='<?php echo site_url(); ?>hod/add_student' class="drop-down-a"><li class="drop-down-li">Verify Student</li></a>
-          </ul>
+       
+            <a href='<?php echo site_url(); ?>hod/add_student'class="list-group-item list-group-item-action bg-light"> Verify Student</a>
+        
           <div class="list-group-item  bg-light sub-menu2"><a href='#drop-down' class="drop-down-n w-100">Manage Students<div class='angle fas fa-angle-down right'></div></a></div>
           <ul class="drop-down-ul2" style="background:#DAE0E5;">
           <a href='<?php echo base_url('/hod/remove_student'); ?>' class="drop-down-a"><li class="drop-down-li">Students</li></a>
