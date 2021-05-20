@@ -8,7 +8,8 @@
     // Enter your Client Secrect
     $client->setClientSecret('irWOesu4JmwEV8PoXDDPu0Ae');
     // Enter the Redirect URL
-    $client->setRedirectUri('http://localhost/major/Home/google_auth');
+    $red_url=base_url().'Home/google_auth';
+    $client->setRedirectUri($red_url);
 
     // Adding those scopes which we want to get (email & profile Information)
     $client->addScope("email");
