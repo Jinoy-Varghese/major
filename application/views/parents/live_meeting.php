@@ -32,8 +32,8 @@ if($this->session->flashdata('meeting_over')){
     <div class="vid-out mt-md-5 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
-<?php 
-	$i=1;
+	<?php 
+	
 
   $id=$_SESSION['u_id'];
   $this->db->select('*');
@@ -43,7 +43,7 @@ if($this->session->flashdata('meeting_over')){
 
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
-  {	
+  {
     $course=$user_data->s_course;
     $semester=$user_data->s_sem;
   }
@@ -52,7 +52,8 @@ if($this->session->flashdata('meeting_over')){
   $this->db->select('course,meet_by,sem');
   $this->db->from('meeting_data');
   $this->db->where('status',1);
- 
+  $this->db->where('sem',$sem);
+  $this->db->where('course',$course);
 
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
@@ -60,12 +61,12 @@ if($this->session->flashdata('meeting_over')){
   
 
  ?>
-  
 
-      <div><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->course).md5($user_data->sem); ?>" class="btn border-primary col-12 custom-button">Join</a></div>
+  <div class="mt-md-1 col-md-12">
+<a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->course).md5($user_data->sem); ?>" class="btn border-primary col-md-1 col-sm-5 mt-6 custom-button">Join</a></div>
 	  	
 	<?php		
-  $i++;
+  
 	}
 	?>
 
