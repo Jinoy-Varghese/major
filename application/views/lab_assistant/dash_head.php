@@ -95,7 +95,7 @@ if(!isset($_SESSION['u_id']))
 
   <link href="<?php echo base_url('assets/css/simple-sidebar.css'); ?>" rel="stylesheet">
   <!--navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="height:65px;"><!-- sticky top can be replaced with fixed-botto or fixed-top -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="height:55px;"><!-- sticky top can be replaced with fixed-botto or fixed-top -->
     <button class="btn btn-primary" id="menu-toggle">Menu</button>
     <a href="#" class="navbar-brand mx-auto">
 <div class='rounded-circle ml-md-2'><img src="<?php echo base_url('assets/image/logo1.png');?>"class="ml-n1 mt-n1" style='width:60px; height:60px;'></div>
