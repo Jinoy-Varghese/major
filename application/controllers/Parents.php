@@ -140,10 +140,12 @@ class Parents extends CI_Controller
  }
  public function live_meeting()
  {
-   $this->load->view("header.php");
-   $this->load->view("parents/dash_head.php");
-   $this->load->view("parents/live_meeting.php");
-   $this->load->view("parents/dash_footer.php");
-   $this->load->view("footer.php");
+  $this->load->view("header.php");
+  $this->load->view("amp.php");
+  $this->load->view("parents/dash_head.php");
+  $this->load->view("amp.php");
+  $this->load->view("parents/live_meeting.php");
+  $this->load->view("parents/dash_footer.php");
+  $this->load->view("footer.php");
  }
 } 
