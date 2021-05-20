@@ -32,7 +32,7 @@ if($this->session->flashdata('meeting_over')){
     <div class="vid-out mt-md-5 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
-	<?php 
+<?php 
 	$i=1;
 
   $id=$_SESSION['u_id'];
@@ -40,9 +40,10 @@ if($this->session->flashdata('meeting_over')){
   $this->db->from('parent_data');
   $this->db->join('student_data','student_data.dept=parent_data.dept');
   $this->db->where('parent_data.dept');
+
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
-  {
+  {	
     $course=$user_data->s_course;
     $semester=$user_data->s_sem;
   }
@@ -51,15 +52,14 @@ if($this->session->flashdata('meeting_over')){
   $this->db->select('course,meet_by,sem');
   $this->db->from('meeting_data');
   $this->db->where('status',1);
-  $this->db->where('sem',$semester);
-  $this->db->where('course',$course);
+ 
 
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
   {
   
 
-?>
+ ?>
   
 
       <div><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->course).md5($user_data->sem); ?>" class="btn border-primary col-12 custom-button">Join</a></div>
@@ -150,23 +150,21 @@ if($this->session->flashdata('meeting_over')){
   <?php 
    }
   ?>
--->
-
-    </div>
-</div>
+ -->
+ </div>
 
 
-<!--  added live preview with details
+ <!--  added live preview with details
       meeting progress added
--->
+ -->
 
 
 
 
-<script>
-var video = document.querySelector("#videoElement");
+ <script>
+ var video = document.querySelector("#videoElement");
 
-if (navigator.mediaDevices.getUserMedia) {
+ if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({
             video: true
         })

@@ -459,9 +459,15 @@ class Home extends CI_Controller
        $this->session->set_flashdata('meeting_over',"Theernnu");
        redirect('Professor/live_meeting','refresh');
      }
+     elseif($present=='student')
+     {
+      redirect('student/live_meeting','refresh');
+     }
      else
      {
-       redirect('Student/live_meeting','refresh');
+      
+      redirect('parents/live_meeting','refresh');
      }
+    
    }
 }

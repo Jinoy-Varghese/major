@@ -15,12 +15,10 @@ if($this->session->flashdata('meeting_over')){
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
         <div class="col-md-4"></div>
- <div class="col-md-2 col-sm-12 mt-5 ">
-            <a href="<?php echo base_url();?>Professor/create_pta_meeting"class="btn border-primary col-12 custom-button" style="cursor:pointer">PTA Meeting</a>
+ <div class="col-md-2 col-sm-5 mt-5 ">
+            <a href="<?php echo base_url();?>Professor/create_pta_meeting"class="btn btn-primary col-12" style="cursor:pointer">PTA Meeting</a>
             </div>
-
-<div class="row mt-5">
-    <div class="vid-out mt-md-5 col-md-5">
+    <div class="vid-out mt-md-2 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
     <div class="col-md-7 mt-md-5 pt-5">

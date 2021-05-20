@@ -148,4 +148,5 @@ class Parents extends CI_Controller
   $this->load->view("parents/dash_footer.php");
   $this->load->view("footer.php");
  }
+ 
 } 
