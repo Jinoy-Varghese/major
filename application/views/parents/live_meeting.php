@@ -32,30 +32,6 @@ if($this->session->flashdata('meeting_over')){
     <div class="vid-out mt-md-5 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
-    <div class="col-md-6 mt-md-5 ">
-
-
-
-
-    <table id="table"
-  data-show-export="true"
-  data-toolbar="#toolbar"
-  data-search="true"
-  data-sortable="true"
-  data-show-columns="true"
-  data-toggle="table" 
-  data-pagination="true"
-  class="table"
-  data-visible-search="true"
-  >
-  <thead class="table-primary">
-		<tr>
-			<th data-field="#" data-sortable="true">#</th>
-			<th data-field="Subject" data-sortable="true">Subject</th>
-      <th data-field="edit">Action</th>
-		</tr>
-  </thead>
-	<tbody>
 	<?php 
 	$i=1;
 
@@ -85,17 +61,15 @@ if($this->session->flashdata('meeting_over')){
 
 ?>
   
-		<tr>
-			<td><?php echo $i ?></td>
-			<td><?php echo $user_data->subject ?></td>
-      <td><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->course).md5($user_data->sem); ?>" class="btn border-primary col-12 custom-button">Join</a></td>
-	  	</tr>
+
+      <div><a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->course).md5($user_data->sem); ?>" class="btn border-primary col-12 custom-button">Join</a></div>
+	  	
 	<?php		
   $i++;
 	}
 	?>
-	</tbody>
-</table>
+
+
 
 
 
