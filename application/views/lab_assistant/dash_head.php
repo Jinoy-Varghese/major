@@ -95,12 +95,11 @@ if(!isset($_SESSION['u_id']))
 
   <link href="<?php echo base_url('assets/css/simple-sidebar.css'); ?>" rel="stylesheet">
   <!--navigation-->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top"><!-- sticky top can be replaced with fixed-botto or fixed-top -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="height:65px;"><!-- sticky top can be replaced with fixed-botto or fixed-top -->
     <button class="btn btn-primary" id="menu-toggle">Menu</button>
     <a href="#" class="navbar-brand mx-auto">
-    <?php
-     echo "<img src='".base_url('assets/image/logo.png')."' class='rounded-circle ml-md-2 ml-2' style='width:40px; height:40px;'>";
-     ?></a>
+<div class='rounded-circle ml-md-2'><img src="<?php echo base_url('assets/image/logo.png');?>"class="ml-n3 mt-n1" style='width:70px; height:70px;'></div>
+</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
