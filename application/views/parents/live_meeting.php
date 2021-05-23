@@ -32,81 +32,17 @@ if($this->session->flashdata('meeting_over')){
     <div class="vid-out mt-md-5 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
-	<?php 
-	
-
-  $id=$_SESSION['u_id'];
-  $this->db->select('*');
-  $this->db->from('parent_data');
-  $this->db->join('student_data','student_data.dept=parent_data.dept');
-  $this->db->where('parent_data.dept');
-
-  $sql=$this->db->get();
-  foreach($sql->result() as $user_data)
-  {
-    $course=$user_data->s_course;
-    $semester=$user_data->s_sem;
-  }
-
-
-  $this->db->select('course,meet_by,sem');
-  $this->db->from('meeting_data');
-  $this->db->where('status',1);
-  $this->db->where('sem',$sem);
-  $this->db->where('course',$course);
-
-  $sql=$this->db->get();
-  foreach($sql->result() as $user_data)
-  {
-  
-
- ?>
-
-  <div class="mt-md-1 col-md-12">
-<a href="<?php echo 'https://mtcst.herokuapp.com/'.md5($user_data->course).md5($user_data->sem); ?>" class="btn border-primary col-md-1 col-sm-5 mt-6 custom-button">Join</a></div>
-	  	
-	<?php		
-  
-	}
-	?>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!--
+        
    <?php
     $id=$_SESSION['u_id'];
     $this->db->select('*');
-    $this->db->from('users');
-    $this->db->join('student_data','student_data.email=users.email');
-    $this->db->where('users.email',$id);
+    $this->db->from('parent_data');
+    $this->db->join('student_data','student_data.email=parent_data.s_mail');
+    $this->db->where('parent_data.email',$id);
     $sql=$this->db->get();
     foreach($sql->result() as $user_data)
     {
@@ -151,7 +87,7 @@ if($this->session->flashdata('meeting_over')){
   <?php 
    }
   ?>
- -->
+ 
  </div>
 
 
