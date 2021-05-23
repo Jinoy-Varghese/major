@@ -48,6 +48,7 @@ if($this->session->flashdata('meeting_over')){
     {
       $dept=$user_data->dept;
       $sem=$user_data->s_sem;
+      $course=$user_data->s_course;
     }
 
 
@@ -72,7 +73,7 @@ if($this->session->flashdata('meeting_over')){
    ?>
 
     <div class="mt-4">
-      <a href="https://mtcst.herokuapp.com/<?php echo md5($course).md5($semester) ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
+      <a href="https://mtcst.herokuapp.com/<?php echo md5($course).md5($sem) ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
     </div>
   <?php 
   }
