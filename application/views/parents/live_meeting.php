@@ -32,7 +32,7 @@ if($this->session->flashdata('meeting_over')){
     <div class="vid-out mt-md-5 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
-
+<div class="mt-0 mt-md-5 ml-md-0 ml-3 mr-md-0 mr-3 col-md-7">
 
 
 
@@ -62,18 +62,27 @@ if($this->session->flashdata('meeting_over')){
     {
       $incharge_id=$user_data->user_incharge;
     }
-
-   $sql=$this->db->select('*')->from('meeting_data')->where('meet_by',$incharge_id)->where('subject','NULL')->get();
+    $status=0;
+   $sql=$this->db->select('*')->from('meeting_data')->where('meet_by',$incharge_id)->where('subject',NULL)->get();
    foreach($sql->result() as $value)
     {
       $status=$value->status;
+      if($status==1)
+      {
+        break;
+      }
     }
     if($status==1)
     {
    ?>
 
-    <div class="mt-4">
+    <div class="mt-5 col-md-12">
+    <div class="row">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. A aliquid beatae illum tenetur voluptates, officiis porro labore ad at dolorum amet repudiandae nesciunt fugiat voluptatum debitis velit pariatur animi accusamus!
+    </div>
+    <div class="row mt-3">
       <a href="https://mtcst.herokuapp.com/<?php echo md5($course).md5($sem) ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
+      </div>
     </div>
   <?php 
   }
@@ -81,7 +90,7 @@ if($this->session->flashdata('meeting_over')){
   {
   ?>
 
-    <div class="mt-4">
+    <div class="mt-5">
       Meeting didn't started by the host.
     </div>
 
