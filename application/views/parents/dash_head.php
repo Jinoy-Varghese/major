@@ -23,7 +23,7 @@ if(!isset($_SESSION['u_id']))
   <!--navigation-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="height:55px"><!-- sticky top can be replaced with fixed-botto or fixed-top -->
     <button class="btn btn-primary" id="menu-toggle">Menu</button>
-    <a href="#" class="navbar-brand mx-auto"><div class='rounded-circle ml-md-2'><img src="<?php echo base_url('assets/image/logo1.png');?>"class="ml-n1 mt-n1" style='width:60px; height:60px;'></div></a>
+    <a href="#" class="navbar-brand mx-auto"><div class='rounded-circle ml-md-2'><h4>MTCST</h4></div></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="true" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
