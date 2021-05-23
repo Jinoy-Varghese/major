@@ -65,14 +65,14 @@ if($this->session->flashdata('meeting_over')){
    $sql=$this->db->select('*')->from('meeting_data')->where('meet_by',$incharge_id)->get();
    foreach($sql->result() as $value)
     {
-      $status=$value->meet_status;
+      $status=$value->status;
     }
     if($status==1)
     {
    ?>
 
     <div class="mt-4">
-      <a href="https://mtcst.herokuapp.com/<?php echo md5($incharge_id); ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
+      <a href="https://mtcst.herokuapp.com/<?php echo md5($course).md5($semester) ?>" class="btn btn-primary text-light shadow">Join Meeting</a>
     </div>
   <?php 
   }
