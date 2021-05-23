@@ -14,14 +14,14 @@ if($this->session->flashdata('meeting_over')){
  <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3"></div>
-        <div class="col-md-4"></div>
- <div class="col-md-2 col-sm-5 mt-5 ">
-            <a href="<?php echo base_url();?>Professor/create_pta_meeting"class="btn btn-primary col-12" style="cursor:pointer">PTA Meeting</a>
+        <div class="col-md-3"></div>
+ <div class="col-md-3 col-sm-5 mt-5 mb-3 mb-md-0">
+            <a href="<?php echo base_url();?>Professor/create_pta_meeting" class=" float-right btn btn-primary col-12 col-md-8" style="cursor:pointer">Start PTA Meeting</a>
             </div>
     <div class="vid-out mt-md-2 col-md-5">
         <video autoplay="true" id="videoElement" class=" col-md-11 mt-md-4 pl-2 pr-2 shadow"></video>
     </div>
-    <div class="col-md-7 mt-md-5 pt-5">
+    <div class="col-md-7 mt-md-5 pt-0">
 
         <form action="<?php echo base_url();?>Professor/create_live_meeting" method="post" class="col-12 form-row pl-0">
 
