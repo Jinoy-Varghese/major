@@ -20,6 +20,19 @@ if($this->session->flashdata('insert_failed')){
    </div>';
    }
 ?>
+<style>
+  .custom-button
+  {
+    color:#007BFF !important;
+    cursor:pointer;
+  }
+  .custom-button:hover
+  {
+    color:white !important;
+    background:#007BFF;
+    cursor:pointer;
+  }
+</style>
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -27,10 +40,14 @@ if($this->session->flashdata('insert_failed')){
     </ol>
     </nav>
 
+<div class="row col-12 justify-content-end mt-5">
+  <div class="col-md-4 p-0 ">
+  <a href="" class="btn border-primary col-12 custom-button float-right">Request teacher from other department</a>
+  </div>
+</div>
 
 
-
-<form class="needs-validation mt-5" novalidate method="post" action="<?php echo base_url();?>hod/assign_teacher_process">
+<form class="needs-validation mt-3" novalidate method="post" action="<?php echo base_url();?>hod/assign_teacher_process">
 
 <div class="form-row mt-5">
             
@@ -174,7 +191,7 @@ if($this->session->flashdata('insert_failed')){
             
             </div>
             <div class="form-row">
-            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Assign">
+            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Assign Subject">
             </div>
 
     </form>
