@@ -99,7 +99,7 @@ if($this->session->flashdata('insert_failed')){
             </div>
           </div>
     
-            <input class="btn btn-primary" type="submit" name="u_reg" value="Submit subject">
+            <input class="btn btn-primary" type="submit" name="u_reg" value="Create subject">
             </form>
     </div>
 
