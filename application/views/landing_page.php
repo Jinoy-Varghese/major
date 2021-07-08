@@ -114,11 +114,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 
-<link rel="stylesheet" href="<?php echo base_url('/assets/css/docs.theme.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('../assets/owlcarousel/assets/owl.carousel.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('../assets/owlcarousel/assets/owl.theme.default.min.css'); ?>">
-<script src="<?php echo base_url('../assets/vendors/jquery.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/fontawesome-5.11.2/css/all.min.css'); ?>"></script>
+<link rel="stylesheet" href="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.carousel.min.css'); ?>">
+<link rel="stylesheet" href="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.theme.default.min.css'); ?>">
+<script src="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js'); ?>"></script>
+<script src="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/owl.carousel.js'); ?>"></script>
 
 
 
@@ -206,54 +205,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div></div>
     </div>
 
-    <div className="row col-12 border border-primary mt-5 pt-5">
-        <div className="col-12 h2">Our Achivements</div>
+    <div className="row col-12 border border-primary mt-5 pt-5 ml-0">
+        <div className="col-12 h2 pb-3">Our Achivements</div>
     
  
-        <section id="demos">
-            <div className="row">
-                <div className="large-12 columns">
-                    <div className="owl-carousel owl-theme">
-                        <div className="item">
+     
+            
+                
+                    <div className="owl-carousel owl-theme pl-4 pr-4 ">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>1</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>2</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>3</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>4</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>5</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>6</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>7</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>8</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>9</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>10</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>11</h4>
                         </div>
-                        <div className="item">
+                        <div className="item border" style={{height:"200px"}}>
                         <h4>12</h4>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                    </section>
+                    
+                    
+          
 
     </div>
 
