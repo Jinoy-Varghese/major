@@ -28,7 +28,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #mobile_mtcst {
         display: none;
     }
-
+    html{
+        scroll-behavior:smooth;
+    }
     @media all and (max-width:499px) {
         #mobile_mtcst {
             display: block;
@@ -70,6 +72,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         font-size:70px;
         text-align:center;
     }
+    .carousel-wrap {
+  margin: 90px auto;
+  padding: 0 5%;
+  width: 80%;
+  position: relative;
+}
+
+/* fix blank or flashing items on carousel */
+.owl-carousel .item {
+  position: relative;
+  z-index: 100; 
+  -webkit-backface-visibility: hidden; 
+}
+
+/* end fix */
+.owl-nav > div {
+  margin-top: -26px;
+  position: absolute;
+  top: 50%;
+  color: #cdcbcd;
+}
+
+.owl-nav i {
+  font-size: 52px;
+}
+
+.owl-nav .owl-prev {
+  left: -30px;
+}
+
+.owl-nav .owl-next {
+  right: -30px;
+}
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -105,7 +140,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
 
     <!-- Load our React component. -->
     <script type="text/babel">
@@ -126,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div className="col-3 ">
             <img src="<?php echo base_url('assets/image/logo_crop.png');?>" className="pt-0 m-0" style={{width:"36px",height:"37px"}} />
         </div>
-            <div className="text-white h4 pt-1 pl-1 col-6 "> MTCST</div>
+            <div className="text-white h4 pt-1 pl-1 col-6 custom-font"> MTCST</div>
         </div>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -191,6 +229,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div></div>
     </div>
 
+    <div className="row col-12 border border-primary mt-5 pt-5">
+        <div className="col-12 h2">Our Achivements</div>
+        <div className="carousel-wrap">
+            <div className="owl-carousel">
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+                <div className="item"><img src="http://placehold.it/150x150" /></div>
+            </div>
+        </div>
+    </div>
 
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
@@ -221,6 +278,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $(".custom-search-outline").addClass("btn-outline-light");
         }
     });
+
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
@@ -280,6 +338,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.body.appendChild(css);
     };
     </script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+</script>
 </body>
 
 </html>
