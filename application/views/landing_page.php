@@ -122,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 return (<div>
 
     <nav className="navbar navbar-expand-lg navbar-light sticky-top">
-        <a className="navbar-brand p-0 m-0" href="#"><img src="<?php echo base_url('assets/image/logo1.png');?>" className="p-0 m-0" style={{width:"60px",height:"60px"}} /></a>
+        <a className="navbar-brand p-0 m-0" href="#"><img src="<?php echo base_url('assets/image/logo_crop.png');?>" className="p-0 m-0" style={{width:"36px",height:"37px"}} /><span className="text-white h4 d-inline-block ml-1 border"><div className="mt-1"> MTCST</div></span></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
