@@ -66,6 +66,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .typewrite-h1,.typewrite {
         height:100%;
     }
+    .font-big{
+        font-size:70px;
+        text-align:center;
+    }
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -159,11 +163,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-    <div className="col-12 border border-primary row mt-5 pt-5">
-                <div className="col-3 border" style={{height:"300px"}}></div>
-                <div className="col-3 border" style={{height:"300px"}}></div>
-                <div className="col-3 border" style={{height:"300px"}}></div>
-                <div className="col-3 border" style={{height:"300px"}}></div>
+    <div className="ml-4 mr-4 row mt-5 pt-5 ">
+                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                    <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-graduation-cap font-big"></i></div>
+                    <div className="col-12 d-flex align-items-center justify-content-center h2">Course</div>
+                    <div className="col-12">We have a 8+ courses currently available now.</div>
+                </div></div>
+                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow"></div></div>
+                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow"></div></div>
+                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow"></div></div>
     </div>
 
 
