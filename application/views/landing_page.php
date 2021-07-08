@@ -136,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </ul>
             <form className="form-inline my-2 my-lg-0" >
                 <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search..." aria-label="Search" />
-                <button className="btn btn-outline-light my-2 my-sm-0" type="submit"><i className="fas fa-search custom-search"></i></button>
+                <button className="btn btn-outline-light my-2 my-sm-0 custom-search-outline" type="submit"><i className="fas fa-search custom-search"></i></button>
             </form>
         </div>
     </nav>
@@ -157,6 +157,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
     </div>
+
+
+    <div className="col-12 border border-primary row mt-5 pt-5">
+                <div className="col-3 border" style={{height:"300px"}}></div>
+                <div className="col-3 border" style={{height:"300px"}}></div>
+                <div className="col-3 border" style={{height:"300px"}}></div>
+                <div className="col-3 border" style={{height:"300px"}}></div>
+    </div>
+
+
+
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
                 );
@@ -171,11 +182,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $(".navbar").addClass("new_bg");
             $(".custom-font").removeClass("text-white");
             $(".custom-font").addClass("text-black");
+            $(".custom-search").addClass("text-dark");
+            $(".custom-search-outline").removeClass("btn-outline-light");
+            $(".custom-search-outline").addClass("btn-outline-dark");
         } else {
             //remove the background property so it comes transparent again (defined in your css)
             $(".navbar").removeClass("new_bg");
             $(".custom-font").addClass("text-white");
             $(".custom-font").removeClass("text-black");
+            $(".custom-search").removeClass("text-dark");
+            $(".custom-search").addClass("text-light");
+            $(".custom-search-outline").removeClass("btn-outline-dark");
+            $(".custom-search-outline").addClass("btn-outline-light");
         }
     });
     var TxtType = function(el, toRotate, period) {
