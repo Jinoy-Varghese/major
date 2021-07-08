@@ -72,39 +72,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         font-size:70px;
         text-align:center;
     }
-    .carousel-wrap {
-  margin: 90px auto;
-  padding: 0 5%;
-  width: 80%;
-  position: relative;
-}
 
-/* fix blank or flashing items on carousel */
-.owl-carousel .item {
-  position: relative;
-  z-index: 100; 
-  -webkit-backface-visibility: hidden; 
-}
 
-/* end fix */
-.owl-nav > div {
-  margin-top: -26px;
-  position: absolute;
-  top: 50%;
-  color: #cdcbcd;
-}
 
-.owl-nav i {
-  font-size: 52px;
-}
 
-.owl-nav .owl-prev {
-  left: -30px;
-}
 
-.owl-nav .owl-next {
-  right: -30px;
-}
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -140,10 +112,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/owl.carousel.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="http://themes.audemedia.com/html/goodgrowth/css/owl.theme.default.min.css">
+
 
     <!-- Load our React component. -->
     <script type="text/babel">
@@ -231,22 +204,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div className="row col-12 border border-primary mt-5 pt-5">
         <div className="col-12 h2">Our Achivements</div>
-        <div className="carousel-wrap">
-            <div className="owl-carousel">
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
-                <div className="item"><img src="http://placehold.it/150x150" /></div>
+        
+
+        <section className="testimonials">
+	<div className="container">
+
+      
+            <!--TESTIMONIAL 5 -->
+            <div className="item">
+              <div className="shadow-effect">
+                <img className="img-responsive" src="https://image.freepik.com/free-photo/delicious-pastry-with-chicken_1203-1616.jpg"  />
+                <div className="item-details">
+									<h5>Chicken for two Roasted <span>$21</span></h5>
+									<p>There was a time when Chinese food in this country meant Americanized Cantonese food.</p>
+								</div>
+              </div>
             </div>
+            <!--END OF TESTIMONIAL 5 -->
+          </div>
         </div>
+      </div>
+      </div>
+    </section>
+    <!-- END OF TESTIMONIALS -->
+
+
+
+
     </div>
 
 
@@ -278,7 +262,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $(".custom-search-outline").addClass("btn-outline-light");
         }
     });
-
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
@@ -299,7 +282,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
 
-        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+        this.el.innerHTML = '<span className="wrap">' + this.txt + '</span>';
 
         var that = this;
         var delta = 200 - Math.random() * 100;
@@ -338,24 +321,123 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         document.body.appendChild(css);
     };
     </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/owl.carousel.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.1/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="http://themes.audemedia.com/html/goodgrowth/css/owl.theme.default.min.css">
+
+
+
+
+    <style>
+        .testimonials {
+  background-color: #f33f02;
+  position: relative;
+  padding-top: 80px;
+}
+.testimonials:after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 30%;
+  background-color: #ddd;
+}
+
+#customers-testimonials .item-details {
+  background-color: #333333;
+  color: #fff;
+  padding: 20px 10px;
+  text-align: left;
+}
+#customers-testimonials .item-details h5 {
+  margin: 0 0 15px;
+  font-size: 18px;
+  line-height: 18px;
+}
+#customers-testimonials .item-details h5 span {
+  color: red;
+  float: right;
+  padding-right: 20px;
+}
+#customers-testimonials .item-details p {
+  font-size: 14px;
+}
+#customers-testimonials .item {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.owl-carousel .owl-nav [class*=owl-] {
+  transition: all 0.3s ease;
+}
+
+.owl-carousel .owl-nav [class*=owl-].disabled:hover {
+  background-color: #D6D6D6;
+}
+
+.owl-carousel {
+  position: relative;
+}
+
+.owl-carousel .owl-next,
+.owl-carousel .owl-prev {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  position: absolute;
+  top: 30%;
+  font-size: 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.owl-carousel .owl-prev {
+  left: -70px;
+}
+
+.owl-carousel .owl-next {
+  right: -70px;
+}
+
+    </style>
+
     <script>
-        $('.owl-carousel').owlCarousel({
-    loop:true,
-    margin:10,
+        jQuery(document).ready(function($) {
+"use strict";
+$('#customers-testimonials').owlCarousel( {
+		loop: true,
+		center: true,
+		items: 3,
+		margin: 30,
+		autoplay: true,
+		dots:true,
     nav:true,
-    responsive:{
-        0:{
-            items:1
-        },
-        600:{
-            items:3
-        },
-        1000:{
-            items:5
-        }
-    }
-})
-</script>
+		autoplayTimeout: 8500,
+		smartSpeed: 450,
+  	navText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+		responsive: {
+			0: {
+				items: 1
+			},
+			768: {
+				items: 2
+			},
+			1170: {
+				items: 3
+			}
+		}
+	});
+});
+    </script>
+
 </body>
 
 </html>
