@@ -122,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 return (<div>
 
     <nav className="navbar navbar-expand-lg navbar-light sticky-top">
-        <a className="navbar-brand" href="#">Logo</a>
+        <a className="navbar-brand p-0 m-0" href="#"><img src="<?php echo base_url('assets/image/logo1.png');?>" className="p-0 m-0" style={{width:"60px",height:"60px"}} /></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -163,15 +163,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-    <div className="ml-4 mr-4 row mt-5 pt-5 ">
-                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
-                    <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-graduation-cap font-big"></i></div>
+    <div className="ml-4 mr-4 row mt-5 pt-4 ">
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                    <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-user-graduate font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Course</div>
-                    <div className="col-12">We have a 8+ courses currently available now.</div>
+                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
                 </div></div>
-                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow"></div></div>
-                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow"></div></div>
-                <div className="col-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow"></div></div>
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                    <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-graduation-cap font-big"></i></div>
+                    <div className="col-12 d-flex align-items-center justify-content-center h2">Department</div>
+                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                </div></div>
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                    <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-photo-video font-big"></i></div>
+                    <div className="col-12 d-flex align-items-center justify-content-center h2">Gallery</div>
+                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                </div></div>
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                    <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-university font-big"></i></div>
+                    <div className="col-12 d-flex align-items-center justify-content-center h2">About us</div>
+                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                </div></div>
     </div>
 
 
