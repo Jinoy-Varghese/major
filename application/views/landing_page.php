@@ -49,6 +49,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         filter: blur(0px);
 
     }
+    .font_new
+    {
+        color:white;
+    }
 
     .card-img-overlay {
         background: #0005;
@@ -123,16 +127,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav  ">
                 <li className="nav-item active">
-                    <a className="nav-link text-white" href="#">Home <span className="sr-only">(current)</span></a>
+                    <a className="nav-link text-white custom-font" href="#">Home <span className="sr-only">(current)</span></a>
                 </li>
                 <li className="nav-item mr-3">
-                    <a className="nav-link text-white" href="<?php echo base_url('Home/login'); ?>">Login</a>
+                    <a className="nav-link text-white custom-font" href="<?php echo base_url('Home/login'); ?>">Login</a>
                 </li>
 
             </ul>
             <form className="form-inline my-2 my-lg-0" >
                 <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search..." aria-label="Search" />
-                <button className="btn btn-outline-light my-2 my-sm-0" type="submit"><i className="fas fa-search"></i></button>
+                <button className="btn btn-outline-light my-2 my-sm-0" type="submit"><i className="fas fa-search custom-search"></i></button>
             </form>
         </div>
     </nav>
@@ -165,9 +169,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     $(window).on("scroll", function() {
         if ($(window).scrollTop() > 2) {
             $(".navbar").addClass("new_bg");
+            $(".custom-font").removeClass("text-white");
+            $(".custom-font").addClass("text-black");
         } else {
             //remove the background property so it comes transparent again (defined in your css)
             $(".navbar").removeClass("new_bg");
+            $(".custom-font").addClass("text-white");
+            $(".custom-font").removeClass("text-black");
         }
     });
     var TxtType = function(el, toRotate, period) {
