@@ -72,9 +72,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         font-size:70px;
         text-align:center;
     }
-
-
-
+    .blue_background
+    {
+        background:url("<?php echo base_url('assets/image/blue_background.jpg');?>");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 
 
     </style>
@@ -182,7 +185,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-    <div className="ml-4 mr-4 row mt-5 pt-4 ">
+    <div className="ml-4 mr-4 row mt-5 pt-4 pb-5">
                 <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-user-graduate font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Course</div>
@@ -205,54 +208,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div></div>
     </div>
 
-    <div className="row col-12 border border-primary mt-5 pt-5 ml-0">
-        <div className="col-12 h2 pb-3">Our Achivements</div>
-    
- 
-     
-            
-                
-                    <div className="owl-carousel owl-theme pl-4 pr-4 ">
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>1</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>2</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>3</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>4</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>5</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>6</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>7</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>8</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>9</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>10</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>11</h4>
-                        </div>
-                        <div className="item border" style={{height:"200px"}}>
-                        <h4>12</h4>
-                        </div>
-                    </div>
-                    
-                    
-          
+    <div className="row col-12 border border-primary mt-5 pt-5 ml-0 blue_background">
+        <div className="col-12 h2 pb-4">Our Achivements</div>    
+            <div className="owl-carousel owl-theme pl-4 pr-4 ">
+                <div className="item border" style={{height:"200px"}}>
+                <h4>1</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>2</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>3</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>4</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>5</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>6</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>7</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>8</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>9</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>10</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>11</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>12</h4>
+                </div>
+            </div>
+    </div>
+
+    <div className="row col-12 border border-primary mt-5 pt-5 ml-0 pb-5">
+        <div className="col-12 h2 pb-4">Our Achivements</div>   
+
+        <div class="col-4 border text-center"><div className="h1">600+</div><div className="h2">students</div></div>
+        <div class="col-4 border text-center"><div className="h1">10+</div><div className="h2">courses</div></div>
+        <div class="col-4 border text-center"><div className="h1">5+</div><div className="h2">departments</div></div>
 
     </div>
 
