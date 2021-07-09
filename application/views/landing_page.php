@@ -251,14 +251,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div className="row col-12 border border-primary mt-5 pt-5 ml-0 pb-5">
-        <div className="col-12 h2 pb-4">Our Achivements</div>   
-
-        <div class="col-4 border text-center"><div className="h1">600+</div><div className="h2">students</div></div>
-        <div class="col-4 border text-center"><div className="h1">10+</div><div className="h2">courses</div></div>
-        <div class="col-4 border text-center"><div className="h1">5+</div><div className="h2">departments</div></div>
-
+        <div className="col-12 h2 pb-4">Our Root</div>   
+        <div class="col-md-4 col-12 text-center mb-5"><div className="h1">600+</div><div className="h2">students</div></div>
+        <div class="col-md-4 col-12 text-center mb-5"><div className="h1">10+</div><div className="h2">courses</div></div>
+        <div class="col-md-4 col-12 text-center mb-5"><div className="h1">5+</div><div className="h2">departments</div></div>
     </div>
 
+
+        <video autoplay muted loop id="myVideo" className="border col-12 p-0 m-0">
+        <source src="http://localhost/major/assets/video/videoplayback_compress_compress.mp4" type="video/mp4" />
+        Your browser does not support HTML5 video.
+        </video>
+
+
+  
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
