@@ -8,6 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Mar Thoma College of Science & Technology is owned and managed by a Registered Society namely The Mar Thoma Educational, Technical, Training and Research Centre (Mar Thoma ETTARC), under the Trivandrum-Quilon Diocese of the Mar Thoma Church. This college is affiliated to the University of Kerala and has 7 undergraduate and 5 post graduate courses.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/image/marthoma.png'); ?>" />
     <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -260,8 +261,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-        <video autoPlay muted loop id="myVideo" className="col-12 p-0 m-0 mt-5">
-        <source src="http://localhost/major/assets/video/videoplayback.mp4" type="video/mp4" className="m-0 p-0" />
+        <video autoPlay muted loop id="myVideo" className="col-12 p-0 m-0 mt-5" poster="<?php echo base_url('assets/image/video_thump.jpg') ?>">
+        <source src="<?php echo base_url('assets/video/videoplayback.mp4#t=5') ?>" type="video/mp4" className="m-0 p-0" />
         Your browser does not support HTML5 video.
         </video>
 
