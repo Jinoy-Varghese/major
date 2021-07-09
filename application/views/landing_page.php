@@ -79,6 +79,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         background-size: cover;
         background-repeat: no-repeat;
     }
+    .inspire_bg
+    {
+        background:url("<?php echo base_url('assets/image/college_front.png') ?>");
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+
+
     ::-webkit-scrollbar {
     display: none;
     }
@@ -267,10 +276,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </video>
 
 
-        <div className="row col-12 mt-5 pt-5 ml-0 pb-5 border">
-        <div className="col-12 h2 pb-4">Our Root</div>   
-            <div class="col-md-4 col-12 border" style={{height:"290px"}}></div>
-            <div class="col-md-8 col-12 border" style={{height:"290px"}}></div>
+        <div className="row col-12 mt-5 pt-5 ml-0 pb-5 border"> 
+            <div class="col-md-4 col-12 border" style={{height:"290px"}}><div className="col-12 inspire_bg h-100 border border-dark"></div></div>
+            <div class="col-md-8 col-12 border" style={{height:"290px"}}>
+            <div className="col-12 h2 pb-4">#InspireImpact</div>  
+            <div class="col-12">Helloooo</div>
+            </div>
         </div>
 
 
