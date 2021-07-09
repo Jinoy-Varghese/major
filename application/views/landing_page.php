@@ -270,19 +270,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-        <video autoPlay muted loop id="myVideo" className="col-12 p-0 m-0 mt-5" poster="<?php echo base_url('assets/image/video_thump.jpg') ?>">
+        <video autoPlay muted loop id="myVideo" className="col-12 p-0 m-0 mt-5 mb-5" poster="<?php echo base_url('assets/image/video_thump.jpg') ?>">
         <source src="<?php echo base_url('assets/video/videoplayback.mp4#t=5') ?>" type="video/mp4" className="m-0 p-0" />
         Your browser does not support HTML5 video.
         </video>
 
 
-        <div className="row col-12 mt-5 pt-5 ml-0 pb-5 border"> 
-            <div class="col-md-4 col-12 border" style={{height:"290px"}}><div className="col-12 inspire_bg h-100 border border-dark"></div></div>
-            <div class="col-md-8 col-12 border" style={{height:"290px"}}>
-            <div className="col-12 h2 pb-4">#InspireImpact</div>  
-            <div class="col-12">Helloooo</div>
+        <div className="row col-12 mt-5 pt-5 ml-0 pb-5"> 
+            <div class="col-md-4 col-12" style={{height:"290px"}}><div className="col-12 inspire_bg h-100 border border-dark"></div></div>
+            <div class="col-md-8 col-12" style={{height:"290px"}}>
+            <div className="col-12 h2 pb-3 mt-4 mt-md-5 ">#InspireImpact</div>  
+            <div class="col-md-10 col-12">As one of the finest college in Kerala, Mar Thoma College of Science and Technology creates an exceptional space for an enhanced learning experience. The vibrant culture of the college has embraced innovation, and its entrepreneurial perspective encourages students, staff and faculty to challenge convention, lead discovery and explore new ways of learning.</div>
             </div>
         </div>
+        <div className="row col-12 mt-5 pt-5 ml-0 pb-5 border">
+            <div className="col-12 h2 pb-4">Photo Gallery</div>   
+
+                
+
+        </div>
+
 
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
