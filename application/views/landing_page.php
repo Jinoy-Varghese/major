@@ -78,7 +78,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         background-size: cover;
         background-repeat: no-repeat;
     }
-
+    ::-webkit-scrollbar {
+    display: none;
+    }
 
     </style>
     <title>MTCST</title>
@@ -250,7 +252,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
     </div>
 
-    <div className="row col-12 border border-primary mt-5 pt-5 ml-0 pb-5">
+    <div className="row col-12 mt-5 pt-5 ml-0 pb-5">
         <div className="col-12 h2 pb-4">Our Root</div>   
         <div class="col-md-4 col-12 text-center mb-5"><div className="h1">600+</div><div className="h2">students</div></div>
         <div class="col-md-4 col-12 text-center mb-5"><div className="h1">10+</div><div className="h2">courses</div></div>
@@ -258,13 +260,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
 
-        <video autoplay muted loop id="myVideo" className="border col-12 p-0 m-0">
-        <source src="http://localhost/major/assets/video/videoplayback_compress_compress.mp4" type="video/mp4" />
+        <video autoPlay muted loop id="myVideo" className="col-12 p-0 m-0 mt-5">
+        <source src="http://localhost/major/assets/video/videoplayback.mp4" type="video/mp4" className="m-0 p-0" />
         Your browser does not support HTML5 video.
         </video>
 
 
-  
 
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
