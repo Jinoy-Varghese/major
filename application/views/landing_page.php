@@ -411,7 +411,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="col-md-3 clearfix d-none d-md-block">
                     <div class="card mb-2">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="<?php echo base_url('assets/image/women_cell.jpg') ?>" alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Women Cell</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -478,7 +478,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="row">
                 <div class="col-md-3">
                     <div class="card mb-2">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="<?php echo base_url('assets/image/tournament.jpg') ?>" alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Tournaments</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -491,7 +491,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="card mb-2">
                     <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap" />
                     <div class="card-body">
-                        <h4 class="card-title">Nature Fest</h4>
+                        <h4 class="card-title">Onam Fest</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p>
                     </div>
@@ -500,7 +500,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="col-md-3 clearfix d-none d-md-block">
                     <div class="card mb-2">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="<?php echo base_url('assets/image/food_fest.jpg') ?>" alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Food Fest</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
@@ -511,7 +511,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="col-md-3 clearfix d-none d-md-block">
                     <div class="card mb-2">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="<?php echo base_url('assets/image/flash_mob.jpg') ?>" alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Flash Mob</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
