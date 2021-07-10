@@ -116,6 +116,15 @@ class Hod extends CI_Controller
     $this->load->view("hod/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function req_proff()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("hod/dash_head.php");
+    $this->load->view("hod/req_proff.php");
+    $this->load->view("hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function add_course_process()
   {
     $id=$_SESSION['u_id'];

@@ -35,18 +35,12 @@ if($this->session->flashdata('insert_failed')){
     <nav aria-label="breadcrumb mt-sm-5">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item">Assign Teacher</li>
+            <li class="breadcrumb-item">Request Professor</li>
         </ol>
     </nav>
-    <div class="row mt-5">
-    <div class="col-md-8"></div>
-        <div class="col-md-4">
-            <a href="<?php echo base_url();?>hod/req_proff" class="btn border-primary col-12 custom-button pl-0 pr-0">Request teacher from other department</a>
-        </div>
-    </div>
 
     <form class="needs-validation mt-3" novalidate method="post"
-        action="<?php echo base_url();?>hod/assign_teacher_process">
+        action="<?php echo base_url();?>hod/req_proff_process">
 
         <div class="form-row mt-5">
 
@@ -138,44 +132,6 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-                </select>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-                <div class="invalid-feedback">
-                    Please enter a Semester.
-                </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="validationCustom06">Teacher</label>
-
-                <select class="custom-select" id="validationCustom06" required name="teacher">
-                    <option selected disabled value="">Choose...</option>
-                    <?php 
-
-            $id=$_SESSION['u_id'];
-            $this->db->select('*');
-            $this->db->from('users');
-            $this->db->join('hod_data','hod_data.email=users.email');
-            $this->db->where('users.email',$id);
-            $sql=$this->db->get();
-            foreach($sql->result() as $user_data)
-            {
-            $dept=$user_data->dept;
-            }
-
-
-
-            $this->db->select('*');
-            $this->db->from('users');
-            $this->db->join('professor_data','professor_data.email=users.email');
-            $this->db->where('professor_data.dept',$dept);
-            $sql=$this->db->get();
-            foreach($sql->result() as $user_data)
-            {
-            echo "<option value='$user_data->email'>$user_data->name</option>";
-            }
-            ?>
                 </select>
                 <div class="valid-feedback">
                     Looks good!
