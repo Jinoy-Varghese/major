@@ -622,6 +622,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
     });
+    //type writer code starts
     var TxtType = function(el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
