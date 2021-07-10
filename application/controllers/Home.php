@@ -12,7 +12,6 @@ class Home extends CI_Controller
   public function index()
   {
     $this->load->view("landing_page.php");
-    
   }
   public function login()
   {
@@ -38,6 +37,36 @@ class Home extends CI_Controller
     session_destroy();
     redirect('home/login');
   }
+  public function course()
+  {
+    $this->load->view("amp.php");
+    $this->load->view("landing_page/land_head.php");
+    $this->load->view("landing_page/course.php");
+    $this->load->view("landing_page/land_footer.php");
+  }
+  public function department()
+  {
+    $this->load->view("amp.php");
+    $this->load->view("landing_page/land_head.php");
+    $this->load->view("landing_page/department.php");
+    $this->load->view("landing_page/land_footer.php");
+  }
+  public function gallery()
+  {
+    $this->load->view("amp.php");
+    $this->load->view("landing_page/land_head.php");
+    $this->load->view("landing_page/gallery.php");
+    $this->load->view("landing_page/land_footer.php");
+  }
+  public function about()
+  {
+    $this->load->view("amp.php");
+    $this->load->view("landing_page/land_head.php");
+    $this->load->view("landing_page/about.php");
+    $this->load->view("landing_page/land_footer.php");
+  }
+
+
 
    public function login_process()
    {
