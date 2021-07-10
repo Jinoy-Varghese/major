@@ -531,10 +531,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div className="row col-12 mt-5 pt-5 ml-0 pb-5" style={{background:"#182B45"}}>
         <div class="col-4">
             <div className="text-light h2 col-12">Mar Thoma</div>
-            <div className="text-light col-12 ">College of Science & Technology</div>
+            <div className="text-light col-12 h5">College of Science & Technology</div>
+            <div class="text-light col-12">
+                Ayur P.O Chadayamangalam <br />
+                Kollam, Kerala, 691534
+            </div>
+            <div class="text-light col-12 mt-4">
+            <i class="fas fa-phone-alt">&nbsp;&nbsp; 0474-2475444</i>
+            <br />
+            <i class="fas fa-envelope">&nbsp;&nbsp;support@mtcst.ml</i>
+            </div>
         </div>
-        <div class="col-4"></div>
-        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="text-light col-12 h3">Vision</div>
+            <div class="text-light col-12">EXCELLENCE AND SERVICE</div>
+            <div class="text-light col-12 h3">Mission</div>
+            <div class="text-light col-12">Mar Thoma college of Science and Technology is a nurturing ground for an individual's holistic development to make effective contribution to the society in a dynamic environment.</div>
+        </div>
+        <div class="col-4 pl-0 pl-md-5">
+            <div class="text-light col-12 h3">Quick Links</div>
+            <div class="col-12 text-light mt-4">
+              <i class="fab fa-facebook-square ml-2" style={{cursor:"pointer"}}></i>
+              <i class="fab fa-instagram ml-2" style={{cursor:"pointer"}}></i>
+              <i class="fab fa-twitter ml-2" style={{cursor:"pointer"}}></i>
+              <i class="fab fa-youtube ml-2" style={{cursor:"pointer"}}></i>
+              <i class="fab fa-linkedin ml-2" style={{cursor:"pointer"}}></i>
+            </div>
+        </div>
+        <div class="col-12 border border-light mt-5 border-right-0 border-bottom-0 border-left-0 text-light">
+        Site Designed By: <a href="https://cspsyco.blogspot.com">cspsyco</a>
+        </div>
     </div>
 
 
