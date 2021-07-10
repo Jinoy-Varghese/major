@@ -78,6 +78,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     .font-big {
         font-size: 70px;
         text-align: center;
+        color:#2E63DF;
+        opacity:.7;
     }
 
     .blue_background {
@@ -254,8 +256,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div></div>
     </div>
 
-    <div className="row col-12 border border-primary mt-5 pt-5 ml-0 blue_background">
-        <div className="col-12 h2 pb-4">Our Achivements</div>    
+    <div className="row col-12 border border-primary mt-5 pt-md-4 pt-3 ml-0 blue_background pb-4 pb-md-0">
+        <div className="col-12 h2 pb-4 text-light">Our Achivements</div>    
             <div className="owl-carousel owl-theme pl-4 pr-4 ">
                 <div className="item border" style={{height:"200px"}}>
                 <h4>1</h4>
@@ -529,7 +531,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>        
        
     <div className="row col-12 mt-5 pt-5 ml-0" style={{background:"#182B45"}}>
-        <div class="col-4">
+        <div class="col-12 col-md-4 mt-md-0 mt-5">
             <div className="text-light h2 col-12">Mar Thoma</div>
             <div className="text-light col-12 h5">College of Science & Technology</div>
             <div class="text-light col-12">
@@ -542,13 +544,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <i class="fas fa-envelope">&nbsp;&nbsp;support@mtcst.ml</i>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-md-4 mt-md-0 mt-5">
             <div class="text-light col-12 h3">Vision</div>
             <div class="text-light col-12">EXCELLENCE AND SERVICE</div>
             <div class="text-light col-12 h3">Mission</div>
             <div class="text-light col-12">Mar Thoma college of Science and Technology is a nurturing ground for an individual's holistic development to make effective contribution to the society in a dynamic environment.</div>
         </div>
-        <div class="col-4 pl-0 pl-md-5">
+        <div class="col-12 col-md-4 mt-md-0 mt-5 pl-3 pl-md-5">
             <div class="text-light col-12 h3">Quick Links</div>
             <div class="col-12 text-light mt-4">
               <i class="fab fa-facebook-square ml-2" style={{cursor:"pointer"}}></i>
@@ -664,7 +666,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             margin: 10,
             autoplay: true,
             autoplayTimeout: 1000,
-            autoplayHoverPause: true
+            autoplayHoverPause: true,
+            responsive:{
+                0:{
+                    items:1,
+                    dots:false
+                },
+                600:{
+                    items:2,
+                    
+                },
+                1000:{
+                    items:4,
+                    
+                }
+            }
         });
     })
     $(document).ready(function() {
