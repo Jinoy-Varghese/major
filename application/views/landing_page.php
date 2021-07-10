@@ -489,7 +489,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="col-md-3 clearfix d-none d-md-block">
                     <div class="card mb-2">
-                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap" />
+                    <img class="card-img-top" src="<?php echo base_url('assets/image/onam_fest.jpg') ?>" alt="Card image cap" />
                     <div class="card-body">
                         <h4 class="card-title">Onam Fest</h4>
                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
