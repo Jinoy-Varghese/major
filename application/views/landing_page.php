@@ -528,13 +528,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
     </div>        
        
+    <div className="row col-12 mt-5 pt-5 ml-0 pb-5" style={{background:"#182B45"}}>
+        <div class="col-4">
+            <div className="text-light h2 col-12">Mar Thoma</div>
+            <div className="text-light col-12 ">College of Science & Technology</div>
+        </div>
+        <div class="col-4"></div>
+        <div class="col-4"></div>
+    </div>
 
 
 
 
 
 
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
                     </div>
                 );
             }
