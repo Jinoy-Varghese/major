@@ -528,7 +528,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
     </div>        
        
-    <div className="row col-12 mt-5 pt-5 ml-0 pb-5" style={{background:"#182B45"}}>
+    <div className="row col-12 mt-5 pt-5 ml-0" style={{background:"#182B45"}}>
         <div class="col-4">
             <div className="text-light h2 col-12">Mar Thoma</div>
             <div className="text-light col-12 h5">College of Science & Technology</div>
@@ -558,8 +558,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <i class="fab fa-linkedin ml-2" style={{cursor:"pointer"}}></i>
             </div>
         </div>
-        <div class="col-12 border border-light mt-5 border-right-0 border-bottom-0 border-left-0 text-light">
-        Site Designed By: <a href="https://cspsyco.blogspot.com">cspsyco</a>
+        <div class="col-12 border border-light mt-5 border-right-0 border-bottom-0 border-left-0 text-light text-center pt-1 pb-3">
+        Site Designed By : <a href="https://cspsyco.blogspot.com" className="text-light">cspsyco</a>
         </div>
     </div>
 
