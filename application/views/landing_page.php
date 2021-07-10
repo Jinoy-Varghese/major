@@ -133,6 +133,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     transform: translate(0, -3px);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
+    .a_tag_change
+    {
+        cursor: context-menu;
+        color: inherit;
+    }
+    .a_tag_change:hover
+    {
+        cursor: context-menu;
+        text-decoration: none;
+    }
 
     </style>
     <title>MTCST</title>
@@ -243,26 +253,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <div className="ml-4 mr-4 row mt-5 pt-4 pb-5">
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
+    
+                <a href="<?php echo base_url('Home/course'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
+                <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-user-graduate font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Course</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
-                </div></div>
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
+                </div></div></a>
+                <a href="<?php echo base_url('Home/department'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
+                <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-graduation-cap font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Department</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
-                </div></div>
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
+                </div></div></a>
+                <a href="<?php echo base_url('Home/gallery'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
+                <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-photo-video font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Gallery</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
-                </div></div>
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
+                </div></div></a>
+                <a href="<?php echo base_url('Home/about'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
+                <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-university font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">About us</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
-                </div></div>
+                </div></div></a>
     </div>
 
     <div className="row col-12 border border-primary mt-5 pt-md-4 pt-3 ml-0 blue_background pb-4 pb-md-0">
