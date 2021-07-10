@@ -125,6 +125,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         -o-transform: scale(1.2);
         transform: scale(1.2);
     }
+        .content-item {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transition: 0.4s;
+    }
+    .content-item:hover {
+    transform: translate(0, -3px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -234,22 +243,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
     <div className="ml-4 mr-4 row mt-5 pt-4 pb-5">
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-user-graduate font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Course</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
                 </div></div>
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-graduation-cap font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Department</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
                 </div></div>
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-photo-video font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Gallery</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
                 </div></div>
-                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow">
+                <div className="col-md-3 col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item">
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-university font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">About us</div>
                     <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
