@@ -4,7 +4,7 @@
 if($this->session->flashdata('insert_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> New record created.
+  <strong>Success!</strong> New request for professor is initiated.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

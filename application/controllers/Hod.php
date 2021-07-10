@@ -125,6 +125,15 @@ class Hod extends CI_Controller
     $this->load->view("hod/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function subject_req()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("hod/dash_head.php");
+    $this->load->view("hod/subject_req.php");
+    $this->load->view("hod/dash_footer.php");
+    $this->load->view("footer.php");
+  }
   public function add_course_process()
   {
     $id=$_SESSION['u_id'];
@@ -492,7 +501,31 @@ class Hod extends CI_Controller
    $this->session->set_flashdata('delete_success',"Sucessfully deleted");
    redirect('Hod/remove_student','refresh');
   }
+  public function req_proff_process()
+  {
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('hod_data','hod_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+      $dept=$user_data->dept;
+    }
 
+    $course=$this->input->post('course');
+    $semester=$this->input->post('semester');
+    $teacher=$this->input->post('teacher');
+    $subject=$this->input->post('subject');
+
+
+    $sub_data=array('req_course'=>$course,'dept'=>$dept,'req_semester'=>$semester,'req_subject'=>$subject);
+    $this->db->insert('req_for_proff',$sub_data);
+    $this->session->set_flashdata('insert_success',"Sucessfully inserted");
+    redirect('hod/req_proff','refresh');
+  
+  }
 
 
 

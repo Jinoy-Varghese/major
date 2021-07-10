@@ -131,7 +131,8 @@ if(!isset($_SESSION['u_id']))
         <a href="<?php echo base_url('/hod/change_incharge'); ?>" class="list-group-item list-group-item-action bg-light">Add Incharge</a>
         <a href="<?php echo base_url('/hod/add_course'); ?>" class="list-group-item list-group-item-action bg-light">Add Course</a>  
         <a href="<?php echo base_url('/hod/assign_teachers'); ?>" class="list-group-item list-group-item-action bg-light" data-toggle="tooltip" data-placement="bottom" title="Assign professors for each subject">Assign Subject</a>
-        <a href="<?php echo site_url(); ?>/hod/lab_complaint" class="list-group-item list-group-item-action bg-light">Lab Complaints</a> 
+        <a href="<?php echo site_url('/hod/subject_requests'); ?>" class="list-group-item list-group-item-action bg-light">Subject Requests</a> 
+        <a href="<?php echo site_url('/hod/lab_complaint'); ?>" class="list-group-item list-group-item-action bg-light">Lab Complaints</a> 
         <a href="<?php echo base_url('/hod/events'); ?>" class="list-group-item list-group-item-action bg-light">Notice Board</a> 
         <a href="<?php echo base_url('/hod/news'); ?>" class="list-group-item list-group-item-action bg-light">News</a> 
  
