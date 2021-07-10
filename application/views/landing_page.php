@@ -309,9 +309,9 @@ img.zoom {
             <div class="col-md-10 col-12">As one of the finest college in Kerala, Mar Thoma College of Science and Technology creates an exceptional space for an enhanced learning experience. The vibrant culture of the college has embraced innovation, and its entrepreneurial perspective encourages students, staff and faculty to challenge convention, lead discovery and explore new ways of learning.</div>
             </div>
         </div>
-        <div className="row col-12 mt-5 pt-5 ml-0 pb-5 border" style={{background-color:"rgba(60,136,255,0.5)"}">
+        <div className="row col-12 mt-5 pt-5 ml-0 pb-4 border" style={{background:"rgba(34,64,194,0.2)"}}>
             <div className="col-12 h2">Photo Gallery</div>   
-            <div class="container page-top">
+            <div class="container mt-5">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
                         <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
@@ -359,19 +359,54 @@ img.zoom {
                             <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="" />
                         </a>
                     </div>
-                    
-                    
-                
-                
                 </div>
-
-
-
-
-</div>
-
-
+            </div>
         </div>
+
+        <div className="row col-12 border border-primary mt-5 pt-5 ml-0">
+        <div className="col-12 h2 pb-4">Our Achivements</div>    
+            <div className="owl-carousel owl-theme pl-4 pr-4 ">
+                <div className="item border" style={{height:"200px"}}>
+                <h4>1</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>2</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>3</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>4</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>5</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>6</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>7</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>8</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>9</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>10</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>11</h4>
+                </div>
+                <div className="item border" style={{height:"200px"}}>
+                <h4>12</h4>
+                </div>
+            </div>
+        </div>
+
+
+
 
 
 
