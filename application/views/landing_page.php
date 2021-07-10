@@ -8,7 +8,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Mar Thoma College of Science & Technology is owned and managed by a Registered Society namely The Mar Thoma Educational, Technical, Training and Research Centre (Mar Thoma ETTARC), under the Trivandrum-Quilon Diocese of the Mar Thoma Church. This college is affiliated to the University of Kerala and has 7 undergraduate and 5 post graduate courses.">
+    <meta name="description"
+        content="Mar Thoma College of Science & Technology is owned and managed by a Registered Society namely The Mar Thoma Educational, Technical, Training and Research Centre (Mar Thoma ETTARC), under the Trivandrum-Quilon Diocese of the Mar Thoma Church. This college is affiliated to the University of Kerala and has 7 undergraduate and 5 post graduate courses.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type="image/png" href="<?php echo base_url('assets/image/marthoma.png'); ?>" />
     <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -29,9 +30,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     #mobile_mtcst {
         display: none;
     }
-    html{
-        scroll-behavior:smooth;
+
+    html {
+        scroll-behavior: smooth;
     }
+
     @media all and (max-width:499px) {
         #mobile_mtcst {
             display: block;
@@ -52,72 +55,74 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         filter: blur(0px);
 
     }
-    .font_new
-    {
-        color:white;
+
+    .font_new {
+        color: white;
     }
 
     .card-img-overlay {
         background: #0005;
 
     }
+
     .search-input::placeholder {
-    color: white !important;
-    opacity: .6 !important;
+        color: white !important;
+        opacity: .6 !important;
     }
 
-    .typewrite-h1,.typewrite {
-        height:100%;
+    .typewrite-h1,
+    .typewrite {
+        height: 100%;
     }
-    .font-big{
-        font-size:70px;
-        text-align:center;
+
+    .font-big {
+        font-size: 70px;
+        text-align: center;
     }
-    .blue_background
-    {
-        background:url("<?php echo base_url('assets/image/blue_background.jpg');?>");
+
+    .blue_background {
+        background: url("<?php echo base_url('assets/image/blue_background.jpg');?>");
         background-size: cover;
         background-repeat: no-repeat;
     }
-    .inspire_bg
-    {
-        background:url("<?php echo base_url('assets/image/college_front.png') ?>");
+
+    .inspire_bg {
+        background: url("<?php echo base_url('assets/image/college_front.png') ?>");
         background-size: cover;
         background-repeat: no-repeat;
     }
+
     ::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
 
-    .thumb{
+    .thumb {
         margin-bottom: 30px;
     }
-    
-    .page-top{
-        margin-top:85px;
+
+    .page-top {
+        margin-top: 85px;
     }
 
-   
-img.zoom {
-            width: 100%;
-            height: 200px;
-            border-radius:5px;
-            object-fit:cover;
-            -webkit-transition: all .3s ease-in-out;
-            -moz-transition: all .3s ease-in-out;
-            -o-transition: all .3s ease-in-out;
-            -ms-transition: all .3s ease-in-out;
-        }
-        
- 
-.transition {
-            -webkit-transform: scale(1.2); 
-            -moz-transform: scale(1.2);
-            -o-transform: scale(1.2);
-            transform: scale(1.2);
-        }
+
+    img.zoom {
+        width: 100%;
+        height: 200px;
+        border-radius: 5px;
+        object-fit: cover;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+    }
 
 
+    .transition {
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        -o-transform: scale(1.2);
+        transform: scale(1.2);
+    }
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -155,11 +160,15 @@ img.zoom {
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 
-<link rel="stylesheet" href="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.carousel.min.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.theme.default.min.css'); ?>">
-<script src="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js'); ?>"></script>
-<script src="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/owl.carousel.js'); ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.2/js/mdb.min.js" integrity="sha512-ElOKKTsaZvoIvIqXXFoU8/dGIhffdCcYxqURrwtQobuI+qBcKEP8hn3byP9ErZVJMJItUuKMeKgyD3IDXlGLPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet"
+        href="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.carousel.min.css'); ?>">
+    <link rel="stylesheet"
+        href="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/assets/owl.theme.default.min.css'); ?>">
+    <script src="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/vendors/jquery.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/OwlCarousel2-2.3.4/docs/assets/owlcarousel/owl.carousel.js'); ?>"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.2/js/mdb.min.js"
+        integrity="sha512-ElOKKTsaZvoIvIqXXFoU8/dGIhffdCcYxqURrwtQobuI+qBcKEP8hn3byP9ErZVJMJItUuKMeKgyD3IDXlGLPQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Load our React component. -->
     <script type="text/babel">
@@ -362,179 +371,161 @@ img.zoom {
             </div>
         </div>
 
-        <div className="row col-12 border border-primary mt-5 pt-5 ml-0">
-        <div className="col-12 h2 pb-4">Our Achivements</div>    
+        <div className="row col-12 mt-5 pt-5 ml-0">
+        <div className="col-12 h2 pb-4">Our Activities</div>    
             
         <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
+            <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active">
+                <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">NSS</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Arts</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Sports</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Women Cell</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
 
-<div class="carousel-inner" role="listbox">
+            </div>
 
-  <div class="carousel-item active">
+            <div class="carousel-item">
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(34).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
+                <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Alumini</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Seminar</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Add on Course</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-    </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">College Day</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
 
-  </div>
+            </div>
 
-  <div class="carousel-item">
+            <div class="carousel-item">
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(60).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
+                <div class="row">
+                <div class="col-md-3">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Tournaments</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Nature Fest</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Food Fest</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
 
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(48).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-    </div>
+                <div class="col-md-3 clearfix d-none d-md-block">
+                    <div class="card mb-2">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h4 class="card-title">Flash Mob</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
 
-  </div>
+            </div>
 
-  <div class="carousel-item">
+            </div>
 
-    <div class="row">
-      <div class="col-md-4">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(53).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(45).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/City/4-col/img%20(47).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 clearfix d-none d-md-block">
-        <div class="card mb-2">
-          <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Horizontal/Food/4-col/img%20(51).jpg" alt="Card image cap" />
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-              card's content.</p>
-            <a class="btn btn-primary">Button</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-</div>
+            </div>
     </div>        
        
 
@@ -632,24 +623,24 @@ img.zoom {
     };
     </script>
     <script>
-        $(document).ready(function() {
-            var owl = $('.owl-carousel');
-            owl.owlCarousel({
+    $(document).ready(function() {
+        var owl = $('.owl-carousel');
+        owl.owlCarousel({
             items: 4,
             loop: true,
             margin: 10,
             autoplay: true,
             autoplayTimeout: 1000,
             autoplayHoverPause: true
-            });
-        })
-        $(document).ready(function(){
-        $(".zoom").hover(function(){
+        });
+    })
+    $(document).ready(function() {
+        $(".zoom").hover(function() {
             $(this).addClass('transition');
-        }, function(){ 
+        }, function() {
             $(this).removeClass('transition');
         });
-        });
+    });
     </script>
 </body>
 
