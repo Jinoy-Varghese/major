@@ -518,13 +518,31 @@ class Hod extends CI_Controller
     $semester=$this->input->post('semester');
     $teacher=$this->input->post('teacher');
     $subject=$this->input->post('subject');
+    $external_department=$this->input->post('external_department');
 
-
-    $sub_data=array('req_course'=>$course,'dept'=>$dept,'req_semester'=>$semester,'req_subject'=>$subject);
+    $sub_data=array('req_course'=>$course,'dept'=>$dept,'req_semester'=>$semester,'req_subject'=>$subject,'req_for_dept'=>$external_department);
     $this->db->insert('req_for_proff',$sub_data);
     $this->session->set_flashdata('insert_success',"Sucessfully inserted");
     redirect('hod/req_proff','refresh');
   
+  }
+  public function verify_req_success()
+  {
+    $student_id=$this->uri->segment(3);
+    $data=array('s_status'=>1);
+    $this->db->where('student_id',$student_id);
+    $this->db->update('student_data',$data);
+    $this->session->set_flashdata('insert_success',"Sucessfully verified");
+    redirect('hod/add_student','refresh');
+  }
+  public function verify_req_reject()
+  {
+    $student_id=$this->uri->segment(3);
+    $data=array('s_status'=>5);
+    $this->db->where('student_id',$student_id);
+    $this->db->update('student_data',$data);
+    $this->session->set_flashdata('insert_success',"Sucessfully verified");
+    redirect('hod/add_student','refresh');
   }
 
 

@@ -68,27 +68,27 @@ if($this->session->flashdata('insert_failed')){
 			<th data-field="Course" data-sortable="true">Course</th>
 			<th data-field="Subject" data-sortable="true">Subject</th>
 			<th data-field="Semester" data-sortable="true">Semester</th>
-			<th data-field="Date" data-sortable="true">Date</th>
+      <th data-field="Department" data-sortable="true">Department</th>
+			<th data-field="Date" data-sortable="true">Date & Time</th>
       <th data-field="edit">Action</th>
 		</tr>
   </thead>
 	<tbody>
 	<?php 
-	$sql=$this->db->select('*')->from('req_for_proff')->where('status','pending')->join('users','users.email=student_data.email')->get();
-	foreach($sql->result() as $student)
+	$sql=$this->db->select('*')->from('req_for_proff')->where('status','pending')->get();
+	foreach($sql->result() as $req)
 	{
     ?>
 		<tr>
-			<td class="bs-checkbox"><input data-index="<?php echo $student->student_id ?>" name="btSelectItem" type="checkbox"></td>
-			<td><?php echo $student->name ?></td>
-			<td><?php echo $student->email ?></td>
-			<td><?php echo $student->phone ?></td>
-      <td><?php echo $student->dob ?></td>
-      <td><?php echo $student->gender ?></td>
-      <td><?php echo $student->address ?></td>
+			<td class="bs-checkbox"><input data-index="<?php echo $req->req_id ?>" name="btSelectItem" type="checkbox"></td>
+			<td><?php echo $req->req_course ?></td>
+			<td><?php echo $req->req_subject ?></td>
+			<td><?php echo $req->req_semester ?></td>
+      <td><?php echo $req->req_for_dept ?></td>
+      <td><?php echo $req->date ?></td>
       <td class="text-center p-0" >
-        <a href="<?php echo base_url(); ?>Hod/verify_student_success/<?php echo $student->student_id; ?>"><i class="fa fa-user-check text-primary mr-3 text-success"></i></a>
-        <a href="<?php echo base_url(); ?>Hod/verify_student_reject/<?php echo $student->student_id; ?>"><i class="fa fa-user-times text-primary text-danger"></i></a>
+        <a href="<?php echo base_url(); ?>Hod/verify_req_success/<?php echo $req->req_id; ?>"><i class="fa fa-user-check text-primary mr-3 text-success"></i></a>
+        <a href="<?php echo base_url(); ?>Hod/verify_req_reject/<?php echo $req->req_id; ?>"><i class="fa fa-user-times text-primary text-danger"></i></a>
       </td>
 	  	</tr>
 	<?php		

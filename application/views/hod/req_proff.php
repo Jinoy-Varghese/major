@@ -140,13 +140,37 @@ if($this->session->flashdata('insert_failed')){
                     Please enter a Semester.
                 </div>
             </div>
+            <div class="col-md-4 mb-3">
+                <label for="validationCustom06">External Department</label>
+
+                <select class="custom-select" id="external_department" required name="external_department">
+                    <option selected disabled value="select">Choose...</option>
+                    <?php 
+
+            $this->db->select('DISTINCT(dept)');
+            $this->db->from('hod_data');
+            $this->db->not_like('dept',$dept);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            echo "<option value='$user_data->dept'>$user_data->dept</option>";
+            }
+            ?>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a Department.
+                </div>
+            </div>
 
 
 
 
         </div>
         <div class="form-row">
-            <input class="btn btn-primary ml-1" type="submit" name="u_reg" value="Assign Subject">
+            <input class="btn btn-primary ml-1 pl-4 pr-4" type="submit" name="u_reg" value="Request">
         </div>
 
     </form>
