@@ -111,7 +111,8 @@ if($this->session->flashdata('insert_failed')){
             $sql=$this->db->get();
             foreach($sql->result() as $user_data)
             {
-            echo "<option value='$req->req_id/$user_data->email'>$user_data->name</option>";
+              $mail=urlencode($user_data->email);
+            echo "<option value='$req->req_id/$mail/$req->req_subject/$req->req_course/$req->req_semester/$req->req_for_dept'>$user_data->name</option>";
             }
             ?>
                 </select>
