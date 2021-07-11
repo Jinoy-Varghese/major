@@ -111,7 +111,7 @@ if($this->session->flashdata('insert_failed')){
             $sql=$this->db->get();
             foreach($sql->result() as $user_data)
             {
-            echo "<option value='$user_data->email'>$user_data->name</option>";
+            echo "<option value='$req->req_id/$user_data->email'>$user_data->name</option>";
             }
             ?>
                 </select>
@@ -156,10 +156,8 @@ var $table = $('#table')
   $(document).ready(function() {
   $('#validationCustom06').on('change', function(){
     var proff_name = $(this).val();
-    var old_href_acc=$('#href_acc').attr('href').split('/');
-    var old_href_rej=$('#href_rej').attr('href').split('/');
-    var new_href_acc=old_href_acc[5]+'/'+old_href_acc[6]+'/'+proff_name;
-    var new_href_rej=old_href_rej[5]+'/'+old_href_rej[6]+'/'+proff_name;
+    var new_href_acc='verify_req_success/'+proff_name;
+    var new_href_rej='verify_req_reject/'+proff_name;
     $('#href_acc').attr('href',new_href_acc);
     $('#href_rej').attr('href',new_href_rej);
   })
