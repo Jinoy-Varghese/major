@@ -529,7 +529,7 @@ class Hod extends CI_Controller
   public function verify_req_success()
   {
     $req_id=$this->uri->segment(3);
-    $req_teacher=$this->uri->segment(4);
+    $req_teacher=urldecode($this->uri->segment(4));
     $req_subject=$this->uri->segment(5);
     $req_course=$this->uri->segment(6);
     $req_semester=$this->uri->segment(7);
