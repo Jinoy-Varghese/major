@@ -34,7 +34,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </tr>
     <tr>
       <th scope="row">6</th>
-      <td>BBA (Bachelor of Business Administration</td>
+      <td>BBA (Bachelor of Business Administration)</td>
     </tr>
     <tr>
       <th scope="row">7</th>
