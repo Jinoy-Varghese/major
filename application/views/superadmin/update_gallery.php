@@ -33,20 +33,19 @@ if($this->session->flashdata('insert_failed')){
             <div class="col-md-4 mb-3">
                 <label for="validationCustom04">Title</label>
                 <input type='text' class="form-control" id="validationCustom01" value="" name="news" required>
+                <div class="invalid-feedback">
+                        Please provide a title.
+                </div>
             </div>
             <div class="col-md-4 mb-3">
                 <label for="validationCustom03">File</label>
                 <div class="custom-file">
                     <label for="news_file_id" class="form-control border-primary" style="height:35px;"><i
-                            class="fas fa-camera"></i>&nbsp&nbspChoose
-                        File</label>
+                            class="fas fa-camera"></i>&nbsp&nbspChoose File</label>
                     <input type="file" class="custom-file-input" name="news_file" id="news_file_id"
                         style="display:none;">
                     <div class="invalid-feedback">
-                        Please
-                        provide
-                        the
-                        title.
+                        Please provide a file.
                     </div>
                 </div>
             </div>
