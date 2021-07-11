@@ -5,7 +5,7 @@
 if($this->session->flashdata('insert_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong>Success!</strong> Student sucessfully verified.
+  <strong>Success!</strong> Request sucessfully verified.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -69,6 +69,7 @@ if($this->session->flashdata('insert_failed')){
 			<th data-field="Subject" data-sortable="true">Subject</th>
 			<th data-field="Semester" data-sortable="true">Semester</th>
       <th data-field="Department" data-sortable="true">Department</th>
+      <th data-field="Professor" data-sortable="false">Professor</th>
 			<th data-field="Date" data-sortable="true">Date & Time</th>
       <th data-field="edit">Action</th>
 		</tr>
@@ -85,10 +86,40 @@ if($this->session->flashdata('insert_failed')){
 			<td><?php echo $req->req_subject ?></td>
 			<td><?php echo $req->req_semester ?></td>
       <td><?php echo $req->req_for_dept ?></td>
+      <td>
+      <select class="custom-select" id="validationCustom06" required name="teacher">
+                    <option selected disabled value="">Choose...</option>
+                    <?php 
+
+            $id=$_SESSION['u_id'];
+            $this->db->select('*');
+            $this->db->from('users');
+            $this->db->join('hod_data','hod_data.email=users.email');
+            $this->db->where('users.email',$id);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            $dept=$user_data->dept;
+            }
+
+
+
+            $this->db->select('*');
+            $this->db->from('users');
+            $this->db->join('professor_data','professor_data.email=users.email');
+            $this->db->where('professor_data.dept',$dept);
+            $sql=$this->db->get();
+            foreach($sql->result() as $user_data)
+            {
+            echo "<option value='$user_data->email'>$user_data->name</option>";
+            }
+            ?>
+                </select>
+      </td>
       <td><?php echo $req->date ?></td>
       <td class="text-center p-0" >
-        <a href="<?php echo base_url(); ?>Hod/verify_req_success/<?php echo $req->req_id; ?>"><i class="fa fa-user-check text-primary mr-3 text-success"></i></a>
-        <a href="<?php echo base_url(); ?>Hod/verify_req_reject/<?php echo $req->req_id; ?>"><i class="fa fa-user-times text-primary text-danger"></i></a>
+        <a href="<?php echo base_url(); ?>Hod/verify_req_success/<?php echo $req->req_id; ?>"><i class="fa fa-user-check text-primary mr-3 text-success" id="href_acc"></i></a>
+        <a href="<?php echo base_url(); ?>Hod/verify_req_reject/<?php echo $req->req_id; ?>"><i class="fa fa-user-times text-primary text-danger" id="href_rej"></i></a>
       </td>
 	  	</tr>
 	<?php		
@@ -120,6 +151,15 @@ var $table = $('#table')
     }).trigger('change')
   })
   
+</script>
+<script>
+  $(document).ready(function() {
+  $('#validationCustom06').on('change', function(){
+    var proff_name = $(this).val();
+    var old_href=$('#href_acc').attr('href');
+    alert(old_href);
+  })
+});
 </script>
 
 

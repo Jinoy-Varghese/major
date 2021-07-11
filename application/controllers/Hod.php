@@ -528,21 +528,21 @@ class Hod extends CI_Controller
   }
   public function verify_req_success()
   {
-    $student_id=$this->uri->segment(3);
-    $data=array('s_status'=>1);
-    $this->db->where('student_id',$student_id);
-    $this->db->update('student_data',$data);
+    $req_id=$this->uri->segment(3);
+    $data=array('status'=>'accepted');
+    $this->db->where('req_id',$req_id);
+    $this->db->update('req_for_proff',$data);
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
-    redirect('hod/add_student','refresh');
+    redirect('hod/subject_requests','refresh');
   }
   public function verify_req_reject()
   {
-    $student_id=$this->uri->segment(3);
-    $data=array('s_status'=>5);
-    $this->db->where('student_id',$student_id);
-    $this->db->update('student_data',$data);
+    $req_id=$this->uri->segment(3);
+    $data=array('status'=>'rejected');
+    $this->db->where('req_id',$req_id);
+    $this->db->update('req_for_proff',$data);
     $this->session->set_flashdata('insert_success',"Sucessfully verified");
-    redirect('hod/add_student','refresh');
+    redirect('hod/subject_requests','refresh');
   }
 
 
