@@ -21,15 +21,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
       <td>B.Sc Electronics</td>
     </tr>
     <tr>
-      <th scope="row">5</th>
+      <th scope="row">3</th>
       <td>B.Sc Polymer Chemistry</td>
     </tr>
     <tr>
-      <th scope="row">3</th>
+      <th scope="row">4</th>
       <td>B.Sc Botany and Biotechnology</td>
     </tr>
     <tr>
-      <th scope="row">4</th>
+      <th scope="row">5</th>
       <td>BA English</td>
     </tr>
     <tr>
