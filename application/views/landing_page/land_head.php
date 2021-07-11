@@ -62,4 +62,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </form>
         </div>
     </nav>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
