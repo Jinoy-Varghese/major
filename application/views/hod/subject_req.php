@@ -24,8 +24,7 @@ if($this->session->flashdata('insert_failed')){
     <nav aria-label="breadcrumb mt-sm-5">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Add User</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Verify Student</li>
+        <li class="breadcrumb-item active" aria-current="page">Requests for Porfessors</li>
     </ol>
     </nav>
     
@@ -66,18 +65,16 @@ if($this->session->flashdata('insert_failed')){
   <thead class="table-primary">
 		<tr>
 			<th data-field="state" data-checkbox="true"></th>
-			<th data-field="name" data-sortable="true">Name</th>
-			<th data-field="email" data-sortable="true">email</th>
-			<th data-field="phone" data-sortable="true">Phone</th>
-			<th data-field="dob" data-sortable="true">Dob</th>
-      <th data-field="address" data-sortable="true">Address</th>
-			<th data-field="gender" data-sortable="true">Gender</th>
+			<th data-field="Course" data-sortable="true">Course</th>
+			<th data-field="Subject" data-sortable="true">Subject</th>
+			<th data-field="Semester" data-sortable="true">Semester</th>
+			<th data-field="Date" data-sortable="true">Date</th>
       <th data-field="edit">Action</th>
 		</tr>
   </thead>
 	<tbody>
 	<?php 
-	$sql=$this->db->select('*')->from('student_data')->where('s_status',0)->join('users','users.email=student_data.email')->get();
+	$sql=$this->db->select('*')->from('req_for_proff')->where('status','pending')->join('users','users.email=student_data.email')->get();
 	foreach($sql->result() as $student)
 	{
     ?>

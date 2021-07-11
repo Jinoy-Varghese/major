@@ -125,7 +125,7 @@ class Hod extends CI_Controller
     $this->load->view("hod/dash_footer.php");
     $this->load->view("footer.php");
   }
-  public function subject_req()
+  public function subject_requests()
   {
     $this->load->view("header.php");
     $this->load->view("amp.php");
