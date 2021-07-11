@@ -118,8 +118,8 @@ if($this->session->flashdata('insert_failed')){
       </td>
       <td><?php echo $req->date ?></td>
       <td class="text-center p-0" >
-        <a href="<?php echo base_url(); ?>Hod/verify_req_success/<?php echo $req->req_id; ?>"><i class="fa fa-user-check text-primary mr-3 text-success" id="href_acc"></i></a>
-        <a href="<?php echo base_url(); ?>Hod/verify_req_reject/<?php echo $req->req_id; ?>"><i class="fa fa-user-times text-primary text-danger" id="href_rej"></i></a>
+        <a href="<?php echo base_url(); ?>Hod/verify_req_success/<?php echo $req->req_id; ?>" id="href_acc"><i class="fa fa-user-check text-primary mr-3 text-success"></i></a>
+        <a href="<?php echo base_url(); ?>Hod/verify_req_reject/<?php echo $req->req_id; ?>" id="href_rej"><i class="fa fa-user-times text-primary text-danger"></i></a>
       </td>
 	  	</tr>
 	<?php		
@@ -156,8 +156,12 @@ var $table = $('#table')
   $(document).ready(function() {
   $('#validationCustom06').on('change', function(){
     var proff_name = $(this).val();
-    var old_href=$('#href_acc').attr('href');
-    alert(old_href);
+    var old_href_acc=$('#href_acc').attr('href').split('/');
+    var old_href_rej=$('#href_rej').attr('href').split('/');
+    var new_href_acc=old_href_acc[5]+'/'+old_href_acc[6]+'/'+proff_name;
+    var new_href_rej=old_href_rej[5]+'/'+old_href_rej[6]+'/'+proff_name;
+    $('#href_acc').attr('href',new_href_acc);
+    $('#href_rej').attr('href',new_href_rej);
   })
 });
 </script>
