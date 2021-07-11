@@ -121,14 +121,10 @@ if(!isset($_SESSION['u_id']))
             <a href='<?php echo site_url(); ?>Super_admin/add_lab_assistant' class="drop-down-a"><li class="drop-down-li">Lab Assistant</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_librarian' class="drop-down-a"><li class="drop-down-li">Librarian</li></a>
             <a href='<?php echo site_url(); ?>Super_admin/add_office' class="drop-down-a"><li class="drop-down-li">Office Staff</li></a>
-
-
           </ul>
- 
-        
-        
-        
-      </div>
+        </div>
+        <a href="<?php echo site_url(); ?>Super_admin/update_gallery" class="list-group-item list-group-item-action bg-light">Update Gallery</a>
+
     </div>
     <!-- /#sidebar-wrapper -->
     <script>
