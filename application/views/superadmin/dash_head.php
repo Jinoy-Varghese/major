@@ -124,6 +124,8 @@ if(!isset($_SESSION['u_id']))
           </ul>
         </div>
         <a href="<?php echo site_url(); ?>Super_admin/update_gallery" class="list-group-item list-group-item-action bg-light">Update Gallery</a>
+        <a href="<?php echo site_url(); ?>Super_admin/view_gallery" class="list-group-item list-group-item-action bg-light">View Gallery</a>
+
 
     </div>
     <!-- /#sidebar-wrapper -->

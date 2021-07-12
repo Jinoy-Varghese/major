@@ -92,6 +92,7 @@ class Super_admin extends CI_Controller
   public function update_fees()
   {
     $this->load->view("header.php");
+    $this->load->view("amp.php");
     $this->load->view("superadmin/dash_head.php");
     $this->load->view("superadmin/update_fees.php");
     $this->load->view("superadmin/dash_footer.php");
@@ -100,8 +101,18 @@ class Super_admin extends CI_Controller
   public function update_gallery()
   {
     $this->load->view("header.php");
+    $this->load->view("amp.php");
     $this->load->view("superadmin/dash_head.php");
     $this->load->view("superadmin/update_gallery.php");
+    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function view_gallery()
+  {
+    $this->load->view("header.php");
+    $this->load->view("amp.php");
+    $this->load->view("superadmin/dash_head.php");
+    $this->load->view("superadmin/view_gallery.php");
     $this->load->view("superadmin/dash_footer.php");
     $this->load->view("footer.php");
   }
@@ -229,7 +240,6 @@ class Super_admin extends CI_Controller
   }
   public function update_fee_process()
   {
-
      $course=$this->input->post('course');
      $semester=$this->input->post('semester');
      $fees=$this->input->post('fees');
@@ -238,6 +248,19 @@ class Super_admin extends CI_Controller
      $this->db->insert('fees',$fee_data);
      $this->session->set_flashdata('insert_success',"fee updated");
      redirect('Super_admin/update_fees','refresh');
+    }
+    public function update_gallery_process()
+    {
+      
+       $news=$this->input->post('news');
+       $news_file=$_FILES['news_file']['name'];
+       $target = "assets/img/gallery/".basename($news_file);
+       move_uploaded_file($_FILES['news_file']['tmp_name'], $target);
+       $update_gallery=array('title'=>$news,'img_file'=>$target);
+       $this->db->insert('gallery',$update_gallery);
+       $this->session->set_flashdata('insert_success',"Successfully Inserted");
+       redirect('Super_admin/update_gallery','refresh');
+      
     }
   
 

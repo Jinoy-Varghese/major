@@ -27,7 +27,7 @@ if($this->session->flashdata('insert_failed')){
         </ol>
     </nav>
     <form class="needs-validation mt-5" enctype="multipart/form-data" novalidate method="post"
-        action="<?php echo base_url();?>hod/update_gallery_process">
+        action="<?php echo base_url();?>Super_admin/update_gallery_process">
         <div class="form-row">
 
             <div class="col-md-4 mb-3">
