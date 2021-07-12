@@ -56,14 +56,22 @@
         <div className="row col-12 mt-5 pt-5 ml-0 pb-4 border">
             <div class="container mt-5">
                 <div class="row">
-                    
+                    <?php
+                        $this->db->select('*');
+                        $this->db->from('gallery');
+                        $sql=$this->db->get();
+                        foreach($sql->result() as $image)
+                        {
+                    ?>
                     
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url($image->img_file); ?>" class="fancybox" rel="ligthbox" target="_blank" >
+                            <img  src="<?php echo base_url($image->img_file); ?>" class="zoom img-fluid "  alt="" />
                         </a>
                     </div>
-                    
+                    <?php 
+                        }
+                    ?>
                     
                 </div>
             </div>
