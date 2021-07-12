@@ -9,13 +9,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-6 ml-n2">
-            <img src="<?php echo base_url('assets/img/found.jfif');?>" class="img-fluid">
+        <div class="col-md-6 col-12">
+            <div class="col-12 col-md-12 ml-n2 mb-md-5 pb-md-5">
+                <img src="<?php echo base_url('assets/img/found.jfif');?>" class="img-fluid">
+            </div>
+            <div class="col-12 col-md-12 ml-n2 mt-md-5 pt-md-5 mt-3">
+                <img src="<?php echo base_url('assets/img/old_college.jpg');?>" class="img-fluid">
+            </div>
         </div>
-        <div class="col-12 col-md-6 ml-n2">
-            <img src="<?php echo base_url('assets/img/old_college.jpg');?>" class="img-fluid">
-        </div>
-
         <div class="col-12 col-md-6 text-center">
             <img src="<?php echo base_url('assets/img/founder.jfif')?>" class="img-fluid">
         </div>
