@@ -129,7 +129,6 @@ if($this->session->flashdata('insert_failed')){
 
 
 
-
                     <?php 
                     $file_format=get_file_extension("$note_data->note_file");
                     if($file_format=="pdf")

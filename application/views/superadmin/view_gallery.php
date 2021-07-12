@@ -1,4 +1,57 @@
 <style>
+    .containert {
+        position: relative;
+        width: 50%;
+        }
+        .a_tag_change
+        {
+            cursor: pointer;
+            color: inherit;
+        }
+        .a_tag_change:hover
+        {
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .imaget {
+        opacity: 1;
+        display: block;
+        width: 100%;
+        height: auto;
+        transition: .5s ease;
+        backface-visibility: hidden;
+        }
+
+        .middlet {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+        cursor:pointer;
+        }
+
+        .containert:hover .imaget {
+        opacity: 0.3;
+        }
+
+        .containert:hover .middlet {
+        opacity: 1;
+        }
+
+        .textt {
+        background-color: red;
+        color: white;
+        font-size: 16px;
+        padding: 16px 32px;
+        cursor:pointer;
+        }
+
+
+
     .thumb {
         margin-bottom: 30px;
     }
@@ -64,11 +117,15 @@
                         {
                     ?>
                     
-                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb containert">
                         <a href="<?php echo base_url($image->img_file); ?>" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="<?php echo base_url($image->img_file); ?>" class="zoom img-fluid "  alt="" />
+                            <img  src="<?php echo base_url($image->img_file); ?>" class="zoom img-fluid imaget"  alt="" />
                         </a>
+                        <div class="middlet">
+                            <a href="" class="a_tag_change"><div class="textt rounded">Delete</div></a>
+                        </div>
                     </div>
+                    
                     <?php 
                         }
                     ?>
