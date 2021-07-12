@@ -262,7 +262,14 @@ class Super_admin extends CI_Controller
        redirect('Super_admin/update_gallery','refresh');
       
     }
-  
+    public function delete_image()
+    {
+      $id=$this->uri->segment(3);
+      $this->db->where('id',$id);
+      $this->db->delete('gallery');
+      $this->session->set_flashdata('delete_success',"Sucessfully deleted");
+      redirect('Super_admin/view_gallery','refresh');
+    }
 
 }
 
