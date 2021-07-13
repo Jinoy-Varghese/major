@@ -284,40 +284,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div className="col-12 h2 pb-4 text-light">Our Achivements</div>    
             <div className="owl-carousel owl-theme pl-4 pr-4 ">
                 <div className="item border" style={{height:"200px"}}>
-                <h4>1</h4>
+                <img src="<?php echo base_url('assets/image/flash_mob.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>2</h4>
+                <img src="<?php echo base_url('assets/image/women_cell.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>3</h4>
+                <img src="<?php echo base_url('assets/image/seminar.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>4</h4>
+                <img src="<?php echo base_url('assets/image/nss.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>5</h4>
+                <img src="<?php echo base_url('assets/image/onam_fest.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>6</h4>
+                <img src="<?php echo base_url('assets/image/food_fest.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>7</h4>
+                <img src="<?php echo base_url('assets/image/college_day.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>8</h4>
+                <img src="<?php echo base_url('assets/image/arts.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>9</h4>
+                <img src="<?php echo base_url('assets/image/alumini.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>10</h4>
+                <img src="<?php echo base_url('assets/image/add_on_course.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>11</h4>
+                <img src="<?php echo base_url('assets/image/m_11.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <h4>12</h4>
+                <img src="<?php echo base_url('assets/image/food_fest.jpg');?>"/>
                 </div>
             </div>
     </div>
