@@ -1,118 +1,111 @@
 <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<?php
+  $time1=0;
+  $time2=2;
+  $this->db->select('*');
+  $this->db->from('incharge_list');
+  $this->db->where('user_incharge',$_SESSION['u_id']);
+  $this->db->limit(1);
+  $this->db->order_by('timestamp','DESC');
+  $sql=$this->db->get();
+  foreach($sql->result() as $user_data)
+  {
+    $course1=$user_data->course;
+    $sem1=$user_data->semester;
+    $time1=$user_data->timestamp;
+    $this->db->select('*');
+    $this->db->from('incharge_list');
+    $this->db->where('course',$course1);
+    $this->db->where('semester',$sem1);
 
+    $this->db->limit(1);
+    $this->db->order_by('timestamp','DESC');
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+    $time2=$user_data->timestamp;
+    }
+  }
+
+  if($time1>=$time2)
+  {
+    $extra_menu=1;
+  }
+  else{
+    $extra_menu=0;
+  }
+
+?>
 <!-- Chart code -->
         <script>
-            am4core.ready(function() {
+              am4core.ready(function() {
 
-            // Themes begin
-            am4core.useTheme(am4themes_animated);
-            // Themes end
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+var chart = am4core.create("chartdiv", am4charts.XYChart);
 
-            var chart = am4core.create("chartdiv", am4charts.XYChart);
-            chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
+var data = [];
+var value = 0;
 
-            chart.data = [
-            {
-                country: "USA",
-                visits: 725
-            },
-            {
-                country: "China",
-                visits: 882
-            },
-            {
-                country: "Japan",
-                visits: 809
-            },
-            {
-                country: "Germany",
-                visits: 322
-            },
-            {
-                country: "UK",
-                visits: 122
-            },
-            {
-                country: "France",
-                visits: 114
-            },
-            {
-                country: "India",
-                visits: 984
-            },
-            {
-                country: "Spain",
-                visits: 711
-            },
-            {
-                country: "Netherlands",
-                visits: 465
-            },
 
-            ];
 
-            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.dataFields.category = "country";
-            categoryAxis.renderer.minGridDistance = 40;
-            categoryAxis.fontSize = 9;
-            
 
-            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis.min = 0;
-            valueAxis.max = 1000;
-            valueAxis.strictMinMax = true;
-            valueAxis.renderer.minGridDistance = 30;
-            valueAxis.renderer.labels.template.fontSize = 9;
-            // axis break
-            var axisBreak = valueAxis.axisBreaks.create();
-            axisBreak.startValue = 400;
-            axisBreak.endValue = 700;
-            //axisBreak.breakSize = 0.005;
+<?php 
 
-            // fixed axis break
-            var d = (axisBreak.endValue - axisBreak.startValue) / (valueAxis.max - valueAxis.min);
-            axisBreak.breakSize = 0.05 * (1 - d) / d; // 0.05 means that the break will take 5% of the total value axis height
+$sql=$this->db->select('DISTINCT(date)')->from('fees_paid')->limit(50)->get();
+foreach($sql->result() as $paid)
+{
+  $this->db->select('amount');
+  $this->db->from('fees_paid');
+  $this->db->where('date',$paid->date);
+  $query=$this->db->get();
+  $sum_amount=0;
+  foreach ($query->result() as $row)
+  {
+      $sum_amount=$sum_amount+$row->amount;
+  }
+?>
 
-            // make break expand on hover
-            var hoverState = axisBreak.states.create("hover");
-            hoverState.properties.breakSize = 1;
-            hoverState.properties.opacity = 0.1;
-            hoverState.transitionDuration = 1500;
+  data.push({date:"<?php echo $paid->date; ?>", value: <?php echo $sum_amount; ?>});
 
-            axisBreak.defaultState.transitionDuration = 1000;
-            /*
-            // this is exactly the same, but with events
-            axisBreak.events.on("over", function() {
-            axisBreak.animate(
-                [{ property: "breakSize", to: 1 }, { property: "opacity", to: 0.1 }],
-                1500,
-                am4core.ease.sinOut
-            );
-            });
-            axisBreak.events.on("out", function() {
-            axisBreak.animate(
-                [{ property: "breakSize", to: 0.005 }, { property: "opacity", to: 1 }],
-                1000,
-                am4core.ease.quadOut
-            );
-            });*/
+<?php
+}
+?>
 
-            var series = chart.series.push(new am4charts.ColumnSeries());
-            series.dataFields.categoryX = "country";
-            series.dataFields.valueY = "visits";
-            series.columns.template.tooltipText = "{valueY.value}";
-            series.columns.template.tooltipY = 0;
-            series.columns.template.strokeOpacity = 0;
-            
-            // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-            series.columns.template.adapter.add("fill", function(fill, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-            });
 
-            }); // end am4core.ready()
+
+
+
+chart.data = data;
+
+// Create axes
+var dateAxis = chart.xAxes.push(new am4charts.DateAxis());
+dateAxis.renderer.minGridDistance = 60;
+
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+
+// Create series
+var series = chart.series.push(new am4charts.LineSeries());
+series.dataFields.valueY = "value";
+series.dataFields.dateX = "date";
+series.tooltipText = "{value}"
+
+dateAxis.fontSize = 12;
+valueAxis.fontSize = 12;
+
+series.tooltip.pointerOrientation = "vertical";
+
+chart.cursor = new am4charts.XYCursor();
+chart.cursor.snapToSeries = series;
+chart.cursor.xAxis = dateAxis;
+
+//chart.scrollbarY = new am4core.Scrollbar();
+chart.scrollbarX = new am4core.Scrollbar();
+
+}); // end am4core.ready()
             am4core.ready(function() {
 
 // Themes begin

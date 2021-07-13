@@ -18,13 +18,14 @@ var value = 0;
 
 
 <?php 
-
-$sql=$this->db->select('DISTINCT(date)')->from('fees_paid')->limit(50)->get();
-foreach($sql->result() as $paid)
+if($extra_menu==1)
 {
-  $this->db->select('amount');
-  $this->db->from('fees_paid');
-  $this->db->where('date',$paid->date);
+$sql=$this->db->select('DISTINCT(timestamp)')->from('attendance')->limit(50)->get();
+foreach($sql->result() as $data)
+{
+  $this->db->select('*');
+  $this->db->from('attendance');
+  $this->db->where('date',$data->date);
   $query=$this->db->get();
   $sum_amount=0;
   foreach ($query->result() as $row)
@@ -36,6 +37,7 @@ foreach($sql->result() as $paid)
   data.push({date:"<?php echo $paid->date; ?>", value: <?php echo $sum_amount; ?>});
 
 <?php
+}
 }
 ?>
 
@@ -73,7 +75,7 @@ chart.scrollbarX = new am4core.Scrollbar();
 
 
 
-            am4core.ready(function() {
+am4core.ready(function() {
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
@@ -83,34 +85,42 @@ am4core.useTheme(am4themes_animated);
 var chart = am4core.create("piechart", am4charts.PieChart);
 
 // Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}, {
-  "country": "Germany",
-  "litres": 165.8
-}, {
-  "country": "Australia",
-  "litres": 139.9
-}, {
-  "country": "Austria",
-  "litres": 128.3
-}, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
+chart.data = [ 
+  
+
+  <?php 
+
+$sql=$this->db->select('DISTINCT(gender)')->from('users')->get();
+foreach($sql->result() as $se)
+{
+  $sql=$this->db->get_where('users',array('gender'=>$se->gender));
+  $rows=$sql->num_rows();
+?>
+
+
+
+  {
+  "country": "<?php
+  if($se->gender=='m')
+  {
+    echo "Male";
+  }
+  else{
+    echo 'Female';
+  }
+  
+  ?>",
+  "litres": <?php echo $rows; ?>
+},
+
+
+<?php
+}
+?>
+
+
+
+];
 
 // Set inner radius
 chart.innerRadius = am4core.percent(50);
@@ -134,6 +144,7 @@ pieSeries.hiddenState.properties.opacity = 1;
 pieSeries.hiddenState.properties.endAngle = -90;
 pieSeries.hiddenState.properties.startAngle = -90;
 categoryAxis.fontSize = 9;
+
 }); // end am4core.ready()
 </script>
 
