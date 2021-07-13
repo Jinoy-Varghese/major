@@ -314,7 +314,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <img src="<?php echo base_url('assets/image/add_on_course.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/m_11.jpg');?>"/>
+                <img src="<?php echo base_url('assets/image/sports.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
                 <img src="<?php echo base_url('assets/image/food_fest.jpg');?>"/>
