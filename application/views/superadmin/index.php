@@ -9,19 +9,31 @@
 // Themes begin
 am4core.useTheme(am4themes_animated);
 // Themes end
-
 var chart = am4core.create("chartdiv", am4charts.XYChart);
 
 var data = [];
-var value = 50;
-for(var i = 0; i < 300; i++){
-  var date = new Date();
-  date.setHours(0,0,0,0);
-  date.setDate(i);
-  alert(date);
-  value -= Math.round((Math.random() < 0.5 ? 1 : -1) * Math.random() * 10);
-  data.push({date:date, value: value});
+var value = 0;
+
+
+
+
+<?php 
+
+$sql=$this->db->select('*')->from('fees_paid')->limit(50)->get();
+foreach($sql->result() as $paid)
+{
+
+?>
+
+  data.push({date:"<?php echo $paid->date; ?>", value: <?php echo $paid->amount; ?>});
+
+<?php
 }
+?>
+
+
+
+
 
 chart.data = data;
 
@@ -36,6 +48,9 @@ var series = chart.series.push(new am4charts.LineSeries());
 series.dataFields.valueY = "value";
 series.dataFields.dateX = "date";
 series.tooltipText = "{value}"
+
+dateAxis.fontSize = 12;
+valueAxis.fontSize = 12;
 
 series.tooltip.pointerOrientation = "vertical";
 
