@@ -70,6 +70,7 @@ chart.cursor.xAxis = dateAxis;
 chart.scrollbarX = new am4core.Scrollbar();
 
 }); // end am4core.ready()
+
             am4core.ready(function() {
 
 // Themes begin
@@ -80,34 +81,42 @@ am4core.useTheme(am4themes_animated);
 var chart = am4core.create("piechart", am4charts.PieChart);
 
 // Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}, {
-  "country": "Germany",
-  "litres": 165.8
-}, {
-  "country": "Australia",
-  "litres": 139.9
-}, {
-  "country": "Austria",
-  "litres": 128.3
-}, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
+chart.data = [ 
+  
+
+  <?php 
+
+$sql=$this->db->select('DISTINCT(gender)')->from('users')->get();
+foreach($sql->result() as $se)
+{
+  $sql=$this->db->get_where('users',array('gender'=>$se->gender));
+  $rows=$sql->num_rows();
+?>
+
+
+
+  {
+  "country": "<?php
+  if($se->gender=='m')
+  {
+    echo "Male";
+  }
+  else{
+    echo 'Female';
+  }
+  
+  ?>",
+  "litres": <?php echo $rows; ?>
+},
+
+
+<?php
+}
+?>
+
+
+
+];
 
 // Set inner radius
 chart.innerRadius = am4core.percent(50);
@@ -131,7 +140,7 @@ pieSeries.hiddenState.properties.opacity = 1;
 pieSeries.hiddenState.properties.endAngle = -90;
 pieSeries.hiddenState.properties.startAngle = -90;
 categoryAxis.fontSize = 9;
-AmCharts.checkEmptyData(chart);
+
 }); // end am4core.ready()
 
 </script>
