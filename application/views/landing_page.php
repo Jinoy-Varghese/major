@@ -143,7 +143,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         cursor: context-menu;
         text-decoration: none;
     }
-
     </style>
     <title>MTCST</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -283,41 +282,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div className="row col-12 border border-primary mt-5 pt-md-4 pt-3 ml-0 blue_background pb-4 pb-md-0">
         <div className="col-12 h2 pb-4 text-light">Our Achivements</div>    
             <div className="owl-carousel owl-theme pl-4 pr-4 ">
-                <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/flash_mob.jpg');?>"/>
+                <div className="item border" style={{height:"200px"}}>              
+                </div>
+                <div className="item border" style={{height:"200px"}}> 
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/women_cell.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/seminar.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/nss.jpg');?>"/>
+                </div>
+                <div className="item border" style={{height:"200px"}}>               
+                </div>
+                <div className="item border" style={{height:"200px"}}>               
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/onam_fest.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/food_fest.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/college_day.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/arts.jpg');?>"/>
                 </div>
                 <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/alumini.jpg');?>"/>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/add_on_course.jpg');?>"/>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/sports.jpg');?>"/>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                <img src="<?php echo base_url('assets/image/food_fest.jpg');?>"/>
                 </div>
             </div>
     </div>
@@ -348,49 +335,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="container mt-5">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/62307/air-bubbles-diving-underwater-blow-62307.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/flash_mob.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/flash_mob.jpg');?>"/>
                         </a>
                     </div>
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940"  class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/38238/maldives-ile-beach-sun-38238.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid"  alt="" />
-                        </a>
-                    </div>
-                    
-                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/women_cell.jpg');?>"  class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/women_cell.jpg');?>"/>
                         </a>
                     </div>
                     
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/302804/pexels-photo-302804.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/seminar.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/seminar.jpg');?>"/>
                         </a>
                     </div>
                     
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/1038914/pexels-photo-1038914.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/nss.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/nss.jpg');?>"/>
                         </a>
                     </div>
                     
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/414645/pexels-photo-414645.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/onam_fest.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/onam_fest.jpg');?>"/>
                         </a>
                     </div>
                     
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/56005/fiji-beach-sand-palm-trees-56005.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/food_fest.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/food_fest.jpg');?>"/>
                         </a>
                     </div>
                     
                     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-                        <a href="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="fancybox" rel="ligthbox" target="_blank" >
-                            <img  src="https://images.pexels.com/photos/1038002/pexels-photo-1038002.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" class="zoom img-fluid "  alt="" />
+                        <a href="<?php echo base_url('assets/image/college_day.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/college_day.jpg');?>"/>
+                        </a>
+                    </div>
+                    
+                    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+                        <a href="<?php echo base_url('assets/image/arts.jpg');?>" class="fancybox" rel="ligthbox" target="_blank" >
+                        <img class="img-fluid" src="<?php echo base_url('assets/image/arts.jpg');?>"/>
                         </a>
                     </div>
                 </div>
