@@ -4,176 +4,209 @@
 
 <!-- Chart code -->
         <script>
-            am4core.ready(function() {
-
-            // Themes begin
-            am4core.useTheme(am4themes_animated);
-            // Themes end
-
-            var chart = am4core.create("chartdiv", am4charts.XYChart);
-            chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
-
-            chart.data = [
-            {
-                country: "USA",
-                visits: 725
-            },
-            {
-                country: "China",
-                visits: 882
-            },
-            {
-                country: "Japan",
-                visits: 809
-            },
-            {
-                country: "Germany",
-                visits: 322
-            },
-            {
-                country: "UK",
-                visits: 122
-            },
-            {
-                country: "France",
-                visits: 114
-            },
-            {
-                country: "India",
-                visits: 984
-            },
-            {
-                country: "Spain",
-                visits: 711
-            },
-            {
-                country: "Netherlands",
-                visits: 465
-            },
-
-            ];
-
-            var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-            categoryAxis.renderer.grid.template.location = 0;
-            categoryAxis.dataFields.category = "country";
-            categoryAxis.renderer.minGridDistance = 40;
-            categoryAxis.fontSize = 9;
-            
-
-            var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-            valueAxis.min = 0;
-            valueAxis.max = 1000;
-            valueAxis.strictMinMax = true;
-            valueAxis.renderer.minGridDistance = 30;
-            valueAxis.renderer.labels.template.fontSize = 9;
-            // axis break
-            var axisBreak = valueAxis.axisBreaks.create();
-            axisBreak.startValue = 400;
-            axisBreak.endValue = 700;
-            //axisBreak.breakSize = 0.005;
-
-            // fixed axis break
-            var d = (axisBreak.endValue - axisBreak.startValue) / (valueAxis.max - valueAxis.min);
-            axisBreak.breakSize = 0.05 * (1 - d) / d; // 0.05 means that the break will take 5% of the total value axis height
-
-            // make break expand on hover
-            var hoverState = axisBreak.states.create("hover");
-            hoverState.properties.breakSize = 1;
-            hoverState.properties.opacity = 0.1;
-            hoverState.transitionDuration = 1500;
-
-            axisBreak.defaultState.transitionDuration = 1000;
-            /*
-            // this is exactly the same, but with events
-            axisBreak.events.on("over", function() {
-            axisBreak.animate(
-                [{ property: "breakSize", to: 1 }, { property: "opacity", to: 0.1 }],
-                1500,
-                am4core.ease.sinOut
-            );
-            });
-            axisBreak.events.on("out", function() {
-            axisBreak.animate(
-                [{ property: "breakSize", to: 0.005 }, { property: "opacity", to: 1 }],
-                1000,
-                am4core.ease.quadOut
-            );
-            });*/
-
-            var series = chart.series.push(new am4charts.ColumnSeries());
-            series.dataFields.categoryX = "country";
-            series.dataFields.valueY = "visits";
-            series.columns.template.tooltipText = "{valueY.value}";
-            series.columns.template.tooltipY = 0;
-            series.columns.template.strokeOpacity = 0;
-            
-            // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-            series.columns.template.adapter.add("fill", function(fill, target) {
-            return chart.colors.getIndex(target.dataItem.index);
-            });
-
-            }); // end am4core.ready()
-            am4core.ready(function() {
+           am4core.ready(function() {
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
 // Themes end
 
 // Create chart instance
-var chart = am4core.create("piechart", am4charts.PieChart);
+var chart = am4core.create("chartdiv", am4charts.XYChart);
 
 // Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
+chart.data = [{
+  "year": "2011",
+  "value": 600000
 }, {
-  "country": "Czech Republic",
-  "litres": 301.9
+  "year": "2012",
+  "value": 900000
 }, {
-  "country": "Ireland",
-  "litres": 201.1
+  "year": "2013",
+  "value": 180000
 }, {
-  "country": "Germany",
-  "litres": 165.8
+  "year": "2014",
+  "value": 600000
 }, {
-  "country": "Australia",
-  "litres": 139.9
+  "year": "2015",
+  "value": 350000
 }, {
-  "country": "Austria",
-  "litres": 128.3
+  "year": "2016",
+  "value": 600000
 }, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
+  "year": "2017",
+  "value": 670000
+}];
 
-// Set inner radius
-chart.innerRadius = am4core.percent(50);
+// Populate data
+for (var i = 0; i < (chart.data.length - 1); i++) {
+  chart.data[i].valueNext = chart.data[i + 1].value;
+}
 
-// Add and configure Series
-var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
-pieSeries.dataFields.category = "country";
-pieSeries.slices.template.stroke = am4core.color("#fff");
-pieSeries.slices.template.strokeWidth = 2;
-pieSeries.slices.template.strokeOpacity = 1;
-pieSeries.labels.template.paddingTop=0;
-pieSeries.labels.template.paddingBottom=0;
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "year";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 30;
 
-pieSeries.labels.template.fontSize=6;
-pieSeries.ticks.template.disabled=false;
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.min = 0;
+
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "value";
+series.dataFields.categoryX = "year";
+
+// Add series for showing variance arrows
+var series2 = chart.series.push(new am4charts.ColumnSeries());
+series2.dataFields.valueY = "valueNext";
+series2.dataFields.openValueY = "value";
+series2.dataFields.categoryX = "year";
+series2.columns.template.width = 1;
+series2.fill = am4core.color("#555");
+series2.stroke = am4core.color("#555");
+
+// Add a triangle for arrow tip
+var arrow = series2.bullets.push(new am4core.Triangle);
+arrow.width = 10;
+arrow.height = 10;
+arrow.horizontalCenter = "middle";
+arrow.verticalCenter = "top";
+arrow.dy = -1;
+
+// Set up a rotation adapter which would rotate the triangle if its a negative change
+arrow.adapter.add("rotation", function(rotation, target) {
+  return getVariancePercent(target.dataItem) < 0 ? 180 : rotation;
+});
+
+// Set up a rotation adapter which adjusts Y position
+arrow.adapter.add("dy", function(dy, target) {
+  return getVariancePercent(target.dataItem) < 0 ? 1 : dy;
+});
+
+// Add a label
+var label = series2.bullets.push(new am4core.Label);
+label.padding(10, 10, 10, 10);
+label.text = "";
+label.fill = am4core.color("#0c0");
+label.strokeWidth = 0;
+label.horizontalCenter = "middle";
+label.verticalCenter = "bottom";
+label.fontWeight = "bolder";
+
+// Adapter for label text which calculates change in percent
+label.adapter.add("textOutput", function(text, target) {
+  var percent = getVariancePercent(target.dataItem);
+  return percent ? percent + "%" : text;
+});
+
+// Adapter which shifts the label if it's below the variance column
+label.adapter.add("verticalCenter", function(center, target) {
+  return getVariancePercent(target.dataItem) < 0 ? "top" : center;
+});
+
+// Adapter which changes color of label to red
+label.adapter.add("fill", function(fill, target) {
+  return getVariancePercent(target.dataItem) < 0 ? am4core.color("#c00") : fill;
+});
+
+function getVariancePercent(dataItem) {
+  if (dataItem) {
+    var value = dataItem.valueY;
+    var openValue = dataItem.openValueY;
+    var change = value - openValue;
+    return Math.round(change / openValue * 100);
+  }
+  return 0;
+}
+
+}); // end am4core.ready()
+            am4core.ready(function() {
+
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
 
 
-// This creates initial animation
-pieSeries.hiddenState.properties.opacity = 1;
-pieSeries.hiddenState.properties.endAngle = -90;
-pieSeries.hiddenState.properties.startAngle = -90;
-categoryAxis.fontSize = 9;
+
+// Create chart instance
+var chart = am4core.create("piechart", am4charts.RadarChart);
+
+// Add data
+chart.data = [{
+  "category": "S1",
+  "value": 100,
+  "full": 100
+}, {
+  "category": "S2",
+  "value": 80,
+  "full": 100
+}, {
+  "category": "S3",
+  "value": 90,
+  "full": 100
+}, {
+  "category": "S4",
+  "value": 75,
+  "full": 100
+}, {
+  "category": "S5",
+  "value": 95,
+  "full": 100
+}
+];
+
+// Make chart not full circle
+chart.startAngle = -90;
+chart.endAngle = 180;
+chart.innerRadius = am4core.percent(20);
+
+// Set number format
+chart.numberFormatter.numberFormat = "#.#'%'";
+
+// Create axes
+var categoryAxis = chart.yAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "category";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.grid.template.strokeOpacity = 0;
+categoryAxis.renderer.labels.template.horizontalCenter = "right";
+categoryAxis.renderer.labels.template.fontWeight = 500;
+categoryAxis.renderer.labels.template.adapter.add("fill", function(fill, target) {
+  return (target.dataItem.index >= 0) ? chart.colors.getIndex(target.dataItem.index) : fill;
+});
+categoryAxis.renderer.minGridDistance = 10;
+
+var valueAxis = chart.xAxes.push(new am4charts.ValueAxis());
+valueAxis.renderer.grid.template.strokeOpacity = 0;
+valueAxis.min = 0;
+valueAxis.max = 100;
+valueAxis.strictMinMax = true;
+
+// Create series
+var series1 = chart.series.push(new am4charts.RadarColumnSeries());
+series1.dataFields.valueX = "full";
+series1.dataFields.categoryY = "category";
+series1.clustered = false;
+series1.columns.template.fill = new am4core.InterfaceColorSet().getFor("alternativeBackground");
+series1.columns.template.fillOpacity = 0.08;
+series1.columns.template.cornerRadiusTopLeft = 20;
+series1.columns.template.strokeWidth = 0;
+series1.columns.template.radarColumn.cornerRadius = 20;
+
+var series2 = chart.series.push(new am4charts.RadarColumnSeries());
+series2.dataFields.valueX = "value";
+series2.dataFields.categoryY = "category";
+series2.clustered = false;
+series2.columns.template.strokeWidth = 0;
+series2.columns.template.tooltipText = "{category}: [bold]{value}[/]";
+series2.columns.template.radarColumn.cornerRadius = 20;
+
+series2.columns.template.adapter.add("fill", function(fill, target) {
+  return chart.colors.getIndex(target.dataItem.index);
+});
+
+// Add cursor
+chart.cursor = new am4charts.RadarCursor();
+
 }); // end am4core.ready()
 </script>
 
