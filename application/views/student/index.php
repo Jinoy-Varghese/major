@@ -224,7 +224,7 @@ chart.cursor = new am4charts.RadarCursor();
     </div>
     <div class="row mt-5">        
         <div class="col-lg-8 col-md-8 mt-1 pr-lg-2 p-0">
-            <div class="col-md-12 shadow pl-0" id="chartdiv" style="height:300px;"></div>
+            <div class="col-md-12 shadow pl-0 d-flex justify-content-center text-center align-items-center display-5" id="chartdiv_t" style="height:300px;">Not much data available for payment comparison</div>
         </div>
         
         <div class="col-lg-4 col-md-4 mt-1 p-0"> 
