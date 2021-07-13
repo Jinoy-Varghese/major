@@ -39,10 +39,6 @@ foreach($sql->result() as $paid)
 }
 ?>
 
-
-
-
-
 chart.data = data;
 
 // Create axes
