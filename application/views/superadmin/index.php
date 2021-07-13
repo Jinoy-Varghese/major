@@ -19,13 +19,20 @@ var value = 0;
 
 <?php 
 
-$sql=$this->db->select('*')->from('fees_paid')->limit(50)->get();
+$sql=$this->db->select('DISTINCT(date)')->from('fees_paid')->limit(50)->get();
 foreach($sql->result() as $paid)
 {
-
+  $this->db->select('SUM(amount)');
+  $this->db->from('fees_paid');
+  $this->db->where('date',$paid->date);
+  $sum_amount=$this->db->get()->result();
+  foreach($sum_amount as $key => $value)
+{
+  echo $key." has the value". $value;
+}
 ?>
 
-  data.push({date:"<?php echo $paid->date; ?>", value: <?php echo $paid->amount; ?>});
+  data.push({date:"<?php echo $paid->date; ?>", value: <?php  $value; ?>});
 
 <?php
 }
