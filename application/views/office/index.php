@@ -18,14 +18,13 @@ var value = 0;
 
 
 <?php 
-if($extra_menu==1)
+
+$sql=$this->db->select('DISTINCT(date)')->from('fees_paid')->limit(50)->get();
+foreach($sql->result() as $paid)
 {
-$sql=$this->db->select('DISTINCT(timestamp)')->from('attendance')->limit(50)->get();
-foreach($sql->result() as $data)
-{
-  $this->db->select('*');
-  $this->db->from('attendance');
-  $this->db->where('date',$data->date);
+  $this->db->select('amount');
+  $this->db->from('fees_paid');
+  $this->db->where('date',$paid->date);
   $query=$this->db->get();
   $sum_amount=0;
   foreach ($query->result() as $row)
@@ -37,7 +36,6 @@ foreach($sql->result() as $data)
   data.push({date:"<?php echo $paid->date; ?>", value: <?php echo $sum_amount; ?>});
 
 <?php
-}
 }
 ?>
 
