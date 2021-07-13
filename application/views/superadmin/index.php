@@ -22,17 +22,18 @@ var value = 0;
 $sql=$this->db->select('DISTINCT(date)')->from('fees_paid')->limit(50)->get();
 foreach($sql->result() as $paid)
 {
-  $this->db->select('SUM(amount)');
+  $this->db->select('amount');
   $this->db->from('fees_paid');
   $this->db->where('date',$paid->date);
-  $sum_amount=$this->db->get()->result();
-  foreach($sum_amount as $key => $value)
-{
-  echo $key." has the value". $value;
-}
+  $query=$this->db->get();
+  $sum_amount=0;
+  foreach ($query->result() as $row)
+  {
+      $sum_amount=$sum_amount+$row->amount;
+  }
 ?>
 
-  data.push({date:"<?php echo $paid->date; ?>", value: <?php  $value; ?>});
+  data.push({date:"<?php echo $paid->date; ?>", value: <?php echo $sum_amount; ?>});
 
 <?php
 }
@@ -130,7 +131,9 @@ pieSeries.hiddenState.properties.opacity = 1;
 pieSeries.hiddenState.properties.endAngle = -90;
 pieSeries.hiddenState.properties.startAngle = -90;
 categoryAxis.fontSize = 9;
+AmCharts.checkEmptyData(chart);
 }); // end am4core.ready()
+
 </script>
 
 <!-- HTML -->
