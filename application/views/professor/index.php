@@ -1,6 +1,8 @@
 <script src="https://cdn.amcharts.com/lib/4/core.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/plugins/wordCloud.js"></script>
+
 <?php
   $time1=0;
   $time2=2;
@@ -133,67 +135,95 @@ series.columns.template.adapter.add("fill", function(fill, target) {
 });
 
 }); // end am4core.ready()
-            am4core.ready(function() {
+am4core.ready(function() {
 
 // Themes begin
 am4core.useTheme(am4themes_animated);
 // Themes end
 
-// Create chart instance
-var chart = am4core.create("piechart", am4charts.PieChart);
+var chart = am4core.create("piechart", am4plugins_wordCloud.WordCloud);
+chart.fontFamily = "Courier New";
+var series = chart.series.push(new am4plugins_wordCloud.WordCloudSeries());
+series.randomness = 0.1;
+series.rotationThreshold = 0.5;
 
-// Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}, {
-  "country": "Germany",
-  "litres": 165.8
-}, {
-  "country": "Australia",
-  "litres": 139.9
-}, {
-  "country": "Austria",
-  "litres": 128.3
-}, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
+series.data = [ 
+  
+  
 
-// Set inner radius
-chart.innerRadius = am4core.percent(50);
+  <?php 
 
-// Add and configure Series
-var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
-pieSeries.dataFields.category = "country";
-pieSeries.slices.template.stroke = am4core.color("#fff");
-pieSeries.slices.template.strokeWidth = 2;
-pieSeries.slices.template.strokeOpacity = 1;
-pieSeries.labels.template.paddingTop=0;
-pieSeries.labels.template.paddingBottom=0;
-
-pieSeries.labels.template.fontSize=6;
-pieSeries.ticks.template.disabled=false;
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('professor_data','professor_data.email=users.email');
+$this->db->where('users.email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $dept=$user_data->dept;
+}
 
 
-// This creates initial animation
-pieSeries.hiddenState.properties.opacity = 1;
-pieSeries.hiddenState.properties.endAngle = -90;
-pieSeries.hiddenState.properties.startAngle = -90;
-categoryAxis.fontSize = 9;
+$this->db->select('*');
+$this->db->from('incharge_list');
+$this->db->where('user_incharge',$_SESSION['u_id']);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+$sem=$user_data->semester;
+}
+
+
+$this->db->select('*');
+$this->db->from('users');
+$this->db->join('student_data','student_data.email=users.email');
+$this->db->where('student_data.dept',$dept);
+$this->db->where('s_sem',$sem);
+$this->db->where('s_status',2);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+?>
+
+
+  
+   {
+    "tag": "<?php echo $user_data->name ?>",
+    "count": " "
+},
+
+<?php		
+}
+?>
+
+];
+
+series.dataFields.word = "tag";
+series.dataFields.value = "count";
+
+series.heatRules.push({
+ "target": series.labels.template,
+ "property": "fill",
+ "min": am4core.color("#0000CC"),
+ "max": am4core.color("#CC00CC"),
+ "dataField": "value"
+});
+
+series.labels.template.url = "https://stackoverflow.com/questions/tagged/{word}";
+series.labels.template.urlTarget = "_blank";
+series.labels.template.tooltipText = "{word}: {value}";
+
+var hoverState = series.labels.template.states.create("hover");
+hoverState.properties.fill = am4core.color("#FF0000");
+
+var subtitle = chart.titles.create();
+
+var title = chart.titles.create();
+title.text = "My Students";
+title.fontSize = 20;
+title.fontWeight = "800";
+
 }); // end am4core.ready()
 </script>
 
