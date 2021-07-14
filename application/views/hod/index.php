@@ -4,121 +4,126 @@
 
 <!-- Chart code -->
 <script>
-am4core.ready(function() {
+           am4core.ready(function() {
 
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
 
-    var chart = am4core.create("chartdiv", am4charts.XYChart);
-    chart.hiddenState.properties.opacity =
-        0; // this creates initial fade-in
+// Create chart instance
+var chart = am4core.create("chartdiv", am4charts.XYChart);
 
-    chart.data = [{
-            country: "USA",
-            visits: 725
-        },
-        {
-            country: "China",
-            visits: 882
-        },
-        {
-            country: "Japan",
-            visits: 809
-        },
-        {
-            country: "Germany",
-            visits: 322
-        },
-        {
-            country: "UK",
-            visits: 122
-        },
-        {
-            country: "France",
-            visits: 114
-        },
-        {
-            country: "India",
-            visits: 984
-        },
-        {
-            country: "Spain",
-            visits: 711
-        },
-        {
-            country: "Netherlands",
-            visits: 465
-        },
+// Add data
+chart.data = [
+    
+<?php
 
-    ];
+    $sql=$this->db->select('DISTINCT(timestamp)')->from('attendance')->limit(7)->get();
+    foreach($sql->result() as $data)
+    {
+    $sql=$this->db->select('*')->from('attendance')->where('timestamp',$data->timestamp)->where('s_attendance','present')->join('student_data','student_data.student_id=attendance.s_id')->get();
+    $number=$sql->num_rows();
 
-    var categoryAxis = chart.xAxes.push(new am4charts
-        .CategoryAxis());
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.dataFields.category = "country";
-    categoryAxis.renderer.minGridDistance = 40;
+?>
+
+
+    
+
+     {
+  "year": "<?php echo $data->timestamp; ?>",
+  "value": <?php echo $number; ?>
+},
+
+
+<?php
+}
+?>
 
 
 
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.min = 0;
-    valueAxis.max = 1000;
-    valueAxis.strictMinMax = true;
-    valueAxis.renderer.minGridDistance = 30;
-    valueAxis.renderer.labels.template.fontSize = 9;
-    // axis break
-    var axisBreak = valueAxis.axisBreaks.create();
-    axisBreak.startValue = 400;
-    axisBreak.endValue = 700;
-    //axisBreak.breakSize = 0.005;
+];
 
-    // fixed axis break
-    var d = (axisBreak.endValue - axisBreak.startValue) / (
-        valueAxis.max -
-        valueAxis.min);
-    axisBreak.breakSize = 0.05 * (1 - d) /
-        d; // 0.05 means that the break will take 5% of the total value axis height
+// Populate data
+for (var i = 0; i < (chart.data.length - 1); i++) {
+  chart.data[i].valueNext = chart.data[i + 1].value;
+}
 
-    // make break expand on hover
-    var hoverState = axisBreak.states.create("hover");
-    hoverState.properties.breakSize = 1;
-    hoverState.properties.opacity = 0.1;
-    hoverState.transitionDuration = 1500;
+// Create axes
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "year";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 30;
 
-    axisBreak.defaultState.transitionDuration = 1000;
-    /*
-    // this is exactly the same, but with events
-    axisBreak.events.on("over", function() {
-    axisBreak.animate(
-        [{ property: "breakSize", to: 1 }, { property: "opacity", to: 0.1 }],
-        1500,
-        am4core.ease.sinOut
-    );
-    });
-    axisBreak.events.on("out", function() {
-    axisBreak.animate(
-        [{ property: "breakSize", to: 0.005 }, { property: "opacity", to: 1 }],
-        1000,
-        am4core.ease.quadOut
-    );
-    });*/
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.min = 0;
 
-    var series = chart.series.push(new am4charts
-        .ColumnSeries());
-    series.dataFields.categoryX = "country";
-    series.dataFields.valueY = "visits";
-    series.columns.template.tooltipText = "{valueY.value}";
-    series.columns.template.tooltipY = 0;
-    series.columns.template.strokeOpacity = 0;
+// Create series
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.dataFields.valueY = "value";
+series.dataFields.categoryX = "year";
 
-    // as by default columns of the same series are of the same color, we add adapter which takes colors from chart.colors color set
-    series.columns.template.adapter.add("fill", function(fill,
-        target) {
-        return chart.colors.getIndex(target.dataItem
-            .index
-        );
-    });
+// Add series for showing variance arrows
+var series2 = chart.series.push(new am4charts.ColumnSeries());
+series2.dataFields.valueY = "valueNext";
+series2.dataFields.openValueY = "value";
+series2.dataFields.categoryX = "year";
+series2.columns.template.width = 1;
+series2.fill = am4core.color("#555");
+series2.stroke = am4core.color("#555");
+
+// Add a triangle for arrow tip
+var arrow = series2.bullets.push(new am4core.Triangle);
+arrow.width = 10;
+arrow.height = 10;
+arrow.horizontalCenter = "middle";
+arrow.verticalCenter = "top";
+arrow.dy = -1;
+
+// Set up a rotation adapter which would rotate the triangle if its a negative change
+arrow.adapter.add("rotation", function(rotation, target) {
+  return getVariancePercent(target.dataItem) < 0 ? 180 : rotation;
+});
+
+// Set up a rotation adapter which adjusts Y position
+arrow.adapter.add("dy", function(dy, target) {
+  return getVariancePercent(target.dataItem) < 0 ? 1 : dy;
+});
+
+// Add a label
+var label = series2.bullets.push(new am4core.Label);
+label.padding(10, 10, 10, 10);
+label.text = "";
+label.fill = am4core.color("#0c0");
+label.strokeWidth = 0;
+label.horizontalCenter = "middle";
+label.verticalCenter = "bottom";
+label.fontWeight = "bolder";
+
+// Adapter for label text which calculates change in percent
+label.adapter.add("textOutput", function(text, target) {
+  var percent = getVariancePercent(target.dataItem);
+  return percent ? percent + "%" : text;
+});
+
+// Adapter which shifts the label if it's below the variance column
+label.adapter.add("verticalCenter", function(center, target) {
+  return getVariancePercent(target.dataItem) < 0 ? "top" : center;
+});
+
+// Adapter which changes color of label to red
+label.adapter.add("fill", function(fill, target) {
+  return getVariancePercent(target.dataItem) < 0 ? am4core.color("#c00") : fill;
+});
+
+function getVariancePercent(dataItem) {
+  if (dataItem) {
+    var value = dataItem.valueY;
+    var openValue = dataItem.openValueY;
+    var change = value - openValue;
+    return Math.round(change / openValue * 100);
+  }
+  return 0;
+}
 
 }); // end am4core.ready()
 am4core.ready(function() {
