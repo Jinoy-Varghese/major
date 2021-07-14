@@ -295,22 +295,34 @@ categoryAxis.fontSize = 9;
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-users text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                     <?php echo $this->db->count_all('course_list');?> </div>
-                <div class="text-white">Course</div>
+                <div class="text-white font-weight-bold ">COURSE</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
+                <div class="text-right" style="opacity:0.8;"><i class=" fa fa-graduation-cap text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
+                    <?php echo $this->db->count_all('student_data');?> </div>
+                <div class="text-white font-weight-bold ">STUDENTS</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
+                <div class="text-right" style="opacity:0.8;"><i class="fa fa-chalkboard-teacher text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
+                    <?php echo $this->db->count_all('hod_data');?> </div>
+                <div class="text-white font-weight-bold ">HOD</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="col-md-12 shadow"
                 style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
+                <div class="text-right" style="opacity:0.8;"><i class="fa fa-chalkboard-teacher text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
+                    <?php echo $this->db->count_all('professor_data');?> </div>
+                <div class="text-white font-weight-bold ">PROFESSORS</div>
             </div>
         </div>
     </div>
