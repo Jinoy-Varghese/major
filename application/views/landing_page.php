@@ -89,8 +89,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 
     .inspire_bg {
-        background: url("<?php echo base_url('assets/image/college_front.png') ?>");
-        background-size: cover;
+        background: url("<?php echo base_url('assets/img/principal.jpg') ?>");
         background-repeat: no-repeat;
     }
 
@@ -142,6 +141,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
         cursor: context-menu;
         text-decoration: none;
+    }
+    .height
+    {
+        line-height:2.0;
+        font-size:18px;
+        font-weight:bold;
+        margin-left:-40px;
     }
     </style>
     <title>MTCST</title>
@@ -299,10 +305,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div className="row col-12 mt-5 pt-5 ml-0 pb-5"> 
-            <div class="col-md-4 col-12" style={{height:"290px"}}><div className="col-12 inspire_bg h-100 border border-dark"></div></div>
+            <div class="col-md-4 col-12" style={{height:"290px"}}><div className="col-12 inspire_bg h-100"></div></div>
             <div class="col-md-8 col-12" style={{height:"290px"}}>
-            <div className="col-12 h2 pb-3 mt-4 mt-md-5 ">#InspireImpact</div>  
-            <div class="col-md-10 col-12">As one of the finest college in Kerala, Mar Thoma College of Science and Technology creates an exceptional space for an enhanced learning experience. The vibrant culture of the college has embraced innovation, and its entrepreneurial perspective encourages students, staff and faculty to challenge convention, lead discovery and explore new ways of learning.</div>
+            <div className="col-12 h2 pb-3 mt-4 mt-md-5 ml-n5 font-weight-bold text-danger">#PRINCIPAL</div>  
+            <div class="col-md-10 h5 col-12 font-weight-bold" className="height">
+            Prof. Dr. Joseph Mathai.<br/>
+            Mobile Number:9387255515.<br/>
+            email: josamkar@gmail.com.<br/>
+            
+            </div>
             </div>
         </div>
         <div className="row col-12 mt-5 pt-5 ml-0 pb-4 border" style={{background:"rgba(34,64,194,0.2)"}}>
