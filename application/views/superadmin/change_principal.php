@@ -32,7 +32,7 @@ if($this->session->flashdata('insert_failed')){
     <div class="form-row">
         <div class="col-md-4 mb-3">
         <label for="validationCustom01">First name</label>
-        <input type="text" class="form-control" id="validationCustom01" value="" name="f_name" required>
+        <input type="text" class="form-control" id="validationCustom01" name="f_name" required>
         <div class="valid-feedback">
             Looks good!
         </div>
@@ -42,7 +42,7 @@ if($this->session->flashdata('insert_failed')){
         </div>
         <div class="col-md-4 mb-3">
         <label for="validationCustom02">Last name</label>
-        <input type="text" class="form-control" id="validationCustom02" value="" name="l_name" required>
+        <input type="text" class="form-control" id="validationCustom02" name="l_name" required>
         <div class="valid-feedback">
             Looks good!
         </div>
