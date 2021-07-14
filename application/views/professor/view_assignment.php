@@ -37,3 +37,129 @@ if($this->session->flashdata('add_assign')){
             <li class="breadcrumb-item active" aria-current="page">View Assignment</li>
         </ol>
     </nav>
+
+    <div class="container">
+
+        <div class="row">
+
+        <div class="col-md-6 mb-3">
+                <label for="validationCustom06">Subject</label>
+
+                <select class="custom-select" id="subject" required name="subject">
+                    <option selected disabled value="select">Choose...</option>
+                    <?php
+                      $this->db->select('*');
+                      $this->db->from('subject_assigned');
+                      $this->db->where('teacher_id',$_SESSION['u_id']);
+                      $sql=$this->db->get();
+                      foreach($sql->result() as $subject)
+                        {
+                        echo "<option value='$subject->subject'>$subject->subject</option>";
+                        }
+                    ?>
+                </select>
+
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="validationCustom05">Semester</label>
+
+                <select class="custom-select" id="semester" required name="semester">
+                    <option selected disabled value="">Choose...</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <table id="table" data-toolbar="#toolbar" data-search="false" data-sortable="false"
+                        data-show-columns="false" data-toggle="table" data-pagination="false" class="table"
+                        data-visible-search="false">
+                        <thead class="table-primary">
+
+                            <tr>
+                                <th data-field="no." data-sortable="true">no.</th>
+                                <th data-field="submitted_by" data-sortable="true">Submitted By</th>
+                                <th data-field="topic">Topic</th>
+                                <th data-field="date">Submitted Date</th>
+                                <th data-field="file">Assignment File</th>
+                            </tr>
+
+                        </thead>
+                        <tbody id="table_body">
+                        </tbody>
+                    </table>
+    
+
+                    <script type="text/javascript">
+$(document).ready(function() {
+
+    $("#subject").change(function() {
+        var subject = $(this).val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/professor/view_subject_ajax',
+            type: 'post',
+            data: {
+                post_subject: subject
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+
+                $("#semester").empty();
+                $("#semester").append(
+                    "<option disabled value='select' selected>--Select--</option>");
+                for (var i = 0; i < len; i++) {
+                    var sem = response[i]['sem'];
+
+                    $("#semester").append("<option value='" + sem + "'>" + sem +
+                        "</option>");
+
+                }
+            }
+        });
+    });
+
+    $("#semester").change(function() {
+        var semester = $(this).val();
+        var subject = $('#subject').val();
+
+        $.ajax({
+            url: '<?php echo base_url(); ?>/Professor/view_assignment_ajax',
+            type: 'post',
+            data: {
+                post_semester: semester,
+                post_subject: subject
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                var len = response.length;
+                var j = 1;
+                $("#table_body").empty();
+
+                for (var i = 0; i < len; i++) {
+                    var name = response[i]['name'];
+                    var assign_subject = response[i]['assign_subject'];
+                    var assign_topic = response[i]['assign_topic'];
+                    var assign_date = response[i]['assign_date'];
+
+                    $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
+                        "</td><td>" + assign_topic + "</td><td>" + assign_date + "</td>");
+                    j++;
+
+                }
+
+
+            }
+        });
+    });
+
+});
+</script>

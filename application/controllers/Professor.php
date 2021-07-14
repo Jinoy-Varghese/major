@@ -464,25 +464,26 @@ class Professor extends CI_Controller
   }
 
 
-  public function view_students_ajax()
+  public function view_assignment_ajax()
   {
     
       $depart_sem =$_POST['post_semester']; 
-      $depart_course=$_POST['post_course'];
+      $depart_subject=$_POST['post_subject'];
       $users_arr = array();
           
         $this->db->select('*');
-        $this->db->from('users');
-        $this->db->join('student_data','student_data.email=users.email');
-        $this->db->where('s_course',$depart_course);
-        $this->db->where('s_status','2');
-        $sql=$this->db->where('s_sem',$depart_sem)->get();
+        $this->db->from('assignment_submit');
+        $this->db->join('users','users.email=assignment_submit.assign_by');
+        $this->db->where('assign_subject',$depart_subject);
+        $sql=$this->db->where('assign_sem',$depart_sem)->get();
         
         foreach($sql->result() as $user_data)
         {
           $name=$user_data->name;
-          $s_id=$user_data->email;
-          $users_arr[] = array("name" => $name,"s_id"=>$s_id);
+          $assign_subject=$user_data->assign_subject;
+          $assign_topic=$user_data->assign_topic;
+          $assign_date=date('d-m-Y',strtotime($user_data->assign_date));
+          $users_arr[] = array("name" => $name,"assign_subject"=>$assign_subject,"assign_topic"=>$assign_topic,"assign_date"=>$assign_date);
         }
         
       
