@@ -252,6 +252,5 @@ categoryAxis.fontSize = 9;
 
 </style>
 
-
 <br>
 <br><br><br><br><br><br><br>

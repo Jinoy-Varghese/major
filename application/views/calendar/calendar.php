@@ -17,7 +17,7 @@
                 right:'month,agendaWeek,agendaDay'
             },
             events:"<?php echo base_url(); ?>Fullcalendar/load",
-            selectable:true,
+            selectable:false,
             selectHelper:true,
             selectMirror:true,
             select:function(start, end, allDay)
