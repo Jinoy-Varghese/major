@@ -167,7 +167,11 @@ foreach($sql->result() as $se)
   }
   
   ?>",
-  "litres": <?php echo $sql->num_rows; ?>
+  "litres": <?php 
+  
+  
+  $sql2=$this->db->select('*')->from('users')->join('student_data','student_data.email=users.email')->where('dept','Computer Science')->where('gender',$se->gender)->get();
+  echo $sql2->num_rows(); ?>
 },
 
 

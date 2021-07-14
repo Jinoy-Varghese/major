@@ -113,67 +113,77 @@ am4core.ready(function() {
     });
 
 }); // end am4core.ready()
+
 am4core.ready(function() {
 
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
 
-    // Create chart instance
-    var chart = am4core.create("piechart", am4charts.PieChart);
+// Create chart instance
+var chart = am4core.create("piechart", am4charts.PieChart);
 
-    // Add data
-    chart.data = [{
-        "country": "Lithuania",
-        "litres": 501.9
-    }, {
-        "country": "Czech Republic",
-        "litres": 301.9
-    }, {
-        "country": "Ireland",
-        "litres": 201.1
-    }, {
-        "country": "Germany",
-        "litres": 165.8
-    }, {
-        "country": "Australia",
-        "litres": 139.9
-    }, {
-        "country": "Austria",
-        "litres": 128.3
-    }, {
-        "country": "UK",
-        "litres": 99
-    }, {
-        "country": "Belgium",
-        "litres": 60
-    }, {
-        "country": "Netherlands",
-        "litres": 50
-    }];
+// Add data
+chart.data = [ 
+  
 
-    // Set inner radius
-    chart.innerRadius = am4core.percent(50);
+  <?php 
 
-    // Add and configure Series
-    var pieSeries = chart.series.push(new am4charts.PieSeries());
-    pieSeries.dataFields.value = "litres";
-    pieSeries.dataFields.category = "country";
-    pieSeries.slices.template.stroke = am4core.color("#fff");
-    pieSeries.slices.template.strokeWidth = 2;
-    pieSeries.slices.template.strokeOpacity = 1;
-    pieSeries.labels.template.paddingTop = 0;
-    pieSeries.labels.template.paddingBottom = 0;
-
-    pieSeries.labels.template.fontSize = 6;
-    pieSeries.ticks.template.disabled = false;
+$sql=$this->db->select('DISTINCT(gender)')->from('users')->get();
+foreach($sql->result() as $se)
+{
+  $sql=$this->db->get_where('users',array('gender'=>$se->gender));
+  $rows=$sql->num_rows();
+?>
 
 
-    // This creates initial animation
-    pieSeries.hiddenState.properties.opacity = 1;
-    pieSeries.hiddenState.properties.endAngle = -90;
-    pieSeries.hiddenState.properties.startAngle = -90;
-    categoryAxis.fontSize = 9;
+
+  {
+  "country": "<?php
+  if($se->gender=='m')
+  {
+    echo "Male";
+  }
+  else{
+    echo 'Female';
+  }
+  
+  ?>",
+  "litres": <?php echo $rows; ?>
+},
+
+
+<?php
+}
+?>
+
+
+
+];
+
+// Set inner radius
+chart.innerRadius = am4core.percent(50);
+
+// Add and configure Series
+var pieSeries = chart.series.push(new am4charts.PieSeries());
+pieSeries.dataFields.value = "litres";
+pieSeries.dataFields.category = "country";
+pieSeries.slices.template.stroke = am4core.color("#fff");
+pieSeries.slices.template.strokeWidth = 2;
+pieSeries.slices.template.strokeOpacity = 1;
+pieSeries.labels.template.paddingTop=0;
+pieSeries.labels.template.paddingBottom=0;
+
+pieSeries.labels.template.fontSize=6;
+pieSeries.ticks.template.disabled=false;
+
+
+// This creates initial animation
+pieSeries.hiddenState.properties.opacity = 1;
+pieSeries.hiddenState.properties.endAngle = -90;
+pieSeries.hiddenState.properties.startAngle = -90;
+categoryAxis.fontSize = 9;
+
 }); // end am4core.ready()
 </script>
 
