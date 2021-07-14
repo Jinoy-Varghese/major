@@ -153,7 +153,7 @@ $(document).ready(function() {
                     
                     
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
-                        "</td><td>" + assign_topic + "</td><td>" + assign_date + "</td><td><a href=" +  + " class='btn btn-primary text-light' download>Download</a></td>");
+                        "</td><td>" + assign_topic + "</td><td>" + assign_date + "</td><td><a href=" + assign_file + " class='btn btn-primary text-light' download>Download</a></td>");
                     j++;
 
                 }
