@@ -149,9 +149,11 @@ $(document).ready(function() {
                     var assign_subject = response[i]['assign_subject'];
                     var assign_topic = response[i]['assign_topic'];
                     var assign_date = response[i]['assign_date'];
-
+                    var assign_file = response[i]['assign_file'];
+                    
+                    
                     $("#table_body").append("<tr><td>" + j + "</td><td>" + name +
-                        "</td><td>" + assign_topic + "</td><td>" + assign_date + "</td>");
+                        "</td><td>" + assign_topic + "</td><td>" + assign_date + "</td><td><a href=" +  + " class='btn btn-primary text-light' download>Download</a></td>");
                     j++;
 
                 }
