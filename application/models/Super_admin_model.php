@@ -33,7 +33,24 @@ class Super_admin_model extends CI_Model {
   {
     $this->db->where('id',$id)->update('users',$update_data);
   }
-
+  public function delete_hod($id)
+  {
+    $array = array(
+      'user_status' => 0
+);
+    $this->db->set($array);
+    $this->db->where('id',$id);
+    $this->db->update('users');
+  }
+  public function delete_professor($id)
+  {
+    $array = array(
+      'user_status' => 0
+);
+    $this->db->set($array);
+    $this->db->where('id',$id);
+    $this->db->update('users');
+  }
   // ------------------------------------------------------------------------
 
 }

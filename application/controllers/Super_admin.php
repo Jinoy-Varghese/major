@@ -98,6 +98,36 @@ class Super_admin extends CI_Controller
     $this->load->view("superadmin/dash_footer.php");
     $this->load->view("footer.php");
   }
+  public function delete_hod_page()
+  {
+    $this->load->view("header.php");
+    $this->load->view("superadmin/dash_head.php");
+    $this->load->view("superadmin/delete_hod.php");
+    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function delete_professor_page()
+  {
+    $this->load->view("header.php");
+    $this->load->view("superadmin/dash_head.php");
+    $this->load->view("superadmin/delete_professor.php");
+    $this->load->view("superadmin/dash_footer.php");
+    $this->load->view("footer.php");
+  }
+  public function delete_hod($id)
+  {
+   $this->Super_admin_model->delete_hod($id);
+   $this->session->set_flashdata('delete_success',"Sucessfully deleted");
+   redirect('Super_admin/delete_hod_page','refresh');
+  }
+
+  public function delete_professor($id)
+  {
+   $this->Super_admin_model->delete_professor($id);
+   $this->session->set_flashdata('delete_success',"Sucessfully deleted");
+   redirect('Super_admin/delete_professor_page','refresh');
+  }
+
   public function update_gallery()
   {
     $this->load->view("header.php");
@@ -143,7 +173,6 @@ class Super_admin extends CI_Controller
     $this->load->view("superadmin/dash_footer.php");
     $this->load->view("footer.php");
   }
-
   public function update_profile()
     {
     if($this->input->post('update_user'))

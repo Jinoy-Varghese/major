@@ -123,6 +123,8 @@ if(!isset($_SESSION['u_id']) OR $_SESSION['role']!="Super Admin")
             <a href='<?php echo site_url(); ?>Super_admin/add_office' class="drop-down-a"><li class="drop-down-li">Office Staff</li></a>
           </ul>
         </div>
+        <a href="<?php echo site_url(); ?>Super_admin/delete_hod_page" class="list-group-item list-group-item-action bg-light">Delete HOD</a>
+        <a href="<?php echo site_url(); ?>Super_admin/delete_professor_page" class="list-group-item list-group-item-action bg-light">Delete Professor</a>
         <a href="<?php echo site_url(); ?>Super_admin/update_gallery" class="list-group-item list-group-item-action bg-light">Update Gallery</a>
         <a href="<?php echo site_url(); ?>Super_admin/view_gallery" class="list-group-item list-group-item-action bg-light">View Gallery</a>
 
