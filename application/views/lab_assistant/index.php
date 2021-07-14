@@ -18,7 +18,7 @@ chart.innerRadius = -15;
 
 var axis = chart.xAxes.push(new am4charts.ValueAxis());
 axis.min = 0;
-axis.max = 100;
+axis.max = 50;
 axis.strictMinMax = true;
 
 var colorSet = new am4core.ColorSet();
@@ -38,7 +38,19 @@ var hand = chart.hands.push(new am4charts.ClockHand());
 hand.radius = am4core.percent(97);
 
 setInterval(function() {
-    hand.showValue(30, 1000, am4core.ease.cubicOut);
+    hand.showValue(<?php 
+      
+      
+      
+      $sql=$this->db->select('complaint_id')->from('lab_complaints')->where('registered_on BETWEEN DATE_SUB(NOW(), INTERVAL 90 DAY) AND NOW()')->get();
+      $num=$sql->num_rows();
+      echo $num;
+      
+      
+      
+      
+      
+      ?>, 1000, am4core.ease.cubicOut);
 }, 2000);
 
 
@@ -105,10 +117,30 @@ chart.legend = new am4charts.Legend();
 <h1 class="mt-4">Dashboard</h1>
 <div class="container-fluid">
     <div class="row mt-5"> 
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;"></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class=" fa fa-flask text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                    <?php echo $this->db->count_all('lab_assistant_data');?> </div>
+                <div class="text-white font-weight-bold ">LAB ASSISTANTS</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class=" far fa-list-alt text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
+                    <?php echo $this->db->count_all('lab_complaints');?> </div>
+                <div class="text-white font-weight-bold ">COMPLAINTS</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class=" far fa-check-circle text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
+                <?php echo $this->db->like('status','0')->from('lab_complaints')->count_all_results(); ?> </div>
+                <div class="text-white font-weight-bold ">FIXED</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class=" far fa-times-circle text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
+                <?php echo $this->db->like('status','1')->from('lab_complaints')->count_all_results(); ?> </div>
+                <div class="text-white font-weight-bold ">UNFIXED</div>
+        </div></div>
     </div>
     <div class="row mt-5">        
         <div class="col-lg-8 col-md-8 mt-1 pr-lg-2 p-0">
@@ -172,6 +204,105 @@ chart.legend = new am4charts.Legend();
 }
 
 </style>
+<script>
+let elm = document.querySelector('.number-animation1');
 
+function animateValue(id, start, duration) {
+    let end = parseInt(elm.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm.innerHTML <= 0) {
+
+} else {
+    animateValue(elm, 0, 2000);
+}
+</script>
+<script>
+let elm2 = document.querySelector('.number-animation2');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm2.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm2;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm2.innerHTML <= 0) {
+
+} else {
+    animateValue(elm2, 0, 2000);
+}
+</script>
+<script>
+let elm3 = document.querySelector('.number-animation3');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm3.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm3;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm3.innerHTML <= 0) {
+
+} else {
+    animateValue(elm3, 0, 2000);
+}
+</script>
+<script>
+let elm4 = document.querySelector('.number-animation4');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm4.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm4;
+    let timer = setInterval(function() {
+        current += increment;
+
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+if (elm4.innerHTML <= 0) {
+
+} else {
+    animateValue(elm4, 0, 2000);
+}
+</script>
 <br>
 <br><br><br><br><br><br><br>

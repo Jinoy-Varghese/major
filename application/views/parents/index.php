@@ -115,6 +115,7 @@
             }); // end am4core.ready()
             am4core.ready(function() {
 
+
 // Themes begin
 am4core.useTheme(am4themes_animated);
 // Themes end
@@ -122,59 +123,109 @@ am4core.useTheme(am4themes_animated);
 // Create chart instance
 var chart = am4core.create("piechart", am4charts.PieChart);
 
-// Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}, {
-  "country": "Germany",
-  "litres": 165.8
-}, {
-  "country": "Australia",
-  "litres": 139.9
-}, {
-  "country": "Austria",
-  "litres": 128.3
-}, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
-
-// Set inner radius
-chart.innerRadius = am4core.percent(50);
-
 // Add and configure Series
 var pieSeries = chart.series.push(new am4charts.PieSeries());
 pieSeries.dataFields.value = "litres";
 pieSeries.dataFields.category = "country";
+
+// Let's cut a hole in our Pie chart the size of 30% the radius
+chart.innerRadius = am4core.percent(30);
+
+// Put a thick white border around each Slice
 pieSeries.slices.template.stroke = am4core.color("#fff");
 pieSeries.slices.template.strokeWidth = 2;
 pieSeries.slices.template.strokeOpacity = 1;
-pieSeries.labels.template.paddingTop=0;
-pieSeries.labels.template.paddingBottom=0;
+pieSeries.slices.template
+  // change the cursor on hover to make it apparent the object can be interacted with
+  .cursorOverStyle = [
+    {
+      "property": "cursor",
+      "value": "pointer"
+    }
+  ];
 
-pieSeries.labels.template.fontSize=6;
-pieSeries.ticks.template.disabled=false;
+pieSeries.alignLabels = false;
+pieSeries.labels.template.bent = true;
+pieSeries.labels.template.radius = 3;
+pieSeries.labels.template.padding(0,0,0,0);
+
+pieSeries.ticks.template.disabled = true;
+
+// Create a base filter effect (as if it's not there) for the hover to return to
+var shadow = pieSeries.slices.template.filters.push(new am4core.DropShadowFilter);
+shadow.opacity = 0;
+
+// Create hover state
+var hoverState = pieSeries.slices.template.states.getKey("hover"); // normally we have to create the hover state, in this case it already exists
+
+// Slightly shift the shadow and make it more prominent on hover
+var hoverShadow = hoverState.filters.push(new am4core.DropShadowFilter);
+hoverShadow.opacity = 0.7;
+hoverShadow.blur = 5;
+
+// Add a legend
+chart.legend = new am4charts.Legend();
 
 
-// This creates initial animation
-pieSeries.hiddenState.properties.opacity = 1;
-pieSeries.hiddenState.properties.endAngle = -90;
-pieSeries.hiddenState.properties.startAngle = -90;
-categoryAxis.fontSize = 9;
-}); // end am4core.ready()
+
+<?php 
+$id=$_SESSION['u_id'];
+$this->db->select('*');
+$this->db->from('parent_data');
+$this->db->where('email',$id);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $s_mail=$user_data->s_mail;
+}
+
+$this->db->select('*');
+$this->db->from('student_data');
+$this->db->where('email',$s_mail);
+$sql=$this->db->get();
+foreach($sql->result() as $user_data)
+{
+  $student_id=$user_data->student_id;
+  $s_sem=$user_data->s_sem;
+}
+
+$this->db->select('*');
+$this->db->from('attendance');
+$this->db->where('s_id',$student_id);
+$this->db->where('s_sem',$s_sem);
+$this->db->where('s_attendance','present');
+$sql=$this->db->get();
+$present=$sql->num_rows();
+
+
+$this->db->select('*');
+$this->db->from('attendance');
+$this->db->where('s_id',$student_id);
+$this->db->where('s_sem',$s_sem);
+$this->db->where('s_attendance','absent');
+$sql=$this->db->get();
+$absent=$sql->num_rows();
+
+?>
+
+// Add data
+chart.data = [  
+  
+  
+   {
+    country: "Present",
+    litres: <?php echo $present; ?>
+  },
+  {
+    country: "Absent",
+    litres: <?php echo $absent; ?>
+  }
+  
+  
+  
+   ];
+
+  }); // end am4core.ready()
 </script>
 
 <!-- HTML -->
@@ -262,7 +313,7 @@ echo $total_attendance;
             <div class="col-md-12" style="max-height:440px;overflow:hidden;">
               <h6 class="justify-content-center d-flex">Notice Board</h6>
               <div class="border border-primary bg-primary rounded"></div>
-              <marquee direction='up' scrollamount='2' style="height:100%;">
+              <marquee direction='up' scrollamount='2' style="height:440px;">
               <?php
             $this->db->select('*');
             $this->db->from('notifications');
@@ -278,12 +329,11 @@ echo $total_attendance;
            
          </div>
           <div class="col-lg-3 col-md-6  mt-1">
-             <div class="col-md-12 shadow pt-3" style="height:100%;"> 
+             <div class="col-md-12 shadow pt-3" style="max-height:490px;overflow:hidden;"> 
                 <h6 class="justify-content-center d-flex">College News</h6>
                 <div class="border border-primary bg-primary rounded"></div>
-                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center'
-                                                                                                    style="height:90%;">
-                                                                                <?php
+                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:440px;">
+          <?php
             $this->db->select('*');
             $this->db->from('news');
              $sql=$this->db->get();
