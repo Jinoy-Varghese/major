@@ -119,61 +119,40 @@
 am4core.useTheme(am4themes_animated);
 // Themes end
 
-// Create chart instance
 var chart = am4core.create("piechart", am4charts.PieChart);
+chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
-// Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}, {
-  "country": "Germany",
-  "litres": 165.8
-}, {
-  "country": "Australia",
-  "litres": 139.9
-}, {
-  "country": "Austria",
-  "litres": 128.3
-}, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
+chart.data = [
+  {
+    country: "Fixed",
+    value: 401
+  },
+  {
+    country: "Not Fixed",
+    value: 300
+  }
 
-// Set inner radius
-chart.innerRadius = am4core.percent(50);
+];
+chart.radius = am4core.percent(70);
+chart.innerRadius = am4core.percent(40);
+chart.startAngle = 180;
+chart.endAngle = 360;  
 
-// Add and configure Series
-var pieSeries = chart.series.push(new am4charts.PieSeries());
-pieSeries.dataFields.value = "litres";
-pieSeries.dataFields.category = "country";
-pieSeries.slices.template.stroke = am4core.color("#fff");
-pieSeries.slices.template.strokeWidth = 2;
-pieSeries.slices.template.strokeOpacity = 1;
-pieSeries.labels.template.paddingTop=0;
-pieSeries.labels.template.paddingBottom=0;
+var series = chart.series.push(new am4charts.PieSeries());
+series.dataFields.value = "value";
+series.dataFields.category = "country";
 
-pieSeries.labels.template.fontSize=6;
-pieSeries.ticks.template.disabled=false;
+series.slices.template.cornerRadius = 0;
+series.slices.template.innerCornerRadius = 7;
+series.slices.template.draggable = true;
+series.slices.template.inert = true;
+series.alignLabels = false;
 
+series.hiddenState.properties.startAngle = 90;
+series.hiddenState.properties.endAngle = 90;
 
-// This creates initial animation
-pieSeries.hiddenState.properties.opacity = 1;
-pieSeries.hiddenState.properties.endAngle = -90;
-pieSeries.hiddenState.properties.startAngle = -90;
-categoryAxis.fontSize = 9;
+chart.legend = new am4charts.Legend();
+
 }); // end am4core.ready()
 </script>
 
