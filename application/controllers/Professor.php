@@ -483,7 +483,7 @@ class Professor extends CI_Controller
           $assign_subject=$user_data->assign_subject;
           $assign_topic=$user_data->assign_topic;
           $assign_date=date('d-m-Y',strtotime($user_data->assign_date));
-          $assign_file=$user_data->assign_file;
+          $assign_file=base_url().$user_data->assign_file;
           $users_arr[] = array("name" => $name,"assign_subject"=>$assign_subject,"assign_topic"=>$assign_topic,"assign_date"=>$assign_date,"assign_file"=>$assign_file);
         }
         
