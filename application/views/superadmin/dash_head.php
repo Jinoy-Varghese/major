@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-if(!isset($_SESSION['u_id']))
+if(!isset($_SESSION['u_id']) OR $_SESSION['role']!="Super Admin")
 {
   redirect('Home/login','refresh');
 }
@@ -77,8 +77,8 @@ if(!isset($_SESSION['u_id']))
             </div>
           </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo base_url('/Home/search'); ?>">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" name="s">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
     </div>

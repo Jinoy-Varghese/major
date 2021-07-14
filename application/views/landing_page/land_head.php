@@ -56,8 +56,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0" >
-                <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search..." aria-label="Search" />
+            <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo base_url('/Home/search'); ?>">
+                <input class="form-control mr-sm-2 search-input" type="search" placeholder="Search..." aria-label="Search" name="s" />
                 <button class="btn btn-outline-light my-2 my-sm-0 custom-search-outline pt-2 pb-2" type="submit"><i class="fas fa-search custom-search"></i></button>
             </form>
         </div>

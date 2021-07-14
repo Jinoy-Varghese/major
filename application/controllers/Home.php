@@ -499,4 +499,37 @@ class Home extends CI_Controller
      }
     
    }
+
+   public function search()
+   {
+
+    $search=strtolower($_GET['s']);
+
+    if (strpos($search, 'course') !== false OR strpos($search, 'ug')!== false OR strpos($search, 'pg')!== false OR strpos($search, 'course')!== false) 
+    {
+      redirect('Home/course','refresh');
+    }
+    elseif (strpos($search, 'department') !== false OR strpos($search, 'ug department')!== false OR strpos($search, 'pg depertment')!== false OR strpos($search, 'dept')!== false) 
+    {
+      redirect('Home/department','refresh');
+    }
+    elseif (strpos($search, 'about') !== false OR strpos($search, 'history')!== false OR strpos($search, 'mtcst')!== false OR strpos($search, 'college')!== false OR strpos($search, 'address')!== false) 
+    {
+      redirect('Home/about','refresh');
+    }
+    elseif (strpos($search, 'website') !== false OR strpos($search, 'home')!== false OR strpos($search, 'achivement')!== false OR strpos($search, 'activit')!== false) 
+    {
+      redirect('Home/','refresh');
+    }
+    elseif (strpos($search, 'gallery') !== false OR strpos($search, 'photo')!== false OR strpos($search, 'image')!== false OR strpos($search, 'pic')!== false) 
+    {
+      redirect('Home/gallery','refresh');
+    }
+    elseif (strpos($search, 'login') !== false OR strpos($search, 'sign')!== false OR strpos($search, 'logi')!== false) 
+    {
+      redirect('Home/login','refresh');
+    }
+   }
+
+
 }

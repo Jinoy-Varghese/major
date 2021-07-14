@@ -78,7 +78,7 @@ if(!isset($_SESSION['u_id']) OR $_SESSION['role']!="hod")
             </div>
           </li>
       </ul>
-      <form class="form-inline my-2 my-lg-0">
+      <form class="form-inline my-2 my-lg-0" method="get" action="<?php echo base_url('/Home/search'); ?>">
         <input class="form-control mr-sm-2" type="search" placeholder="Search">
         <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
       </form>
