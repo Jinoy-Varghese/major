@@ -67,7 +67,7 @@ foreach($sql->result() as $data)
 ?>
 
 {
-    country: "<?php echo $data->timestamp; ?>",
+    country: "<?php echo date('d-m-Y',strtotime($data->timestamp)); ?>",
     visits: <?php echo $number; ?>
   },
 

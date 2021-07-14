@@ -17,20 +17,27 @@ var chart = am4core.create("chartdiv", am4charts.XYChart);
 chart.data = [
     
 <?php
-
+    $id=$_SESSION['u_id'];
+    $this->db->select('*');
+    $this->db->from('users');
+    $this->db->join('hod_data','hod_data.email=users.email');
+    $this->db->where('users.email',$id);
+    $sql=$this->db->get();
+    foreach($sql->result() as $user_data)
+    {
+    $dept=$user_data->dept;
+    }
     $sql=$this->db->select('DISTINCT(timestamp)')->from('attendance')->limit(7)->get();
     foreach($sql->result() as $data)
     {
-    $sql=$this->db->select('*')->from('attendance')->where('timestamp',$data->timestamp)->where('s_attendance','present')->join('student_data','student_data.student_id=attendance.s_id')->get();
+    $sql=$this->db->select('*')->from('attendance')->where('timestamp',$data->timestamp)->where('s_attendance','present')->join('student_data','student_data.student_id=attendance.s_id')->where('dept',$dept)->get();
     $number=$sql->num_rows();
 
 ?>
-
-
     
 
      {
-  "year": "<?php echo $data->timestamp; ?>",
+  "year": "<?php echo  date('d-m-Y',strtotime($data->timestamp)); ?>",
   "value": <?php echo $number; ?>
 },
 
@@ -53,7 +60,7 @@ var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
 categoryAxis.dataFields.category = "year";
 categoryAxis.renderer.grid.template.location = 0;
 categoryAxis.renderer.minGridDistance = 30;
-
+categoryAxis.renderer.labels.template.fontSize = 11;
 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
 valueAxis.min = 0;
 
@@ -254,7 +261,7 @@ am4core.ready(function() {
                     Notice Board</h6>
                 <div class="border border-primary bg-primary rounded">
                 </div>
-                <marquee direction='up' scrollamount='2' style="height:100%;">
+                <marquee direction='up' scrollamount='2' style="height:440px;">
                     <?php
             $this->db->select('*');
             $this->db->from('notifications');
@@ -270,13 +277,13 @@ am4core.ready(function() {
 
         </div>
         <div class="col-lg-3 col-md-6  mt-1">
-            <div class="col-md-12 shadow pt-3" style="height:100%;">
+            <div class="col-md-12 shadow pt-3" style="max-height:490px;overflow:hidden;">
                 <h6 class="justify-content-center d-flex">
                     College News
                 </h6>
                 <div class="border border-primary bg-primary rounded">
                 </div>
-                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:90%;">
+                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:440px;">
                     <?php
             $this->db->select('*');
             $this->db->from('news');
