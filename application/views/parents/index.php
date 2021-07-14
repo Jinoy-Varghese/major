@@ -237,7 +237,7 @@ chart.data = [
     <div class="row mt-5"> 
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
         
-        <div class="text-right" style="opacity:0.8;"><i class="fa fa-hourglass text-black"></i></div>
+        <div class="text-right" style="opacity:0.8;"><i class="far fa-hand-paper text-black"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                 <?php 
 $id=$_SESSION['u_id'];
@@ -290,12 +290,29 @@ echo $total_attendance;
 ?>
                     
                     </div>
-                <div class="text-white">Total Attendance</div>
+                <div class="text-white font-weight-bold">ATTENDENCE</div>
         
         </div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;"></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="far fa-file-alt text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
+                <?php echo $this->db->count_all('parent_data');?></div>
+                <div class="text-white font-weight-bold">PARANTS</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="far fa-file-video text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
+        <?php echo $this->db->where("status='1' AND subject='null'")->from('meeting_data')->count_all_results(); ?>
+        </div>
+                <div class="text-white font-weight-bold">PTA MEETING</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
+        
+        <div class="text-right" style="opacity:0.8;"><i class="far fa-clipboard text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
+        <?php echo $this->db->where("last_date>curdate()")->from('exam_questions')->count_all_results(); ?>
+        </div>
+                <div class="text-white font-weight-bold">UPCOMING EXAMS</div></div></div>
     </div>
     <div class="row mt-5">        
         <div class="col-lg-8 col-md-8 mt-1 pr-lg-2 p-0">
@@ -359,12 +376,6 @@ echo $total_attendance;
 }
 
 </style>
-
-
-<br>
-<br><br><br><br><br><br><br>
-
-
 <script>
 let elm = document.querySelector('.number-animation1');
 
@@ -390,3 +401,84 @@ if (elm.innerHTML <= 0) {
     animateValue(elm, 0, 2000);
 }
 </script>
+<script>
+let elm2 = document.querySelector('.number-animation2');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm2.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm2;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm2.innerHTML <= 0) {
+
+} else {
+    animateValue(elm2, 0, 2000);
+}
+</script>
+<script>
+let elm3 = document.querySelector('.number-animation3');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm3.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm3;
+    let timer = setInterval(function() {
+        current += increment;
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+
+if (elm3.innerHTML <= 0) {
+
+} else {
+    animateValue(elm3, 0, 2000);
+}
+</script>
+<script>
+let elm4 = document.querySelector('.number-animation4');
+
+function animateValue(id, start, duration) {
+    let end = parseInt(elm4.innerText);
+    let range = end - start;
+    let current = start;
+    let increment = end > start ? 1 : -1;
+    let stepTime = Math.abs(Math.floor(duration / range));
+    let obj = elm4;
+    let timer = setInterval(function() {
+        current += increment;
+
+        obj.innerHTML = current;
+        if (current == end) {
+            clearInterval(timer);
+        }
+    }, stepTime);
+}
+if (elm4.innerHTML <= 0) {
+
+} else {
+    animateValue(elm4, 0, 2000);
+}
+</script>
+
+
+<br>
+<br><br><br><br><br><br><br>
+
+
