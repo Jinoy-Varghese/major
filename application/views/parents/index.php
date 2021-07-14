@@ -122,35 +122,34 @@ am4core.useTheme(am4themes_animated);
 // Create chart instance
 var chart = am4core.create("piechart", am4charts.PieChart);
 
+
+
+<?php
+
+$sql=$this->db->get_where('lab_complaints',array('status'=>0));
+$fixed=$sql->num_rows();
+$sql=$this->db->get_where('lab_complaints',array('status'=>1));
+$not_fixed=$sql->num_rows();
+?>
+
+
+
 // Add data
-chart.data = [ {
-  "country": "Lithuania",
-  "litres": 501.9
-}, {
-  "country": "Czech Republic",
-  "litres": 301.9
-}, {
-  "country": "Ireland",
-  "litres": 201.1
-}, {
-  "country": "Germany",
-  "litres": 165.8
-}, {
-  "country": "Australia",
-  "litres": 139.9
-}, {
-  "country": "Austria",
-  "litres": 128.3
-}, {
-  "country": "UK",
-  "litres": 99
-}, {
-  "country": "Belgium",
-  "litres": 60
-}, {
-  "country": "Netherlands",
-  "litres": 50
-} ];
+chart.data = [  
+  
+  
+   {
+    country: "Fixed",
+    value: <?php echo $fixed; ?>
+  },
+  {
+    country: "Not Fixed",
+    value: <?php echo $not_fixed; ?>
+  }
+  
+  
+  
+   ];
 
 // Set inner radius
 chart.innerRadius = am4core.percent(50);
@@ -262,7 +261,7 @@ echo $total_attendance;
             <div class="col-md-12" style="max-height:440px;overflow:hidden;">
               <h6 class="justify-content-center d-flex">Notice Board</h6>
               <div class="border border-primary bg-primary rounded"></div>
-              <marquee direction='up' scrollamount='2' style="height:100%;">
+              <marquee direction='up' scrollamount='2' style="height:440px;">
               <?php
             $this->db->select('*');
             $this->db->from('notifications');
@@ -278,12 +277,11 @@ echo $total_attendance;
            
          </div>
           <div class="col-lg-3 col-md-6  mt-1">
-             <div class="col-md-12 shadow pt-3" style="height:100%;"> 
+             <div class="col-md-12 shadow pt-3" style="max-height:490px;overflow:hidden;"> 
                 <h6 class="justify-content-center d-flex">College News</h6>
                 <div class="border border-primary bg-primary rounded"></div>
-                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center'
-                                                                                                    style="height:90%;">
-                                                                                <?php
+                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:440px;">
+          <?php
             $this->db->select('*');
             $this->db->from('news');
              $sql=$this->db->get();
