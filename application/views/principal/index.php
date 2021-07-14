@@ -221,7 +221,7 @@ categoryAxis.fontSize = 9;
     </div>
     <div class="row mt-5">
         <div class="col-lg-8 col-md-8 mt-1 pr-lg-2 p-0">
-            <div class="col-md-12 shadow pl-0" id="chartdiv" style="height:300px;"></div>
+        <div class="col-md-12 shadow pl-0 d-flex justify-content-center text-center align-items-center display-5" id="chartdiv_t" style="height:300px;">Not much data available for student per year comparison</div>
         </div>
 
         <div class="col-lg-4 col-md-4 mt-1 p-0">
@@ -235,7 +235,7 @@ categoryAxis.fontSize = 9;
             <div class="col-md-12" style="max-height:440px;overflow:hidden;">
                 <h6 class="justify-content-center d-flex">Notice Board</h6>
                 <div class="border border-primary bg-primary rounded"></div>
-                <marquee direction='up' scrollamount='2' style="height:100%;">
+                <marquee direction='up' scrollamount='2' style="height:440px;">
                     <?php
             $this->db->select('*');
             $this->db->from('notifications');
@@ -251,10 +251,10 @@ categoryAxis.fontSize = 9;
 
         </div>
         <div class="col-lg-3 col-md-6  mt-1">
-            <div class="col-md-12 shadow pt-3" style="height:100%;">
+            <div class="col-md-12 shadow pt-3" style="max-height:490px;overflow:hidden;">
                 <h6 class="justify-content-center d-flex">College News</h6>
                 <div class="border border-primary bg-primary rounded"></div>
-                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:90%;">
+                <marquee direction='up' scrollamount='2' class='font-weight-bold text-center' style="height:440px;">
                     <?php
             $this->db->select('*');
             $this->db->from('news');
