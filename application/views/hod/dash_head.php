@@ -1,6 +1,6 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
-if(!isset($_SESSION['u_id']))
+
+if(!isset($_SESSION['u_id']) OR $_SESSION['role']!="hod")
 {
   redirect('Home/login','refresh');
 }
@@ -37,7 +37,7 @@ if(!isset($_SESSION['u_id']))
   right: 140px;
   border-bottom-color: white;
 }
-}
+
 
 
 </style>

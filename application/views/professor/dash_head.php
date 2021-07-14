@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
-if(!isset($_SESSION['u_id']))
+if(!isset($_SESSION['u_id']) OR $_SESSION['role']!="professor")
 {
   redirect('Home/login','refresh');
 }
