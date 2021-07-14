@@ -209,8 +209,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </li>
 
             </ul>
-            <form className="form-inline my-2 my-lg-0" >
-                <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search..." aria-label="Search" />
+            <form className="form-inline my-2 my-lg-0" method="get" action="<?php echo base_url('/Home/search'); ?>">
+                <input className="form-control mr-sm-2 search-input" style={{background: "none"}} type="search" placeholder="Search..." aria-label="Search" name="s" />
                 <button className="btn btn-outline-light my-2 my-sm-0 custom-search-outline" type="submit"><i className="fas fa-search custom-search"></i></button>
             </form>
         </div>
@@ -264,7 +264,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div className="row col-12 border border-primary mt-5 pt-md-4 pt-3 ml-0 blue_background pb-4 pb-md-0">
         <div className="col-12 h2 pb-4 text-light">Our Achivements</div>    
-            <div className="owl-carousel owl-theme pl-4 pr-4 ">
+            <div className="owl-carousel owl-theme pl-4 pr-4 pb-4">
 
             <?php
             $this->db->select('*');
@@ -274,7 +274,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             {
             $image=$news_data->news_file;
             ?>
-            <img class="img-fluid" src="<?php echo base_url($image);?>"/>
+            <a href="<?php echo base_url($image);?>" target="_blank">
+                <img className="img-fluid" src="<?php echo base_url($image);?>" style={{height:"230px"}} />
+            </a>
             <?php
             }
             ?>  
