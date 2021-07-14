@@ -149,10 +149,30 @@ categoryAxis.fontSize = 9;
 <h1 class="mt-4">Dashboard</h1>
 <div class="container-fluid">
     <div class="row mt-5"> 
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;"></div></div>
-        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;"></div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(54,58,252,1) 0%, rgba(63,128,254,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                    <?php echo $this->db->count_all('student_data');?> </div>
+                <div class="text-white font-weight-bold ">STUDENTS</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                    <?php echo $this->db->like('s_course','bsc')->from('student_data')->count_all_results();?> </div>
+                <div class="text-white font-weight-bold ">STUDENTS(BSc)</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                    <?php echo $this->db->like('s_course','msc')->from('student_data')->count_all_results();?> </div>
+                <div class="text-white font-weight-bold ">STUDENTS(MSc)</div>
+        </div></div>
+        <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
+        <div class="text-right" style="opacity:0.8;"><i class="fa fa-users text-white"></i></div>
+                <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
+                    <?php echo $this->db->where("role='hod' OR role='professor' OR role='librarian' OR role='lab assistant'")->from('users')->count_all_results();?> </div>
+                <div class="text-white font-weight-bold ">TOTAL STAFF</div>
+        </div></div>
     </div>
     <div class="row mt-5">        
         <div class="col-lg-8 col-md-8 mt-1 pr-lg-2 p-0">
