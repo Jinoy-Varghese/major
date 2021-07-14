@@ -153,23 +153,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <!-- We will put our React component inside this div. -->
     <div id="header"></div>
     <!-- Load React. -->
@@ -282,30 +265,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div className="row col-12 border border-primary mt-5 pt-md-4 pt-3 ml-0 blue_background pb-4 pb-md-0">
         <div className="col-12 h2 pb-4 text-light">Our Achivements</div>    
             <div className="owl-carousel owl-theme pl-4 pr-4 ">
-                <div className="item border" style={{height:"200px"}}>              
-                </div>
-                <div className="item border" style={{height:"200px"}}> 
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>               
-                </div>
-                <div className="item border" style={{height:"200px"}}>               
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
-                <div className="item border" style={{height:"200px"}}>
-                </div>
+
+            <?php
+            $this->db->select('*');
+            $this->db->from('news');
+             $sql=$this->db->get();
+             foreach($sql->result() as $news_data)
+            {
+            $image=$news_data->news_file;
+            ?>
+            <img class="img-fluid" src="<?php echo base_url($image);?>"/>
+            <?php
+            }
+            ?>  
+
             </div>
     </div>
 
@@ -575,9 +548,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         Site Designed By : <a href="https://cspsyco.blogspot.com" className="text-light">cspsyco</a>
         </div>
     </div>
-
-
-
 
 
 

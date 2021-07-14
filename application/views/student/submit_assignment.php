@@ -91,9 +91,10 @@ if($this->session->flashdata('add_assign')){
                     <td><?php echo $assignment_data->subject ?></td>
                     <td><?php echo $assignment_data->as_topic ?></td>
                     <td><?php echo date('d-m-Y',strtotime($assignment_data->last_date)) ?></td>
-                    <td><button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#exampleModalCenter<?php echo $assignment_data->as_id;?>">Upload File</button>
-                    </td>
+                    <td><button type='button' class='btn btn-primary' data-toggle='modal'
+                            data-target='#exampleModalCenter<?php echo $assignment_data->as_id;?>'>Upload File</button>
+                            </td>
+      
                 </tr>
 
 
