@@ -18,7 +18,7 @@ chart.innerRadius = -15;
 
 var axis = chart.xAxes.push(new am4charts.ValueAxis());
 axis.min = 0;
-axis.max = 100;
+axis.max = 50;
 axis.strictMinMax = true;
 
 var colorSet = new am4core.ColorSet();
@@ -38,7 +38,19 @@ var hand = chart.hands.push(new am4charts.ClockHand());
 hand.radius = am4core.percent(97);
 
 setInterval(function() {
-    hand.showValue(30, 1000, am4core.ease.cubicOut);
+    hand.showValue(<?php 
+      
+      
+      
+      $sql=$this->db->select('complaint_id')->from('lab_complaints')->where('registered_on BETWEEN DATE_SUB(NOW(), INTERVAL 90 DAY) AND NOW()')->get();
+      $num=$sql->num_rows();
+      echo $num;
+      
+      
+      
+      
+      
+      ?>, 1000, am4core.ease.cubicOut);
 }, 2000);
 
 
