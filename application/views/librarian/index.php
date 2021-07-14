@@ -150,7 +150,7 @@ am4core.ready(function() {
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-book-open text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                     <?php echo $this->db->count_all('books');?></div>
-                <div class="text-white">Total books</div>
+                <div class="text-white font-weight-bold ">Total books</div>
 
             </div>
         </div>
@@ -160,7 +160,7 @@ am4core.ready(function() {
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-address-book text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
                     <?php echo $this->db->count_all('book_issues');?></div>
-                <div class="text-white">Total books issued</div>
+                <div class="text-white font-weight-bold ">Total books issued</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -169,7 +169,7 @@ am4core.ready(function() {
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-undo-alt text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
                     <?php echo $this->db->like('status','issued')->from('book_issues')->count_all_results(); ?></div>
-                <div class="text-white">Need to return</div>
+                <div class="text-white font-weight-bold ">Need to return</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -181,7 +181,7 @@ am4core.ready(function() {
             echo $this->db->from('book_issues')->like('return_date',date('Y-m-d'))->count_all_results(); 
             
             ?></div>
-                <div class="text-white">Books returning today</div>
+                <div class="text-white font-weight-bold ">Books returning today</div>
             </div>
         </div>
     </div>

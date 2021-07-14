@@ -317,7 +317,7 @@ categoryAxis.fontSize = 9;
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-user-graduate"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation1">
                     <?php $query=$this->db->select('*')->from('student_data')->where('s_status',2)->get();echo $query->num_rows(); ?></div>
-                <div class="text-white">Total Students</div>
+                <div class="text-white font-weight-bold ">STUDENTS</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -326,7 +326,7 @@ categoryAxis.fontSize = 9;
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-chalkboard-teacher"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
                     <?php echo $this->db->count_all('professor_data');?></div>
-                <div class="text-white">Total Professors</div>
+                <div class="text-white font-weight-bold ">PROFESSORS</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -335,7 +335,7 @@ categoryAxis.fontSize = 9;
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-sticky-note"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
                     <?php echo $this->db->count_all('subjects');?></div>
-                <div class="text-white">Total Subjects</div>
+                <div class="text-white font-weight-bold ">SUBJECTS</div>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
@@ -344,7 +344,7 @@ categoryAxis.fontSize = 9;
                 <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
                     <?php echo $this->db->count_all('course_list');?></div>
-                <div class="text-white">Total course</div>
+                <div class="text-white font-weight-bold ">COURSES</div>
             </div>
         </div>
     </div>

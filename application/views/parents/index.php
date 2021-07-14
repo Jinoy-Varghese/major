@@ -294,7 +294,7 @@ echo $total_attendance;
         
         </div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(90deg, rgba(188,58,252,1) 0%, rgba(251,63,225,1) 100%);height:100px;margin-bottom:10px;">
-        <div class="text-right" style="opacity:0.8;"><i class="far fa-file-alt text-white"></i></div>
+        <div class="text-right" style="opacity:0.8;"><i class="fab fa-jenkins text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
                 <?php echo $this->db->count_all('parent_data');?></div>
                 <div class="text-white font-weight-bold">PARANTS</div>
