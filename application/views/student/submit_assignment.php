@@ -64,7 +64,7 @@ if($this->session->flashdata('add_assign')){
                     <th data-field="topic" data-sortable="true">topic</th>
                     <th data-field="last_date" data-sortable="true">Submission_date</th>
                     <th data-field="action" data-sortable="true">Upload</th>
-                    <th data-field="view" data-sortable="true">View</th>
+                    <th data-field="view" data-sortable="true">Status</th>
                 </tr>
 
             </thead>
