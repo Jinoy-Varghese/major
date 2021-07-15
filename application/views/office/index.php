@@ -159,13 +159,13 @@ categoryAxis.fontSize = 9;
         <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
                     <?php echo $this->db->like('s_course','bsc')->from('student_data')->count_all_results();?> </div>
-                <div class="text-white font-weight-bold ">STUDENTS(BSc)</div>
+                <div class="text-white font-weight-bold ">STUDENTS (UG)</div>
         </div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
         <div class="text-right" style="opacity:0.8;"><i class="fa fa-graduation-cap text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation3">
                     <?php echo $this->db->like('s_course','msc')->from('student_data')->count_all_results();?> </div>
-                <div class="text-white font-weight-bold ">STUDENTS(MSc)</div>
+                <div class="text-white font-weight-bold ">STUDENTS (PG)</div>
         </div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
         <div class="text-right" style="opacity:0.8;"><i class="fa fa-users text-white"></i></div>

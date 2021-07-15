@@ -147,7 +147,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         line-height:2.0;
         font-size:18px;
         font-weight:bold;
-        margin-left:-40px;
     }
     </style>
     <title>MTCST</title>
@@ -307,8 +306,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div className="row col-12 mt-5 pt-5 ml-0 pb-5"> 
             <div class="col-md-4 col-12" style={{height:"290px"}}><div className="col-12 inspire_bg h-100"></div></div>
             <div class="col-md-8 col-12" style={{height:"290px"}}>
-            <div className="col-12 h2 pb-3 mt-4 mt-md-5 ml-n5 font-weight-bold text-danger">#PRINCIPAL</div>  
-            <div class="col-md-10 h5 col-12 font-weight-bold" className="height">
+            <div className="col-12 h2 pb-3 mt-4 mt-md-5 font-weight-bold text-primary">#Principal</div>  
+            <div class="col-md-10 h5 col-12 font-weight-bold p-0" className="height">
             Prof. Dr. Joseph Mathai.<br/>
             Mobile Number:9387255515.<br/>
             email: josamkar@gmail.com.<br/>
