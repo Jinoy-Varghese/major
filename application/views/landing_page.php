@@ -304,16 +304,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         <div className="row col-12 mt-5 pt-5 ml-0 pb-5"> 
-            <div class="col-md-4 col-12" style={{height:"290px"}}><div className="col-12 inspire_bg h-100"></div></div>
+            <div class="col-md-4 col-12 p-3 mb-2 mb-md-5" style={{height:"290px"}}><div className="col-12 inspire_bg h-100"></div></div>
             <div class="col-md-8 col-12" style={{height:"290px"}}>
-            <div className="col-12 h2 pb-3 mt-4 mt-md-5 font-weight-bold text-primary">#Principal</div>  
-            <div class="col-md-10 h5 col-12 font-weight-bold p-0" className="height">
+            <div className="col-12 h2 pb-3 mt-4 mt-md-5 font-weight-bold text-primary pl-0">#Principal</div>  
+            <div className="col-md-10 pl-2 col-12 ">
             Prof. Dr. Joseph Mathai.<br/>
-            Mobile Number:9387255515.<br/>
-            email: josamkar@gmail.com.<br/>
-            
+            Mobile Number : 9387255515.<br/>
+            email : josamkar@gmail.com.<br/>
             </div>
-            </div>
+        </div>
         </div>
         <div className="row col-12 mt-5 pt-5 ml-0 pb-4 border" style={{background:"rgba(34,64,194,0.2)"}}>
             <div className="col-12 h2">Photo Gallery</div>   
