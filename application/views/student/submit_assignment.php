@@ -64,6 +64,7 @@ if($this->session->flashdata('add_assign')){
                     <th data-field="topic" data-sortable="true">topic</th>
                     <th data-field="last_date" data-sortable="true">Submission_date</th>
                     <th data-field="action" data-sortable="true">Upload</th>
+                    <th data-field="view" data-sortable="true">View</th>
                 </tr>
 
             </thead>
@@ -94,7 +95,22 @@ if($this->session->flashdata('add_assign')){
                     <td><button type='button' class='btn btn-primary' data-toggle='modal'
                             data-target='#exampleModalCenter<?php echo $assignment_data->as_id;?>'>Upload File</button>
                             </td>
-      
+                    <td>
+                    <?php
+                        $this->db->select('*');
+                        $this->db->from('assignment_submit');
+                        $this->db->where('assign_by',$_SESSION['u_id']);
+                        $this->db->where('assign_topic',$assignment_data->as_topic);
+                        $sql=$this->db->get();
+                        foreach($sql->result() as $view_ass)
+                        {
+                            if($view_ass->assign_file!==null)
+                            {
+                                echo "<div class='text-success font-weight-bold'>File Uploaded</div>";
+                            }
+                        }
+                        ?>
+                    </td>
                 </tr>
 
 
