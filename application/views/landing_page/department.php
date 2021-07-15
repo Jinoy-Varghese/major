@@ -34,15 +34,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </tr>
     <tr>
       <th scope="row">6</th>
-      <td>Department Of BBA (Bachelor of Business Administration)</td>
+      <td>Department Of Business Administration</td>
     </tr>
     <tr>
       <th scope="row">7</th>
-      <td>Department Of B.Com Computer Applications</td>
-    </tr>
-    <tr>
-      <th scope="row">8</th>
-      <td>Department Of B.Com Finance</td>
+      <td>Department Of Commerce</td>
     </tr>
   </tbody>
 </table>
@@ -69,11 +65,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
     </tr>
     <tr>
       <th scope="row">5</th>
-      <td>Department MA English</td>
+      <td>Department  Of MA English</td>
     </tr>
     <tr>
       <th scope="row">6</th>
-      <td>Department Of M.Com Finance</td>
+      <td>Department Of Commerce</td>
     </tr>
   </tbody>
 </table>

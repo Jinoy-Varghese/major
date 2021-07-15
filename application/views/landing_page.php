@@ -116,8 +116,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         -o-transition: all .3s ease-in-out;
         -ms-transition: all .3s ease-in-out;
     }
-
-
     .transition {
         -webkit-transform: scale(1.2);
         -moz-transform: scale(1.2);
@@ -147,6 +145,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         line-height:2.0;
         font-size:18px;
         font-weight:bold;
+    }
+    .social
+    {
+        text-decoration:none;
+        color:white;
     }
     </style>
     <title>MTCST</title>
@@ -245,25 +248,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-user-graduate font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Course</div>
-                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                    <div className="col-12 text-center">We have a 13 courses currently available now.</div>
                 </div></div></a>
                 <a href="<?php echo base_url('Home/department'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
                 <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-graduation-cap font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Department</div>
-                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                    <div className="col-12 text-center">We have a 7 department currently available now.</div>
                 </div></div></a>
                 <a href="<?php echo base_url('Home/gallery'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
                 <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-photo-video font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">Gallery</div>
-                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                    <div className="col-12 text-center">Our photo collection currently available now.</div>
                 </div></div></a>
                 <a href="<?php echo base_url('Home/about'); ?>" class="col-md-3 col-12 p-0 a_tag_change">
                 <div className="col-12 pt-3" style={{height:"300px"}}><div className="col-12 h-100 border-primary border rounded shadow content-item" style={{cursor:"pointer"}}>
                     <div style={{height:"140px"}} className="col-12 d-flex align-items-center justify-content-center"><i className="fas fa-university font-big"></i></div>
                     <div className="col-12 d-flex align-items-center justify-content-center h2">About us</div>
-                    <div className="col-12 text-center">We have a 8+ courses currently available now.</div>
+                    <div className="col-12 text-center">We have providing details about our college.</div>
                 </div></div></a>
     </div>
 
@@ -548,11 +551,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-12 col-md-4 mt-md-0 mt-5 pl-3 pl-md-5">
             <div class="text-light col-12 h3">Quick Links</div>
             <div class="col-12 text-light mt-4">
-              <i class="fab fa-facebook-square ml-2" style={{cursor:"pointer"}}></i>
-              <i class="fab fa-instagram ml-2" style={{cursor:"pointer"}}></i>
-              <i class="fab fa-twitter ml-2" style={{cursor:"pointer"}}></i>
-              <i class="fab fa-youtube ml-2" style={{cursor:"pointer"}}></i>
-              <i class="fab fa-linkedin ml-2" style={{cursor:"pointer"}}></i>
+             <a className="social" href="https://www.facebook.com/Mar-Thoma-Institute-of-Information-Technology-Placement-Cell-189113154510968/"><i class="fab fa-facebook-square ml-2" style={{cursor:"pointer"}}></i></a>
+             <a className="social" href=""><i class="fab fa-instagram ml-2" style={{cursor:"pointer"}}></i></a>
+             <a className="social" href=""><i class="fab fa-twitter ml-2" style={{cursor:"pointer"}}></i></a>
+             <a className="social" href=""><i class="fab fa-youtube ml-2" style={{cursor:"pointer"}}></i></a> 
+             <a className="social" href=""><i class="fab fa-linkedin ml-2" style={{cursor:"pointer"}}></i></a>
             </div>
         </div>
         <div class="col-12 border border-light mt-5 border-right-0 border-bottom-0 border-left-0 text-light text-center pt-1 pb-3">
