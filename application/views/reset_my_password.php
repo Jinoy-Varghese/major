@@ -47,8 +47,6 @@ body {
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
 
 }
 #particles-js
@@ -141,17 +139,17 @@ if($this->session->flashdata('unregistered_email')){
    }
 ?>
 
-<?php echo form_open('Home/login_process','class="form-signin text-center"'); ?>
+<?php echo form_open('Home/reset_pass_process','class="form-signin text-center"'); ?>
 <div class="mt-5">
       <img class="mb-4" src="<?php echo base_url('assets/image/marthoma.png'); ?>" alt="" width="90" height="94" />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Reset Your Password</h1>
       <label for="inputEmail" class="sr-only">New Password</label>
       <input type="password" name="new_name" class="form-control" placeholder="Email address" required autofocus>
       <label for="inputPassword" class="sr-only">Confirm Password</label>
       <input type="password" name="confirm_password" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         <label>
-           Forgot Your Password? <a href="<?php echo base_url('Home/forgot_mail'); ?>"> Reset Password</a>
+           Don't need to reset? <a href="<?php echo base_url('Home/login'); ?>"> Go Back</a>
         </label>
       </div>
       <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in" name="u_login">
