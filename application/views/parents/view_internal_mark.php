@@ -48,10 +48,10 @@ body
 </div>
 
 <div class="container mt-5">
-<div class="row" style="margin-top:90px;">
+<div class="row" style="margin-top:30px;">
 
 <div class="col-12">
-<div class="col-md-12">
+<div class="col-md-12" style="overflow-x:scroll;">
 <table class="table table-bordered text-center text-nowrap mt-n5" style="font-size:10px; width:80%; margin-left:-120px;">
 
 <tr>
