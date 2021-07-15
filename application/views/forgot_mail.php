@@ -44,8 +44,7 @@ body {
 }
 .form-signin input[type="email"] {
   margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+
   
 }
 .form-signin input[type="password"] {
@@ -115,24 +114,15 @@ body {
 </style>
 
 <?php 
-if($this->session->flashdata('invalid_user')){
+if($this->session->flashdata('mailsend')){
  echo '
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-  <strong>Login failed!</strong> Invalid user id or password.
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Success!</strong> Check your email for password reset.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>';
 }
-if($this->session->flashdata('mailsend')){
-  echo '
- <div class="alert alert-success alert-dismissible fade show" role="alert">
-   <strong>Success!</strong> Check your email for password reset.
-   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-     <span aria-hidden="true">&times;</span>
-   </button>
- </div>';
- }
 if($this->session->flashdata('unregistered_email')){
     echo '
    <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -144,20 +134,18 @@ if($this->session->flashdata('unregistered_email')){
    }
 ?>
 
-<?php echo form_open('Home/login_process','class="form-signin text-center"'); ?>
+<?php echo form_open('Home/send_mail','class="form-signin text-center"'); ?>
 <div class="mt-5">
       <img class="mb-4" src="<?php echo base_url('assets/image/marthoma.png'); ?>" alt="" width="90" height="94" />
-      <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Enter Your E-Mail ID</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" name="u_name" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="u_password" class="form-control" placeholder="Password" required>
+      <input type="email" name="u_name" class="form-control mb-2" placeholder="Email address" required autofocus>
       <div class="checkbox mb-3">
         <label>
-           Forgot Your Password? <a href="<?php echo base_url('Home/forgot_mail'); ?>"> Reset Password</a>
+           Dont't want to reset? <a href="<?php echo base_url('Home/login'); ?>"> Go back</a>
         </label>
       </div>
-      <input class="btn btn-lg btn-primary btn-block" type="submit" value="Sign in" name="u_login">
+      <input class="btn btn-lg btn-primary btn-block" type="submit" value="Reset Password" name="u_login">
       <div class="row mt-3 mb-3"><hr class="col-3"><div class="col-2">OR</div><hr class="col-3"></div>
 
       <div class="google-btn mb-3">

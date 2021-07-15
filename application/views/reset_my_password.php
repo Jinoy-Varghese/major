@@ -43,10 +43,7 @@ body {
   z-index: 2;
 }
 .form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  
+  margin-bottom: -1px;  
 }
 .form-signin input[type="password"] {
   margin-bottom: 10px;
@@ -148,10 +145,10 @@ if($this->session->flashdata('unregistered_email')){
 <div class="mt-5">
       <img class="mb-4" src="<?php echo base_url('assets/image/marthoma.png'); ?>" alt="" width="90" height="94" />
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-      <label for="inputEmail" class="sr-only">Email address</label>
-      <input type="email" name="u_name" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
-      <input type="password" name="u_password" class="form-control" placeholder="Password" required>
+      <label for="inputEmail" class="sr-only">New Password</label>
+      <input type="password" name="new_name" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Confirm Password</label>
+      <input type="password" name="confirm_password" class="form-control" placeholder="Password" required>
       <div class="checkbox mb-3">
         <label>
            Forgot Your Password? <a href="<?php echo base_url('Home/forgot_mail'); ?>"> Reset Password</a>

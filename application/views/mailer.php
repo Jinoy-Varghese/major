@@ -7,6 +7,8 @@ use PHPMailer\PHPMailer\SMTP;
 require 'vendor/autoload.php'; 
   
 $mail = new PHPMailer(true); 
+$u_name=$this->input->post('u_name');
+
   $mail->isSMTP();
 try { 
    
@@ -21,15 +23,17 @@ try {
     $mail->Port       = 587;   
     $mail->IsHTML(TRUE);
     $mail->setFrom('support@mtcst.ml', 'MTCST'); 
-    $maill="jinoy.v2000@gmail.com";           
-    $mail->addAddress($maill); 
+    $mail->addAddress($u_name); 
                    
-    $mail->Subject = 'Subject'; 
-    $mail->Body    = 'helloo jino.aa....  this is a message from eparish '; 
+    $mail->Subject = 'Password Reset'; 
+    $mail->Body    = 'A request for forget password has been produced. <br /><br /> Click on the following link to reset your password.<br /><br /><a href="'.base_url('/Home/reset_my_password').'">Reset Password</a> '; 
     $mail->AltBody = 'Body in plain text for non-HTML mail clients'; 
     $mail->send(); 
-    echo "Mail has been sent successfully!"; 
-} catch (Exception $e) { 
+
+    $this->session->set_flashdata('mailsend',"success");
+    redirect('Home/login','refresh');
+
+  } catch (Exception $e) { 
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}"; 
 } 
   
