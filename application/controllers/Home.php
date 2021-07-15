@@ -546,6 +546,20 @@ class Home extends CI_Controller
     $this->load->view('reset_my_password.php');
     $this->load->view("footer");
    }
+   public function reset_pass_process()
+   {
+    $email=$this->input->post('email');
+    $old_pass=$this->input->post('old_pass');
+    $new_password=$this->input->post('new_password');
+    $confirm_password=$this->input->post('confirm_password');
+    if($new_password==$confirm_password)
+    {
+      $users_list=$this->db->get_where('users',array('email'=>$email,'user_status'=>1,'password'=>$old_pass));
+    }
+
+     
+
+   }
 
 
 }

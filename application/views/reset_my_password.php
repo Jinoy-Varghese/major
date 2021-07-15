@@ -138,15 +138,25 @@ if($this->session->flashdata('unregistered_email')){
    </div>';
    }
 ?>
+<?php
 
+$email=$this->input->get('email');
+$old_pass=$this->input->get('pa');
+
+
+
+?>
 <?php echo form_open('Home/reset_pass_process','class="form-signin text-center"'); ?>
 <div class="mt-5">
       <img class="mb-4" src="<?php echo base_url('assets/image/marthoma.png'); ?>" alt="" width="90" height="94" />
       <h1 class="h3 mb-3 font-weight-normal">Reset Your Password</h1>
       <label for="inputEmail" class="sr-only">New Password</label>
-      <input type="password" name="new_name" class="form-control" placeholder="Email address" required autofocus>
+      <input type="hidden" name="email" value="<?php echo $email; ?>">
+      <input type="hidden" name="old_pass" value="<?php echo $old_pass; ?>">
+
+      <input type="password" name="new_password" class="form-control" placeholder="New Password" required autofocus>
       <label for="inputPassword" class="sr-only">Confirm Password</label>
-      <input type="password" name="confirm_password" class="form-control" placeholder="Password" required>
+      <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password" required>
       <div class="checkbox mb-3">
         <label>
            Don't need to reset? <a href="<?php echo base_url('Home/login'); ?>"> Go Back</a>
