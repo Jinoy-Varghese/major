@@ -14,42 +14,37 @@
             chart.hiddenState.properties.opacity = 0; // this creates initial fade-in
 
             chart.data = [
-            {
-                country: "USA",
-                visits: 725
-            },
-            {
-                country: "China",
-                visits: 882
-            },
-            {
-                country: "Japan",
-                visits: 809
-            },
-            {
-                country: "Germany",
-                visits: 322
-            },
-            {
-                country: "UK",
-                visits: 122
-            },
-            {
-                country: "France",
-                visits: 114
-            },
-            {
-                country: "India",
-                visits: 984
-            },
-            {
-                country: "Spain",
-                visits: 711
-            },
-            {
-                country: "Netherlands",
-                visits: 465
-            },
+              <?php 
+          $id=$_SESSION['u_id'];
+          $this->db->select('*');
+          $this->db->from('parent_data');
+          $this->db->where('email',$id);
+          $sql=$this->db->get();
+          foreach($sql->result() as $user_data)
+          {
+            $s_mail=$user_data->s_mail;
+          }
+
+          $this->db->select('*');
+          $this->db->from('exam_marks');
+          $this->db->where('student_id',$s_mail);
+          $sql=$this->db->get();
+          $i=1;
+          foreach($sql->result() as $user_data)
+          {
+          ?>
+
+        {
+            country: <?php echo date('d/m/Y',strtotime($user_data->date)); ?>,
+            visits: <?php echo $user_data->mark_obtained; ?>
+        },
+  
+  
+          <?php
+          }
+          ?>
+
+
 
             ];
 
@@ -62,7 +57,7 @@
 
             var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
             valueAxis.min = 0;
-            valueAxis.max = 1000;
+            valueAxis.max = 10;
             valueAxis.strictMinMax = true;
             valueAxis.renderer.minGridDistance = 30;
             valueAxis.renderer.labels.template.fontSize = 9;
@@ -297,7 +292,7 @@ echo $total_attendance;
         <div class="text-right" style="opacity:0.8;"><i class="fab fa-jenkins text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation2">
                 <?php echo $this->db->count_all('parent_data');?></div>
-                <div class="text-white font-weight-bold">PARANTS</div>
+                <div class="text-white font-weight-bold">PARENTS</div>
         </div></div>
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(34,195,82,1) 0%, rgba(45,253,222,1) 100%);height:100px;margin-bottom:10px;">
         <div class="text-right" style="opacity:0.8;"><i class="far fa-file-video text-white"></i></div>
