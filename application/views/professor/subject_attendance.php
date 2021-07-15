@@ -232,6 +232,7 @@ foreach($sql->result() as $user_data)
     </form>
 </div>
 <script type="text/javascript">
+
 $(document).ready(function() {
 
     $("#subject").change(function() {
@@ -254,14 +255,13 @@ $(document).ready(function() {
                 for (var i = 0; i < len; i++) {
                     var sem = response[i]['sem'];
 
-                    $("#semester").append("<option value='" + sem + "'>" + sem +
-                        "</option>");
+                    $("#semester").append("<option value='" + sem + "'>" + sem +"</option>");
 
                 }
             }
         });
     });
-
+});
    
 </script>
 
