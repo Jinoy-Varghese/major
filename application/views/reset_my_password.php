@@ -146,7 +146,7 @@ $old_pass=$this->input->get('pa');
 
 
 ?>
-<?php echo form_open('Home/reset_pass_process','class="form-signin text-center"'); ?>
+<form action="<?php echo base_url('Home/reset_pass_process'); ?>" method="post" class="form-signin text-center" oninput='new_password.setCustomValidity(new_password.value != confirm_password.value ? "Passwords do not match." : "")' >
 <div class="mt-5">
       <img class="mb-4" src="<?php echo base_url('assets/image/marthoma.png'); ?>" alt="" width="90" height="94" />
       <h1 class="h3 mb-3 font-weight-normal">Reset Your Password</h1>
@@ -199,7 +199,7 @@ $client->addScope("profile");
       </div>
     </div>
      
-<?php echo form_close(); ?>
+</form>
 <div id=particles-js>
 </div>
 </div>

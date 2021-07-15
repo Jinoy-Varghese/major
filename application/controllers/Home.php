@@ -555,6 +555,20 @@ class Home extends CI_Controller
     if($new_password==$confirm_password)
     {
       $users_list=$this->db->get_where('users',array('email'=>$email,'user_status'=>1,'password'=>$old_pass));
+      if($users_list->num_rows()>0)
+      {
+        $value=array('password'=>md5($new_password));
+        $this->db->where('email',$email);
+        $this->db->update('users',$value);
+        $this->session->set_flashdata('reset_success',"success");
+        redirect('Home/login','refresh');
+      }
+      else
+      {
+        $this->session->set_flashdata('invalid_user',"failed");
+        redirect('Home/login','refresh');
+      }
+
     }
 
      
