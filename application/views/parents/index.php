@@ -35,7 +35,7 @@
           ?>
 
         {
-            country: <?php echo date('d/m/Y',strtotime($user_data->date)); ?>,
+            country: "<?php echo date('d/m/Y',strtotime($user_data->date)); ?>",
             visits: <?php echo $user_data->mark_obtained; ?>
         },
   
