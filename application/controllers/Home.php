@@ -75,7 +75,7 @@ class Home extends CI_Controller
         $u_name=$this->input->post('u_name');
         $u_pass=md5($this->input->post('u_password'));
         $u_data=array('u_name'=>$u_name,'u_pass'=>$u_pass);
-        $users_list=$this->db->get_where('users',array('email'=>$u_data['u_name']));
+        $users_list=$this->db->get_where('users',array('email'=>$u_data['u_name'],'user_status'=>1));
         if($users_list->num_rows()>0)
         {
           foreach($users_list->result() as $users)
