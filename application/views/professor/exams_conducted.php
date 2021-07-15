@@ -118,14 +118,11 @@ data-detail-view="false"
  $sql=$this->db->get();
  $array=array('0');
 
-  foreach($sql->result() as $exam_data)
-  {
-  
-  }
+ 
   $this->db->select('DISTINCT(exam_id),subject,date');
   $this->db->from('exam_questions');
   $this->db->where_not_in('exam_id',$array);
-  $this->db->where('date<=',$cur_datetime);
+  $this->db->where('date>=',$cur_datetime);
   $sql=$this->db->get();
   foreach($sql->result() as $user_data)
   {
