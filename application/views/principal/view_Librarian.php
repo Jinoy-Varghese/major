@@ -91,7 +91,7 @@ foreach($sql->result() as $librarian_data)
 <form name="incharge_change_form" method="post">
 <tr>
     <td class="bs-checkbox"><input data-index="<?php echo $librarian_data->id ?>" name="btSelectItem" type="checkbox"></td>
-    <td><input disabled value="<?php echo $librarian_data->name ?>" id="cur_name" style="border:0;background:none;color:black;"></td>
+    <td><?php echo $librarian_data->name ?></td>
     <td><?php echo $librarian_data->address ?></td>
     <td><?php echo $librarian_data->email ?></td>
     <td><?php echo date("d-m-yy",strtotime($librarian_data->dob)) ?></td>

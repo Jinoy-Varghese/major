@@ -85,6 +85,7 @@ $this->db->select('*');
 $this->db->from('users');
 $this->db->join('hod_data','hod_data.email=users.email');
 $this->db->where('users.role','hod');
+$this->db->where('user_status',1);
 $sql=$this->db->get();
 foreach($sql->result() as $hod_data)
 {
@@ -92,7 +93,7 @@ foreach($sql->result() as $hod_data)
 <form name="incharge_change_form" method="post">
 <tr>
     <td class="bs-checkbox"><input data-index="<?php echo $hod_data->id ?>" name="btSelectItem" type="checkbox"></td>
-    <td><input disabled value="<?php echo $hod_data->name ?>" id="cur_name" style="border:0;background:none;color:black;"></td>
+    <td><?php echo $hod_data->name ?></td>
     <td><?php echo $hod_data->address ?></td>
     <td><?php echo $hod_data->email ?></td>
     <td><?php echo $hod_data->dept ?></td>
