@@ -85,6 +85,7 @@ $this->db->select('*');
 $this->db->from('users');
 $this->db->join('professor_data','professor_data.email=users.email');
 $this->db->where('users.role','professor');
+$this->db->where('user_status',1);
 $sql=$this->db->get();
 foreach($sql->result() as $professor_data)
 {
