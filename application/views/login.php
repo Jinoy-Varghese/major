@@ -5,6 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     html,
 body {
   height: 100%;
+  overflow-x:hidden;
 }
 
 body {
