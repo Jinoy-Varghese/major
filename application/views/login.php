@@ -152,9 +152,9 @@ if($this->session->flashdata('unregistered_email')){
    </div>';
    }
 ?>
-
+<div class="col-12 mt-1 ml-1"><a href="<?php echo base_url('Home/'); ?>"><i class="fas fa-arrow-left"></i></a></div>
 <?php echo form_open('Home/login_process','class="form-signin text-center"'); ?>
-<div class="mt-5">
+<div class="mt-4">
       <img class="mb-4" src="<?php echo base_url('assets/image/marthoma.png'); ?>" alt="" width="90" height="94" />
       <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
