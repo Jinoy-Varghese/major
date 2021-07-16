@@ -133,7 +133,7 @@ if($this->session->flashdata('update_success')){
 </div>
 
 <div class="col-md-4 p-0 mt-md-0 mt-3">
-<input type="date" class="form-control col-md-7 float-right" name="date">
+<input type="date" class="form-control col-md-7 float-right" name="date" value="<?php echo date('Y-m-d') ?>">
 </div>
 </div>
 </div>
