@@ -255,7 +255,7 @@ title.fontWeight = "800";
         <div class="col-lg-3 col-md-6"> <div class="col-md-12 shadow" style="background: linear-gradient(45deg, rgba(252,54,54,1) 0%, rgba(253,45,120,1) 100%);height:100px;margin-bottom:10px;">
         <div class="text-right" style="opacity:0.8;"><i class=" fas fa-book-reader text-white"></i></div>
                 <div style=" font-size:30px;opacity:0.9;" class=" text-white font-weight-bold number-animation4">
-                    <?php echo $this->db->count_all('pROFESSOR_data');?> </div>
+                    <?php echo $this->db->count_all('professor_data');?> </div>
                 <div class="text-white font-weight-bold ">PROFESSORS</div>
         </div></div>
     </div>
