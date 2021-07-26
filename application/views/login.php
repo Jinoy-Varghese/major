@@ -153,7 +153,7 @@ if($this->session->flashdata('unregistered_email')){
    </div>';
    }
 ?>
-h
+
 <div class="col-12 mt-1 ml-1"><a href="<?php echo base_url('Home/'); ?>"><i class="fas fa-arrow-left"></i></a></div>
 <?php echo form_open('Home/login_process','class="form-signin text-center"'); ?>
 <div class="mt-4">
