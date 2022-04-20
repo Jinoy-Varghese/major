@@ -51,7 +51,6 @@ if(!isset($_SESSION['u_id']) OR $_SESSION['role']!="hod")
   }
 
 ?>
-  <!-- Custom styles for this template -->
 
   <link href="<?php echo base_url('assets/css/simple-sidebar.css'); ?>" rel="stylesheet">
   <!--navigation-->
