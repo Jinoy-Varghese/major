@@ -247,7 +247,7 @@ class Professor extends CI_Controller
      $value=array('note_file'=>$target);
      $insert_note=array('note_for'=>$note_for,'note_by'=>$note_by,'course'=>$course,'note_heading'=>$note_heading,'note_desc'=>$note_desc,'note_subject'=>$note_subject,'note_file'=>$target);
      $this->Professor_model->insert_notes($insert_note);
-     $this->session->set_flashdata('insert_success',"Successfully Inserted");
+     $this->session->set_flashdata('insert_note_success',"Successfully Inserted");
      redirect('professor/notes','refresh');
     }
     else

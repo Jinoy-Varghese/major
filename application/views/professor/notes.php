@@ -13,7 +13,7 @@ if(!isset($_SESSION['u_id']))
 ?>
 <div class="container p-lg-4">
 <?php 
-if($this->session->flashdata('insert_success')){
+if($this->session->flashdata('insert_note_success')){
  echo '
 <div class="alert alert-success alert-dismissible fade show" role="alert">
   <strong>Success!</strong> New Note Inserted.
