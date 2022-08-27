@@ -1,23 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-
-/**
- *
- * Controller Librarian
- *
- * This controller for ...
- *
- * @package   CodeIgniter
- * @category  Controller CI
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @author    Raul Guerrero <r.g.c@me.com>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Librarian extends CI_Controller
 {
     
@@ -243,13 +226,8 @@ class Librarian extends CI_Controller
     $this->db->update('users',$value);
     move_uploaded_file($_FILES['image']['tmp_name'], $target);
     $this->session->set_flashdata('update_success',"Successfully Updated");
-
     redirect('Librarian/Librarian_profile','refresh');
-  	
- 
   }
-
-
 }
 
 
